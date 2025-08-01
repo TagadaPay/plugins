@@ -1,0 +1,20 @@
+{
+  "name": "Three variants",
+  "pluginId": "three-step-variants-01",
+  "description": "A boilerplate three-variants template with embedded checkout form using Tagadapay SDK",
+  "version": "1.0.0",
+  "author": "Tagadapay",
+  "mode": "direct-mode",
+  "preview": {
+    "width": 375,
+    "height": 812,
+    "device": "mobile"
+  },
+  "category": "variants",
+  "tags": ["variants", "checkout", "template"],
+  "settings": {
+    "allowCustomDomain": true,
+    "requiresAuth": false,
+    "mobileOptimized": true
+  }
+}

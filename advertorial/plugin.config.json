@@ -1,0 +1,20 @@
+{
+  "name": "Advertorial Template",
+  "pluginId": "advertorial-01",
+  "description": "A professional advertorial template that presents products through editorial-style content with embedded checkout",
+  "version": "1.0.0",
+  "author": "Tagadapay",
+  "main": "index.html",
+  "preview": {
+    "width": 375,
+    "height": 812,
+    "device": "mobile"
+  },
+  "category": "advertorial",
+  "tags": ["advertorial", "editorial", "news", "article", "content-marketing"],
+  "settings": {
+    "allowCustomDomain": true,
+    "requiresAuth": false,
+    "mobileOptimized": true
+  }
+} 
