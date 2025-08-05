@@ -205,7 +205,7 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
       {/* Navigation */}
       <div className="bg-white py-4">
         <div className="container mx-auto flex items-center justify-between px-2 sm:px-4">
-          <h1 className="text-brand-green-dark text-2xl font-bold sm:text-3xl">
+          <h1 className="text-2xl font-bold">
             {pluginConfig.branding.storeName}
           </h1>
           <div className="flex items-center gap-2 sm:gap-6">
