@@ -1221,12 +1221,21 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
       <div className="bg-white py-4 border-b border-gray-100">
         <div className="container mx-auto flex items-center justify-between px-3 sm:px-4">
-          <img
-            src="/logo-nbackground.png"
-            alt={pluginConfig.branding.storeName}
-            className="h-12 sm:h-16"
-            style={{ maxWidth: "250px" }}
-          />
+          {pluginConfig.branding.storeLogo ? (
+            <img
+              src={pluginConfig.branding.storeLogo}
+              alt={pluginConfig.branding.storeName}
+              className="h-12 sm:h-16"
+              style={{ maxWidth: "250px" }}
+            />
+          ) : (
+            <span className="text-2xl font-bold tracking-tight text-gray-900">
+              Tagada
+              <span className="bg-gradient-to-r from-emerald-500 to-emerald-400 bg-clip-text text-transparent">
+                Pay
+              </span>
+            </span>
+          )}
           <div className="flex items-center gap-2 sm:gap-6">
             <div className="text-right">
               <div className="flex items-center justify-end gap-1 mb-1">

@@ -32,7 +32,7 @@ export const pluginConfig = {
 
   // Brand configuration
   branding: {
-    storeLogo: "mystore.png",
+    storeLogo: undefined,
     storeName: "My store",
     companyWebsite: "mystore.com",
     supportEmail: "mysupport@email.com",
