@@ -29,6 +29,22 @@ You can try out the live whitelabel version of the available funnel examples bel
 
 _More examples will be added soon as they become available._
 
+### Test Payment Instructions
+
+To proceed with a payment in the whitelabel examples, use the following test credit card details:
+
+```plaintext
+┌───────────────────────────────┐
+│  Test Credit card             │
+│                               │
+│  Number: 4242 4242 4242 4242  │
+│  Exp:   12/29 (future date)   │
+│  CVC:   333 (any 3 digits)    │
+└───────────────────────────────┘
+```
+
+Simply enter these details at checkout to simulate a successful payment.
+
 ## License
 
 MIT
