@@ -39,8 +39,8 @@ importers:
         specifier: 1.1.1
         version: 1.1.1(@types/react@19.1.8)(react@19.1.0)
       '@tagadapay/plugin-sdk':
-        specifier: 1.0.16
-        version: 1.0.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+        specifier: 1.0.30
+        version: 1.0.30(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -948,8 +948,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@tagadapay/plugin-sdk@1.0.16':
-    resolution: {integrity: sha512-L2ftsu2aYh7zjVbkSdFLkGp9czrlbixnAKdHC8vhuawoaEiXzW/JEolW1K41p8Qyrx0h5K+PaR6nuJHZPndtDg==}
+  '@tagadapay/plugin-sdk@1.0.30':
+    resolution: {integrity: sha512-Lr3HuUkFszSrdGddJ2CfD65A2pQuw06O85Ns+RXb2GslA21Aw8YlS0A/82cx3Ea2BtTXUXXu8k7ziRutZEMkfA==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
@@ -2929,7 +2929,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.46.1':
     optional: true
 
-  '@tagadapay/plugin-sdk@1.0.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)':
+  '@tagadapay/plugin-sdk@1.0.30(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)':
     dependencies:
       '@basis-theory/apple-pay-js': 2.0.2
       '@basis-theory/basis-theory-js': 4.30.0

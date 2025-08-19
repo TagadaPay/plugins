@@ -3,11 +3,11 @@
 
 export const pluginConfig = {
   // Store configuration
-  storeId: "store_4872ce81eca2", // Replace with your store ID
-  
+  storeId: "store_16b60f87a695", // Replace with your store ID
+
   // Product configuration
   product: {
-    variantId: "variant_5178ff43611e", // Replace with your main product variant ID
+    variantId: "variant_9ec95720c2d1", // Replace with your main product variant ID
     quantity: 1,
   },
 
@@ -37,4 +37,4 @@ export const pluginConfig = {
       subtitle: "Secure checkout in just a few clicks",
     },
   },
-}; 
+};

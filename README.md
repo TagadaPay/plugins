@@ -26,6 +26,7 @@ To deploy your plugin, use the [@tagadapay/plugin-cli](https://www.npmjs.com/pac
 You can try out the live whitelabel version of the available funnel examples below:
 
 - **Three Variants:** [https://three-step-variants-01-3ws21b.cdn.tagadapay.com/checkout](https://three-step-variants-01-3ws21b.cdn.tagadapay.com/checkout)
+- **Three Step Funnel:** [https://three-step-funnel-01-bbab9i.cdn.tagadapay.com/](https://three-step-funnel-01-bbab9i.cdn.tagadapay.com/)
 
 _More examples will be added soon as they become available._
 

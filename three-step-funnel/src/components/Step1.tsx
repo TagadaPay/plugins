@@ -1,13 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Star } from 'lucide-react';
-import { pluginConfig } from '@/data/config';
-import { useProducts } from '@tagadapay/plugin-sdk';
+import { pluginConfig } from "@/data/config";
+import { useProducts } from "@tagadapay/plugin-sdk";
+import { ArrowRight, CheckCircle, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export function Step1() {
   const navigate = useNavigate();
 
   const handleContinue = () => {
-    navigate('/step2');
+    navigate("/step2");
   };
 
   const { getVariant } = useProducts();
@@ -46,8 +46,14 @@ export function Step1() {
           {/* Product highlight */}
           <div className="mb-8">
             <div className="text-center mb-6">
-              <div className="mx-auto mb-4 h-32 w-32 rounded-full bg-gray-200 flex items-center justify-center">
-                <img src={getVariant(pluginConfig.product.variantId)?.variant.imageUrl} alt="Product Image" className="h-full w-full object-cover" />
+              <div className="mx-auto mb-4 h-32 w-32 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+                <img
+                  src={
+                    getVariant(pluginConfig.product.variantId)?.variant.imageUrl
+                  }
+                  alt="Product Image"
+                  className="h-full w-full object-cover"
+                />
               </div>
               <h2 className="text-2xl font-semibold text-gray-900 mb-2">
                 {/* {pluginConfig.branding.productName} */}
@@ -62,7 +68,9 @@ export function Step1() {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0" />
-                <span className="text-gray-700">Premium quality guaranteed</span>
+                <span className="text-gray-700">
+                  Premium quality guaranteed
+                </span>
               </div>
               <div className="flex items-center space-x-3">
                 <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0" />
@@ -70,7 +78,9 @@ export function Step1() {
               </div>
               <div className="flex items-center space-x-3">
                 <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0" />
-                <span className="text-gray-700">30-day money-back guarantee</span>
+                <span className="text-gray-700">
+                  30-day money-back guarantee
+                </span>
               </div>
             </div>
           </div>
@@ -91,15 +101,22 @@ export function Step1() {
 
         {/* Trust indicators */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-600 mb-2">Trusted by thousands of customers</p>
+          <p className="text-sm text-gray-600 mb-2">
+            Trusted by thousands of customers
+          </p>
           <div className="flex justify-center space-x-1">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+              <Star
+                key={i}
+                className="h-4 w-4 fill-yellow-400 text-yellow-400"
+              />
             ))}
           </div>
-          <p className="text-xs text-gray-500 mt-1">4.9/5 stars from 1,000+ reviews</p>
+          <p className="text-xs text-gray-500 mt-1">
+            4.9/5 stars from 1,000+ reviews
+          </p>
         </div>
       </div>
     </div>
   );
-} 
+}

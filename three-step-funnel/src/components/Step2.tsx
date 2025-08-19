@@ -1,16 +1,24 @@
-import { useNavigate } from 'react-router-dom';
-import { ArrowRight, ArrowLeft, Shield, Truck, Award, Users } from 'lucide-react';
-import { pluginConfig } from '@/data/config';
+import { pluginConfig } from "@/data/config";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Award,
+  Shield,
+  Truck,
+  Users,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import customerImg from "../assets/customer.jpg";
 
 export function Step2() {
   const navigate = useNavigate();
 
   const handleContinue = () => {
-    navigate('/step3');
+    navigate("/step3");
   };
 
   const handleBack = () => {
-    navigate('/step1');
+    navigate("/step1");
   };
 
   return (
@@ -49,9 +57,12 @@ export function Step2() {
                 <Shield className="h-8 w-8 text-blue-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Premium Quality</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  Premium Quality
+                </h3>
                 <p className="text-gray-600 text-sm">
-                  Made with the finest materials and rigorous quality control to ensure you get the best product.
+                  Made with the finest materials and rigorous quality control to
+                  ensure you get the best product.
                 </p>
               </div>
             </div>
@@ -61,9 +72,12 @@ export function Step2() {
                 <Truck className="h-8 w-8 text-green-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Fast Shipping</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  Fast Shipping
+                </h3>
                 <p className="text-gray-600 text-sm">
-                  Get your order delivered quickly with our expedited shipping options. Most orders arrive within 3-5 days.
+                  Get your order delivered quickly with our expedited shipping
+                  options. Most orders arrive within 3-5 days.
                 </p>
               </div>
             </div>
@@ -73,9 +87,12 @@ export function Step2() {
                 <Award className="h-8 w-8 text-yellow-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Award Winning</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  Award Winning
+                </h3>
                 <p className="text-gray-600 text-sm">
-                  Recognized by industry experts and loved by customers worldwide for its effectiveness and quality.
+                  Recognized by industry experts and loved by customers
+                  worldwide for its effectiveness and quality.
                 </p>
               </div>
             </div>
@@ -85,9 +102,12 @@ export function Step2() {
                 <Users className="h-8 w-8 text-purple-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Trusted by Thousands</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">
+                  Trusted by Thousands
+                </h3>
                 <p className="text-gray-600 text-sm">
-                  Join over 10,000 satisfied customers who have transformed their lives with our product.
+                  Join over 10,000 satisfied customers who have transformed
+                  their lives with our product.
                 </p>
               </div>
             </div>
@@ -95,16 +115,27 @@ export function Step2() {
 
           {/* Social proof */}
           <div className="bg-gray-50 rounded-lg p-6 mb-8">
-            <h3 className="font-semibold text-gray-900 mb-4 text-center">What Our Customers Say</h3>
+            <h3 className="font-semibold text-gray-900 mb-4 text-center">
+              What Our Customers Say
+            </h3>
             <div className="text-center">
               <p className="text-gray-600 italic mb-4">
-                "This product changed my life! I can't imagine going back to how things were before. 
-                The quality is outstanding and the results speak for themselves."
+                "This product changed my life! I can't imagine going back to how
+                things were before. The quality is outstanding and the results
+                speak for themselves."
               </p>
               <div className="flex items-center justify-center space-x-2">
-                <div className="h-10 w-10 rounded-full bg-gray-300"></div>
+                <div className="size-20 overflow-hidden rounded-full bg-gray-300">
+                  <img
+                    src={customerImg}
+                    alt="Customer"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
                 <div className="text-left">
-                  <p className="font-semibold text-gray-900 text-sm">Sarah Johnson</p>
+                  <p className="font-semibold text-gray-900 text-sm">
+                    Sarah Johnson
+                  </p>
                   <p className="text-gray-500 text-xs">Verified Customer</p>
                 </div>
               </div>
@@ -120,7 +151,6 @@ export function Step2() {
               <span>I'm Convinced - Let's Order!</span>
               <ArrowRight className="h-5 w-5" />
             </button>
-
             <button
               onClick={handleBack}
               className="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-lg flex items-center justify-center space-x-2 transition-colors"
@@ -139,10 +169,12 @@ export function Step2() {
         <div className="mt-8 text-center">
           <div className="inline-flex items-center space-x-2 bg-green-100 text-green-800 px-4 py-2 rounded-full">
             <Shield className="h-4 w-4" />
-            <span className="text-sm font-semibold">30-Day Money Back Guarantee</span>
+            <span className="text-sm font-semibold">
+              30-Day Money Back Guarantee
+            </span>
           </div>
         </div>
       </div>
     </div>
   );
-} 
+}
