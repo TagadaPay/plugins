@@ -1,10 +1,15 @@
-import { Routes, Route, Navigate, useParams, useLocation } from 'react-router-dom';
-import { Suspense } from 'react';
-import { Providers } from './components/Providers';
-import { AdvertorialPage } from './components/AdvertorialPage';
-import { CheckoutPage } from './components/CheckoutPage';
-import { ThankYouPage } from './components/ThankYouPage';
-import { pluginConfig } from './data/config';
+import { Suspense } from "react";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useParams,
+} from "react-router-dom";
+import { AdvertorialPage } from "./components/AdvertorialPage";
+import { CheckoutPage } from "./components/CheckoutPage";
+import { Providers } from "./components/Providers";
+import { ThankYouPage } from "./components/ThankYouPage";
 
 function LoadingSpinner() {
   return (
@@ -27,10 +32,10 @@ function AdvertorialRoute() {
 
 function CheckoutRoute() {
   const location = useLocation();
-  
+
   // Extract checkout token from URL parameters (like JointBoost)
   const searchParams = new URLSearchParams(location.search);
-  const checkoutToken = searchParams.get('checkoutToken') || undefined;
+  const checkoutToken = searchParams.get("checkoutToken") || undefined;
 
   return (
     <Suspense fallback={<LoadingSpinner />}>
@@ -46,7 +51,9 @@ function ThankYouContent() {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
-          <h1 className="text-xl font-semibold text-red-600">Order ID Required</h1>
+          <h1 className="text-xl font-semibold text-red-600">
+            Order ID Required
+          </h1>
           <p className="mt-2 text-gray-600">No order ID provided in the URL.</p>
         </div>
       </div>
@@ -65,22 +72,18 @@ function ThankYouRoute() {
 }
 
 function App() {
-  // Use the store ID from configuration
-  const storeId = pluginConfig.storeId;
-  const accountId = 'acc_4872ce81eca2'; // Matches the store configuration
-
   return (
-    <Providers storeId={storeId} accountId={accountId}>
+    <Providers>
       <Routes>
         {/* Main advertorial route */}
         <Route path="/" element={<AdvertorialRoute />} />
-        
+
         {/* Checkout page */}
         <Route path="/checkout" element={<CheckoutRoute />} />
-        
+
         {/* Thank you page after successful purchase */}
         <Route path="/thankyou/:orderId" element={<ThankYouRoute />} />
-        
+
         {/* Catch all route - redirect to home */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
@@ -88,4 +91,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

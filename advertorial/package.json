@@ -27,7 +27,7 @@
     "@radix-ui/react-radio-group": "1.2.2",
     "@radix-ui/react-select": "2.1.4",
     "@radix-ui/react-slot": "1.1.1",
-    "@tagadapay/plugin-sdk": "1.0.16",
+    "@tagadapay/plugin-sdk": "1.0.30",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.454.0",
@@ -58,5 +58,6 @@
     "typescript-eslint": "^8.35.1",
     "vite": "^5.2.0"
   },
-  "homepage": "."
-} 
+  "homepage": ".",
+  "packageManager": "pnpm@10.0.0+sha512.b8fef5494bd3fe4cbd4edabd0745df2ee5be3e4b0b8b08fa643aa3e4c6702ccc0f00d68fa8a8c9858a735a0032485a44990ed2810526c875e416f001b17df12b"
+}

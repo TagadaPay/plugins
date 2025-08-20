@@ -1,22 +1,22 @@
+import { pluginConfig } from "@/data/config";
 import { TagadaProvider } from "@tagadapay/plugin-sdk";
 
 interface ProvidersProps {
   children: React.ReactNode;
-  storeId: string;
-  accountId: string;
 }
 
-export function Providers({ children, storeId, accountId }: ProvidersProps) {
+export function Providers({ children }: ProvidersProps) {
+  const { storeId, accountId } = pluginConfig;
   console.log("🔧 Providers - storeId:", storeId, "accountId:", accountId);
 
   return (
     <TagadaProvider
+      environment="production"
+      debugMode={true}
       storeId={storeId}
       accountId={accountId}
-      environment="production"
-      debugMode={false}
     >
       {children}
     </TagadaProvider>
   );
-} 
+}
