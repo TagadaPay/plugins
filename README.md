@@ -9,6 +9,7 @@ Each subfolder in this repository contains a standalone example of a funnel page
 - **advertorial/**: Example of an advertorial-style funnel with checkout
 - **three-step-funnel/**: Example of a three-step funnel with checkout
 - **three-variants/**: Example showing three different variants with checkout
+- **three-variants-2/**: Updated "Three Variants" checkout with refined UI and flows
 
 ## Getting Started
 
@@ -25,6 +26,7 @@ To deploy your plugin, use the [@tagadapay/plugin-cli](https://www.npmjs.com/pac
 
 You can try out the live whitelabel version of the available funnel examples below:
 
+- **Three Variants 2:** [https://three-variants-02-yfy986.cdn.tagadapay.com/](https://three-variants-02-yfy986.cdn.tagadapay.com/)
 - **Advertorial:** [https://advertorial-01-uqjh4c.cdn.tagadapay.com/](https://advertorial-01-uqjh4c.cdn.tagadapay.com/)
 - **Three Variants:** [https://three-step-variants-01-3ws21b.cdn.tagadapay.com/checkout](https://three-step-variants-01-3ws21b.cdn.tagadapay.com/checkout)
 - **Three Step Funnel:** [https://three-step-funnel-01-bbab9i.cdn.tagadapay.com/](https://three-step-funnel-01-bbab9i.cdn.tagadapay.com/)
