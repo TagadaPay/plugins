@@ -1,0 +1,28 @@
+{
+  "configName": "default",
+  "branding": {
+    "logoUrl": "https://tagadapay.com/logo.png",
+    "companyName": "Express Checkout Demo",
+    "supportEmail": "demo@tagadapay.com",
+    "websiteUrl": "https://tagadapay.com",
+    "primaryColor": "#3b82f6",
+    "secondaryColor": "#1d4ed8"
+  },
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": true
+  },
+  "products": {
+    "productId": "product_3df433d3ddfa",
+    "variantId": "variant_592e5ab3aeff"
+  },
+  "routes": {
+    "basePath": "/"
+  },
+  "settings": {
+    "enableShipping": true,
+    "enableTax": true,
+    "enableDiscounts": true
+  }
+}

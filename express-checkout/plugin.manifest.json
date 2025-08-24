@@ -1,0 +1,25 @@
+{
+  "name": "Express Checkout 01",
+  "pluginId": "express-checkout-01",
+  "description": "A professional express checkout experience inspired by Stripe Checkout with modern UI components",
+  "version": "1.0.0",
+  "author": "TagadaPay Team",
+  "mode": "direct-mode",
+  "category": "checkout",
+  "tags": ["checkout", "express", "stripe", "payment", "ecommerce", "shadcn"],
+  "router": {
+    "basePath": "/",
+    "matcher": ".*",
+    "excluder": null
+  },
+  "features": {
+    "expressCheckout": true,
+    "shippingCalculation": true,
+    "orderSummary": true,
+    "responsiveDesign": true,
+    "modernUI": true
+  },
+  "requirements": {
+    "sdk": "^2.1.0"
+  }
+}
