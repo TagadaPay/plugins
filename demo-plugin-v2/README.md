@@ -9,6 +9,14 @@ A demonstration plugin showcasing the TagadaPay V2 routing system and configurat
 - ✅ **Generic Config Structure** - Supports any configuration schema
 - ✅ **Development & Production** - Works seamlessly in both environments
 
+## 🌐 Live Demos
+
+Experience the plugin with different themes:
+- **Green Theme**: [https://green--store_b9dd071b3e3a.cdn.tagadapay.com/](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/)
+- **Blue Theme**: [https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/](https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/)
+
+Compare the themes to see how configuration changes affect the UI in real-time!
+
 ## 🚀 Quick Start
 
 ```bash
@@ -82,6 +90,8 @@ pnpm run deploy
 pnpm run deploy:green    # Deploys with green theme config
 pnpm run deploy:blue     # Deploys with blue theme config
 ```
+
+**🌐 Live Examples**: See the deployed versions at [Green Theme](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/) and [Blue Theme](https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/)
 
 ### Manual CLI Usage
 

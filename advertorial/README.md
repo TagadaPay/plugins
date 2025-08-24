@@ -50,6 +50,15 @@ Contains plugin-specific configuration:
 }
 ```
 
+## 🌐 Live Demo
+
+Try the live advertorial plugin: **[https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/](https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/)**
+
+Experience all features including:
+- Smart card formatting and auto-navigation
+- Google Autocomplete address input
+- Complete checkout flow with payment processing
+
 ## Development
 
 ### Start Development Server

@@ -151,8 +151,10 @@ The **[advertorial plugin](./advertorial/)** demonstrates a full checkout implem
 - 💳 **Payment Processing**: BasisTheory integration with 3DS support
 - 📱 **Mobile Optimized**: Responsive design for all devices
 
+**🌐 Live Demo**: [https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/](https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/)
+
 ```bash
-# Try the complete checkout experience
+# Try the complete checkout experience locally
 cd advertorial
 pnpm install
 pnpm dev
@@ -160,9 +162,10 @@ pnpm dev
 
 ## 🧪 Testing & Development
 
-### **Live Demo**
+### **Live Demos**
 
-Try the V2 demo plugin: [https://demo-v2--store_example.cdn.tagadapay.com](https://demo-v2--store_example.cdn.tagadapay.com)
+- **V2 Demo Plugin**: [https://demo-v2--store_example.cdn.tagadapay.com](https://demo-v2--store_example.cdn.tagadapay.com)
+- **Advertorial Plugin**: [https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/](https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/)
 
 ### **Test Payment Credentials**
 
