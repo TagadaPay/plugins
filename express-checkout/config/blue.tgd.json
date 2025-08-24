@@ -1,7 +1,7 @@
 {
-  "configName": "default",
+  "configName": "blue",
   "branding": {
-    "companyName": "Express Checkout Demo",
+    "companyName": "Express Checkout Demo Blue",
     "primaryColor": "#3b82f6"
   },
   "products": {

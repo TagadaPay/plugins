@@ -39,7 +39,7 @@ function AppContent() {
 
 function App() {
   return (
-    <TagadaProvider environment="production" localConfig="default" debugMode={true}>
+    <TagadaProvider localConfig="blue">
       <Router>
         <AppContent />
       </Router>

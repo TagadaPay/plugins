@@ -16,6 +16,7 @@ import {
   type GooglePrediction,
 } from "@tagadapay/plugin-sdk/react"
 import { cn } from "@/lib/utils"
+import { useBrandingColors } from "@/lib/branding"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -158,6 +159,7 @@ export default function ExpressCheckout01({
 
   // Plugin configuration
   const { storeId: configStoreId, config } = usePluginConfig();
+  const brandingColors = useBrandingColors();
 
   // Static plugin config (for demo purposes)
   const pluginConfig = {
@@ -553,7 +555,13 @@ export default function ExpressCheckout01({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
+                <div 
+                  className="w-6 h-6 rounded-full flex items-center justify-center text-sm font-semibold"
+                  style={{
+                    backgroundColor: brandingColors.primary,
+                    color: 'white'
+                  }}
+                >
                   1
                 </div>
                 Contact Information
@@ -593,7 +601,13 @@ export default function ExpressCheckout01({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
+                <div 
+                  className="w-6 h-6 rounded-full flex items-center justify-center text-sm font-semibold"
+                  style={{
+                    backgroundColor: brandingColors.primary,
+                    color: 'white'
+                  }}
+                >
                   2
                 </div>
                 Shipping Address
@@ -653,15 +667,29 @@ export default function ExpressCheckout01({
 
               {/* Helpful message when no country is selected */}
               {!isCountrySelected && (
-                <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                <div 
+                  className="p-3 rounded-lg border"
+                  style={{
+                    backgroundColor: brandingColors.primary50,
+                    borderColor: brandingColors.primary200
+                  }}
+                >
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
-                      <svg className="h-4 w-4 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                      <svg 
+                        className="h-4 w-4" 
+                        fill="currentColor" 
+                        viewBox="0 0 20 20"
+                        style={{ color: brandingColors.primary400 }}
+                      >
                         <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                       </svg>
                     </div>
                     <div className="ml-2">
-                      <p className="text-sm text-blue-800">
+                      <p 
+                        className="text-sm"
+                        style={{ color: brandingColors.primary800 }}
+                      >
                         Please select your country first. This will enable address autocomplete and ensure accurate shipping options.
                       </p>
                     </div>
@@ -798,7 +826,13 @@ export default function ExpressCheckout01({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
+                <div 
+                  className="w-6 h-6 rounded-full flex items-center justify-center text-sm font-semibold"
+                  style={{
+                    backgroundColor: brandingColors.primary,
+                    color: 'white'
+                  }}
+                >
                   3
                 </div>
                 Shipping Method
@@ -808,8 +842,17 @@ export default function ExpressCheckout01({
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="mb-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                <p className="text-sm text-blue-700">
+              <div 
+                className="mb-3 p-3 rounded-lg border"
+                style={{
+                  backgroundColor: brandingColors.primary50,
+                  borderColor: brandingColors.primary200
+                }}
+              >
+                <p 
+                  className="text-sm"
+                  style={{ color: brandingColors.primary700 }}
+                >
                   <span className="font-medium">Note:</span> Shipping method selection is for display purposes only. 
                   Actual shipping costs and methods will be calculated during payment processing.
                 </p>
@@ -848,7 +891,13 @@ export default function ExpressCheckout01({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
+                <div 
+                  className="w-6 h-6 rounded-full flex items-center justify-center text-sm font-semibold"
+                  style={{
+                    backgroundColor: brandingColors.primary,
+                    color: 'white'
+                  }}
+                >
                   4
                 </div>
                 Payment Information
@@ -1015,6 +1064,21 @@ export default function ExpressCheckout01({
                 disabled={isPaymentLoading || !checkout?.checkoutSession?.id}
                 className="w-full h-12 text-base font-semibold"
                 size="lg"
+                style={{
+                  backgroundColor: brandingColors.primary,
+                  borderColor: brandingColors.primary,
+                  color: 'white'
+                }}
+                onMouseEnter={(e) => {
+                  if (!isPaymentLoading) {
+                    e.currentTarget.style.backgroundColor = brandingColors.primary700;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isPaymentLoading) {
+                    e.currentTarget.style.backgroundColor = brandingColors.primary;
+                  }
+                }}
               >
                 <Lock className="w-4 h-4 mr-2" />
                 {isPaymentLoading ? "Processing..." : `Complete Order ${formatPrice(finalTotal)}`}

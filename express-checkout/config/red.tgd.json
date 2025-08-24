@@ -1,8 +1,8 @@
 {
-  "configName": "default",
+  "configName": "red",
   "branding": {
     "companyName": "Express Checkout Demo",
-    "primaryColor": "#3b82f6"
+    "primaryColor": "#ef4444"
   },
   "products": {
     "variantId": "variant_592e5ab3aeff"

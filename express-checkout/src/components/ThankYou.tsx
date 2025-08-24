@@ -3,12 +3,13 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { CheckCircle, Package, Truck, CreditCard, Mail, ArrowRight } from "lucide-react"
-import { useOrder, useCurrency, formatMoney, usePluginConfig, type OrderItem } from "@tagadapay/plugin-sdk/react"
+import { useOrder, useCurrency, formatMoney, type OrderItem } from "@tagadapay/plugin-sdk/react"
 import { toast } from "react-hot-toast"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
+import { useBrandingColors } from "@/lib/branding"
 
 interface ThankYouProps {
   className?: string
@@ -23,7 +24,7 @@ export default function ThankYou({ className }: ThankYouProps) {
   })
   
   const currentCurrency = useCurrency()
-  const { config } = usePluginConfig()
+  const brandingColors = useBrandingColors()
 
   useEffect(() => {
     if (orderId && !order && !isLoading && !error) {
@@ -99,12 +100,28 @@ export default function ThankYou({ className }: ThankYouProps) {
           <Card className="border-green-200 bg-green-50">
             <CardContent className="pt-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-                  <CheckCircle className="w-6 h-6 text-green-600" />
+                <div 
+                  className="w-12 h-12 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: brandingColors.primary100 }}
+                >
+                  <CheckCircle 
+                    className="w-6 h-6" 
+                    style={{ color: brandingColors.primary }}
+                  />
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold text-green-800">Thank you for your order!</h1>
-                  <p className="text-green-700">Your payment has been successfully processed.</p>
+                  <h1 
+                    className="text-2xl font-bold"
+                    style={{ color: brandingColors.primary800 }}
+                  >
+                    Thank you for your order!
+                  </h1>
+                  <p 
+                    className="text-base"
+                    style={{ color: brandingColors.primary700 }}
+                  >
+                    Your payment has been successfully processed.
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -341,7 +358,20 @@ export default function ThankYou({ className }: ThankYouProps) {
                 Contact Support
               </Button>
 
-              <Button className="w-full">
+              <Button 
+                className="w-full"
+                style={{
+                  backgroundColor: brandingColors.primary,
+                  borderColor: brandingColors.primary,
+                  color: 'white'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = brandingColors.primary700;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = brandingColors.primary;
+                }}
+              >
                 Continue Shopping
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
