@@ -119,7 +119,8 @@ pnpm run deploy:blue     # Blue theme variant
 npx tgdcli int --store-id your-store-id
 ```
 
-**🌐 See A/B Testing in Action**: 
+**🌐 See Different Plugin Types in Action**: 
+- **Three-Step Funnel**: [Complete sales funnel](https://three-step-funnel--store_b9dd071b3e3a.cdn.tagadapay.com/) with discovery → social proof → checkout flow
 - **Express Checkout Themes**: Compare [Red](https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Blue](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/) dynamic branding
 - **Checkout Variants**: Compare [Full Checkout](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Minimalist `/checkout2`](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2)
 - **Demo Plugin**: Compare [Green Theme](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Blue Theme](https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/) to see configuration changes
