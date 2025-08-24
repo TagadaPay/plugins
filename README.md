@@ -73,6 +73,8 @@ pnpm run deploy:blue     # Blue theme variant
 npx tgdcli int --store-id your-store-id
 ```
 
+**🌐 See A/B Testing in Action**: Compare the [Green Theme](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/) and [Blue Theme](https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/) demos to see how configuration changes affect the UI.
+
 ## 🎨 Plugin Development
 
 ### **Plugin Structure**
@@ -164,7 +166,10 @@ pnpm dev
 
 ### **Live Demos**
 
-- **V2 Demo Plugin**: [https://demo-v2--store_example.cdn.tagadapay.com](https://demo-v2--store_example.cdn.tagadapay.com)
+- **V2 Demo Plugin**: 
+  - Default: [https://demo-v2--store_example.cdn.tagadapay.com](https://demo-v2--store_example.cdn.tagadapay.com)
+  - Green Theme: [https://green--store_b9dd071b3e3a.cdn.tagadapay.com/](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/)
+  - Blue Theme: [https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/](https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/)
 - **Advertorial Plugin**: [https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/](https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/)
 
 ### **Test Payment Credentials**
