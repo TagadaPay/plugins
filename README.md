@@ -91,6 +91,11 @@ pnpm dev
 cd ../advertorial
 pnpm install
 pnpm dev
+
+# Or try the three-step funnel
+cd ../v1/three-step-funnel
+pnpm install
+pnpm dev
 ```
 
 ### **2. Deploy Your First Plugin**
