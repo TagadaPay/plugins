@@ -6,13 +6,14 @@ Professional examples showcasing the TagadaPay V2 Plugin System with advanced ro
 
 This repository contains production-ready plugin examples demonstrating how to build custom checkout experiences, landing pages, and interactive components with the TagadaPay V2 platform.
 
-### 🚀 **V2 Plugin Examples**
+### 🚀 **Plugin Examples**
 
 | Plugin | Description | Features | Status |
 |--------|-------------|----------|--------|
 | **[demo-plugin-v2](./demo-plugin-v2/)** | Complete V2 plugin showcase | ✅ Advanced routing<br/>✅ Live config injection<br/>✅ A/B testing<br/>✅ Modern React 19<br/>✅ TypeScript + Vite | ✅ **Active** |
+| **[advertorial](./advertorial/)** | Complete checkout experience | ✅ Smart card formatting<br/>✅ Google Autocomplete<br/>✅ ISO address mapping<br/>✅ Payment processing<br/>✅ SDK v2.1.3 | ✅ **Active** |
 
-> **⚠️ Note**: V1 plugins (advertorial, three-step-funnel, three-variants, etc.) are **deprecated** and no longer maintained. Please use the V2 plugin system for all new development.
+> **💡 Note**: Both plugins demonstrate different aspects of the TagadaPay platform - demo-plugin-v2 focuses on routing and configuration, while advertorial showcases a complete checkout flow.
 
 ## 🏗️ Architecture
 
@@ -28,7 +29,7 @@ Built on TagadaPay's advanced V2 architecture with:
 
 ### **Development Tools**
 
-- **[@tagadapay/plugin-sdk v2.1.2](https://www.npmjs.com/package/@tagadapay/plugin-sdk)**: React hooks and utilities
+- **[@tagadapay/plugin-sdk v2.1.3](https://www.npmjs.com/package/@tagadapay/plugin-sdk)**: React hooks and utilities
 - **[@tagadapay/plugin-cli v2.0.19](https://www.npmjs.com/package/@tagadapay/plugin-cli)**: Interactive deployment and management
 
 ## 🚀 Quick Start
@@ -42,6 +43,11 @@ cd plugins
 
 # Explore the V2 demo plugin
 cd demo-plugin-v2
+pnpm install
+pnpm dev
+
+# Or try the complete checkout experience
+cd ../advertorial
 pnpm install
 pnpm dev
 ```
@@ -135,6 +141,23 @@ function CheckoutButton() {
 }
 ```
 
+### **Complete Checkout Experience**
+
+The **[advertorial plugin](./advertorial/)** demonstrates a full checkout implementation with:
+
+- 🎯 **Smart Card Formatting**: Auto-format card numbers (4242 4242 4242 4242)
+- 🔄 **Auto-Navigation**: Seamless field transitions (card → expiry → CVC)
+- 🌍 **Global Address Support**: Google Autocomplete with ISO mapping
+- 💳 **Payment Processing**: BasisTheory integration with 3DS support
+- 📱 **Mobile Optimized**: Responsive design for all devices
+
+```bash
+# Try the complete checkout experience
+cd advertorial
+pnpm install
+pnpm dev
+```
+
 ## 🧪 Testing & Development
 
 ### **Live Demo**
@@ -225,7 +248,7 @@ If you have existing V1 plugins, please migrate to V2 for:
 
 ---
 
-**Built with TagadaPay Plugin SDK v2.1.2 & CLI v2.0.19**
+**Built with TagadaPay Plugin SDK v2.1.3 & CLI v2.0.19**
 
 **Authors**: 
 - [Loïc Delobel](https://www.linkedin.com/in/loicdelobel/)
