@@ -18,11 +18,12 @@ pnpm install
 # Start development server
 pnpm dev
 
-# Build for deployment
-pnpm build
+# Build and deploy to TagadaPay (uses local CLI)
+pnpm run deploy
 
-# Deploy to TagadaPay
-tgdcli deploy --base-path "/" --path "^(|/|/config.*)$" --alias "demo-v2"
+# Or deploy with specific themes
+pnpm run deploy:green    # Green theme variant
+pnpm run deploy:blue     # Blue theme variant
 ```
 
 ## 📁 Project Structure
@@ -69,19 +70,55 @@ function MyComponent() {
 
 ## 🚀 Deployment
 
-Deploy with different configurations:
+### Using NPM Scripts (Recommended)
+
+The project includes convenient deployment scripts:
 
 ```bash
-# Green theme
-tgdcli deploy --config config/green-theme.tgd.json --alias "demo-green"
+# Default deployment
+pnpm run deploy
 
-# Blue theme  
-tgdcli deploy --config config/blue-theme.tgd.json --alias "demo-blue"
-
-# Multiple paths
-tgdcli deploy --path "^(|/|/config.*)$" --alias "demo-multi"
+# Theme variants for A/B testing
+pnpm run deploy:green    # Deploys with green theme config
+pnpm run deploy:blue     # Deploys with blue theme config
 ```
+
+### Manual CLI Usage
+
+You can also use the CLI directly:
+
+```bash
+# Interactive deployment (best experience)
+npx tgdcli int
+
+# Interactive deploy with configuration
+npx tgdcli ideploy
+
+# Manual deployment with specific config
+npx tgdcli deploy --config config/green-theme.tgd.json --alias "demo-green"
+```
+
+### CLI Features
+
+- 🎛️ **Interactive Mode**: `npx tgdcli int` - Full deployment manager
+- 🚀 **Interactive Deploy**: `npx tgdcli ideploy` - Guided deployment
+- 🎯 **Interactive Mount**: `npx tgdcli imount` - Easy alias/domain mounting
+- 📋 **Interactive List**: `npx tgdcli ilist` - Visual deployment tree
+
+## 📦 Dependencies
+
+This demo includes:
+- **TagadaPay Plugin SDK v2.1.2**: React hooks and utilities for plugin development
+- **TagadaPay Plugin CLI v2.0.19**: Local CLI for deployment and management (no global install needed)
+
+## 🎯 Key Features
+
+- ✅ **No Global CLI Required**: CLI is included as dev dependency
+- ✅ **NPM Scripts**: Easy deployment with `pnpm run deploy`
+- ✅ **Interactive Mode**: Best-in-class deployment experience
+- ✅ **A/B Testing**: Multiple theme configurations
+- ✅ **Modern Stack**: React 19, TypeScript, Vite, Tailwind CSS
 
 ---
 
-**Built with TagadaPay Plugin SDK v2.0+**
+**Built with TagadaPay Plugin SDK v2.1.2 & CLI v2.0.19**
