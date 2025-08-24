@@ -7,8 +7,14 @@ Professional examples showcasing the TagadaPay V2 Plugin System with advanced ro
 Experience the plugins in action:
 
 ### **Express Checkout Plugin** - Dynamic Branding & Modern UI
+
+**Full Checkout Experience:**
 - **Red Theme**: [https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/](https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/)
 - **Blue Theme**: [https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/)
+
+**Minimalist Express Checkout:**
+- **Red Theme**: [https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2](https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2)
+- **Blue Theme**: [https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2)
 
 ### **V2 Demo Plugin** - Configuration & Theming
 - **Green Theme**: [https://green--store_b9dd071b3e3a.cdn.tagadapay.com/](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/)
@@ -27,7 +33,7 @@ This repository contains production-ready plugin examples demonstrating how to b
 
 | Plugin | Description | Features | Status |
 |--------|-------------|----------|--------|
-| **[express-checkout](./express-checkout/)** | Modern express checkout flow | ✅ Dynamic branding system<br/>✅ Multi-theme support<br/>✅ ISO address validation<br/>✅ Real-time config injection<br/>✅ SDK v2.2.0 | ✅ **Active** |
+| **[express-checkout](./express-checkout/)** | Modern express checkout flow | ✅ Dynamic branding system<br/>✅ Multi-theme support<br/>✅ Two checkout variants (`/` & `/checkout2`)<br/>✅ ISO address validation<br/>✅ Real-time config injection<br/>✅ SDK v2.2.0 | ✅ **Active** |
 | **[demo-plugin-v2](./demo-plugin-v2/)** | Complete V2 plugin showcase | ✅ Advanced routing<br/>✅ Live config injection<br/>✅ A/B testing<br/>✅ Modern React 19<br/>✅ TypeScript + Vite | ✅ **Active** |
 | **[advertorial](./advertorial/)** | Complete checkout experience | ✅ Smart card formatting<br/>✅ Google Autocomplete<br/>✅ ISO address mapping<br/>✅ Payment processing<br/>✅ SDK v2.1.3 | ✅ **Active** |
 
@@ -92,7 +98,8 @@ npx tgdcli int --store-id your-store-id
 ```
 
 **🌐 See A/B Testing in Action**: 
-- **Express Checkout**: Compare [Red Theme](https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Blue Theme](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/) to see dynamic branding in action
+- **Express Checkout Themes**: Compare [Red](https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Blue](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/) dynamic branding
+- **Checkout Variants**: Compare [Full Checkout](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Minimalist `/checkout2`](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2)
 - **Demo Plugin**: Compare [Green Theme](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Blue Theme](https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/) to see configuration changes
 
 ## 🎨 Plugin Development
