@@ -64,13 +64,15 @@ pnpm build
 
 ## Features
 
-- ✅ TagadaPay Plugin SDK v2 integration
-- ✅ Google Autocomplete v2 for address input
-- ✅ Country-first address selection
-- ✅ State/province mapping with ISO standards
-- ✅ Responsive checkout form
-- ✅ Payment processing with BasisTheory
-- ✅ Order summary and confirmation
+- ✅ **TagadaPay Plugin SDK v2.1.3** integration
+- ✅ **Smart Card Input** - Auto-formatting (4242 4242 4242 4242) and field navigation
+- ✅ **Google Autocomplete v2** for address input with Places API
+- ✅ **Country-first Address Selection** - Intelligent address flow
+- ✅ **ISO Standards Mapping** - State/province mapping with ISO 3166-2
+- ✅ **Responsive Checkout Form** - Mobile-optimized design
+- ✅ **Payment Processing** with BasisTheory and 3DS support
+- ✅ **Order Summary & Confirmation** - Complete checkout flow
+- ✅ **Real-time Validation** - Form validation with error handling
 
 ## Plugin Structure
 
@@ -99,6 +101,49 @@ The plugin uses a layered configuration system:
 
 This allows for flexible deployment while maintaining sensible defaults.
 
+## Card Input Features
+
+The checkout form includes advanced card input functionality:
+
+### Smart Formatting
+- **Card Number**: Automatically formats as `4242 4242 4242 4242`
+- **Expiry Date**: Auto-inserts slash (`12/28`) as user types
+- **CVC**: Digit-only input with appropriate length limits
+
+### Auto-Navigation
+- **Card → Expiry**: Auto-focus when 16 digits entered
+- **Expiry → CVC**: Auto-focus when MM/YY format complete
+- **Seamless UX**: No manual tab navigation needed
+
+### Test Credentials
+```plaintext
+💳 Card Number: 4242 4242 4242 4242
+📅 Expiry: 12/28 (any future date)
+🔒 CVC: 123 (any 3-4 digits)
+```
+
+## Deployment
+
+### Quick Deploy
+```bash
+# Build and deploy
+pnpm run deploy
+
+# Deploy to specific environments
+pnpm run deploy:dev      # Development environment
+pnpm run deploy:staging  # Staging environment  
+pnpm run deploy:prod     # Production environment
+```
+
+### Interactive CLI
+```bash
+# Interactive deployment manager
+npx tgdcli int
+
+# Interactive deploy with configuration
+npx tgdcli ideploy
+```
+
 ## Plugin Manifest
 
 The `plugin.manifest.json` file contains metadata about the plugin:
@@ -117,7 +162,7 @@ The `plugin.manifest.json` file contains metadata about the plugin:
     "orderConfirmation": true
   },
   "requirements": {
-    "sdk": "^2.1.0",
+    "sdk": "^2.1.3",
     "environment": {
       "VITE_GOOGLE_MAPS_API_KEY": "required"
     }
