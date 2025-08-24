@@ -1,54 +1,233 @@
-# TagadaPay Plugin Funnel Examples
+# TagadaPay Plugin Examples
 
-This repository provides examples of how to create custom funnel pages with integrated checkout using the [TagadaPay](https://tagadapay.com) SDK.
+Professional examples showcasing the TagadaPay V2 Plugin System with advanced routing, configuration management, and modern React development patterns.
 
-## Overview
+## 🎯 What's Inside
 
-Each subfolder in this repository contains a standalone example of a funnel page, demonstrating different approaches to building checkout experiences with TagadaPay. These examples are intended to help developers quickly get started with building and deploying their own custom payment funnels.
+This repository contains production-ready plugin examples demonstrating how to build custom checkout experiences, landing pages, and interactive components with the TagadaPay V2 platform.
 
-- **advertorial/**: Example of an advertorial-style funnel with checkout
-- **three-step-funnel/**: Example of a three-step funnel with checkout
-- **three-variants/**: Example showing three different variants with checkout
-- **three-variants-2/**: Updated "Three Variants" checkout with refined UI and flows
+### 🚀 **V2 Plugin Examples**
 
-## Getting Started
+| Plugin | Description | Features | Status |
+|--------|-------------|----------|--------|
+| **[demo-plugin-v2](./demo-plugin-v2/)** | Complete V2 plugin showcase | ✅ Advanced routing<br/>✅ Live config injection<br/>✅ A/B testing<br/>✅ Modern React 19<br/>✅ TypeScript + Vite | ✅ **Active** |
 
-To build your own funnel or checkout page, you can use the [@tagadapay/plugin-sdk](https://www.npmjs.com/package/@tagadapay/plugin-sdk) package. This SDK provides all the tools you need to integrate TagadaPay into your custom frontend.
+> **⚠️ Note**: V1 plugins (advertorial, three-step-funnel, three-variants, etc.) are **deprecated** and no longer maintained. Please use the V2 plugin system for all new development.
 
-To deploy your plugin, use the [@tagadapay/plugin-cli](https://www.npmjs.com/package/@tagadapay/plugin-cli), which makes it easy to package and publish your funnel plugins.
+## 🏗️ Architecture
 
-## Useful Links
+### **V2 Plugin System**
 
-- [@tagadapay/plugin-sdk on npm](https://www.npmjs.com/package/@tagadapay/plugin-sdk)
-- [@tagadapay/plugin-cli on npm](https://www.npmjs.com/package/@tagadapay/plugin-cli)
+Built on TagadaPay's advanced V2 architecture with:
 
-## Live Whitelabel Examples
+- 🎯 **Advanced Routing**: Pattern matching, multi-deployment support
+- ⚙️ **Live Configuration**: Real-time config injection via React hooks
+- 🔄 **A/B Testing**: Multiple deployments with different configurations
+- 🌐 **Custom Domains**: Production-ready domain mounting
+- 📱 **Modern Stack**: React 19, TypeScript, Vite, Tailwind CSS
 
-You can try out the live whitelabel version of the available funnel examples below:
+### **Development Tools**
 
-- **Three Variants 2:** [https://three-variants-02-yfy986.cdn.tagadapay.com/](https://three-variants-02-yfy986.cdn.tagadapay.com/)
-- **Advertorial:** [https://advertorial-01-uqjh4c.cdn.tagadapay.com/](https://advertorial-01-uqjh4c.cdn.tagadapay.com/)
-- **Three Variants:** [https://three-step-variants-01-3ws21b.cdn.tagadapay.com/checkout](https://three-step-variants-01-3ws21b.cdn.tagadapay.com/checkout)
-- **Three Step Funnel:** [https://three-step-funnel-01-bbab9i.cdn.tagadapay.com/](https://three-step-funnel-01-bbab9i.cdn.tagadapay.com/)
+- **[@tagadapay/plugin-sdk v2.1.2](https://www.npmjs.com/package/@tagadapay/plugin-sdk)**: React hooks and utilities
+- **[@tagadapay/plugin-cli v2.0.19](https://www.npmjs.com/package/@tagadapay/plugin-cli)**: Interactive deployment and management
 
-_More examples will be added soon as they become available._
+## 🚀 Quick Start
 
-### Test Payment Instructions
+### **1. Clone and Explore**
 
-To proceed with a payment in the whitelabel examples, use the following test credit card details:
+```bash
+# Clone the repository
+git clone <repository-url>
+cd plugins
 
-```plaintext
-┌───────────────────────────────┐
-│  Test Credit card             │
-│                               │
-│  Number: 4242 4242 4242 4242  │
-│  Exp:   12/29 (future date)   │
-│  CVC:   333 (any 3 digits)    │
-└───────────────────────────────┘
+# Explore the V2 demo plugin
+cd demo-plugin-v2
+pnpm install
+pnpm dev
 ```
 
-Simply enter these details at checkout to simulate a successful payment.
+### **2. Deploy Your First Plugin**
 
-## License
+```bash
+# Build and deploy (uses local CLI - no global install needed)
+pnpm run deploy
 
-MIT
+# Or use interactive mode for best experience
+npx tgdcli int
+```
+
+### **3. Advanced Deployment**
+
+```bash
+# A/B testing with different themes
+pnpm run deploy:green    # Green theme variant
+pnpm run deploy:blue     # Blue theme variant
+
+# Interactive deployment manager
+npx tgdcli int --store-id your-store-id
+```
+
+## 🎨 Plugin Development
+
+### **Plugin Structure**
+
+Every TagadaPay V2 plugin follows this modern structure:
+
+```
+my-plugin/
+├── plugin.manifest.json    # Plugin metadata & routing configuration
+├── .local.json            # Local development context (auto-injected in production)
+├── config/                # Optional deployment configurations
+│   ├── theme-green.json   # Configuration variant A
+│   └── theme-blue.json    # Configuration variant B
+├── src/
+│   ├── App.tsx           # Main plugin component
+│   └── components/       # Reusable components
+├── dist/                 # Built plugin files
+└── package.json          # Dependencies (includes CLI & SDK)
+```
+
+### **Configuration Management**
+
+Access live configuration in your React components:
+
+```tsx
+import { usePluginConfig } from '@tagadapay/plugin-sdk/react';
+
+function MyComponent() {
+  const { storeId, accountId, basePath, config, loading } = usePluginConfig();
+  
+  // Access any config properties
+  const primaryColor = config?.branding?.primaryColor || '#059669';
+  const companyName = config?.branding?.companyName || 'Demo Store';
+  
+  return (
+    <div style={{ '--primary': primaryColor }}>
+      <h1>{companyName}</h1>
+    </div>
+  );
+}
+```
+
+### **Checkout Integration**
+
+Implement checkout flows with the SDK:
+
+```tsx
+import { useCheckout } from '@tagadapay/plugin-sdk/react';
+
+function CheckoutButton() {
+  const { initCheckout, loading } = useCheckout();
+  
+  const handleCheckout = () => {
+    initCheckout({
+      amount: 2999, // $29.99
+      currency: 'USD',
+      productName: 'Premium Plan'
+    });
+  };
+  
+  return (
+    <button onClick={handleCheckout} disabled={loading}>
+      {loading ? 'Processing...' : 'Buy Now'}
+    </button>
+  );
+}
+```
+
+## 🧪 Testing & Development
+
+### **Live Demo**
+
+Try the V2 demo plugin: [https://demo-v2--store_example.cdn.tagadapay.com](https://demo-v2--store_example.cdn.tagadapay.com)
+
+### **Test Payment Credentials**
+
+Use these test credentials for checkout testing:
+
+```plaintext
+┌─────────────────────────────────────┐
+│  🧪 Test Credit Card               │
+│                                     │
+│  💳 Number: 4242 4242 4242 4242    │
+│  📅 Expiry: 12/29 (any future date) │
+│  🔒 CVC: 333 (any 3 digits)        │
+│  📧 Email: test@example.com         │
+└─────────────────────────────────────┘
+```
+
+## 🚀 Deployment Options
+
+### **Interactive Mode (Recommended)**
+
+```bash
+# Full deployment manager with visual interface
+npx tgdcli int
+
+# Interactive deploy with configuration options
+npx tgdcli ideploy
+
+# Interactive mount to alias or custom domain
+npx tgdcli imount
+```
+
+### **Command Line Mode**
+
+```bash
+# Basic deployment
+npx tgdcli deploy --store-id store123 --plugin-id my-plugin --name "My Plugin"
+
+# Deploy with custom configuration
+npx tgdcli deploy --config config/production.json --alias my-plugin-prod
+
+# Mount to custom domain (production)
+npx tgdcli mount-domain dep_abc123 mystore.com
+```
+
+### **NPM Scripts Integration**
+
+Add to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "deploy": "npm run build && npx tgdcli deploy --verbose",
+    "deploy:prod": "npm run build && npx tgdcli deploy --config config/production.json",
+    "deploy:staging": "npm run build && npx tgdcli deploy --config config/staging.json --dev"
+  },
+  "devDependencies": {
+    "@tagadapay/plugin-cli": "^2.0.19"
+  }
+}
+```
+
+## 📚 Resources
+
+### **Documentation**
+- 📖 **[Plugin SDK Documentation](https://www.npmjs.com/package/@tagadapay/plugin-sdk)**: Complete API reference
+- 🛠️ **[Plugin CLI Documentation](https://www.npmjs.com/package/@tagadapay/plugin-cli)**: Deployment and management guide
+- 🎯 **[TagadaPay Platform](https://tagadapay.com)**: Main platform documentation
+
+### **Community**
+- 💬 **Discord**: [discord.gg/tagadapay](https://discord.gg/tagadapay)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/tagadapay/plugins/issues)
+- 📧 **Support**: support@tagadapay.com
+
+## 🔄 Migration from V1
+
+If you have existing V1 plugins, please migrate to V2 for:
+- ✅ **Better Performance**: Advanced routing and caching
+- ✅ **Modern Development**: React 19, TypeScript, Vite
+- ✅ **Enhanced Features**: Live config injection, A/B testing
+- ✅ **Improved DX**: Interactive CLI, better debugging
+
+> **Migration Guide**: Contact support@tagadapay.com for assistance migrating V1 plugins to V2.
+
+---
+
+**Built with TagadaPay Plugin SDK v2.1.2 & CLI v2.0.19**
+
+**Authors**: 
+- [Loïc Delobel](https://www.linkedin.com/in/loicdelobel/)
+- [Etienne Guillet](https://www.linkedin.com/in/etienne-guillet/)
+- [Stanislas Cuenat](https://www.linkedin.com/in/stanislas-cuenat-8939b3110/)
