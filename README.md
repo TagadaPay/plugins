@@ -2,6 +2,19 @@
 
 Professional examples showcasing the TagadaPay V2 Plugin System with advanced routing, configuration management, and modern React development patterns.
 
+## 🌐 Live Demos
+
+Experience the plugins in action:
+
+### **V2 Demo Plugin** - Configuration & Theming
+- **Green Theme**: [https://green--store_b9dd071b3e3a.cdn.tagadapay.com/](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/)
+- **Blue Theme**: [https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/](https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/)
+
+### **Advertorial Plugin** - Complete Checkout Flow
+- **Live Demo**: [https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/](https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/)
+
+> 🎯 **Try the checkout flow** with test card: `4242 4242 4242 4242`, expiry: `12/28`, CVC: `123`
+
 ## 🎯 What's Inside
 
 This repository contains production-ready plugin examples demonstrating how to build custom checkout experiences, landing pages, and interactive components with the TagadaPay V2 platform.
@@ -163,14 +176,6 @@ pnpm dev
 ```
 
 ## 🧪 Testing & Development
-
-### **Live Demos**
-
-- **V2 Demo Plugin**: 
-  - Default: [https://demo-v2--store_example.cdn.tagadapay.com](https://demo-v2--store_example.cdn.tagadapay.com)
-  - Green Theme: [https://green--store_b9dd071b3e3a.cdn.tagadapay.com/](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/)
-  - Blue Theme: [https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/](https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/)
-- **Advertorial Plugin**: [https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/](https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/)
 
 ### **Test Payment Credentials**
 
