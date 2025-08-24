@@ -1,0 +1,15 @@
+{
+  "name": "TagadaPay Demo Plugin V2",
+  "pluginId": "tagadapay-demo-v2",
+  "description": "Demonstration plugin showcasing TagadaPay V2 routing and configuration system",
+  "version": "2.0.0",
+  "author": "TagadaPay Team",
+  "mode": "direct-mode",
+  "category": "demo",
+  "tags": ["demo", "v2", "routing", "configuration"],
+  "router": {
+    "basePath": "/",
+    "matcher": ".*",
+    "excluder": "/checkout"
+  }
+}

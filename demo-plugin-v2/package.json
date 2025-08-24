@@ -1,0 +1,36 @@
+{
+  "name": "tagadapay-demo-plugin-v2",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && npx tgdcli deploy --verbose",
+    "deploy:green": "npm run build && npx tgdcli deploy --config config/green-theme.tgd.json --alias demo-green --verbose",
+    "deploy:blue": "npm run build && npx tgdcli deploy --config config/blue-theme.tgd.json --alias demo-blue --verbose"
+  },
+  "dependencies": {
+    "@tagadapay/plugin-sdk": "^2.1.2",
+    "clsx": "^2.1.1",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-router-dom": "^6.8.0",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@tagadapay/plugin-cli": "^2.0.19",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.5",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5",
+    "vite": "^5.2.0"
+  },
+  "homepage": ".",
+  "packageManager": "pnpm@10.0.0+sha512.b8fef5494bd3fe4cbd4edabd0745df2ee5be3e4b0b8b08fa643aa3e4c6702ccc0f00d68fa8a8c9858a735a0032485a44990ed2810526c875e416f001b17df12b"
+}

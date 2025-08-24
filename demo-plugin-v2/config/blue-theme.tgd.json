@@ -1,0 +1,19 @@
+{
+  "configName": "blue-theme",
+  "branding": {
+    "logoUrl": "https://tagadapay.com/logo-blue.png",
+    "companyName": "TagadaPay Demo - Blue",
+    "supportEmail": "demo@tagadapay.com",
+    "websiteUrl": "https://tagadapay.com",
+    "primaryColor": "#3b82f6",
+    "secondaryColor": "#1d4ed8"
+  },
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": true
+  },
+  "routes": {
+    "basePath": "/"
+  }
+}

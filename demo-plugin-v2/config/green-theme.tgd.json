@@ -1,0 +1,19 @@
+{
+  "configName": "green-theme",
+  "branding": {
+    "logoUrl": "https://tagadapay.com/logo-green.png",
+    "companyName": "TagadaPay Demo - Green",
+    "supportEmail": "demo@tagadapay.com",
+    "websiteUrl": "https://tagadapay.com",
+    "primaryColor": "#059669",
+    "secondaryColor": "#047857"
+  },
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": true
+  },
+  "routes": {
+    "basePath": "/"
+  }
+}
