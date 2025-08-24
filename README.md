@@ -1,5 +1,9 @@
 # TagadaPay Plugin Examples
 
+<div align="center">
+  <img src="https://tagadapay.com/logo-landing.png" alt="TagadaPay Logo" width="200" />
+</div>
+
 Professional examples showcasing the TagadaPay V2 Plugin System with advanced routing, configuration management, and modern React development patterns.
 
 ## 🌐 Live Demos
