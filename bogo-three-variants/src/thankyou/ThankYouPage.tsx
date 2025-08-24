@@ -1,14 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Button as LinkButton } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { pluginConfig } from "@/data/config";
 import Logo from "@/src/Logo";
 import {
   formatMoney,
-  OrderItem,
-  useCurrency,
   useOrder,
-} from "@tagadapay/plugin-sdk";
+  usePluginConfig,
+} from "@tagadapay/plugin-sdk/react";
 import { Check, Package, Shield } from "lucide-react";
 
 type ThankYouPageProps = {
@@ -16,13 +14,16 @@ type ThankYouPageProps = {
 };
 
 export default function ThankYouPage({ orderId }: ThankYouPageProps) {
-  const { order, isLoading, error, fetchOrder } = useOrder({
+  const { config } = usePluginConfig();
+  
+  const { order, isLoading, error } = useOrder({
     orderId: orderId || undefined,
     autoFetch: true,
     enabled: Boolean(orderId),
   });
 
-  const currentCurrency = useCurrency();
+  // Get currency from order or default to USD
+  const orderCurrency = order?.currency || 'USD';
 
   if (isLoading) {
     return (
@@ -77,7 +78,7 @@ export default function ThankYouPage({ orderId }: ThankYouPageProps) {
   }
 
   const selectedCurrency =
-    currentCurrency?.code ||
+    orderCurrency ||
     order.checkoutSession?.selectedPresentmentCurrency ||
     order.currency ||
     "USD";
@@ -90,13 +91,13 @@ export default function ThankYouPage({ orderId }: ThankYouPageProps) {
 
   // Get items for the current currency only (filters out duplicate currency items)
   const currentCurrencyItems = order.items.filter(
-    (item: OrderItem) => item.currency === currency
+    (item: any) => item.currency === currency
   );
 
   // Get items from related orders for the current currency
   const relatedOrderItems =
     order.relatedOrders?.flatMap((relatedOrder) =>
-      relatedOrder.items.filter((item: OrderItem) => item.currency === currency)
+      relatedOrder.items.filter((item: any) => item.currency === currency)
     ) || [];
 
   const allItems = [...currentCurrencyItems, ...relatedOrderItems];
@@ -125,7 +126,7 @@ export default function ThankYouPage({ orderId }: ThankYouPageProps) {
             <div className="text-right">
               <p className="text-sm text-slate-600">Contact Us:</p>
               <p className="font-semibold text-slate-900">
-                {pluginConfig.branding.supportEmail}
+                {config?.branding?.companyName || 'support@example.com'}
               </p>
             </div>
           </div>
@@ -244,7 +245,7 @@ export default function ThankYouPage({ orderId }: ThankYouPageProps) {
               Returns
             </a>
           </div>
-          <p>© 2024 {pluginConfig.branding.storeName}. All rights reserved.</p>
+          <p>© 2024 {config?.branding?.companyName || 'BOGO Three Variants Demo'}. All rights reserved.</p>
         </footer>
       </div>
     </div>

@@ -23,6 +23,9 @@ Experience the plugins in action:
 ### **Advertorial Plugin** - Complete Checkout Flow
 - **Live Demo**: [https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/](https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/)
 
+### **BOGO Three Variants Plugin** - Multi-Bundle Checkout
+- **Live Demo**: [https://bogo-three-variants-01--store_b9dd071b3e3a.cdn.tagadapay.com/](https://bogo-three-variants-01--store_b9dd071b3e3a.cdn.tagadapay.com/)
+
 > 🎯 **Try the checkout flow** with test card: `4242 4242 4242 4242`, expiry: `12/28`, CVC: `123`
 
 ## 🎯 What's Inside
@@ -34,6 +37,7 @@ This repository contains production-ready plugin examples demonstrating how to b
 | Plugin | Description | Features | Status |
 |--------|-------------|----------|--------|
 | **[express-checkout](./express-checkout/)** | Modern express checkout flow | ✅ Dynamic branding system<br/>✅ Multi-theme support<br/>✅ Two checkout variants (`/` & `/checkout2`)<br/>✅ ISO address validation<br/>✅ Real-time config injection<br/>✅ SDK v2.2.0 | ✅ **Active** |
+| **[bogo-three-variants](./bogo-three-variants/)** | BOGO multi-bundle checkout | ✅ Three BOGO variants (1+1, 2+1, 3+2)<br/>✅ Instant bundle switching<br/>✅ Google Autocomplete<br/>✅ Professional top bar<br/>✅ Mobile-first responsive<br/>✅ SDK v2.2.0 | ✅ **Active** |
 | **[demo-plugin-v2](./demo-plugin-v2/)** | Complete V2 plugin showcase | ✅ Advanced routing<br/>✅ Live config injection<br/>✅ A/B testing<br/>✅ Modern React 19<br/>✅ TypeScript + Vite | ✅ **Active** |
 | **[advertorial](./advertorial/)** | Complete checkout experience | ✅ Smart card formatting<br/>✅ Google Autocomplete<br/>✅ ISO address mapping<br/>✅ Payment processing<br/>✅ SDK v2.1.3 | ✅ **Active** |
 
@@ -67,6 +71,11 @@ cd plugins
 
 # Explore the V2 demo plugin
 cd demo-plugin-v2
+pnpm install
+pnpm dev
+
+# Or try the BOGO checkout experience
+cd ../bogo-three-variants
 pnpm install
 pnpm dev
 

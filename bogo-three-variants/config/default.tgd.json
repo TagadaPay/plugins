@@ -1,0 +1,30 @@
+{
+  "configName": "default",
+  "branding": {
+    "companyName": "BOGO Three Variants Demo",
+    "primaryColor": "#3b82f6"
+  },
+  "products": {
+    "productId": "product_b3934bb2d54c",
+    "variants": {
+      "bogo": {
+        "variantId": "variant_216a52169553",
+        "priceId": "price_57fe7f8d7d2d",
+        "name": "Buy 1 Get 1 Free",
+        "quantity": 2
+      },
+      "buy2get1": {
+        "variantId": "variant_80b4307d34a3", 
+        "priceId": "price_e1b4a4affd38",
+        "name": "Buy 2 Get 1",
+        "quantity": 3
+      },
+      "buy3get2": {
+        "variantId": "variant_fb76f100274c",
+        "priceId": "price_653fb7e1b479", 
+        "name": "Buy 3 Get 2",
+        "quantity": 5
+      }
+    }
+  }
+}

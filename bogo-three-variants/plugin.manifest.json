@@ -1,0 +1,44 @@
+{
+  "name": "BOGO Three Variants",
+  "pluginId": "bogo-three-variants",
+  "description": "A BOGO three-variants template with embedded checkout form using Tagadapay V2 SDK",
+  "version": "1.0.0",
+  "author": "Tagadapay",
+  "mode": "direct-mode",
+  "category": "checkout",
+  "tags": ["bogo", "variants", "checkout", "v2", "google-autocomplete", "payment"],
+  "preview": {
+    "width": 375,
+    "height": 812,
+    "device": "mobile"
+  },
+  "features": {
+    "googleAutocomplete": true,
+    "paymentProcessing": true,
+    "orderConfirmation": true,
+    "responsiveDesign": true,
+    "configurationSystem": true,
+    "variantSelection": true
+  },
+  "requirements": {
+    "sdk": "^2.2.0",
+    "environment": {
+      "VITE_GOOGLE_MAPS_API_KEY": "required"
+    }
+  },
+  "settings": {
+    "allowCustomDomain": true,
+    "requiresAuth": false,
+    "mobileOptimized": true
+  },
+  "routing": {
+    "type": "spa",
+    "basePath": "/",
+    "routes": [
+      {
+        "path": "/",
+        "component": "App"
+      }
+    ]
+  }
+}
