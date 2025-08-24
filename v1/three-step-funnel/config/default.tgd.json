@@ -1,0 +1,97 @@
+{
+  "configName": "default",
+  "branding": {
+    "logoUrl": "https://tagadapay.com/logo.png",
+    "companyName": "NutraVital Pro",
+    "supportEmail": "support@nutravital.com",
+    "websiteUrl": "https://nutravital.com",
+    "primaryColor": "#16a34a",
+    "secondaryColor": "#15803d",
+    "accentColor": "#22c55e"
+  },
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": true,
+    "progressIndicator": true,
+    "testimonials": true,
+    "guaranteeBadge": true
+  },
+  "products": {
+    "productId": "product_76f4f20f8a7b",
+    "variantId": "variant_8fb9124b0c1d",
+    "name": "NutraVital Pro - Advanced Joint Support",
+    "shortName": "NutraVital Pro",
+    "description": "Clinically proven formula with Glucosamine, Chondroitin, and MSM for optimal joint health and mobility",
+    "benefits": [
+      "Reduces joint pain and stiffness in 7 days",
+      "Improves flexibility and mobility",
+      "Supports cartilage regeneration",
+      "100% natural ingredients",
+      "Clinically tested formula",
+      "No side effects"
+    ],
+    "ingredients": [
+      "Glucosamine Sulfate 1500mg",
+      "Chondroitin Sulfate 1200mg", 
+      "MSM (Methylsulfonylmethane) 1000mg",
+      "Turmeric Extract 500mg",
+      "Boswellia Serrata 300mg",
+      "Hyaluronic Acid 100mg"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=400&fit=crop",
+    "heroImageUrl": "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=600&fit=crop"
+  },
+  "funnel": {
+    "step1": {
+      "title": "Discover the #1 Joint Pain Solution",
+      "subtitle": "Thousands are already pain-free. Are you next?",
+      "headline": "Finally, A Natural Solution That Actually Works",
+      "subheadline": "Join 50,000+ people who've eliminated joint pain naturally",
+      "ctaText": "Yes, I Want Pain-Free Joints!"
+    },
+    "step2": {
+      "title": "Here's What Makes NutraVital Pro Different",
+      "subtitle": "See why doctors recommend our formula",
+      "testimonials": [
+        {
+          "name": "Sarah M.",
+          "age": 52,
+          "text": "After just 2 weeks, I could climb stairs without pain. This stuff really works!",
+          "rating": 5,
+          "verified": true
+        },
+        {
+          "name": "Dr. Michael Chen",
+          "title": "Orthopedic Surgeon",
+          "text": "I recommend NutraVital Pro to my patients. The clinical results speak for themselves.",
+          "rating": 5,
+          "verified": true
+        },
+        {
+          "name": "Robert K.",
+          "age": 67,
+          "text": "I was skeptical, but after 30 days I'm moving like I'm 20 years younger!",
+          "rating": 5,
+          "verified": true
+        }
+      ],
+      "ctaText": "Get My Bottle Now"
+    },
+    "step3": {
+      "title": "Secure Your Order",
+      "subtitle": "Join thousands who've transformed their joint health",
+      "guarantee": "60-Day Money-Back Guarantee",
+      "urgency": "Limited Time: Free Shipping + 20% Off",
+      "trust": [
+        "SSL Secured Checkout",
+        "30-Day Money Back Guarantee", 
+        "Made in FDA Approved Facility",
+        "GMP Certified"
+      ]
+    }
+  },
+  "routes": {
+    "basePath": "/"
+  }
+}
