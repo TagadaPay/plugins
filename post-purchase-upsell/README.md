@@ -173,22 +173,22 @@ This ensures that:
 
 #### Alternative Mounting Configurations
 
-**Only post-purchase offers (keep native thank you):**
+**Only post-purchase offers:**
 ```
-Path matcher: /post/:path*
+Path matcher: /post.*
 ```
 
 **Only thank you pages:**
 ```
-Path matcher: /thankyou/:path*
+Path matcher: /thankyou.*
 ```
 
 **Specific subdirectory:**
 ```
 Base path: /upsells/
-Path matcher: /((post|thankyou)/:path*)
+Path matcher: /post.*
 ```
-This would handle `/upsells/post/:orderId` and `/upsells/thankyou/:orderId`
+This would handle `/upsells/post/orderId` routes
 
 ### Basic Setup
 
