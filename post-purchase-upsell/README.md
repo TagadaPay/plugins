@@ -144,32 +144,7 @@ The path matcher `/post.*` means:
 - ❌ **Too broad**: `".*"` - This would capture ALL routes including CMS assets
 - ✅ **Result**: Only `/post/*` routes are handled by plugin, everything else (checkout, assets, etc.) stays with CMS
 
-**Why this matters:**
-- Prevents plugin from interfering with native checkout (`/checkout`)
-- Ensures CMS assets (`/_next/static/`, fonts, etc.) are served correctly
-- Maintains proper separation between plugin and CMS functionality
 
-#### Smart Matcher-Aware Cookie Routing
-
-The system uses intelligent **matcher-aware** cookie-based routing:
-
-1. **Valid Cookie + Matcher Allows Path** → Serves from plugin (sticky experience)
-2. **Invalid Cookie OR Matcher Rejects Path** → Check other deployments
-3. **No Deployment Matches Path** → **Fallback to CMS** (native assets)
-
-**Key Innovation**: Cookies are **matcher-specific**! A cookie from `/post/order_123` (matcher: `/post.*`) won't incorrectly serve CMS assets like `/_next/static/...` because the matcher validation fails.
-
-This ensures that:
-- Users get consistent experience for **matching paths only** (smart stickiness)
-- CMS assets automatically fallback to CMS when plugin matchers don't allow them
-- No "matcher pollution" where one plugin tries to serve assets it shouldn't handle
-
-**Example Flow**:
-```
-1. User visits /post/order_123 → Sets cookie: deploymentId=4z4z0p (matcher: /post.*)
-2. User requests /_next/static/font.woff2 → Cookie exists BUT matcher /post.* rejects /_next/static/...
-3. System ignores cookie, checks other deployments, finds none match → Fallback to CMS ✅
-```
 
 #### Alternative Mounting Configurations
 
