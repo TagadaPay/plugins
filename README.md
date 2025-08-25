@@ -33,6 +33,9 @@ Experience the plugins in action:
 ### **Three-Step Funnel V2 Plugin** - High-Converting Sales Funnel
 - **Live Demo**: [https://three-step-funnel--store_b9dd071b3e3a.cdn.tagadapay.com/](https://three-step-funnel--store_b9dd071b3e3a.cdn.tagadapay.com/)
 
+### **Post-Purchase Upsell Plugin** - Enhanced Upsell Experience
+- **Live Demo**: [https://tagadademo.xyz/post/order_4b4b2df309ec](https://tagadademo.xyz/post/order_4b4b2df309ec)
+
 > 🎯 **Try the checkout flow** with test card: `4242 4242 4242 4242`, expiry: `12/28`, CVC: `123`
 
 ## 🎯 What's Inside
