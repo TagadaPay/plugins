@@ -51,6 +51,7 @@ This repository contains production-ready plugin examples demonstrating how to b
 | **[bogo-three-variants](./bogo-three-variants/)** | BOGO multi-bundle checkout | ✅ Three BOGO variants (1+1, 2+1, 3+2)<br/>✅ Instant bundle switching<br/>✅ Google Autocomplete<br/>✅ Professional top bar<br/>✅ Mobile-first responsive<br/>✅ SDK v2.2.0 | ✅ **Active** |
 | **[demo-plugin-v2](./demo-plugin-v2/)** | Complete V2 plugin showcase | ✅ Advanced routing<br/>✅ Live config injection<br/>✅ A/B testing<br/>✅ Modern React 19<br/>✅ TypeScript + Vite | ✅ **Active** |
 | **[advertorial](./advertorial/)** | Complete checkout experience | ✅ Smart card formatting<br/>✅ Google Autocomplete<br/>✅ ISO address mapping<br/>✅ Payment processing<br/>✅ SDK v2.1.3 | ✅ **Active** |
+| **[post-purchase-upsell](./post-purchase-upsell/)** | Enhanced post-purchase upsells | ✅ Backend-managed offers<br/>✅ Variant selection with real-time pricing<br/>✅ Fire-and-forget payment flow<br/>✅ Multi-offer navigation<br/>✅ Dynamic branding & themes<br/>✅ SDK v2.2.2 | ✅ **Active** |
 
 > **💡 Note**: These plugins demonstrate different aspects of the TagadaPay platform - express-checkout showcases dynamic branding and modern UI patterns, demo-plugin-v2 focuses on routing and configuration, while advertorial demonstrates a complete checkout flow.
 
@@ -124,6 +125,7 @@ npx tgdcli int --store-id your-store-id
 
 **🌐 See Different Plugin Types in Action**: 
 - **Three-Step Funnel**: [Complete sales funnel](https://three-step-funnel--store_b9dd071b3e3a.cdn.tagadapay.com/) with discovery → social proof → checkout flow
+- **Post-Purchase Upsells**: [Enhanced upsell experience](https://tagadademo.xyz/post/order_4b4b2df309ec) with variant selection and dynamic pricing
 - **Express Checkout Themes**: Compare [Red](https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Blue](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/) dynamic branding
 - **Checkout Variants**: Compare [Full Checkout](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Minimalist `/checkout2`](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2)
 - **Demo Plugin**: Compare [Green Theme](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Blue Theme](https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/) to see configuration changes
