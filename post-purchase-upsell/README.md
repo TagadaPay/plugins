@@ -76,25 +76,24 @@ When installing this plugin in your TagadaPay dashboard, you can configure it to
 =============================================
 ✔ Enter custom domain: yourdomain.com
 ✔ Enter base path: /
-✔ Enter path matcher (optional): /((post|thankyou)/:path*)
+✔ Enter path matcher (optional): /post.*
 ✔ Enter path excluder (optional): 
 ```
 
 **What this configuration does:**
 - **Native checkout** (`/checkout`) continues to work normally ✅
 - **Post-purchase pages** (`/post/:orderId`) are replaced with this plugin 🔄
-- **Thank you pages** (`/thankyou/:orderId`) are replaced with this plugin 🔄
 - **CMS assets** (`/_next/static/...`, fonts, etc.) continue to work normally ✅
 - **All other pages** remain unchanged ✅
 
 #### Path Matcher Explanation
 
-The path matcher `/((post|thankyou)/:path*)` means:
-- `(post|thankyou)` - Match either "post" or "thankyou" 
-- `/:path*` - Followed by any path parameters (like the orderId)
+The path matcher `/post.*` means:
+- `/post` - Match paths starting with "/post"
+- `.*` - Followed by any characters (like the orderId)
 - This captures routes like:
   - `/post/order_123abc` ✅ (handled by plugin)
-  - `/thankyou/order_123abc` ✅ (handled by plugin)
+  - `/post` ✅ (handled by plugin)
   - `/checkout` ❌ (not matched, uses native CMS)
   - `/dashboard` ❌ (not matched, uses native CMS)
   - `/_next/static/...` ❌ (not matched, uses native CMS assets)
