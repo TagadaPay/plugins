@@ -1,0 +1,20 @@
+{
+  "name": "Purple Theme",
+  "description": "Purple theme for post-purchase upsell",
+  "theme": {
+    "primary": "#8b5cf6",
+    "primaryForeground": "#ffffff",
+    "secondary": "#faf5ff",
+    "accent": "#7c3aed",
+    "background": "#ffffff",
+    "foreground": "#0f172a",
+    "muted": "#f3f4f6",
+    "border": "#e5e7eb"
+  },
+  "settings": {
+    "countdownDuration": 120,
+    "showTrustBadges": true,
+    "enableVariantSelection": true,
+    "autoInitializeCheckout": true
+  }
+}

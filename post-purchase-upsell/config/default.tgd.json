@@ -1,0 +1,20 @@
+{
+  "name": "Default Theme",
+  "description": "Default blue theme for post-purchase upsell",
+  "theme": {
+    "primary": "#3b82f6",
+    "primaryForeground": "#ffffff",
+    "secondary": "#f1f5f9",
+    "accent": "#0ea5e9",
+    "background": "#ffffff",
+    "foreground": "#0f172a",
+    "muted": "#f8fafc",
+    "border": "#e2e8f0"
+  },
+  "settings": {
+    "countdownDuration": 120,
+    "showTrustBadges": true,
+    "enableVariantSelection": true,
+    "autoInitializeCheckout": true
+  }
+}

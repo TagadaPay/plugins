@@ -1,0 +1,20 @@
+{
+  "name": "Green Theme",
+  "description": "Green theme for post-purchase upsell",
+  "theme": {
+    "primary": "#10b981",
+    "primaryForeground": "#ffffff",
+    "secondary": "#f0fdf4",
+    "accent": "#059669",
+    "background": "#ffffff",
+    "foreground": "#0f172a",
+    "muted": "#f7fee7",
+    "border": "#d1fae5"
+  },
+  "settings": {
+    "countdownDuration": 120,
+    "showTrustBadges": true,
+    "enableVariantSelection": true,
+    "autoInitializeCheckout": true
+  }
+}
