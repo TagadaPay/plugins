@@ -1,0 +1,9 @@
+{
+  "configName": "default",
+  "variants": {
+    "moisturizer": "variant_4093d57f4f39",
+    "serum": "variant_291245bb5a74"
+  },
+  "defaultCurrency": "USD",
+  "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow"
+}

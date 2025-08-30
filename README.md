@@ -13,27 +13,36 @@ Experience the plugins in action:
 ### **Express Checkout Plugin** - Dynamic Branding & Modern UI
 
 **Full Checkout Experience:**
+
 - **Red Theme**: [https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/](https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/)
 - **Blue Theme**: [https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/)
 
 **Minimalist Express Checkout:**
+
 - **Red Theme**: [https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2](https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2)
 - **Blue Theme**: [https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2)
 
 ### **V2 Demo Plugin** - Configuration & Theming
+
 - **Green Theme**: [https://green--store_b9dd071b3e3a.cdn.tagadapay.com/](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/)
 - **Blue Theme**: [https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/](https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/)
 
 ### **Advertorial Plugin** - Complete Checkout Flow
+
 - **Live Demo**: [https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/](https://advertorial--store_b9dd071b3e3a.cdn.tagadapay.com/)
 
 ### **BOGO Three Variants Plugin** - Multi-Bundle Checkout
+
 - **Live Demo**: [https://bogo-three-variants-01--store_b9dd071b3e3a.cdn.tagadapay.com/](https://bogo-three-variants-01--store_b9dd071b3e3a.cdn.tagadapay.com/)
 
 ### **Three-Step Funnel V2 Plugin** - High-Converting Sales Funnel
+
 - **Live Demo**: [https://three-step-funnel--store_b9dd071b3e3a.cdn.tagadapay.com/](https://three-step-funnel--store_b9dd071b3e3a.cdn.tagadapay.com/)
 
-> 🎯 **Try the checkout flow** with test card: `4242 4242 4242 4242`, expiry: `12/28`, CVC: `123`
+### **Skincare Quiz Funnel Plugin** - Interactive Product Recommendation Quiz
+
+- **Live Demo**: [https://wbpybq.cdn.tagadapay.com/](https://wbpybq.cdn.tagadapay.com/)
+  > 🎯 **Try the checkout flow** with test card: `4242 4242 4242 4242`, expiry: `12/28`, CVC: `123`
 
 ## 🎯 What's Inside
 
@@ -41,13 +50,14 @@ This repository contains production-ready plugin examples demonstrating how to b
 
 ### 🚀 **Plugin Examples**
 
-| Plugin | Description | Features | Status |
-|--------|-------------|----------|--------|
-| **[three-step-funnel](./v1/three-step-funnel/)** | High-converting sales funnel | ✅ Three-step conversion flow<br/>✅ Smart checkout session init<br/>✅ Real order data display<br/>✅ Google Autocomplete + ISO mapping<br/>✅ shadcn/ui + React 19<br/>✅ SDK v2.2.0 | ✅ **Active** |
-| **[express-checkout](./express-checkout/)** | Modern express checkout flow | ✅ Dynamic branding system<br/>✅ Multi-theme support<br/>✅ Two checkout variants (`/` & `/checkout2`)<br/>✅ ISO address validation<br/>✅ Real-time config injection<br/>✅ SDK v2.2.0 | ✅ **Active** |
-| **[bogo-three-variants](./bogo-three-variants/)** | BOGO multi-bundle checkout | ✅ Three BOGO variants (1+1, 2+1, 3+2)<br/>✅ Instant bundle switching<br/>✅ Google Autocomplete<br/>✅ Professional top bar<br/>✅ Mobile-first responsive<br/>✅ SDK v2.2.0 | ✅ **Active** |
-| **[demo-plugin-v2](./demo-plugin-v2/)** | Complete V2 plugin showcase | ✅ Advanced routing<br/>✅ Live config injection<br/>✅ A/B testing<br/>✅ Modern React 19<br/>✅ TypeScript + Vite | ✅ **Active** |
-| **[advertorial](./advertorial/)** | Complete checkout experience | ✅ Smart card formatting<br/>✅ Google Autocomplete<br/>✅ ISO address mapping<br/>✅ Payment processing<br/>✅ SDK v2.1.3 | ✅ **Active** |
+| Plugin                                              | Description                             | Features                                                                                                                                                                                  | Status        |
+| --------------------------------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| **[three-step-funnel](./v1/three-step-funnel/)**    | High-converting sales funnel            | ✅ Three-step conversion flow<br/>✅ Smart checkout session init<br/>✅ Real order data display<br/>✅ Google Autocomplete + ISO mapping<br/>✅ shadcn/ui + React 19<br/>✅ SDK v2.2.0    | ✅ **Active** |
+| **[express-checkout](./express-checkout/)**         | Modern express checkout flow            | ✅ Dynamic branding system<br/>✅ Multi-theme support<br/>✅ Two checkout variants (`/` & `/checkout2`)<br/>✅ ISO address validation<br/>✅ Real-time config injection<br/>✅ SDK v2.2.0 | ✅ **Active** |
+| **[bogo-three-variants](./bogo-three-variants/)**   | BOGO multi-bundle checkout              | ✅ Three BOGO variants (1+1, 2+1, 3+2)<br/>✅ Instant bundle switching<br/>✅ Google Autocomplete<br/>✅ Professional top bar<br/>✅ Mobile-first responsive<br/>✅ SDK v2.2.0            | ✅ **Active** |
+| **[demo-plugin-v2](./demo-plugin-v2/)**             | Complete V2 plugin showcase             | ✅ Advanced routing<br/>✅ Live config injection<br/>✅ A/B testing<br/>✅ Modern React 19<br/>✅ TypeScript + Vite                                                                       | ✅ **Active** |
+| **[advertorial](./advertorial/)**                   | Complete checkout experience            | ✅ Smart card formatting<br/>✅ Google Autocomplete<br/>✅ ISO address mapping<br/>✅ Payment processing<br/>✅ SDK v2.1.3                                                                | ✅ **Active** |
+| **[skincare-quiz-funnel](./skincare-quiz-funnel/)** | Interactive product recommendation quiz | ✅ Multi-step quiz flow<br/>✅ Personalized product recommendations<br/>✅ Skin type assessment<br/>✅ Dynamic pricing display<br/>✅ Mobile-responsive design<br/>✅ SDK v2.2.0          | ✅ **Active** |
 
 > **💡 Note**: These plugins demonstrate different aspects of the TagadaPay platform - express-checkout showcases dynamic branding and modern UI patterns, demo-plugin-v2 focuses on routing and configuration, while advertorial demonstrates a complete checkout flow.
 
@@ -72,7 +82,7 @@ Built on TagadaPay's advanced V2 architecture with:
 
 ### **1. Clone and Explore**
 
-```bash
+````bash
 # Clone the repository
 git clone <repository-url>
 cd plugins
@@ -96,7 +106,11 @@ pnpm dev
 cd ../v1/three-step-funnel
 pnpm install
 pnpm dev
-```
+
+# Or try the skincare quiz funnel
+cd ../skincare-quiz-funnel
+pnpm install
+pnpm dev
 
 ### **2. Deploy Your First Plugin**
 
@@ -106,7 +120,7 @@ pnpm run deploy
 
 # Or use interactive mode for best experience
 npx tgdcli int
-```
+````
 
 ### **3. Advanced Deployment**
 
@@ -119,8 +133,10 @@ pnpm run deploy:blue     # Blue theme variant
 npx tgdcli int --store-id your-store-id
 ```
 
-**🌐 See Different Plugin Types in Action**: 
+**🌐 See Different Plugin Types in Action**:
+
 - **Three-Step Funnel**: [Complete sales funnel](https://three-step-funnel--store_b9dd071b3e3a.cdn.tagadapay.com/) with discovery → social proof → checkout flow
+- **Skincare Quiz Funnel**: [Interactive product quiz](https://wbpybq.cdn.tagadapay.com/) with personalized recommendations
 - **Express Checkout Themes**: Compare [Red](https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Blue](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/) dynamic branding
 - **Checkout Variants**: Compare [Full Checkout](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Minimalist `/checkout2`](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2)
 - **Demo Plugin**: Compare [Green Theme](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Blue Theme](https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/) to see configuration changes
@@ -150,17 +166,17 @@ my-plugin/
 Access live configuration in your React components:
 
 ```tsx
-import { usePluginConfig } from '@tagadapay/plugin-sdk/react';
+import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
 
 function MyComponent() {
   const { storeId, accountId, basePath, config, loading } = usePluginConfig();
-  
+
   // Access any config properties
-  const primaryColor = config?.branding?.primaryColor || '#059669';
-  const companyName = config?.branding?.companyName || 'Demo Store';
-  
+  const primaryColor = config?.branding?.primaryColor || "#059669";
+  const companyName = config?.branding?.companyName || "Demo Store";
+
   return (
-    <div style={{ '--primary': primaryColor }}>
+    <div style={{ "--primary": primaryColor }}>
       <h1>{companyName}</h1>
     </div>
   );
@@ -172,22 +188,22 @@ function MyComponent() {
 Implement checkout flows with the SDK:
 
 ```tsx
-import { useCheckout } from '@tagadapay/plugin-sdk/react';
+import { useCheckout } from "@tagadapay/plugin-sdk/react";
 
 function CheckoutButton() {
   const { initCheckout, loading } = useCheckout();
-  
+
   const handleCheckout = () => {
     initCheckout({
       amount: 2999, // $29.99
-      currency: 'USD',
-      productName: 'Premium Plan'
+      currency: "USD",
+      productName: "Premium Plan",
     });
   };
-  
+
   return (
     <button onClick={handleCheckout} disabled={loading}>
-      {loading ? 'Processing...' : 'Buy Now'}
+      {loading ? "Processing..." : "Buy Now"}
     </button>
   );
 }
@@ -277,11 +293,13 @@ Add to your `package.json`:
 ## 📚 Resources
 
 ### **Documentation**
+
 - 📖 **[Plugin SDK Documentation](https://www.npmjs.com/package/@tagadapay/plugin-sdk)**: Complete API reference
 - 🛠️ **[Plugin CLI Documentation](https://www.npmjs.com/package/@tagadapay/plugin-cli)**: Deployment and management guide
 - 🎯 **[TagadaPay Platform](https://tagadapay.com)**: Main platform documentation
 
 ### **Community**
+
 - 💬 **Discord**: [discord.gg/tagadapay](https://discord.gg/tagadapay)
 - 🐛 **Issues**: [GitHub Issues](https://github.com/tagadapay/plugins/issues)
 - 📧 **Support**: support@tagadapay.com
@@ -289,6 +307,7 @@ Add to your `package.json`:
 ## 🔄 Migration from V1
 
 If you have existing V1 plugins, please migrate to V2 for:
+
 - ✅ **Better Performance**: Advanced routing and caching
 - ✅ **Modern Development**: React 19, TypeScript, Vite
 - ✅ **Enhanced Features**: Live config injection, A/B testing
@@ -300,7 +319,8 @@ If you have existing V1 plugins, please migrate to V2 for:
 
 **Built with TagadaPay Plugin SDK v2.1.3 & CLI v2.0.19**
 
-**Authors**: 
+**Authors**:
+
 - [Loïc Delobel](https://www.linkedin.com/in/loicdelobel/)
 - [Etienne Guillet](https://www.linkedin.com/in/etienne-guillet/)
 - [Stanislas Cuenat](https://www.linkedin.com/in/stanislas-cuenat-8939b3110/)
