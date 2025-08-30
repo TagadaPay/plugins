@@ -1,0 +1,44 @@
+{
+  "name": "Post-Purchase Upsell Pro",
+  "pluginId": "post-purchase-upsell-pro",
+  "description": "Premium post-purchase upsell plugin with variant selection, fire-and-forget payments, and mobile-optimized design",
+  "version": "1.0.0",
+  "author": "TagadaPay Team",
+  "mode": "direct-mode",
+  "category": "post-purchase",
+  "tags": ["post-purchase", "upsell", "variant-selection", "mobile-optimized", "premium", "shadcn"],
+  "router": {
+    "basePath": "/post-purchase",
+    "matcher": ".*",
+    "excluder": null
+  },
+  "features": {
+    "variantSelection": true,
+    "multiOfferSupport": true,
+    "countdownTimer": true,
+    "responsiveDesign": true,
+    "fireAndForgetPayment": true,
+    "autoErrorRecovery": true,
+    "premiumUI": true,
+    "realTimePricing": true
+  },
+  "requirements": {
+    "sdk": "^2.2.2"
+  },
+  "routes": [
+    {
+      "path": "/post-purchase/:orderId",
+      "component": "PostPurchaseOffer"
+    },
+    {
+      "path": "/thankyou/:orderId",
+      "component": "ThankYou"
+    }
+  ],
+  "theme": {
+    "primary": "#3b82f6",
+    "secondary": "#8b5cf6",
+    "customizable": true
+  },
+  "license": "MIT"
+}

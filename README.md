@@ -44,20 +44,27 @@ Experience the plugins in action:
 - **Live Demo**: [https://wbpybq.cdn.tagadapay.com/](https://wbpybq.cdn.tagadapay.com/)
   > 🎯 **Try the checkout flow** with test card: `4242 4242 4242 4242`, expiry: `12/28`, CVC: `123`
 
+### **Post-Purchase Upsell Plugin** - Enhanced Upsell Experience
+
+- **Live Demo**: [https://tagadademo.xyz/post/order_4b4b2df309ec](https://tagadademo.xyz/post/order_4b4b2df309ec)
+
+> 🎯 **Try the checkout flow** with test card: `4242 4242 4242 4242`, expiry: `12/28`, CVC: `123`
+
 ## 🎯 What's Inside
 
 This repository contains production-ready plugin examples demonstrating how to build custom checkout experiences, landing pages, and interactive components with the TagadaPay V2 platform.
 
 ### 🚀 **Plugin Examples**
 
-| Plugin                                              | Description                             | Features                                                                                                                                                                                  | Status        |
-| --------------------------------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| **[three-step-funnel](./v1/three-step-funnel/)**    | High-converting sales funnel            | ✅ Three-step conversion flow<br/>✅ Smart checkout session init<br/>✅ Real order data display<br/>✅ Google Autocomplete + ISO mapping<br/>✅ shadcn/ui + React 19<br/>✅ SDK v2.2.0    | ✅ **Active** |
-| **[express-checkout](./express-checkout/)**         | Modern express checkout flow            | ✅ Dynamic branding system<br/>✅ Multi-theme support<br/>✅ Two checkout variants (`/` & `/checkout2`)<br/>✅ ISO address validation<br/>✅ Real-time config injection<br/>✅ SDK v2.2.0 | ✅ **Active** |
-| **[bogo-three-variants](./bogo-three-variants/)**   | BOGO multi-bundle checkout              | ✅ Three BOGO variants (1+1, 2+1, 3+2)<br/>✅ Instant bundle switching<br/>✅ Google Autocomplete<br/>✅ Professional top bar<br/>✅ Mobile-first responsive<br/>✅ SDK v2.2.0            | ✅ **Active** |
-| **[demo-plugin-v2](./demo-plugin-v2/)**             | Complete V2 plugin showcase             | ✅ Advanced routing<br/>✅ Live config injection<br/>✅ A/B testing<br/>✅ Modern React 19<br/>✅ TypeScript + Vite                                                                       | ✅ **Active** |
-| **[advertorial](./advertorial/)**                   | Complete checkout experience            | ✅ Smart card formatting<br/>✅ Google Autocomplete<br/>✅ ISO address mapping<br/>✅ Payment processing<br/>✅ SDK v2.1.3                                                                | ✅ **Active** |
-| **[skincare-quiz-funnel](./skincare-quiz-funnel/)** | Interactive product recommendation quiz | ✅ Multi-step quiz flow<br/>✅ Personalized product recommendations<br/>✅ Skin type assessment<br/>✅ Dynamic pricing display<br/>✅ Mobile-responsive design<br/>✅ SDK v2.2.0          | ✅ **Active** |
+| Plugin                                              | Description                             | Features                                                                                                                                                                                       | Status        |
+| --------------------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| **[three-step-funnel](./v1/three-step-funnel/)**    | High-converting sales funnel            | ✅ Three-step conversion flow<br/>✅ Smart checkout session init<br/>✅ Real order data display<br/>✅ Google Autocomplete + ISO mapping<br/>✅ shadcn/ui + React 19<br/>✅ SDK v2.2.0         | ✅ **Active** |
+| **[express-checkout](./express-checkout/)**         | Modern express checkout flow            | ✅ Dynamic branding system<br/>✅ Multi-theme support<br/>✅ Two checkout variants (`/` & `/checkout2`)<br/>✅ ISO address validation<br/>✅ Real-time config injection<br/>✅ SDK v2.2.0      | ✅ **Active** |
+| **[bogo-three-variants](./bogo-three-variants/)**   | BOGO multi-bundle checkout              | ✅ Three BOGO variants (1+1, 2+1, 3+2)<br/>✅ Instant bundle switching<br/>✅ Google Autocomplete<br/>✅ Professional top bar<br/>✅ Mobile-first responsive<br/>✅ SDK v2.2.0                 | ✅ **Active** |
+| **[demo-plugin-v2](./demo-plugin-v2/)**             | Complete V2 plugin showcase             | ✅ Advanced routing<br/>✅ Live config injection<br/>✅ A/B testing<br/>✅ Modern React 19<br/>✅ TypeScript + Vite                                                                            | ✅ **Active** |
+| **[advertorial](./advertorial/)**                   | Complete checkout experience            | ✅ Smart card formatting<br/>✅ Google Autocomplete<br/>✅ ISO address mapping<br/>✅ Payment processing<br/>✅ SDK v2.1.3                                                                     | ✅ **Active** |
+| **[post-purchase-upsell](./post-purchase-upsell/)** | Enhanced post-purchase upsells          | ✅ Backend-managed offers<br/>✅ Variant selection with real-time pricing<br/>✅ Fire-and-forget payment flow<br/>✅ Multi-offer navigation<br/>✅ Dynamic branding & themes<br/>✅ SDK v2.2.2 | ✅ **Active** |
+| **[skincare-quiz-funnel](./skincare-quiz-funnel/)** | Interactive product recommendation quiz | ✅ Multi-step quiz flow<br/>✅ Personalized product recommendations<br/>✅ Skin type assessment<br/>✅ Dynamic pricing display<br/>✅ Mobile-responsive design<br/>✅ SDK v2.2.0               | ✅ **Active** |
 
 > **💡 Note**: These plugins demonstrate different aspects of the TagadaPay platform - express-checkout showcases dynamic branding and modern UI patterns, demo-plugin-v2 focuses on routing and configuration, while advertorial demonstrates a complete checkout flow.
 
@@ -137,6 +144,7 @@ npx tgdcli int --store-id your-store-id
 
 - **Three-Step Funnel**: [Complete sales funnel](https://three-step-funnel--store_b9dd071b3e3a.cdn.tagadapay.com/) with discovery → social proof → checkout flow
 - **Skincare Quiz Funnel**: [Interactive product quiz](https://wbpybq.cdn.tagadapay.com/) with personalized recommendations
+- **Post-Purchase Upsells**: [Enhanced upsell experience](https://tagadademo.xyz/post/order_4b4b2df309ec) with variant selection and dynamic pricing
 - **Express Checkout Themes**: Compare [Red](https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Blue](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/) dynamic branding
 - **Checkout Variants**: Compare [Full Checkout](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Minimalist `/checkout2`](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2)
 - **Demo Plugin**: Compare [Green Theme](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/) vs [Blue Theme](https://blue--store_b9dd071b3e3a.cdn.tagadapay.com/) to see configuration changes
