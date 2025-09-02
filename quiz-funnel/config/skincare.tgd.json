@@ -1,0 +1,182 @@
+{
+  "configName": "skincare",
+  "title": "SkinCare",
+  "variants": ["variant_4093d57f4f39", "variant_291245bb5a74"],
+  "defaultCurrency": "USD",
+  "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow",
+  "primaryColor": "#3cb371",
+  "primaryForeground": "#222222",
+  "loading": {
+    "title": "Analyzing Your Skin Profile...",
+    "subtitles": [
+      "Evaluating your skin type and tone",
+      "Matching with our product database",
+      "Finding your perfect skincare routine"
+    ]
+  },
+  "results": {
+    "title": "Perfect Match Found!",
+    "subtitle": "We've found the ideal skincare products for your unique profile",
+    "answersTitle": "Your Skin Profile"
+  },
+  "home": {
+    "title": "Discover Your Perfect",
+    "accentuatedTitle": "Skincare Routine",
+    "subtitle": "Take our personalized quiz to find skincare products perfectly matched to your skin tone, type, and goals. Get professional recommendations in just 2 minutes.",
+    "badge": "Personalized Skincare Quiz",
+    "cards": {
+      "personalizedAnalysis": "Advanced skin tone matching and type analysis for precise product recommendations",
+      "expertFormulated": "Products developed by dermatologists and skincare experts for optimal results",
+      "provenResults": "Join thousands of satisfied customers who found their perfect skincare match"
+    }
+  },
+  "thankYou": {
+    "title": "Order Confirmed!",
+    "subtitle": "Thank you for your purchase. Your personalized skincare routine is on its way!",
+    "steps": [
+      {
+        "title": "Order Processing",
+        "subtitle": "Your order is being processed and will be shipped within 1-2 business days"
+      },
+      {
+        "title": "Shipping",
+        "subtitle": "Your order will be shipped within 3-5 business days with tracking information."
+      },
+      {
+        "title": "Start Your Routine",
+        "subtitle": "Follow the included guide to get the best results from your personalized products."
+      }
+    ]
+  },
+  "quizzQuestions": [
+    {
+      "title": "Select the model that matches your skin tone",
+      "subtitle": "So we can better color match you",
+      "options": [
+        {
+          "id": "fair",
+          "label": "Fair",
+          "image": "/fair-skinned-woman-portrait.png"
+        },
+        {
+          "id": "light",
+          "label": "Light",
+          "image": "/light-skin-woman-portrait.png"
+        },
+        {
+          "id": "medium",
+          "label": "Medium",
+          "image": "/medium-skin-woman-portrait.png"
+        },
+        {
+          "id": "medium-dark",
+          "label": "Medium-Dark",
+          "image": "/medium-dark-woman-portrait.png"
+        },
+        {
+          "id": "dark",
+          "label": "Dark",
+          "image": "/dark-skin-woman-portrait.png"
+        },
+        {
+          "id": "deep",
+          "label": "Deep",
+          "image": "/deep-skin-tone-woman-portrait.png"
+        }
+      ],
+      "label": "Skin Tone"
+    },
+    {
+      "title": "What's your skin type?",
+      "subtitle": "This helps us recommend the right products for your skin",
+      "options": [
+        {
+          "id": "normal",
+          "label": "Normal",
+          "description": "Balanced, not too oily or dry"
+        },
+        {
+          "id": "dry",
+          "label": "Dry",
+          "description": "Feels tight, flaky, or rough"
+        },
+        {
+          "id": "oily",
+          "label": "Oily",
+          "description": "Shiny, enlarged pores, prone to breakouts"
+        },
+        {
+          "id": "combination",
+          "label": "Combination",
+          "description": "Oily T-zone, dry cheeks"
+        },
+        {
+          "id": "sensitive",
+          "label": "Sensitive",
+          "description": "Easily irritated, reactive to products"
+        }
+      ],
+      "label": "Skin Type"
+    },
+    {
+      "title": "What are your main skin goals?",
+      "subtitle": "Choose the primary concern you'd like to address",
+      "options": [
+        {
+          "id": "hydration",
+          "label": "Hydration & Moisture",
+          "description": "Combat dryness and maintain skin barrier"
+        },
+        {
+          "id": "anti-aging",
+          "label": "Anti-Aging",
+          "description": "Reduce fine lines and improve firmness"
+        },
+        {
+          "id": "acne",
+          "label": "Acne Control",
+          "description": "Clear breakouts and prevent future blemishes"
+        },
+        {
+          "id": "brightening",
+          "label": "Brightening",
+          "description": "Even skin tone and reduce dark spots"
+        },
+        {
+          "id": "maintenance",
+          "label": "General Maintenance",
+          "description": "Keep healthy skin looking its best"
+        }
+      ],
+      "label": "Main Goals"
+    },
+    {
+      "title": "What's your current skincare routine?",
+      "subtitle": "This helps us recommend the right intensity for you",
+      "options": [
+        {
+          "id": "beginner",
+          "label": "New to skincare",
+          "description": "Just starting my skincare journey"
+        },
+        {
+          "id": "basic",
+          "label": "Basic routine",
+          "description": "Cleanser and moisturizer only"
+        },
+        {
+          "id": "moderate",
+          "label": "Moderate routine",
+          "description": "3-5 products, morning and evening"
+        },
+        {
+          "id": "advanced",
+          "label": "Advanced routine",
+          "description": "6+ products with targeted treatments"
+        }
+      ],
+      "label": "Current Routine"
+    }
+  ],
+  "supportEmail": "support@skincare.com"
+}

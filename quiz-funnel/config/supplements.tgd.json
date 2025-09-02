@@ -1,0 +1,182 @@
+{
+  "configName": "supplements",
+  "title": "Supplements",
+  "variants": ["variant_8c36c17c4ea2", "variant_5e28fa63df4c"],
+  "defaultCurrency": "USD",
+  "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow",
+  "primaryColor": "#e53935",
+  "primaryForeground": "#fff5f5",
+  "loading": {
+    "title": "Analyzing Your Health Profile...",
+    "subtitles": [
+      "Evaluating your health goals and lifestyle",
+      "Matching with our supplement database",
+      "Finding your perfect supplement routine"
+    ]
+  },
+  "results": {
+    "title": "Perfect Match Found!",
+    "subtitle": "We've found the ideal supplements for your unique health profile",
+    "answersTitle": "Your Health Profile"
+  },
+  "home": {
+    "title": "Discover Your Perfect",
+    "accentuatedTitle": "Supplement Routine",
+    "subtitle": "Take our personalized quiz to find supplements perfectly matched to your health goals, lifestyle, and needs. Get professional recommendations in just 2 minutes.",
+    "badge": "Personalized Supplement Quiz",
+    "cards": {
+      "personalizedAnalysis": "Advanced health assessment and lifestyle analysis for precise supplement recommendations",
+      "expertFormulated": "Supplements developed by nutritionists and health experts for optimal results",
+      "provenResults": "Join thousands of satisfied customers who found their perfect supplement match"
+    }
+  },
+  "thankYou": {
+    "title": "Order Confirmed!",
+    "subtitle": "Thank you for your purchase. Your personalized supplement routine is on its way!",
+    "steps": [
+      {
+        "title": "Order Processing",
+        "subtitle": "Your order is being processed and will be shipped within 1-2 business days"
+      },
+      {
+        "title": "Shipping",
+        "subtitle": "Your order will be shipped within 3-5 business days with tracking information."
+      },
+      {
+        "title": "Start Your Routine",
+        "subtitle": "Follow the included guide to get the best results from your personalized supplements."
+      }
+    ]
+  },
+  "quizzQuestions": [
+    {
+      "title": "What's your primary health goal?",
+      "subtitle": "Choose the main area you'd like to improve",
+      "options": [
+        {
+          "id": "energy",
+          "label": "Energy & Vitality",
+          "description": "Boost daily energy and overall vitality"
+        },
+        {
+          "id": "immunity",
+          "label": "Immune Support",
+          "description": "Strengthen immune system and health"
+        },
+        {
+          "id": "digestion",
+          "label": "Digestive Health",
+          "description": "Improve gut health and digestion"
+        },
+        {
+          "id": "sleep",
+          "label": "Sleep & Recovery",
+          "description": "Better sleep quality and recovery"
+        },
+        {
+          "id": "fitness",
+          "label": "Fitness & Performance",
+          "description": "Enhance workout performance and recovery"
+        },
+        {
+          "id": "general",
+          "label": "General Wellness",
+          "description": "Overall health maintenance and support"
+        }
+      ],
+      "label": "Health Goals"
+    },
+    {
+      "title": "What's your current activity level?",
+      "subtitle": "This helps us recommend the right supplements for your lifestyle",
+      "options": [
+        {
+          "id": "sedentary",
+          "label": "Sedentary",
+          "description": "Little to no exercise, desk job"
+        },
+        {
+          "id": "lightly-active",
+          "label": "Lightly Active",
+          "description": "Light exercise 1-3 days/week"
+        },
+        {
+          "id": "moderately-active",
+          "label": "Moderately Active",
+          "description": "Moderate exercise 3-5 days/week"
+        },
+        {
+          "id": "very-active",
+          "label": "Very Active",
+          "description": "Hard exercise 6-7 days/week"
+        },
+        {
+          "id": "athlete",
+          "label": "Athlete",
+          "description": "Very hard exercise, training twice daily"
+        }
+      ],
+      "label": "Activity Level"
+    },
+    {
+      "title": "What's your diet type?",
+      "subtitle": "This helps us recommend compatible supplements",
+      "options": [
+        {
+          "id": "omnivore",
+          "label": "Omnivore",
+          "description": "Eat both plants and animal products"
+        },
+        {
+          "id": "vegetarian",
+          "label": "Vegetarian",
+          "description": "No meat, but eat dairy and eggs"
+        },
+        {
+          "id": "vegan",
+          "label": "Vegan",
+          "description": "No animal products at all"
+        },
+        {
+          "id": "keto",
+          "label": "Keto",
+          "description": "Low-carb, high-fat diet"
+        },
+        {
+          "id": "paleo",
+          "label": "Paleo",
+          "description": "Whole foods, no processed items"
+        }
+      ],
+      "label": "Diet Type"
+    },
+    {
+      "title": "What's your current supplement routine?",
+      "subtitle": "This helps us recommend the right intensity for you",
+      "options": [
+        {
+          "id": "none",
+          "label": "No supplements",
+          "description": "Don't currently take any supplements"
+        },
+        {
+          "id": "basic",
+          "label": "Basic vitamins",
+          "description": "Just a multivitamin or basic vitamins"
+        },
+        {
+          "id": "moderate",
+          "label": "Moderate routine",
+          "description": "3-5 supplements regularly"
+        },
+        {
+          "id": "advanced",
+          "label": "Advanced routine",
+          "description": "6+ supplements with specific protocols"
+        }
+      ],
+      "label": "Current Supplements"
+    }
+  ],
+  "supportEmail": "support@supplements.com"
+}

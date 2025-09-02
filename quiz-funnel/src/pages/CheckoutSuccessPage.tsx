@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { PluginConfig } from "@/types/plugin-config";
 import {
   formatMoney,
   OrderItem,
   useCurrency,
   useISOData,
   useOrder,
+  usePluginConfig,
 } from "@tagadapay/plugin-sdk/react";
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +26,7 @@ export default function CheckoutSuccessPage({
   const { countries } = useISOData();
   const navigate = useNavigate();
   const currentCurrency = useCurrency();
+  const { config } = usePluginConfig<PluginConfig>();
 
   if (isLoading) {
     return (
@@ -84,10 +87,18 @@ export default function CheckoutSuccessPage({
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm">
+      <header
+        className="border-b border-border backdrop-blur-sm"
+        style={{ backgroundColor: `${config.primaryColor}10` }}
+      >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-primary">SkinCare</h1>
+            <h1
+              className="text-2xl font-bold"
+              style={{ color: config.primaryColor }}
+            >
+              {config.title}
+            </h1>
           </div>
         </div>
       </header>
@@ -96,12 +107,16 @@ export default function CheckoutSuccessPage({
         <div className="max-w-2xl mx-auto text-center">
           {/* Success Animation */}
           <div className="mb-8">
-            <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 animate-scale-in">
+            <div
+              className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 animate-scale-in"
+              style={{ backgroundColor: `${config.primaryColor}10` }}
+            >
               <svg
-                className="w-12 h-12 text-primary animate-check-mark"
+                className="w-12 h-12 animate-check-mark"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                style={{ color: config.primaryColor }}
               >
                 <path
                   strokeLinecap="round"
@@ -112,11 +127,10 @@ export default function CheckoutSuccessPage({
               </svg>
             </div>
             <h2 className="text-4xl font-bold text-foreground mb-4">
-              Order Confirmed!
+              {config.thankYou.title}
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Thank you for your purchase. Your personalized skincare routine is
-              on its way!
+              {config.thankYou.subtitle}
             </p>
             <p className="text-sm text-muted-foreground">
               Order #{order.id} • Placed on{" "}
@@ -368,55 +382,40 @@ export default function CheckoutSuccessPage({
               What's Next?
             </h3>
             <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold mt-1">
-                  1
+              {config.thankYou.steps.map((step, idx) => (
+                <div className="flex items-start gap-3" key={idx}>
+                  <div
+                    className="w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mt-1"
+                    style={{
+                      backgroundColor: config.primaryColor,
+                      color: "white",
+                    }}
+                  >
+                    {idx + 1}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground">
+                      {step.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      {step.subtitle}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-foreground">
-                    Order Processing
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    We'll prepare your personalized skincare products within 1-2
-                    business days.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold mt-1">
-                  2
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground">Shipping</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Your order will be shipped within 3-5 business days with
-                    tracking information.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold mt-1">
-                  3
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground">
-                    Start Your Routine
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    Follow the included guide to get the best results from your
-                    personalized products.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </Card>
 
           {/* Support Information */}
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <Card className="p-6">
-              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div
+                style={{ backgroundColor: `${config.primaryColor}10` }}
+                className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
                 <svg
-                  className="w-6 h-6 text-accent"
+                  style={{ color: config.primaryColor }}
+                  className="w-6 h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -437,9 +436,13 @@ export default function CheckoutSuccessPage({
               </p>
             </Card>
             <Card className="p-6">
-              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div
+                style={{ backgroundColor: `${config.primaryColor}10` }}
+                className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4"
+              >
                 <svg
-                  className="w-6 h-6 text-accent"
+                  style={{ color: config.primaryColor }}
+                  className="w-6 h-6 "
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -469,16 +472,13 @@ export default function CheckoutSuccessPage({
             >
               Take Another Quiz
             </Button>
-            <Button
-              onClick={() => navigate("/")}
-              className="px-6 bg-primary hover:bg-primary/90"
-            >
+            <Button onClick={() => navigate("/")} className="px-6">
               Continue Shopping
             </Button>
           </div>
 
           <p className="text-sm text-muted-foreground mt-8">
-            Questions about your order? Contact us at support@skincare.com
+            Questions about your order? Contact us at {config.supportEmail}
           </p>
         </div>
       </main>

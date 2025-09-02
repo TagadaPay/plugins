@@ -8,7 +8,7 @@ type ProvidersProps = PropsWithChildren<{}>;
 function Providers({ children }: ProvidersProps) {
   return (
     <TagadaProvider
-      localConfig="default"
+      localConfig="supplements"
       environment="production"
       blockUntilSessionReady
     >

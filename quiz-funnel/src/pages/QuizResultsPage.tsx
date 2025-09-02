@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { PluginConfig } from "@/types/plugin-config";
 import {
   formatMoney,
   usePluginConfig,
@@ -13,20 +14,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 type QuizResults = {
-  skinTone: string;
-  skinType: string;
-  goals: string[];
-  frequency: string;
-};
-
-export type PluginConfig = {
-  configName: string;
-  variants: {
-    moisturizer: string;
-    serum: string;
-  };
-  googleApiKey: string;
-  defaultCurrency: string;
+  [key: string]: string | string[];
 };
 
 type QuizResultsPageProps = {};
@@ -43,12 +31,28 @@ export default function QuizResultsPage({}: QuizResultsPageProps) {
     includePrices: true,
   });
 
-  const moisturizer = getVariant(config.variants.moisturizer);
-  const serum = getVariant(config.variants.serum);
-  const variants = [moisturizer, serum].filter((variant) => !!variant) as {
-    product: Product;
-    variant: ProductVariant;
-  }[];
+  const variants = config?.variants?.map(
+    (variant) =>
+      getVariant(variant) as {
+        product: Product;
+        variant: ProductVariant;
+      }
+  );
+
+  // Helper function to get the label for an answer
+  const getAnswerLabel = (questionIndex: number, answerId: string): string => {
+    const question = config?.quizzQuestions?.[questionIndex];
+    if (!question) return answerId;
+
+    const option = question.options.find((opt: any) => opt.id === answerId);
+    return option?.label || answerId;
+  };
+
+  const subtitlesDelays = [
+    "animation-delay-500",
+    "animation-delay-1000",
+    "animation-delay-1500",
+  ];
 
   useEffect(() => {
     // Get quiz results from localStorage
@@ -79,9 +83,18 @@ export default function QuizResultsPage({}: QuizResultsPageProps) {
         <div className="text-center max-w-md mx-auto px-4">
           {/* Animated Logo */}
           <div className="mb-8">
-            <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
-              <div className="w-12 h-12 bg-primary rounded-full animate-spin">
-                <div className="w-3 h-3 bg-primary-foreground rounded-full mt-2 ml-2"></div>
+            <div
+              className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse"
+              style={{ backgroundColor: `${config.primaryColor}10` }}
+            >
+              <div
+                className="w-12 h-12 rounded-full animate-spin"
+                style={{ backgroundColor: config.primaryColor }}
+              >
+                <div
+                  className="w-3 h-3 rounded-full mt-2 ml-2"
+                  style={{ backgroundColor: config.primaryColor }}
+                ></div>
               </div>
             </div>
           </div>
@@ -89,41 +102,57 @@ export default function QuizResultsPage({}: QuizResultsPageProps) {
           {/* Loading Text */}
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-foreground animate-fade-in">
-              Analyzing Your Skin Profile...
+              {config.loading.title}
             </h2>
             <div className="space-y-2 text-muted-foreground">
-              <p className="animate-fade-in animation-delay-500">
-                Evaluating your skin type and tone
-              </p>
-              <p className="animate-fade-in animation-delay-1000">
-                Matching with our product database
-              </p>
-              <p className="animate-fade-in animation-delay-1500">
-                Finding your perfect skincare routine
-              </p>
+              {config.loading.subtitles.map((subtitle, index) => (
+                <p
+                  key={`${subtitle}-${index}`}
+                  className={`animate-fade-in ${
+                    subtitlesDelays[index % config.loading.subtitles.length]
+                  }`}
+                >
+                  {subtitle}
+                </p>
+              ))}
             </div>
           </div>
 
           {/* Progress Dots */}
           <div className="flex justify-center gap-2 mt-8">
-            <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
-            <div className="w-2 h-2 bg-primary rounded-full animate-bounce animation-delay-200"></div>
-            <div className="w-2 h-2 bg-primary rounded-full animate-bounce animation-delay-400"></div>
+            <div
+              className="w-2 h-2 rounded-full animate-bounce"
+              style={{ backgroundColor: config.primaryColor }}
+            ></div>
+            <div
+              className="w-2 h-2 rounded-full animate-bounce animation-delay-200"
+              style={{ backgroundColor: config.primaryColor }}
+            ></div>
+            <div
+              className="w-2 h-2 rounded-full animate-bounce animation-delay-400"
+              style={{ backgroundColor: config.primaryColor }}
+            ></div>
           </div>
         </div>
       </div>
     );
   }
 
-  console.log(variants);
-
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm">
+      <header
+        className="border-b border-border backdrop-blur-sm"
+        style={{ backgroundColor: `${config.primaryColor}10` }}
+      >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-primary">SkinCare</h1>
+            <h1
+              className="text-2xl font-bold"
+              style={{ color: config.primaryColor }}
+            >
+              {config.title}
+            </h1>
             <Button variant="outline" onClick={() => navigate("/")}>
               Start Over
             </Button>
@@ -141,12 +170,16 @@ export default function QuizResultsPage({}: QuizResultsPageProps) {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 animate-scale-in">
+            <div
+              className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 animate-scale-in"
+              style={{ backgroundColor: `${config.primaryColor}10` }}
+            >
               <svg
-                className="w-12 h-12 text-primary animate-check-mark"
+                className="w-12 h-12 animate-check-mark"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                style={{ color: config.primaryColor }}
               >
                 <path
                   strokeLinecap="round"
@@ -157,11 +190,10 @@ export default function QuizResultsPage({}: QuizResultsPageProps) {
               </svg>
             </div>
             <h2 className="text-4xl font-bold text-foreground mb-4 animate-fade-in-up">
-              Perfect Match Found!
+              {config.results.title}
             </h2>
             <p className="text-xl text-muted-foreground animate-fade-in-up animation-delay-300">
-              We've found the ideal skincare products for your{" "}
-              {quizResults?.skinType} skin
+              {config.results.subtitle}
             </p>
           </div>
 
@@ -174,42 +206,25 @@ export default function QuizResultsPage({}: QuizResultsPageProps) {
             }`}
           >
             <h3 className="text-xl font-bold text-foreground mb-4">
-              Your Skin Profile
+              {config.results.answersTitle}
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <span className="text-sm text-muted-foreground">
-                  Skin Tone:
-                </span>
-                <p className="font-semibold text-foreground capitalize">
-                  {quizResults?.skinTone?.replace("-", " ")}
-                </p>
-              </div>
-              <div>
-                <span className="text-sm text-muted-foreground">
-                  Skin Type:
-                </span>
-                <p className="font-semibold text-foreground capitalize">
-                  {quizResults?.skinType}
-                </p>
-              </div>
-              <div>
-                <span className="text-sm text-muted-foreground">
-                  Main Goals:
-                </span>
-                <p className="font-semibold text-foreground capitalize">
-                  {quizResults?.goals?.[0]?.replace("-", " ") ||
-                    "Not specified"}
-                </p>
-              </div>
-              <div>
-                <span className="text-sm text-muted-foreground">
-                  Current Routine:
-                </span>
-                <p className="font-semibold text-foreground capitalize">
-                  {quizResults?.frequency?.replace("-", " ")}
-                </p>
-              </div>
+              {config?.quizzQuestions?.map((question, index) => {
+                const answerKey = `question${index + 1}`;
+                const answerId = quizResults?.[answerKey] as string;
+                const answerLabel = getAnswerLabel(index, answerId);
+
+                return (
+                  <div key={index}>
+                    <span className="text-sm text-muted-foreground">
+                      {question.label}:
+                    </span>
+                    <p className="font-semibold text-foreground capitalize">
+                      {answerLabel}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </Card>
 
@@ -225,7 +240,7 @@ export default function QuizResultsPage({}: QuizResultsPageProps) {
               Your Personalized Recommendations
             </h3>
             <div className="grid md:grid-cols-2 gap-6 mb-8">
-              {variants?.map(({ variant }, index) => (
+              {variants.map(({ variant }, index) => (
                 <Card
                   key={variant.id}
                   className={`p-6 hover:shadow-lg transition-all duration-300 animate-fade-in-up`}
@@ -246,15 +261,19 @@ export default function QuizResultsPage({}: QuizResultsPageProps) {
                       </p>
                       <div className="flex flex-wrap gap-1 mb-3">
                         {/* {product.benefits.map((benefit) => (
-                          <span
-                            key={benefit}
-                            className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
-                          >
-                            {benefit}
-                          </span>
+                                                  <span
+                          key={benefit}
+                          className="text-xs px-2 py-1 rounded-full"
+                          style={{ backgroundColor: `${config.primaryColor}10`, color: config.primaryColor }}
+                        >
+                          {benefit}
+                        </span>
                         ))} */}
                       </div>
-                      <p className="text-lg font-bold text-primary">
+                      <p
+                        className="text-lg font-bold"
+                        style={{ color: config.primaryColor }}
+                      >
                         {formatMoney(
                           variant.prices[0].currencyOptions["USD"].amount
                         )}
@@ -272,7 +291,8 @@ export default function QuizResultsPage({}: QuizResultsPageProps) {
                   navigate("/checkout");
                 }}
                 size="lg"
-                className="px-12 py-4 text-lg font-semibold bg-primary hover:bg-primary/90 animate-fade-in-up animation-delay-1200"
+                className="px-12 py-4 text-lg font-semibold animate-fade-in-up animation-delay-1200 text-white"
+                style={{ backgroundColor: config.primaryColor }}
               >
                 Discover Your Products
               </Button>

@@ -7,7 +7,7 @@ import { Combobox } from "@/components/ui/combobox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { PluginConfig } from "@/pages/QuizResultsPage";
+import { PluginConfig } from "@/types/plugin-config";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   CheckoutLineItem,
@@ -105,14 +105,10 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   const hasInitializedRef = useRef(false);
 
   const initialLineItems: CheckoutLineItem[] = [
-    {
-      variantId: config.variants.moisturizer,
+    ...config.variants.map((variant) => ({
+      variantId: variant,
       quantity: 1,
-    },
-    {
-      variantId: config.variants.serum,
-      quantity: 1,
-    },
+    })),
   ];
 
   const [isSummaryLoading, setIsSummaryLoading] = useState(false);
@@ -718,12 +714,23 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   return (
     <div className="bg-background min-h-screen">
       {/* Header */}
-      <header className="border-border bg-card/50 border-b backdrop-blur-sm">
+      <header
+        className="border-border border-b backdrop-blur-sm"
+        style={{ backgroundColor: `${config.primaryColor}10` }}
+      >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-primary text-2xl font-bold">SkinCare</h1>
+            <h1
+              className="text-2xl font-bold"
+              style={{ color: config.primaryColor }}
+            >
+              {config.title}
+            </h1>
             <div className="text-muted-foreground flex items-center gap-2 text-sm">
-              <LockIcon className="size-4 text-primary" />
+              <LockIcon
+                className="size-4"
+                style={{ color: config.primaryColor }}
+              />
               Secure Checkout
             </div>
           </div>
@@ -823,7 +830,7 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     <Separator className="my-2" />
                     <div className="flex justify-between text-lg font-bold">
                       <span className="text-foreground">Total</span>
-                      <span className="text-primary">
+                      <span style={{ color: config.primaryColor }}>
                         {formatMoney(
                           checkout?.summary.totalAdjustedAmount || 0
                         )}
@@ -832,7 +839,10 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   </div>
                   {isSummaryLoading && (
                     <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/70">
-                      <div className="h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-primary"></div>
+                      <div
+                        className="h-8 w-8 animate-spin rounded-full border-4 border-gray-300"
+                        style={{ borderTopColor: config.primaryColor }}
+                      ></div>
                     </div>
                   )}
                 </div>
@@ -1275,11 +1285,17 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   type="submit"
                   size="lg"
                   disabled={isPaymentLoading}
-                  className="bg-primary hover:bg-primary/90 w-full py-3 text-lg"
+                  className="w-full py-3 text-lg"
                 >
                   {isPaymentLoading ? (
                     <div className="flex items-center gap-2">
-                      <div className="border-primary-foreground/30 border-t-primary-foreground h-4 w-4 animate-spin rounded-full border-2" />
+                      <div
+                        className="h-4 w-4 animate-spin rounded-full border-2"
+                        style={{
+                          borderColor: `${config.primaryColor}30`,
+                          borderTopColor: config.primaryColor,
+                        }}
+                      />
                       Processing...
                     </div>
                   ) : (

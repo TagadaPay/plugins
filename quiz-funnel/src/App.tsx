@@ -1,6 +1,8 @@
 import Loader from "@/components/Loader";
 import QuizResultsPage from "@/pages/QuizResultsPage";
-import { Suspense } from "react";
+import { PluginConfig } from "@/types/plugin-config";
+import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
+import { Suspense, useEffect } from "react";
 import {
   Navigate,
   Route,
@@ -65,17 +67,31 @@ function ThankYouRouter() {
   );
 }
 
+function AppRoutes() {
+  const { config } = usePluginConfig<PluginConfig>();
+
+  useEffect(() => {
+    if (config?.title) {
+      document.title = config.title;
+    }
+  }, [config?.title]);
+
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/quiz" element={<QuizPage />} />
+      <Route path="/quiz/results" element={<QuizResultsRouter />} />
+      <Route path="/checkout" element={<CheckoutRouter />} />
+      <Route path="/thankyou/:orderId" element={<ThankYouRouter />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+}
+
 function App() {
   return (
     <Providers>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/quiz" element={<QuizPage />} />
-        <Route path="/quiz/results" element={<QuizResultsRouter />} />
-        <Route path="/checkout" element={<CheckoutRouter />} />
-        <Route path="/thankyou/:orderId" element={<ThankYouRouter />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <AppRoutes />
     </Providers>
   );
 }

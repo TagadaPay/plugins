@@ -1,7 +1,7 @@
 {
-  "pluginId": "skincare-quiz-funnel",
-  "name": "Skincare Quiz Funnel",
-  "version": "1.0.1",
+  "pluginId": "quiz-funnel",
+  "name": "Quiz Funnel",
+  "version": "1.0.2",
   "author": "TagadaPay Team",
   "mode": "direct-mode",
   "router": {

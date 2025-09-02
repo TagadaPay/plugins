@@ -4,6 +4,8 @@ import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { PluginConfig } from "@/types/plugin-config";
+import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
 
 export interface ComboboxOption {
   value: string;
@@ -27,6 +29,7 @@ export function Combobox({
   error = false,
   className,
 }: ComboboxProps) {
+  const { config } = usePluginConfig<PluginConfig>();
   const [open, setOpen] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
   const comboboxRef = React.useRef<HTMLDivElement>(null);
@@ -94,7 +97,7 @@ export function Combobox({
                   placeholder="Search..."
                   value={searchValue}
                   onChange={(e) => setSearchValue(e.target.value)}
-                  className="pl-10 h-8 text-sm hover:bg-transparent"
+                  className="pl-10 h-8 text-sm"
                   onFocus={(e) => e.stopPropagation()}
                   onClick={(e) => e.stopPropagation()}
                 />
@@ -104,9 +107,18 @@ export function Combobox({
               <button
                 key={option.value}
                 className={cn(
-                  "relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-green-100/50 hover:text-green-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-                  value === option.value && "bg-green-100/50 text-green-900"
+                  "relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-[color:var(--hover-bg-color)] hover:text-[color:var(--hover-text-color)] data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+                  value === option.value &&
+                    "bg-[color:var(--selected-bg-color)] text-[color:var(--selected-text-color)]"
                 )}
+                style={
+                  {
+                    "--hover-bg-color": `${config.primaryColor}10`, // 10% opacity
+                    "--hover-text-color": config.primaryColor,
+                    "--selected-bg-color": `${config.primaryColor}20`, // 20% opacity
+                    "--selected-text-color": config.primaryColor,
+                  } as React.CSSProperties
+                }
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();

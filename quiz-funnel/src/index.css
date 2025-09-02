@@ -145,6 +145,17 @@
     stroke-dashoffset: 20;
   }
 
+  /* Selection styles for input components */
+  input::selection {
+    background-color: var(--selection-bg, var(--primary));
+    color: var(--selection-text, var(--primary-foreground));
+  }
+
+  input::-moz-selection {
+    background-color: var(--selection-bg, var(--primary));
+    color: var(--selection-text, var(--primary-foreground));
+  }
+
   .animation-delay-200 {
     animation-delay: 200ms;
   }
