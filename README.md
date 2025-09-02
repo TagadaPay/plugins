@@ -39,9 +39,10 @@ Experience the plugins in action:
 
 - **Live Demo**: [https://three-step-funnel--store_b9dd071b3e3a.cdn.tagadapay.com/](https://three-step-funnel--store_b9dd071b3e3a.cdn.tagadapay.com/)
 
-### **Skincare Quiz Funnel Plugin** - Interactive Product Recommendation Quiz
+### **Quiz Funnel Plugin** - Interactive Product Recommendation Quiz
 
-- **Live Demo**: [https://wbpybq.cdn.tagadapay.com/](https://wbpybq.cdn.tagadapay.com/)
+- **Skincare**: https://lp5lef.cdn.tagadapay.com/
+- **Supplements**: https://nroh5z.cdn.tagadapay.com/
   > 🎯 **Try the checkout flow** with test card: `4242 4242 4242 4242`, expiry: `12/28`, CVC: `123`
 
 ### **Post-Purchase Upsell Plugin** - Enhanced Upsell Experience
@@ -64,7 +65,7 @@ This repository contains production-ready plugin examples demonstrating how to b
 | **[demo-plugin-v2](./demo-plugin-v2/)**             | Complete V2 plugin showcase             | ✅ Advanced routing<br/>✅ Live config injection<br/>✅ A/B testing<br/>✅ Modern React 19<br/>✅ TypeScript + Vite                                                                            | ✅ **Active** |
 | **[advertorial](./advertorial/)**                   | Complete checkout experience            | ✅ Smart card formatting<br/>✅ Google Autocomplete<br/>✅ ISO address mapping<br/>✅ Payment processing<br/>✅ SDK v2.1.3                                                                     | ✅ **Active** |
 | **[post-purchase-upsell](./post-purchase-upsell/)** | Enhanced post-purchase upsells          | ✅ Backend-managed offers<br/>✅ Variant selection with real-time pricing<br/>✅ Fire-and-forget payment flow<br/>✅ Multi-offer navigation<br/>✅ Dynamic branding & themes<br/>✅ SDK v2.2.2 | ✅ **Active** |
-| **[skincare-quiz-funnel](./skincare-quiz-funnel/)** | Interactive product recommendation quiz | ✅ Multi-step quiz flow<br/>✅ Personalized product recommendations<br/>✅ Skin type assessment<br/>✅ Dynamic pricing display<br/>✅ Mobile-responsive design<br/>✅ SDK v2.2.0               | ✅ **Active** |
+| **[quiz-funnel](./quiz-funnel/)**                   | Interactive product recommendation quiz | ✅ Multi-step quiz flow<br/>✅ Personalized product recommendations<br/>✅ Skin type assessment<br/>✅ Dynamic pricing display<br/>✅ Mobile-responsive design<br/>✅ SDK v2.2.0               | ✅ **Active** |
 
 > **💡 Note**: These plugins demonstrate different aspects of the TagadaPay platform - express-checkout showcases dynamic branding and modern UI patterns, demo-plugin-v2 focuses on routing and configuration, while advertorial demonstrates a complete checkout flow.
 

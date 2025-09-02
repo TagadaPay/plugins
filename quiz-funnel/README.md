@@ -1,6 +1,6 @@
-# Skincare quiz creation
+# Quiz funnel
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+_Automatically synced with your [v0.app](https://v0.app) deployments_
 
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/tagada-pay-8d2a3b8d/v0-skincare-quiz-creation)
 [![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/uzUJ4a1KdPq)
@@ -9,6 +9,11 @@
 
 This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
 Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+
+## Examples
+
+- **Skincare**: https://lp5lef.cdn.tagadapay.com/
+- **Supplements**: https://nroh5z.cdn.tagadapay.com/
 
 ## Deployment
 
