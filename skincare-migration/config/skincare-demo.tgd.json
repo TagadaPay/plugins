@@ -1,0 +1,163 @@
+{
+  "configName": "skincare-demo",
+  "branding": {
+    "companyName": "Pure Glow Skincare",
+    "logoText": "Pure Glow",
+    "logoHeight": 44,
+    "primaryColor": "#a832a6",
+    "secondaryColor": "#3236a8",
+    "logoUrl": "/images/placeholder-logo.png"
+  },
+  "productIds": [
+    "product_4eb82d9586a2",
+    "product_2fa71c2fa11d",
+    "product_fc1bd0cfe97a",
+    "product_5dee57124c5e",
+    "product_2447c222eb51"
+  ],
+  "heroProductId": "product_fc1bd0cfe97a",
+  "content": {
+    "tagline": {
+      "en": "Celebrating Australian Nature",
+      "es": "Celebrando la Naturaleza Australiana"
+    },
+    "sections": {
+      "en": {
+        "heroSubtitle": "Premium Australian Skincare",
+        "heroTitle": "Unlock Your\nNatural Radiance",
+        "heroDescription": "Discover our range of premium skincare products crafted with native Australian botanicals for radiant, healthy skin.",
+        "primaryButton": "SHOP NOW",
+        "secondaryButton": "TRY SAMPLE",
+        "trustText": "Trusted by 10,000+ happy customers",
+        "featuresTitle": "Natural skincare with scientifically proven results",
+        "featuresSubtitle": "Harness the power of Australian botanicals with our carefully formulated products.",
+        "ctaButton": "EXPLORE COLLECTION",
+        "hero": "Unlock Your Skin's Natural Radiance",
+        "about": "Transform your skincare routine with our curated collection of clean, effective products. Each formula is crafted with premium ingredients and backed by dermatological research.",
+        "guarantee": "30-day money-back guarantee. Love your skin or get your money back."
+      },
+      "es": {
+        "heroSubtitle": "Cuidado de la Piel Premium Australiano",
+        "heroTitle": "Desbloquea tu\nResplandor Natural",
+        "heroDescription": "Descubre nuestra gama de productos premium para el cuidado de la piel elaborados con botánicos nativos australianos.",
+        "primaryButton": "COMPRAR AHORA",
+        "secondaryButton": "PROBAR MUESTRA",
+        "trustText": "Confiado por más de 10,000 clientes felices",
+        "featuresTitle": "Cuidado natural de la piel con resultados científicamente probados",
+        "featuresSubtitle": "Aprovecha el poder de los botánicos australianos con nuestros productos cuidadosamente formulados.",
+        "ctaButton": "EXPLORAR COLECCIÓN",
+        "hero": "Desbloquea el Resplandor Natural de tu Piel",
+        "about": "Transforma tu rutina de cuidado de la piel con nuestra colección curada de productos limpios y efectivos.",
+        "guarantee": "Garantía de devolución de dinero de 30 días."
+      }
+    },
+    "socialLinks": [
+      {
+        "platform": "instagram",
+        "url": "https://instagram.com/pureglowskincare",
+        "label": "Follow us on Instagram",
+        "iconUrl": "https://cdn-icons-png.flaticon.com/512/174/174855.png"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://facebook.com/pureglowskincare",
+        "label": "Like us on Facebook",
+        "iconUrl": "https://cdn-icons-png.flaticon.com/512/174/174848.png"
+      },
+      {
+        "platform": "x",
+        "url": "https://x.com/pureglow_skin",
+        "label": "Follow us on X",
+        "iconUrl": "https://cdn-icons-png.flaticon.com/512/5968/5968830.png"
+      },
+      {
+        "platform": "discord",
+        "url": "https://discord.gg/pureglowskincare",
+        "label": "Join our Discord community",
+        "iconUrl": "https://cdn-icons-png.flaticon.com/512/5968/5968756.png"
+      },
+      {
+        "platform": "whatsapp",
+        "url": "https://whatsapp.com/channel/pureglowskincare",
+        "label": "Chat with us on WhatsApp",
+        "iconUrl": "https://cdn-icons-png.flaticon.com/512/174/174879.png"
+      }
+    ],
+    "navigationLinks": [
+      {
+        "label": "Home",
+        "url": "/"
+      },
+      {
+        "label": "Shop",
+        "url": "/products"
+      },
+      {
+        "label": "Skincare Guide",
+        "url": "/skincare-guide"
+      },
+      {
+        "label": "Community",
+        "url": "https://discord.gg/pureglowskincare",
+        "external": true
+      }
+    ],
+    "ctaButton": {
+      "text": "EXPLORE COLLECTION",
+      "url": "/products",
+      "external": false
+    },
+    "footerCopyright": "© 2025 Pure Glow Skincare. Transform your skin with Australian botanicals.",
+    "enableBogo": false,
+    "footerSections": [
+      {
+        "title": "Products",
+        "links": [
+          { "label": "Anti-Aging Collection", "url": "/anti-aging" },
+          { "label": "Hydrating Serums", "url": "/serums" },
+          { "label": "Daily Moisturizers", "url": "/moisturizers" },
+          { "label": "All Products", "url": "/products" }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          { "label": "About Pure Glow", "url": "/about" },
+          { "label": "Careers", "url": "/careers" },
+          { "label": "Press & Media", "url": "/press" },
+          { "label": "Partnerships", "url": "/partnerships" }
+        ]
+      },
+      {
+        "title": "Customer Care",
+        "links": [
+          { "label": "Help Center", "url": "/help" },
+          { "label": "Live Chat", "url": "/chat" },
+          { "label": "Order Tracking", "url": "/track-order" },
+          { "label": "Skin Consultation", "url": "/consultation" }
+        ]
+      }
+    ],
+    "footerLinks": [
+      { "label": "Privacy Policy", "url": "/privacy" },
+      { "label": "Terms of Service", "url": "/terms" },
+      { "label": "Returns", "url": "/returns" }
+    ]
+  },
+  "assets": {
+    "heroImage": "/images/hero-products.jpg",
+    "logoImage": "/images/logo.png",
+    "placeholderImage": "/images/placeholder.jpg"
+  },
+  "seo": {
+    "title": {
+      "en": "Pure Glow Skincare - Transform Your Skin Naturally",
+      "es": "Pure Glow Skincare - Transforma tu Piel Naturalmente"
+    },
+    "description": {
+      "en": "Discover premium, natural skincare products that deliver real results. Shop serums, moisturizers, and treatments for radiant, healthy skin.",
+      "es": "Descubre productos premium y naturales para el cuidado de la piel que brindan resultados reales."
+    },
+    "socialImageUrl": "/images/og-image.jpg"
+  }
+}

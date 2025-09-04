@@ -1,0 +1,453 @@
+import {
+  useProducts as useTagadaProducts,
+  usePluginConfig,
+} from "@tagadapay/plugin-sdk/react";
+import type { Config } from "../types/config";
+
+// Product interfaces based on Tagada SDK structure
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  images: string[];
+  variants: ProductVariant[];
+  brand?: string;
+  tags?: string[];
+  rating?: number;
+  reviewCount?: number;
+  featured?: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ProductVariant {
+  id: string;
+  name: string;
+  description?: string;
+  sku?: string;
+  prices: ProductPrice[];
+  inventory?: {
+    quantity: number;
+    available: boolean;
+  };
+  attributes?: Record<string, string>; // size, color, etc.
+}
+
+export interface ProductPrice {
+  id: string;
+  amount: number;
+  currency: string;
+  originalAmount?: number;
+  type: "one-time" | "recurring";
+  interval?: "monthly" | "yearly";
+}
+
+interface UseProductsOptions {
+  productIds?: string[];
+  categoryId?: string;
+  featured?: boolean;
+  limit?: number;
+  offset?: number;
+}
+
+interface UseProductsReturn {
+  products: Product[];
+  loading: boolean;
+  error: string | null;
+  totalCount: number;
+  hasMore: boolean;
+  refetch: () => Promise<void>;
+}
+
+// Development fallback products with real Tagada IDs for local development
+const FALLBACK_PRODUCTS: Product[] = [
+  {
+    id: "product_4eb82d9586a2",
+    name: "Vitamin C Brightening Serum",
+    description:
+      "A powerful antioxidant serum that brightens skin and reduces dark spots with 20% Vitamin C and hyaluronic acid.",
+    category: "serums",
+    images: ["/images/hero-products.jpg", "/images/product-flat-lay.jpg"],
+    variants: [
+      {
+        id: "variant_98fe0291f733",
+        name: "30ml",
+        description: "Perfect size for daily use",
+        sku: "VCS-30ML",
+        prices: [
+          {
+            id: "price_c3f8c8700537",
+            amount: 4500,
+            currency: "USD",
+            originalAmount: 5000,
+            type: "one-time" as const,
+          },
+        ],
+        inventory: { quantity: 50, available: true },
+        attributes: { size: "30ml", concentration: "20%" },
+      },
+    ],
+    brand: "Pure Glow",
+    tags: ["vitamin-c", "brightening", "antioxidant", "anti-aging"],
+    rating: 4.8,
+    reviewCount: 324,
+    featured: true,
+    createdAt: "2024-01-15T00:00:00Z",
+    updatedAt: "2024-01-15T00:00:00Z",
+  },
+  {
+    id: "product_2fa71c2fa11d",
+    name: "Hyaluronic Acid Moisturizer",
+    description:
+      "Ultra-hydrating moisturizer with multiple types of hyaluronic acid for plump, dewy skin.",
+    category: "moisturizers",
+    images: ["/images/luxury-collection.jpg", "/images/modern-skincare.jpg"],
+    variants: [
+      {
+        id: "variant_713634e30ea2",
+        name: "50ml",
+        description: "Standard size",
+        sku: "HAM-50ML",
+        prices: [
+          {
+            id: "price_128298874137",
+            amount: 3200,
+            currency: "USD",
+            type: "one-time" as const,
+          },
+        ],
+        inventory: { quantity: 75, available: true },
+        attributes: { size: "50ml", type: "day/night" },
+      },
+    ],
+    brand: "Pure Glow",
+    tags: ["hyaluronic-acid", "hydrating", "moisturizer", "plumping"],
+    rating: 4.6,
+    reviewCount: 189,
+    featured: true,
+    createdAt: "2024-01-10T00:00:00Z",
+    updatedAt: "2024-01-10T00:00:00Z",
+  },
+  {
+    id: "product_fc1bd0cfe97a",
+    name: "Gentle Foam Cleanser",
+    description:
+      "A mild, pH-balanced cleanser that removes impurities without stripping the skin barrier.",
+    category: "cleansers",
+    images: ["/images/pink-collection.jpg", "/images/hero-products.jpg"],
+    variants: [
+      {
+        id: "variant_de1562c53fc5",
+        name: "150ml",
+        description: "Pump bottle",
+        sku: "GFC-150ML",
+        prices: [
+          {
+            id: "price_07f865aa19d2",
+            amount: 2400,
+            currency: "USD",
+            type: "one-time" as const,
+          },
+        ],
+        inventory: { quantity: 100, available: true },
+        attributes: { size: "150ml", "pH-level": "5.5" },
+      },
+    ],
+    brand: "Pure Glow",
+    tags: ["cleanser", "gentle", "sensitive-skin", "pH-balanced"],
+    rating: 4.4,
+    reviewCount: 156,
+    featured: true,
+    createdAt: "2024-01-05T00:00:00Z",
+    updatedAt: "2024-01-05T00:00:00Z",
+  },
+  {
+    id: "product_5dee57124c5e",
+    name: "Retinol Renewal Treatment",
+    description:
+      "Advanced retinol formula for anti-aging with bakuchiol for sensitive skin compatibility.",
+    category: "treatments",
+    images: ["/images/modern-skincare.jpg", "/images/luxury-collection.jpg"],
+    variants: [
+      {
+        id: "variant_1327311f4770",
+        name: "30ml",
+        description: "Airless pump bottle",
+        sku: "RRT-30ML",
+        prices: [
+          {
+            id: "price_507c0d0f91e2",
+            amount: 5500,
+            currency: "USD",
+            type: "one-time" as const,
+          },
+        ],
+        inventory: { quantity: 30, available: true },
+        attributes: { size: "30ml", concentration: "0.5%" },
+      },
+    ],
+    brand: "Pure Glow",
+    tags: ["retinol", "anti-aging", "renewal", "bakuchiol"],
+    rating: 4.7,
+    reviewCount: 89,
+    featured: false,
+    createdAt: "2024-01-20T00:00:00Z",
+    updatedAt: "2024-01-20T00:00:00Z",
+  },
+  {
+    id: "product_2447c222eb51",
+    name: "Niacinamide Pore Refining Serum",
+    description:
+      "10% niacinamide serum that minimizes pores and controls oil production.",
+    category: "serums",
+    images: ["/images/product-flat-lay.jpg", "/images/pink-collection.jpg"],
+    variants: [
+      {
+        id: "variant_fab007f53490",
+        name: "30ml",
+        description: "Dropper bottle",
+        sku: "NPS-30ML",
+        prices: [
+          {
+            id: "price_03c35b864d62",
+            amount: 2800,
+            currency: "USD",
+            type: "one-time" as const,
+          },
+        ],
+        inventory: { quantity: 60, available: true },
+        attributes: { size: "30ml", concentration: "10%" },
+      },
+    ],
+    brand: "Pure Glow",
+    tags: ["niacinamide", "pore-minimizing", "oil-control", "serum"],
+    rating: 4.5,
+    reviewCount: 203,
+    featured: false,
+    createdAt: "2024-01-12T00:00:00Z",
+    updatedAt: "2024-01-12T00:00:00Z",
+  },
+];
+
+export const useProducts = (
+  options: UseProductsOptions = {}
+): UseProductsReturn => {
+  const { config, loading: configLoading } = usePluginConfig<Config>();
+
+  // Use the REAL Tagada SDK useProducts hook as team described!
+  // "useProducts() return the whole data tree product > variants > prices"
+  const sdkProductsResult = useTagadaProducts({
+    enabled: true,
+    includeVariants: true,
+    includePrices: true,
+});
+
+  console.log("🎉 Using REAL Tagada SDK useProducts hook (team guidance)!");
+  console.log("  - Config loading:", configLoading);
+  console.log("  - Config object:", config);
+  console.log("  - Config productIds:", config?.productIds);
+  console.log("  - SDK products result FULL OBJECT:", sdkProductsResult);
+  console.log("  - SDK products result keys:", Object.keys(sdkProductsResult || {}));
+  console.log("  - SDK products data:", sdkProductsResult?.products || sdkProductsResult?.data);
+  console.log("  - SDK products loading:", sdkProductsResult?.loading || sdkProductsResult?.isLoading);
+  console.log("  - SDK products error:", sdkProductsResult?.error);
+  
+  // Handle errors with fallback
+  if (sdkProductsResult?.error) {
+    console.warn("🚨 USING MOCK/FALLBACK PRODUCTS (SDK error):", sdkProductsResult.error);
+    console.warn("🔄 This means you're seeing FAKE data, not real products from Tagada");
+    
+    return {
+      products: FALLBACK_PRODUCTS.map(product => ({
+        ...product,
+        name: `[MOCK] ${product.name}`, // Add MOCK prefix
+        description: `🔄 MOCK DATA: ${product.description}`,
+      })),
+      loading: configLoading,
+      error: null,
+      totalCount: FALLBACK_PRODUCTS.length,
+      hasMore: false,
+      refetch: async () => {},
+    };
+  }
+
+  // Get products from config
+  const configProductIds = config?.productIds || [];
+  console.log("  - Product IDs from config:", configProductIds);
+
+  // For now, let's see what the SDK returns and use fallback temporarily
+  // until we get real products in the store
+  if (configProductIds.length === 0) {
+    console.warn("⚠️ No product IDs in config, using fallback");
+    
+    return {
+      products: FALLBACK_PRODUCTS,
+      loading: configLoading,
+      error: null,
+      totalCount: FALLBACK_PRODUCTS.length,
+      hasMore: false,
+      refetch: async () => {},
+    };
+  }
+
+  // TODO: Once we have real products in the Tagada store, we'll filter by configProductIds
+  // For now, use fallback data but with correct structure
+  console.log("✅ CONFIG LOADED: Using product IDs structure (fallback data for now)");
+  console.log("🎯 Waiting for real products to be added to Tagada store");
+
+  // Map config product IDs to our fallback data for now
+  const products: Product[] = configProductIds.map((productId, index) => {
+    const fallbackProduct = FALLBACK_PRODUCTS[index % FALLBACK_PRODUCTS.length];
+    return {
+      ...fallbackProduct,
+      id: productId, // Use the actual product ID from config
+      name: fallbackProduct.name, // Keep original names (no MOCK prefix since config works)
+      description: fallbackProduct.description,
+    };
+  });
+
+  // Apply filters (keeping existing logic)
+  let filteredProducts = [...products];
+
+  if (options.productIds && options.productIds.length > 0) {
+    filteredProducts = filteredProducts.filter((product) =>
+      options.productIds!.includes(product.id)
+    );
+  }
+
+  if (options.categoryId) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.category === options.categoryId
+    );
+  }
+
+  if (options.featured !== undefined) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.featured === options.featured
+    );
+  }
+
+  // Apply pagination
+  const offset = options.offset || 0;
+  const limit = options.limit || filteredProducts.length;
+  const paginatedProducts = filteredProducts.slice(offset, offset + limit);
+
+  const totalCount = filteredProducts.length;
+  const hasMore = offset + paginatedProducts.length < totalCount;
+
+  console.log("🎯 Final products array:", paginatedProducts);
+  console.log("✅ SUCCESS: Using structured product IDs from config!");
+  console.log("🎉 Product IDs:", paginatedProducts.map(p => p.id));
+
+  return {
+    products: paginatedProducts,
+    loading: configLoading,
+    error: sdkProductsResult?.error || null,
+    totalCount,
+    hasMore,
+    refetch: async () => {
+      // SDK handles refetching automatically
+    },
+  };
+};
+
+// Helper function to get product info from productKey
+const getProductInfo = (productKey: string) => {
+  const productInfoMap: Record<string, {
+    name: string;
+    description: string;
+    category: string;
+    images: string[];
+    tags: string[];
+    rating: number;
+    reviewCount: number;
+    featured: boolean;
+  }> = {
+    vitamin_c_serum: {
+      name: "Vitamin C Brightening Serum",
+      description: "A powerful antioxidant serum that brightens skin and reduces dark spots with 20% Vitamin C.",
+      category: "serums",
+      images: ["/images/hero-products.jpg", "/images/product-flat-lay.jpg"],
+      tags: ["vitamin-c", "brightening", "antioxidant", "anti-aging"],
+      rating: 4.8,
+      reviewCount: 324,
+      featured: true,
+    },
+    moisturizer: {
+      name: "Hyaluronic Acid Moisturizer",
+      description: "Ultra-hydrating moisturizer with multiple types of hyaluronic acid for plump, dewy skin.",
+      category: "moisturizers",
+      images: ["/images/luxury-collection.jpg", "/images/modern-skincare.jpg"],
+      tags: ["hyaluronic-acid", "hydrating", "moisturizer", "plumping"],
+      rating: 4.6,
+      reviewCount: 189,
+      featured: true,
+    },
+    cleanser: {
+      name: "Gentle Foam Cleanser",
+      description: "A mild, pH-balanced cleanser that removes impurities without stripping the skin barrier.",
+      category: "cleansers",
+      images: ["/images/pink-collection.jpg", "/images/hero-products.jpg"],
+      tags: ["cleanser", "gentle", "sensitive-skin", "pH-balanced"],
+      rating: 4.4,
+      reviewCount: 156,
+      featured: true,
+    },
+    retinol_treatment: {
+      name: "Retinol Renewal Treatment",
+      description: "Advanced retinol formula for anti-aging with bakuchiol for sensitive skin compatibility.",
+      category: "treatments",
+      images: ["/images/modern-skincare.jpg", "/images/luxury-collection.jpg"],
+      tags: ["retinol", "anti-aging", "renewal", "bakuchiol"],
+      rating: 4.7,
+      reviewCount: 89,
+      featured: false,
+    },
+    niacinamide_serum: {
+      name: "Niacinamide Pore Refining Serum",
+      description: "10% niacinamide serum that minimizes pores and controls oil production.",
+      category: "serums",
+      images: ["/images/product-flat-lay.jpg", "/images/pink-collection.jpg"],
+      tags: ["niacinamide", "pore-minimizing", "oil-control", "serum"],
+      rating: 4.5,
+      reviewCount: 203,
+      featured: false,
+    },
+  };
+
+  return productInfoMap[productKey] || {
+    name: `Product ${productKey}`,
+    description: "Premium skincare product",
+    category: "unknown",
+    images: ["/images/placeholder.jpg"],
+    tags: [],
+    rating: 4.0,
+    reviewCount: 0,
+    featured: false,
+  };
+};
+
+// Helper hook to get a single product by ID
+export const useProduct = (productId: string) => {
+  const { products, loading, error, refetch } = useProducts({
+    productIds: [productId],
+  });
+
+  return {
+    product: products[0] || null,
+    loading,
+    error,
+    refetch,
+  };
+};
+
+// Helper hook to get featured products
+export const useFeaturedProducts = (limit?: number) => {
+  return useProducts({ featured: true, limit });
+};
+
+// Helper hook to get products by category
+export const useProductsByCategory = (categoryId: string, limit?: number) => {
+  return useProducts({ categoryId, limit });
+};

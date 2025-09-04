@@ -1,0 +1,22 @@
+{
+  "name": "Skincare Store Plugin",
+  "pluginId": "skincare-store",
+  "description": "Fully customizable skincare e-commerce store with cart management and checkout integration",
+  "version": "1.0.0",
+  "author": "Tagada Team",
+  "mode": "direct-mode",
+  "category": "store",
+  "tags": [
+    "skincare",
+    "ecommerce",
+    "store",
+    "cart",
+    "checkout",
+    "configurable"
+  ],
+  "router": {
+    "basePath": "/",
+    "matcher": ".*",
+    "excluder": "/checkout"
+  }
+}

@@ -1,0 +1,348 @@
+@import "tailwindcss";
+
+/* CSS Custom Properties for Dynamic Theming */
+:root {
+  --color-primary: #10B981; /* Default teal */
+  --color-secondary: #3B82F6; /* Default blue */
+  --color-primary-light: #34D399;
+  --color-primary-dark: #059669;
+  --color-secondary-light: #60A5FA;
+  --color-secondary-dark: #2563EB;
+}
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  body {
+    @apply bg-white text-gray-900;
+  }
+}
+
+@layer components {
+  /* Button Variants - Using CSS Custom Properties */
+  .btn-primary {
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    @apply text-white px-8 py-3 rounded-full font-medium text-sm tracking-wide transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(to right, var(--color-primary-dark), var(--color-secondary-dark));
+  }
+  
+  .btn-secondary {
+    @apply bg-white px-8 py-3 rounded-full font-medium text-sm tracking-wide border-2 transition-all duration-300 shadow-md hover:shadow-lg;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+  
+  .btn-secondary:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 10%, white);
+    border-color: var(--color-primary-dark);
+  }
+
+  /* Card Variants */
+  .feature-card {
+    @apply bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .cart-item-card {
+    @apply bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-300 border;
+    border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  }
+  
+  .benefit-card {
+    @apply text-center space-y-3 p-4 rounded-xl transition-colors duration-300;
+  }
+  
+  .benefit-card:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 5%, white);
+  }
+  
+  .ingredient-card {
+    @apply bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .category-card {
+    @apply text-center space-y-4 p-4 rounded-xl hover:bg-white/80 transition-colors duration-300 cursor-pointer;
+  }
+  
+  .collection-card {
+    @apply relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105;
+  }
+
+  /* Icons */
+  .icon-container {
+    @apply w-12 h-12 rounded-full flex items-center justify-center mb-4 mx-auto transition-colors duration-300;
+    background-color: color-mix(in srgb, var(--color-primary) 15%, white);
+  }
+  
+  .icon-container:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 25%, white);
+  }
+  
+  .icon-container-lg {
+    @apply w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto transition-colors duration-300;
+    background-color: color-mix(in srgb, var(--color-primary) 15%, white);
+  }
+  
+  .icon-container-lg:hover {
+    background-color: color-mix(in srgb, var(--color-primary) 25%, white);
+  }
+  
+  .floating-element {
+    @apply absolute w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Typography */
+  .section-title {
+    @apply text-3xl md:text-4xl font-light text-gray-800 mb-6 leading-tight;
+  }
+  
+  .section-subtitle {
+    @apply text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed;
+  }
+  
+  .feature-text {
+    @apply text-xs font-medium text-gray-800 leading-tight whitespace-pre-line;
+  }
+  
+  .ingredient-title {
+    @apply text-lg font-medium text-gray-800 mb-3 transition-colors duration-300;
+  }
+  
+  .ingredient-title:hover {
+    color: var(--color-primary);
+  }
+  
+  .category-title {
+    @apply text-sm font-medium text-gray-800 transition-colors duration-300;
+  }
+  
+  .category-title:hover {
+    color: var(--color-primary);
+  }
+  
+  .category-icon {
+    @apply w-12 h-12 rounded-full mb-3 mx-auto transition-colors duration-300;
+  }
+  
+  .collection-title {
+    @apply text-xl font-light text-white mb-2;
+  }
+  
+  .collection-subtitle {
+    @apply text-sm text-white/90;
+  }
+  
+  .collection-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-between p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+  }
+  
+  .collection-content {
+    @apply mt-auto;
+  }
+  
+  .collection-arrow {
+    @apply self-end;
+  }
+
+  /* Form Elements */
+  .newsletter-input {
+    @apply flex-1 px-4 py-3 rounded-full border-0 bg-white/20 backdrop-blur-sm text-white placeholder-white/70 focus:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/50;
+  }
+  
+  .newsletter-button {
+    @apply px-8 py-3 bg-white rounded-full font-medium hover:bg-white/90 transition-colors duration-200;
+    color: var(--color-primary);
+  }
+
+  /* Links */
+  .footer-link {
+    @apply text-gray-400 hover:text-white transition-colors duration-200 text-sm;
+  }
+  
+  .social-icon {
+    @apply w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors duration-200 cursor-pointer;
+  }
+
+  /* Shadows */
+  .shadow-primary-lg {
+    box-shadow: 0 20px 25px -5px color-mix(in srgb, var(--color-primary) 10%, transparent), 
+                0 10px 10px -5px color-mix(in srgb, var(--color-primary) 4%, transparent);
+  }
+
+  /* Dynamic Tailwind-style classes using CSS custom properties */
+  .text-primary {
+    color: var(--color-primary);
+  }
+  
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+  
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+  
+  .bg-secondary {
+    background-color: var(--color-secondary);
+  }
+  
+  .border-primary {
+    border-color: var(--color-primary);
+  }
+  
+  .border-secondary {
+    border-color: var(--color-secondary);
+  }
+
+  .bg-primary-50 {
+    background-color: color-mix(in srgb, var(--color-primary) 5%, white);
+  }
+
+  .bg-primary-100 {
+    background-color: color-mix(in srgb, var(--color-primary) 15%, white);
+  }
+
+  .bg-primary-200 {
+    background-color: color-mix(in srgb, var(--color-primary) 25%, white);
+  }
+
+  .bg-primary-300 {
+    background-color: color-mix(in srgb, var(--color-primary) 35%, white);
+  }
+
+  .border-primary-100 {
+    border-color: color-mix(in srgb, var(--color-primary) 15%, white);
+  }
+
+  .border-primary-200 {
+    border-color: color-mix(in srgb, var(--color-primary) 25%, white);
+  }
+
+  .border-primary-300 {
+    border-color: color-mix(in srgb, var(--color-primary) 35%, white);
+  }
+
+  .bg-secondary-50 {
+    background-color: color-mix(in srgb, var(--color-secondary) 5%, white);
+  }
+
+  /* Gradient color stops */
+  .from-primary {
+    --tw-gradient-from: var(--color-primary) var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  }
+
+  /* Special BOGO banner with guaranteed contrast */
+  .bogo-banner {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: white !important;
+  }
+
+  .bogo-banner * {
+    color: white !important;
+  }
+
+  .bogo-banner .text-white\/90 {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .bogo-banner .text-white\/30 {
+    color: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  .from-primary-50 {
+    --tw-gradient-from: color-mix(in srgb, var(--color-primary) 5%, white) var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  }
+
+  .via-secondary-50 {
+    --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), color-mix(in srgb, var(--color-secondary) 5%, white) var(--tw-gradient-via-position), var(--tw-gradient-to);
+  }
+
+  .to-primary {
+    --tw-gradient-to: var(--color-primary) var(--tw-gradient-to-position);
+  }
+
+  .to-primary-50 {
+    --tw-gradient-to: color-mix(in srgb, var(--color-primary) 5%, white) var(--tw-gradient-to-position);
+  }
+
+  .to-secondary {
+    --tw-gradient-to: var(--color-secondary) var(--tw-gradient-to-position);
+  }
+
+  .to-secondary-50 {
+    --tw-gradient-to: color-mix(in srgb, var(--color-secondary) 5%, white) var(--tw-gradient-to-position);
+  }
+
+  .hover\:bg-primary:hover {
+    background-color: var(--color-primary);
+  }
+
+  .hover\:bg-primary-600:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .hover\:text-primary:hover {
+    color: var(--color-primary);
+  }
+
+  /* Additional background colors with transparency */
+  .bg-primary\/40 {
+    background-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  }
+
+  .bg-secondary\/40 {
+    background-color: color-mix(in srgb, var(--color-secondary) 40%, transparent);
+  }
+
+  .bg-primary\/30 {
+    background-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  }
+
+  .bg-primary\/20 {
+    background-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  }
+
+  /* Ring colors */
+  .ring-primary {
+    --tw-ring-color: var(--color-primary);
+  }
+
+  /* Hero section background with guaranteed light tint */
+  .hero-background {
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, var(--color-primary) 8%, white) 0%, 
+      color-mix(in srgb, var(--color-secondary) 6%, white) 50%, 
+      color-mix(in srgb, var(--color-primary) 8%, white) 100%
+    );
+  }
+}
+
+@layer utilities {
+  .animate-draw {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: draw 2s ease-in-out forwards;
+  }
+  
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
