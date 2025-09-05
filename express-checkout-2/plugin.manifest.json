@@ -1,0 +1,28 @@
+{
+  "name": "Lavish Ivy Plugin",
+  "pluginId": "lavish-ivy-template",
+  "description": "A checkout experience for Lavish Ivy",
+  "version": "1.0.0",
+  "author": "TagadaPay Team",
+  "mode": "direct-mode",
+  "category": "ecommerce",
+  "tags": ["lavish-ivy", "checkout", "ecommerce", "payment"],
+  "router": {
+    "basePath": "/",
+    "matcher": ".*",
+    "excluder": null
+  },
+  "features": {
+    "googleAutocomplete": true,
+    "paymentProcessing": true,
+    "orderConfirmation": true,
+    "responsiveDesign": true,
+    "configurationSystem": true
+  },
+  "requirements": {
+    "sdk": "^2.1.0",
+    "environment": {
+      "VITE_GOOGLE_MAPS_API_KEY": "required"
+    }
+  }
+}

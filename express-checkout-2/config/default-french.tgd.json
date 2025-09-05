@@ -1,0 +1,177 @@
+{
+  "configName": "default-french",
+  "metadata": {
+    "title": "Tagada - Paiement Express",
+    "description": "Finalisez votre achat avec notre processus de paiement express sécurisé et rapide. Achetez les dernières tendances mode en toute confiance.",
+    "keywords": [
+      "mode",
+      "paiement",
+      "achat",
+      "express",
+      "sécurisé",
+      "robe",
+      "vêtements"
+    ]
+  },
+  "defaultCurrency": "USD",
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": true
+  },
+  "alert": {
+    "title": "Cette robe exacte est tendance — plus de 300 femmes l'ont achetée aujourd'hui.",
+    "subtitle": "Passez commande maintenant avant que votre taille ne soit en rupture."
+  },
+  "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow",
+  "routes": {
+    "basePath": "/"
+  },
+  "logo": "/logo.png",
+  "texts": {
+    "header": {
+      "logoAlt": "Tagada"
+    },
+    "orderSummary": {
+      "title": "Récapitulatif de la commande",
+      "subtotal": "Sous-total",
+      "shipping": "Livraison",
+      "shippingFree": "Gratuit",
+      "total": "Total",
+      "discount": {
+        "placeholder": "Code promo",
+        "apply": "Appliquer",
+        "applying": "Application...",
+        "remove": "Supprimer",
+        "removing": "Suppression...",
+        "appliedLabelSuffix": " - Remise appliquée"
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "emailPlaceholder": "E-mail"
+    },
+    "delivery": {
+      "title": "Livraison",
+      "countryLabel": "Pays/Région",
+      "firstNameLabel": "Prénom",
+      "lastNameLabel": "Nom",
+      "addressLabel": "Adresse",
+      "addressPlaceholder": "Commencez à saisir votre adresse...",
+      "addressSelectCountryFirst": "Veuillez d'abord sélectionner un pays",
+      "address2Placeholder": "Appartement, suite, etc. (facultatif)",
+      "cityPlaceholder": "Ville",
+      "statePlaceholder": "État/Province",
+      "postalPlaceholder": "Code postal",
+      "phonePlaceholder": "Téléphone",
+      "phoneTooltip": "Au cas où nous aurions besoin de vous contacter concernant votre commande"
+    },
+    "shippingMethod": {
+      "title": "Méthode d'expédition",
+      "subtitle": "Saisissez votre adresse de livraison pour voir les méthodes disponibles."
+    },
+    "payment": {
+      "title": "Carte bancaire",
+      "cardNumberPlaceholder": "Numéro de carte",
+      "expiryPlaceholder": "Date d'expiration (MM / AA)",
+      "cvcPlaceholder": "Cryptogramme visuel",
+      "cvcTooltip": "Code de sécurité à 3 chiffres au dos de la carte. Les cartes American Express ont un code à 4 chiffres à l'avant.",
+      "useShippingAsBilling": "Utiliser l'adresse de livraison comme adresse de facturation",
+      "billingTitle": "Adresse de facturation",
+      "billing": {
+        "countryLabel": "Pays/Région",
+        "firstNameLabel": "Prénom",
+        "lastNameLabel": "Nom",
+        "addressLabel": "Adresse",
+        "addressPlaceholder": "Commencez à saisir votre adresse...",
+        "addressSelectCountryFirst": "Veuillez d'abord sélectionner un pays",
+        "address2Placeholder": "Appartement, suite, etc. (facultatif)",
+        "cityPlaceholder": "Ville",
+        "statePlaceholder": "État/Province",
+        "postalPlaceholder": "Code postal",
+        "phonePlaceholder": "Téléphone",
+        "phoneTooltip": "Au cas où nous aurions besoin de vous contacter concernant votre commande"
+      }
+    }
+  },
+  "terms": {
+    "title": "TAGADA CLUB® CONDITIONS & SERVICES",
+    "paragraphFirst": "En profitant de cette offre, vous serez inscrit à notre programme exclusif Tagada Club. Le Tagada Club est un programme exclusif qui vous offre :",
+    "paragraphEnd": "Vous serez facturé 29,99 $ par mois jusqu'à annulation. Si vous ne souhaitez pas continuer le Tagada Club après la période d'introduction ou si vous souhaitez annuler le Tagada Club à tout moment, vous pouvez le faire en remplissant le formulaire d'annulation d'adhésion sur notre site Web, en nous envoyant un e-mail, ou en remplissant le formulaire sur notre site au moins 3 jours avant la prochaine période de facturation avec votre nom complet et l'adresse e-mail et postale associées à votre utilisation du service.",
+    "bullets": [
+      "Accès à des tarifs VIP sur tous les produits du site",
+      "Accès aux produits tendance via le portail Tagada",
+      "Livraison gratuite sur toutes les commandes du portail Tagada",
+      "Garantie du prix le plus bas sur toutes les commandes du portail VIP",
+      "Support client prioritaire 24/7"
+    ]
+  },
+  "footerLinks": {
+    "refundPolicy": {
+      "text": "Politique de remboursement",
+      "href": "#"
+    },
+    "shipping": {
+      "text": "Livraison",
+      "href": "#"
+    },
+    "privacyPolicy": {
+      "text": "Politique de confidentialité",
+      "href": "#"
+    },
+    "termsOfService": {
+      "text": "Conditions d'utilisation",
+      "href": "#"
+    },
+    "cancellations": {
+      "text": "Annulations",
+      "href": "#"
+    },
+    "contact": {
+      "text": "Contact",
+      "href": "#"
+    }
+  },
+  "customerReviews": [
+    {
+      "name": "Jessica Giudice",
+      "review": "Faire ses achats chez Tagada est un plaisir ! La qualité est excellente, avec des finitions soignées et aucune odeur étrange. Le taillant est parfait — je mesure 175 cm avec un 75E, et tout me va parfaitement. Un excellent service et une attention aux détails rendent chaque commande spéciale."
+    },
+    {
+      "name": "Megan Miller",
+      "review": "J'ai porté ma robe Tagada Midi Dress de Tagada pour une soirée à Sorrente et je me suis sentie incroyable. La qualité et la coupe étaient parfaites, montrant pourquoi Tagada est mon magasin de référence. J'ai reçu plein de compliments !"
+    },
+    {
+      "name": "Carly Scarpati",
+      "review": "Une robe si magnifique de Tagada—j'en suis obsédée ! 🤩 La qualité et la coupe en font ma nouvelle favorite."
+    },
+    {
+      "name": "Brooke Spinelle",
+      "review": "J'étais nerveuse de commander en ligne, mais Tagada a livré à tous les niveaux. L'expédition était plus rapide que prévu, et la robe était magnifique. Le tissu semblait haut de gamme, et la coupe était parfaite—ajustée mais respirante. J'ai vu des gens dire que le shopping en ligne peut être délicat, mais si vous prenez vos mesures et vérifiez le tableau des tailles comme je l'ai fait, vous serez parfaitement équipée ! La robe m'a fait me sentir si confiante, et j'ai même contacté leur support pour des informations de suivi—ils ont répondu super rapidement et étaient vraiment sympas. Je commanderai définitivement ici encore !"
+    },
+    {
+      "name": "Caroline Durkin",
+      "review": "J'ai fait mes achats chez Tagada plusieurs fois maintenant, et je continue à revenir parce que leurs robes me font me sentir si confiante et élégante. Les designs sont élégants, et les matériaux semblent incroyables pour le prix. Mon achat le plus récent—une robe maxi fluide appelée la Robe Maxi Rosalind—était parfaite pour mon dîner d'anniversaire. Elle m'allait comme un gant et était encore plus belle en personne. Je recommande toujours Tagada à mes copines. J'ai hâte d'en ajouter plus à ma collection !"
+    },
+    {
+      "name": "Madi Kemberly",
+      "review": "Les filles, Tagada c'est ÇA. Je voyais leurs publicités partout et j'ai finalement cédé pendant leur vente. J'ai eu deux robes pour le prix d'une robe ailleurs, et elles étaient toutes les deux parfaites pour mon style—sexy mais toujours classe. J'en ai porté une pour un rendez-vous galant, et disons simplement que mon petit ami était sans voix. 😂 L'expédition n'était pas aussi rapide qu'Amazon, mais les mises à jour de suivi ont rendu la planification facile. Ça vaut chaque centime !"
+    },
+    {
+      "name": "Alexa Laws",
+      "review": "J'avais peur que la robe ne ressemble pas à la photo à cause de certaines critiques, mais elle était littéralement identique. La couleur, la coupe et le style étaient parfaits—si contente d'avoir fait confiance à mon instinct et commandé. Juste pour que quiconque lise le sache, j'ai commandé la Robe Mini Noir ! Celle avec le nœud papillon à l'arrière. Je recommande fortement celle-ci."
+    },
+    {
+      "name": "Anne Marie Miller",
+      "review": "Ok, laissez-moi juste dire que Tagada a complètement amélioré ma garde-robe. J'étais fatiguée de porter les mêmes tenues ennuyeuses, et leurs robes ont ajouté tellement de variété à mon placard. Ma préférée jusqu'à présent est la Robe Mini Selena qui m'va comme un gant. Et ne me lancez même pas sur leur service client—si utile et gentil !!! Si vous hésitez à commander, faites-le simplement."
+    },
+    {
+      "name": "Olivia Schmitt",
+      "review": "Je laisse rarement des critiques, mais Tagada mérite la reconnaissance. J'avais besoin d'une robe pour le dîner de fiançailles de ma sœur et je suis tombée sur leur site web pendant une session de scroll nocturne. Les prix semblaient presque suspectement bas, mais les designs étaient magnifiques. Après quelques délibérations, j'ai décidé de tenter ma chance—et je suis si contente de l'avoir fait.\n\nLe processus de commande était simple, et leurs mises à jour m'ont rassurée pendant l'attente. La robe est arrivée en environ deux semaines, et j'ai été époustouflée par son élégance. La couleur était riche, la coupe était parfaite, et les détails la faisaient paraître beaucoup plus chère qu'elle ne l'était. J'ai même comparé avec une robe similaire que j'ai vue dans une boutique pour quatre fois le prix, et honnêtement, la version de Tagada était meilleure.\n\nJ'étais si impressionnée que j'ai passé une autre commande pour deux robes supplémentaires peu après. L'une d'elles avait besoin d'un léger ajustement des bretelles, mais leur équipe de service client était si accommodante. Ils ont offert de couvrir le coût de la couture ou d'envoyer un remplacement. J'ai opté pour la couture, et c'était parfait.\n\nTagada est rapidement devenu mon choix pour les occasions spéciales. J'ai déjà recommandé à mes sœurs et amies, et maintenant mon placard se remplit de leurs pièces magnifiques et abordables."
+    },
+    {
+      "name": "Jamie O'Brien",
+      "review": "J'ai eu un petit problème avec ma première commande parce que la taille que j'avais choisie était en rupture de stock, mais leur équipe m'a envoyé un e-mail tout de suite et a offert un remplacement. La nouvelle robe a été expédiée super rapidement, et elle est en fait plus mignonne que celle que j'avais commandée à l'origine. J'apprécie vraiment comment ils ont géré tout—c'est rare de trouver des magasins en ligne qui se soucient vraiment !"
+    }
+  ]
+}
