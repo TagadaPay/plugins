@@ -1,0 +1,171 @@
+{
+  "configName": "default",
+  "logoUrl": "/logo.png",
+  "companyName": "Tagada",
+  "discountPercentage": 55,
+  "disclaimer": "* By filling out the field, you consent for Tagada to use automated technology, including texts and prerecorded messages, to contact you at the number and email provided about our products offers.",
+  "header": {
+    "contactUsLabel": "Contact Us:",
+    "sslBadgeText": "SSL SECURE"
+  },
+  "texts": {
+    "discountApplied": "Your {discount}% OFF Discount Has Been Applied",
+    "bulkDiscountNotice": "Your Order Qualifies for Bulk Discount.",
+    "countryHelp": "Please select your country first. This will enable address autocomplete and ensure accurate shipping options.",
+    "paymentSecure": "All transactions are secure and encrypted with 256-bit SSL."
+  },
+  "steps": {
+    "step1Title": "STEP 1: SELECT ORDER QUANTITY",
+    "step2Title": "STEP 2: CONTACT INFORMATION",
+    "step3Title": "STEP 3: SHIPPING INFORMATION",
+    "step4Title": "STEP 4: PAYMENT METHOD",
+    "step5Title": "STEP 5: ORDER SUMMARY"
+  },
+  "placeholders": {
+    "firstName": "Enter your first name",
+    "lastName": "Enter your last name",
+    "email": "Enter your email address",
+    "phone": "Enter your phone number",
+    "address1WhenCountrySelected": "Start typing your address...",
+    "address1WhenNoCountry": "Please select country first",
+    "address2": "Apartment, suite, etc.",
+    "city": "Enter city",
+    "stateSelect": "Select State/Province",
+    "stateInputWhenCountrySelected": "Enter state/province",
+    "stateInputWhenNoCountry": "Select country first",
+    "postal": "Zip / Postcode*",
+    "cardNumber": "Card number*",
+    "expiryDate": "MM/YY*",
+    "cvc": "CVC*"
+  },
+  "labels": {
+    "requiredFieldNote": "* Required fields",
+    "bestSelling": "BEST SELLING",
+    "bestValue": "BEST VALUE",
+    "each": "Each",
+    "starterDoseOnly": "⚠️ Starter dose only",
+    "cardMethod": "Credit/Debit Card",
+    "faqSectionTitle": "Frequently Asked Questions",
+    "noItemsInCart": "No items in cart",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "product": "Product"
+  },
+  "buttons": {
+    "payCta": "YES! Send Me My Products",
+    "processingPayment": "Processing Payment..."
+  },
+  "variants": {
+    "regular": "variant_80a5c1f6946c",
+    "bogo": "variant_380a8ba68623",
+    "special": "variant_dd4734a5c9fa"
+  },
+  "prices": {
+    "variant_80a5c1f6946c": "price_d147d7384fb8",
+    "variant_380a8ba68623": "price_8ab3d5972d23",
+    "variant_dd4734a5c9fa": "price_5acdf4b52a8d"
+  },
+  "hero": {
+    "title": "17,294+ Americans Are Flushing Parasites With our products – Try It Risk-Free Today",
+    "imageUrl": "/product-pic.png",
+    "subtitles": [
+      {
+        "strong": "Powered By Ivermectin & Fenbendazole",
+        "text": "Clinically studied ingredients shown to help eliminate parasites, worms, and hidden infections from the body."
+      },
+      {
+        "strong": "Targets Hidden Parasites",
+        "text": "Formulated to support your gut, liver, and immune system while flushing out harmful invaders."
+      },
+      {
+        "strong": "Feel Clean Or It's Free",
+        "text": "Covered By Our 1-Year 'Bottom of the Bottle' Money-Back Guarantee"
+      },
+      {
+        "strong": "Over 145,600 Customers (And Growing)",
+        "text": "Are Reclaiming Their Health With our products"
+      }
+    ]
+  },
+  "faqTitle": "What Customers Are Saying About UAs",
+  "faqs": [
+    {
+      "question": "How many bottles do I need?",
+      "answer": "We recommend starting with at least 3 bottles for a full 30-90 day cleanse. Most customers choose 6 or 9 bottles for extended detox and maintenance support."
+    },
+    {
+      "question": "What is your return policy?",
+      "answer": "We offer a 365-Day Satisfaction Guarantee. If you're not thrilled with your results, return it—even if the bottle is empty—for a full refund."
+    },
+    {
+      "question": "Do I need to cycle your products or take breaks?",
+      "answer": "Nope! Our products are gentle enough for daily use and designed for both short-term flushes and long-term parasite management."
+    },
+    {
+      "question": "How long will it take to receive my order?",
+      "answer": "Your order will ship from our U.S. warehouse and typically arrives within 5-8 business days."
+    },
+    {
+      "question": "How do your products work?",
+      "answer": "Our products use Ivermectin & Fenbendazole, two powerful anti-parasitic compounds that help flush out worms, parasites, and their eggs while supporting gut, immune, and detox health."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Carolyn F",
+      "text": "I am on my second round of 10 days. My dearest friend, who has c*ncer, has also been using your products and is almost finished with her second 10. I decided to try them to go along with her. On day 2 when I started, my arthritis stopped hurting! Cannot remember the last time I didn't hurt. So much more energy, my sinuses are better, and on this round, amazing how much gook has left my body. I also take the liver cleanse with it. Great products!",
+      "imageUrl": "/testimonial/face-4.jpg"
+    },
+    {
+      "name": "Michael K",
+      "text": "I am only on my 4th day of my first week taking your products. I ordered them as I have a blood c*ncer disorder, Myelodysplasia. My skin was constantly breaking out in red blotches. All I know is that on my fourth day, I am seeing unbelievable results, and my energy levels are going up considerably and my skin is clearing up. Thank you!",
+      "imageUrl": "/testimonial/face-3.jpg"
+    },
+    {
+      "name": "Jerry B",
+      "text": "A+ Great service, quick delivery, products are exactly as described, straight forward easy to follow instructions on how to use. 5 days of using your products and feeling a million bucks...",
+      "imageUrl": "/testimonial/face-2.jpg"
+    },
+    {
+      "name": "John R",
+      "text": "After just 10 days of using your products I'm already noticing a significant increase in my energy levels and overall well being.",
+      "imageUrl": "/testimonial/face-1.jpeg"
+    }
+  ],
+  "satisfactionGuarantee": {
+    "strong": "60 DAY SATISFACTION GUARANTEE:",
+    "text": "If you are not completely thrilled with our products - We have a 60 day satisfaction guarantee. Please refer to our return policy at the bottom of the page for more details.Happy Shopping!"
+  },
+  "orderBump": {
+    "title": "🩺 Supercharge My Order with Complete Detox - 50% OFF!",
+    "description": "Customers Detox report clearer thinking, deeper sleep AND faster recovery.",
+    "callToActionText": "👉 Add it now at HALF OFF — only on this page!"
+  },
+  "contactEmail": "three-variants@help.com",
+  "defaultCurrency": "USD",
+  "upsellId": "up_sell_ob_offer_dc8ca035ab89",
+  "footer": {
+    "termsLabel": "Terms & Conditions",
+    "privacyLabel": "Privacy Policy",
+    "returnsLabel": "Returns",
+    "copyright": "© 2024 Tagada. All rights reserved."
+  },
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": true
+  },
+  "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow",
+  "routes": {
+    "basePath": "/"
+  },
+  "thankyou": {
+    "errorTitle": "Order Not Found",
+    "errorDescription": "We could not find the order you are looking for.",
+    "backToCheckoutLabel": "Return to Checkout",
+    "title": "Thank You for Your Order!",
+    "subtitle": "Your order has been confirmed",
+    "itemsOrderedTitle": "Items Ordered",
+    "savePrefix": "Save"
+  }
+}

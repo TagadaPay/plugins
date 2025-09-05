@@ -1,0 +1,171 @@
+{
+  "configName": "french",
+  "logoUrl": "/logo.png",
+  "companyName": "Tagada",
+  "discountPercentage": 55,
+  "disclaimer": "* En remplissant le champ, vous consentez à ce que Tagada utilise une technologie automatisée, y compris des textos et des messages préenregistrés, pour vous contacter au numéro et à l'adresse e-mail fournis concernant nos offres de produits.",
+  "header": {
+    "contactUsLabel": "Nous Contacter :",
+    "sslBadgeText": "SSL SÉCURISÉ"
+  },
+  "texts": {
+    "discountApplied": "Votre Remise de {discount}% a été Appliquée",
+    "bulkDiscountNotice": "Votre Commande Qualifie pour la Remise en Gros.",
+    "countryHelp": "Veuillez d'abord sélectionner votre pays. Cela activera la saisie automatique d'adresse et garantira des options d'expédition précises.",
+    "paymentSecure": "Toutes les transactions sont sécurisées et cryptées avec SSL 256 bits."
+  },
+  "steps": {
+    "step1Title": "ÉTAPE 1 : SÉLECTIONNER LA QUANTITÉ DE COMMANDE",
+    "step2Title": "ÉTAPE 2 : INFORMATIONS DE CONTACT",
+    "step3Title": "ÉTAPE 3 : INFORMATIONS D'EXPÉDITION",
+    "step4Title": "ÉTAPE 4 : MÉTHODE DE PAIEMENT",
+    "step5Title": "ÉTAPE 5 : RÉSUMÉ DE LA COMMANDE"
+  },
+  "placeholders": {
+    "firstName": "Entrez votre prénom",
+    "lastName": "Entrez votre nom de famille",
+    "email": "Entrez votre adresse e-mail",
+    "phone": "Entrez votre numéro de téléphone",
+    "address1WhenCountrySelected": "Commencez à taper votre adresse...",
+    "address1WhenNoCountry": "Veuillez d'abord sélectionner le pays",
+    "address2": "Appartement, suite, etc.",
+    "city": "Entrez la ville",
+    "stateSelect": "Sélectionner État/Province",
+    "stateInputWhenCountrySelected": "Entrez l'état/province",
+    "stateInputWhenNoCountry": "Sélectionnez d'abord le pays",
+    "postal": "Code postal*",
+    "cardNumber": "Numéro de carte*",
+    "expiryDate": "MM/AA*",
+    "cvc": "CVC*"
+  },
+  "labels": {
+    "requiredFieldNote": "* Champs obligatoires",
+    "bestSelling": "MEILLEURE VENTE",
+    "bestValue": "MEILLEUR RAPPORT QUALITÉ-PRIX",
+    "each": "Chaque",
+    "starterDoseOnly": "⚠️ Dose de démarrage uniquement",
+    "cardMethod": "Carte de Crédit/Débit",
+    "faqSectionTitle": "Questions Fréquemment Posées",
+    "noItemsInCart": "Aucun article dans le panier",
+    "subtotal": "Sous-total",
+    "total": "Total",
+    "product": "Produit"
+  },
+  "buttons": {
+    "payCta": "OUI ! Envoyez-moi Mes Produits",
+    "processingPayment": "Traitement du Paiement..."
+  },
+  "variants": {
+    "regular": "variant_80a5c1f6946c",
+    "bogo": "variant_380a8ba68623",
+    "special": "variant_dd4734a5c9fa"
+  },
+  "prices": {
+    "variant_80a5c1f6946c": "price_d147d7384fb8",
+    "variant_380a8ba68623": "price_8ab3d5972d23",
+    "variant_dd4734a5c9fa": "price_5acdf4b52a8d"
+  },
+  "hero": {
+    "title": "17 294+ Américains Éliminent les Parasites avec nos Produits – Essayez Sans Risque Aujourd'hui",
+    "imageUrl": "/product-pic.png",
+    "subtitles": [
+      {
+        "strong": "Alimenté par l'Ivermectine et le Fenbendazole",
+        "text": "Ingrédients cliniquement étudiés qui aident à éliminer les parasites, vers et infections cachées du corps."
+      },
+      {
+        "strong": "Cible les Parasites Cachés",
+        "text": "Formulé pour soutenir votre intestin, foie et système immunitaire tout en éliminant les envahisseurs nuisibles."
+      },
+      {
+        "strong": "Sentez-vous Propre ou C'est Gratuit",
+        "text": "Couvert par Notre Garantie de Remboursement d'1 An 'Fond de Bouteille'"
+      },
+      {
+        "strong": "Plus de 145 600 Clients (Et en Croissance)",
+        "text": "Récupèrent Leur Santé avec nos Produits"
+      }
+    ]
+  },
+  "faqTitle": "Ce que les Clients Disent de nos Produits",
+  "faqs": [
+    {
+      "question": "Combien de bouteilles ai-je besoin ?",
+      "answer": "Nous recommandons de commencer avec au moins 3 bouteilles pour une cure complète de 30-90 jours. La plupart des clients choisissent 6 ou 9 bouteilles pour un soutien de détoxification et d'entretien prolongé."
+    },
+    {
+      "question": "Quelle est votre politique de retour ?",
+      "answer": "Nous offrons une Garantie de Satisfaction de 365 Jours. Si vous n'êtes pas ravi de vos résultats, retournez-le—même si la bouteille est vide—pour un remboursement complet."
+    },
+    {
+      "question": "Dois-je cycler vos produits ou prendre des pauses ?",
+      "answer": "Non ! Nos produits sont assez doux pour un usage quotidien et conçus pour les nettoyages à court terme et la gestion des parasites à long terme."
+    },
+    {
+      "question": "Combien de temps faudra-t-il pour recevoir ma commande ?",
+      "answer": "Votre commande sera expédiée depuis notre entrepôt américain et arrive généralement dans les 5-8 jours ouvrables."
+    },
+    {
+      "question": "Comment vos produits fonctionnent-ils ?",
+      "answer": "Nos produits utilisent l'Ivermectine et le Fenbendazole, deux composés anti-parasitaires puissants qui aident à éliminer les vers, parasites et leurs œufs tout en soutenant la santé intestinale, immunitaire et de détoxification."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Carolyn F",
+      "text": "Je suis à mon deuxième cycle de 10 jours. Ma très chère amie, qui a un c*ncer, utilise aussi vos produits et a presque terminé son deuxième cycle de 10. J'ai décidé de les essayer pour l'accompagner. Le jour 2 quand j'ai commencé, mon arthrite a arrêté de faire mal ! Je ne me souviens pas de la dernière fois où je n'avais pas mal. Beaucoup plus d'énergie, mes sinus vont mieux, et dans ce cycle, c'est incroyable combien de saletés ont quitté mon corps. Je prends aussi le nettoyage du foie avec. Excellents produits !",
+      "imageUrl": "/testimonial/face-4.jpg"
+    },
+    {
+      "name": "Michael K",
+      "text": "Je ne suis qu'au 4ème jour de ma première semaine à prendre vos produits. Je les ai commandés car j'ai un trouble du sang c*ncer, Myélodysplasie. Ma peau était constamment couverte de taches rouges. Tout ce que je sais, c'est qu'au 4ème jour, je vois des résultats incroyables, et mes niveaux d'énergie montent considérablement et ma peau se nettoie. Merci !",
+      "imageUrl": "/testimonial/face-3.jpg"
+    },
+    {
+      "name": "Jerry B",
+      "text": "A+ Excellent service, livraison rapide, produits exactement comme décrits, instructions simples et faciles à suivre sur comment utiliser. 5 jours d'utilisation de vos produits et je me sens au top...",
+      "imageUrl": "/testimonial/face-2.jpg"
+    },
+    {
+      "name": "John R",
+      "text": "Après seulement 10 jours d'utilisation de vos produits, je remarque déjà une augmentation significative de mes niveaux d'énergie et de mon bien-être général.",
+      "imageUrl": "/testimonial/face-1.jpeg"
+    }
+  ],
+  "satisfactionGuarantee": {
+    "strong": "GARANTIE DE SATISFACTION DE 60 JOURS :",
+    "text": "Si vous n'êtes pas complètement ravi de nos produits - Nous avons une garantie de satisfaction de 60 jours. Veuillez vous référer à notre politique de retour en bas de page pour plus de détails. Bon Shopping !"
+  },
+  "orderBump": {
+    "title": "🩺 Superchargez Ma Commande avec la Détoxification Complète - 50% DE RÉDUCTION !",
+    "description": "Les clients de Détox rapportent une pensée plus claire, un sommeil plus profond ET une récupération plus rapide.",
+    "callToActionText": "👉 Ajoutez-le maintenant à MOITIÉ PRIX — seulement sur cette page !"
+  },
+  "contactEmail": "three-variants@help.com",
+  "defaultCurrency": "EUR",
+  "upsellId": "up_sell_ob_offer_dc8ca035ab89",
+  "footer": {
+    "termsLabel": "Conditions Générales",
+    "privacyLabel": "Politique de Confidentialité",
+    "returnsLabel": "Retours",
+    "copyright": "© 2024 Tagada. Tous droits réservés."
+  },
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": true
+  },
+  "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow",
+  "routes": {
+    "basePath": "/"
+  },
+  "thankyou": {
+    "errorTitle": "Commande Non Trouvée",
+    "errorDescription": "Nous n'avons pas pu trouver la commande que vous recherchez.",
+    "backToCheckoutLabel": "Retour à la Caisse",
+    "title": "Merci pour Votre Commande !",
+    "subtitle": "Votre commande a été confirmée",
+    "itemsOrderedTitle": "Articles Commandés",
+    "savePrefix": "Économisez"
+  }
+}

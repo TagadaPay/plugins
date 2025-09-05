@@ -1,0 +1,171 @@
+{
+  "configName": "spanish",
+  "logoUrl": "/logo.png",
+  "companyName": "Tagada",
+  "discountPercentage": 55,
+  "disclaimer": "* Al completar el campo, usted consiente que Tagada use tecnología automatizada, incluyendo mensajes de texto y mensajes pregrabados, para contactarlo en el número y correo electrónico proporcionados sobre nuestras ofertas de productos.",
+  "header": {
+    "contactUsLabel": "Contáctanos:",
+    "sslBadgeText": "SSL SEGURO"
+  },
+  "texts": {
+    "discountApplied": "Su Descuento del {discount}% Ha Sido Aplicado",
+    "bulkDiscountNotice": "Su Pedido Califica para Descuento por Volumen.",
+    "countryHelp": "Por favor seleccione su país primero. Esto habilitará el autocompletado de direcciones y asegurará opciones de envío precisas.",
+    "paymentSecure": "Todas las transacciones están seguras y encriptadas con SSL de 256 bits."
+  },
+  "steps": {
+    "step1Title": "PASO 1: SELECCIONAR CANTIDAD DEL PEDIDO",
+    "step2Title": "PASO 2: INFORMACIÓN DE CONTACTO",
+    "step3Title": "PASO 3: INFORMACIÓN DE ENVÍO",
+    "step4Title": "PASO 4: MÉTODO DE PAGO",
+    "step5Title": "PASO 5: RESUMEN DEL PEDIDO"
+  },
+  "placeholders": {
+    "firstName": "Ingrese su nombre",
+    "lastName": "Ingrese su apellido",
+    "email": "Ingrese su dirección de correo electrónico",
+    "phone": "Ingrese su número de teléfono",
+    "address1WhenCountrySelected": "Comience a escribir su dirección...",
+    "address1WhenNoCountry": "Por favor seleccione el país primero",
+    "address2": "Apartamento, suite, etc.",
+    "city": "Ingrese la ciudad",
+    "stateSelect": "Seleccionar Estado/Provincia",
+    "stateInputWhenCountrySelected": "Ingrese estado/provincia",
+    "stateInputWhenNoCountry": "Seleccione el país primero",
+    "postal": "Código postal*",
+    "cardNumber": "Número de tarjeta*",
+    "expiryDate": "MM/AA*",
+    "cvc": "CVC*"
+  },
+  "labels": {
+    "requiredFieldNote": "* Campos obligatorios",
+    "bestSelling": "MÁS VENDIDO",
+    "bestValue": "MEJOR VALOR",
+    "each": "Cada",
+    "starterDoseOnly": "⚠️ Solo dosis inicial",
+    "cardMethod": "Tarjeta de Crédito/Débito",
+    "faqSectionTitle": "Preguntas Frecuentes",
+    "noItemsInCart": "No hay artículos en el carrito",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "product": "Producto"
+  },
+  "buttons": {
+    "payCta": "¡SÍ! Envíeme Mis Productos",
+    "processingPayment": "Procesando Pago..."
+  },
+  "variants": {
+    "regular": "variant_80a5c1f6946c",
+    "bogo": "variant_380a8ba68623",
+    "special": "variant_dd4734a5c9fa"
+  },
+  "prices": {
+    "variant_80a5c1f6946c": "price_d147d7384fb8",
+    "variant_380a8ba68623": "price_8ab3d5972d23",
+    "variant_dd4734a5c9fa": "price_5acdf4b52a8d"
+  },
+  "hero": {
+    "title": "17,294+ Estadounidenses Están Eliminando Parásitos con Nuestros Productos – Pruébelo Sin Riesgo Hoy",
+    "imageUrl": "/product-pic.png",
+    "subtitles": [
+      {
+        "strong": "Impulsado por Ivermectina y Fenbendazol",
+        "text": "Ingredientes clínicamente estudiados que ayudan a eliminar parásitos, gusanos e infecciones ocultas del cuerpo."
+      },
+      {
+        "strong": "Dirigido a Parásitos Ocultos",
+        "text": "Formulado para apoyar su intestino, hígado y sistema inmunológico mientras elimina invasores dañinos."
+      },
+      {
+        "strong": "Siéntase Limpio o es Gratis",
+        "text": "Cubierto por Nuestra Garantía de Dinero de 1 Año 'Fondo de Botella'"
+      },
+      {
+        "strong": "Más de 145,600 Clientes (Y Creciendo)",
+        "text": "Están Recuperando Su Salud con Nuestros Productos"
+      }
+    ]
+  },
+  "faqTitle": "Lo que los Clientes Dicen sobre Nuestros Productos",
+  "faqs": [
+    {
+      "question": "¿Cuántas botellas necesito?",
+      "answer": "Recomendamos comenzar con al menos 3 botellas para una limpieza completa de 30-90 días. La mayoría de los clientes eligen 6 o 9 botellas para apoyo de desintoxicación y mantenimiento extendido."
+    },
+    {
+      "question": "¿Cuál es su política de devolución?",
+      "answer": "Ofrecemos una Garantía de Satisfacción de 365 Días. Si no está encantado con sus resultados, devuélvalo—incluso si la botella está vacía—para un reembolso completo."
+    },
+    {
+      "question": "¿Necesito ciclar sus productos o tomar descansos?",
+      "answer": "¡No! Nuestros productos son lo suficientemente suaves para uso diario y diseñados para limpiezas a corto plazo y manejo de parásitos a largo plazo."
+    },
+    {
+      "question": "¿Cuánto tiempo tomará recibir mi pedido?",
+      "answer": "Su pedido será enviado desde nuestro almacén estadounidense y típicamente llega dentro de 5-8 días hábiles."
+    },
+    {
+      "question": "¿Cómo funcionan sus productos?",
+      "answer": "Nuestros productos usan Ivermectina y Fenbendazol, dos compuestos antiparasitarios poderosos que ayudan a eliminar gusanos, parásitos y sus huevos mientras apoyan la salud intestinal, inmunológica y de desintoxicación."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Carolyn F",
+      "text": "Estoy en mi segunda ronda de 10 días. Mi querida amiga, que tiene c*ncer, también ha estado usando sus productos y casi termina su segundo ciclo de 10. Decidí probarlos para acompañarla. El día 2 cuando empecé, ¡mi artritis dejó de doler! No recuerdo la última vez que no me dolía. Mucha más energía, mis senos nasales están mejor, y en esta ronda, es increíble cuánta suciedad ha salido de mi cuerpo. También tomo la limpieza del hígado con él. ¡Excelentes productos!",
+      "imageUrl": "/testimonial/face-4.jpg"
+    },
+    {
+      "name": "Michael K",
+      "text": "Solo estoy en mi día 4 de mi primera semana tomando sus productos. Los pedí porque tengo un trastorno de sangre c*ncer, Mielodisplasia. Mi piel estaba constantemente brotando en manchas rojas. Todo lo que sé es que en mi día 4, estoy viendo resultados increíbles, y mis niveles de energía están subiendo considerablemente y mi piel se está limpiando. ¡Gracias!",
+      "imageUrl": "/testimonial/face-3.jpg"
+    },
+    {
+      "name": "Jerry B",
+      "text": "A+ Excelente servicio, entrega rápida, productos exactamente como se describen, instrucciones directas y fáciles de seguir sobre cómo usar. 5 días usando sus productos y sintiéndome de maravilla...",
+      "imageUrl": "/testimonial/face-2.jpg"
+    },
+    {
+      "name": "John R",
+      "text": "Después de solo 10 días usando sus productos ya estoy notando un aumento significativo en mis niveles de energía y bienestar general.",
+      "imageUrl": "/testimonial/face-1.jpeg"
+    }
+  ],
+  "satisfactionGuarantee": {
+    "strong": "GARANTÍA DE SATISFACCIÓN DE 60 DÍAS:",
+    "text": "Si no está completamente encantado con nuestros productos - Tenemos una garantía de satisfacción de 60 días. Por favor consulte nuestra política de devolución al final de la página para más detalles. ¡Feliz Compra!"
+  },
+  "orderBump": {
+    "title": "🩺 ¡Sobrecargue Mi Pedido con Desintoxicación Completa - 50% DE DESCUENTO!",
+    "description": "Los clientes de Desintoxicación reportan pensamiento más claro, sueño más profundo Y recuperación más rápida.",
+    "callToActionText": "👉 ¡Agréguelo ahora a MITAD DE PRECIO — solo en esta página!"
+  },
+  "contactEmail": "three-variants@help.com",
+  "defaultCurrency": "EUR",
+  "upsellId": "up_sell_ob_offer_dc8ca035ab89",
+  "footer": {
+    "termsLabel": "Términos y Condiciones",
+    "privacyLabel": "Política de Privacidad",
+    "returnsLabel": "Devoluciones",
+    "copyright": "© 2024 Tagada. Todos los derechos reservados."
+  },
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": true
+  },
+  "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow",
+  "routes": {
+    "basePath": "/"
+  },
+  "thankyou": {
+    "errorTitle": "Pedido No Encontrado",
+    "errorDescription": "No pudimos encontrar el pedido que está buscando.",
+    "backToCheckoutLabel": "Volver al Checkout",
+    "title": "¡Gracias por Su Pedido!",
+    "subtitle": "Su pedido ha sido confirmado",
+    "itemsOrderedTitle": "Artículos Pedidos",
+    "savePrefix": "Ahorre"
+  }
+}

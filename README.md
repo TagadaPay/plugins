@@ -58,6 +58,16 @@ Experience the plugins in action:
 
 > 🎯 **Try the checkout flow** with test card: `4242 4242 4242 4242`, expiry: `12/28`, CVC: `123`
 
+### **Three Variants Plugin** - Multi-Language Health Product Checkout
+
+**Multi-Language Health Product Checkout:**
+
+- **English Version**: [https://hbwcin.cdn.tagadapay.com/](https://hbwcin.cdn.tagadapay.com/)
+- **French Version**: [https://qnhawk.cdn.tagadapay.com/](https://qnhawk.cdn.tagadapay.com/)
+- **Spanish Version**: [https://mi3ztw.cdn.tagadapay.com/](https://mi3ztw.cdn.tagadapay.com/)
+
+> 🎯 **Try the checkout flow** with test card: `4242 4242 4242 4242`, expiry: `12/28`, CVC: `123`
+
 ## 🎯 What's Inside
 
 This repository contains production-ready plugin examples demonstrating how to build custom checkout experiences, landing pages, and interactive components with the TagadaPay V2 platform.
