@@ -1,12 +1,12 @@
 {
-  "name": "Lavish Ivy Plugin",
-  "pluginId": "lavish-ivy-template",
-  "description": "A checkout experience for Lavish Ivy",
+  "name": "Express checkout 2",
+  "pluginId": "express-checkout-2",
+  "description": "An express checkout experience",
   "version": "1.0.0",
   "author": "TagadaPay Team",
   "mode": "direct-mode",
   "category": "ecommerce",
-  "tags": ["lavish-ivy", "checkout", "ecommerce", "payment"],
+  "tags": ["checkout", "ecommerce", "payment"],
   "router": {
     "basePath": "/",
     "matcher": ".*",
