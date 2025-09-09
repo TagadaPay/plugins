@@ -26,6 +26,7 @@ export interface PluginConfig {
   };
   logo: string;
   texts: {
+    name: string;
     header: {
       logoAlt: string;
     };
@@ -89,6 +90,53 @@ export interface PluginConfig {
         phonePlaceholder: string;
         phoneTooltip: string;
       };
+    };
+    thankYou: {
+      title: string;
+      subtitle: string;
+      orderDetails: {
+        title: string;
+        orderNumber: string;
+        orderDate: string;
+        paymentStatus: string;
+        fulfillmentStatus: string;
+        totalPaid: string;
+      };
+      shipping: {
+        title: string;
+        shipTo: string;
+      };
+      billing: {
+        title: string;
+        billTo: string;
+      };
+      customer: {
+        title: string;
+        email: string;
+        phone: string;
+      };
+      nextSteps: {
+        title: string;
+        step1: {
+          title: string;
+          description: string;
+        };
+        step2: {
+          title: string;
+          description: string;
+        };
+        step3: {
+          title: string;
+          description: string;
+        };
+      };
+      support: {
+        title: string;
+        description: string;
+        emailButton: string;
+        phoneButton: string;
+      };
+      continueShopping: string;
     };
   };
   terms: {

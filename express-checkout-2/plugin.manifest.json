@@ -2,15 +2,21 @@
   "name": "Express checkout 2",
   "pluginId": "express-checkout-2",
   "description": "An express checkout experience",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "author": "TagadaPay Team",
   "mode": "direct-mode",
   "category": "ecommerce",
   "tags": ["checkout", "ecommerce", "payment"],
   "router": {
     "basePath": "/",
-    "matcher": ".*",
-    "excluder": null
+    "matcher": "/checkout*",
+    "excluder": "/post*",
+    "entryPoints": [
+      {
+        "type": "checkout",
+        "path": "/checkout"
+      }
+    ]
   },
   "features": {
     "googleAutocomplete": true,

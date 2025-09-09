@@ -29,6 +29,7 @@
   },
   "logo": "/logo.png",
   "texts": {
+    "name": "Tagada",
     "header": {
       "logoAlt": "Tagada"
     },
@@ -92,6 +93,53 @@
         "phonePlaceholder": "Téléphone",
         "phoneTooltip": "Au cas où nous aurions besoin de vous contacter concernant votre commande"
       }
+    },
+    "thankYou": {
+      "title": "Commande Confirmée !",
+      "subtitle": "Merci pour votre commande. Nous avons reçu votre commande #{orderId} et commencerons à la traiter sous peu.",
+      "orderDetails": {
+        "title": "Détails de la Commande",
+        "orderNumber": "Numéro de Commande :",
+        "orderDate": "Date de Commande :",
+        "paymentStatus": "Statut du Paiement :",
+        "fulfillmentStatus": "Statut d'Exécution :",
+        "totalPaid": "Total Payé :"
+      },
+      "shipping": {
+        "title": "Informations de Livraison",
+        "shipTo": "Livrer à :"
+      },
+      "billing": {
+        "title": "Informations de Facturation",
+        "billTo": "Facturer à :"
+      },
+      "customer": {
+        "title": "Informations Client",
+        "email": "E-mail :",
+        "phone": "Téléphone :"
+      },
+      "nextSteps": {
+        "title": "Prochaines Étapes",
+        "step1": {
+          "title": "Confirmation de Commande",
+          "description": "Vous recevrez un e-mail de confirmation avec les détails de votre commande sous peu."
+        },
+        "step2": {
+          "title": "Traitement",
+          "description": "Nous préparerons votre commande pour l'expédition dans 1-2 jours ouvrables."
+        },
+        "step3": {
+          "title": "Suivi",
+          "description": "Vous recevrez des informations de suivi une fois votre commande expédiée."
+        }
+      },
+      "support": {
+        "title": "Besoin d'Aide ?",
+        "description": "Si vous avez des questions concernant votre commande, notre équipe de support client est là pour vous aider.",
+        "emailButton": "E-mail Support",
+        "phoneButton": "Appeler Support"
+      },
+      "continueShopping": "Continuer les Achats"
     }
   },
   "terms": {

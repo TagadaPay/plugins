@@ -1,5 +1,8 @@
 "use client";
 
+import { ApplePayButton } from "@/components/apple-pay-button";
+import Header from "@/components/header";
+import MainContainer from "@/components/main-container";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -1031,13 +1034,7 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   return (
     <div className="bg-background min-h-screen">
       {/* Header */}
-      <header className="border-b border-[rgb(222,222,222)] bg-white px-[21px] py-[21px] sm:px-[38px]">
-        <img
-          src={pluginConfig.logo}
-          alt={texts?.header?.logoAlt || "Lavish Ivy"}
-          className="mx-auto h-[100px] w-auto"
-        />
-      </header>
+      <Header />
 
       <div>
         <div className="bg-[rgb(237,237,237)] lg:hidden">
@@ -1233,10 +1230,10 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
             </div>
           </div>
         </div>
-        <div className="grid divide-[rgb(222,222,222)] max-lg:mx-auto max-lg:max-w-[580px] lg:grid-cols-[minmax(min-content,calc(50%+calc(calc(58rem-48rem)/2)))_1fr] lg:divide-x [&>div>div]:p-[21px] lg:[&>div>div]:p-[38px]">
-          {/* Main Checkout Form */}
-          <div className="space-y-8 max-lg:mx-auto lg:ml-auto">
+        <MainContainer
+          firstChild={
             <div className="flex h-full flex-col gap-8 lg:max-w-[580px]">
+              <ApplePayButton />
               {/* Trending Alert */}
               <Card className="border-green-200 bg-green-50">
                 <CardContent className="p-4">
@@ -2189,325 +2186,328 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 </a>
               </div>
             </div>
-          </div>
-
-          {/* Order Summary & Reviews Sidebar */}
-          <div className="space-y-6 lg:bg-[rgb(237,237,237)]">
-            <div className="sm:pr-auto flex flex-col gap-[21px] lg:max-w-[480px]">
-              {/* Order Summary */}
-              <div className="space-y-4">
-                <h2 className="text-foreground text-lg font-semibold lg:hidden">
-                  Order summary
-                </h2>
-                {!checkout?.summary?.items ? (
-                  // Show skeleton loaders when not initialized
-                  <>
-                    <OrderItemSkeleton />
-                    <OrderItemSkeleton />
-                    <OrderItemSkeleton />
-                  </>
-                ) : (
-                  checkout?.summary.items.map((item) => (
-                    <div key={item.id} className="flex gap-4">
-                      <div className="relative">
-                        <img
-                          src={item.variant.imageUrl}
-                          alt="Noir Mini Dress"
-                          className="h-[62px] w-[62px] rounded-lg object-cover"
-                          style={{
-                            imageRendering: "auto",
-                            // Use pixel density aware srcset for higher quality on retina screens
-                          }}
-                          srcSet={
-                            item.variant.imageUrl
-                              ? `${
-                                  item.variant.imageUrl
-                                } 1x, ${item.variant.imageUrl.replace(
-                                  /(\.[\w\d_-]+)$/i,
-                                  "@2x$1"
-                                )} 2x`
-                              : undefined
-                          }
-                          loading="lazy"
-                          decoding="async"
-                          width={62}
-                          height={62}
-                        />
-                        <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-[rgb(102,102,102)] text-xs font-medium text-white">
-                          {item.quantity}
+          }
+          secondChild={
+            <>
+              <div className="sm:pr-auto flex flex-col gap-[21px] lg:max-w-[480px]">
+                {/* Order Summary */}
+                <div className="space-y-4">
+                  <h2 className="text-foreground text-lg font-semibold lg:hidden">
+                    Order summary
+                  </h2>
+                  {!checkout?.summary?.items ? (
+                    // Show skeleton loaders when not initialized
+                    <>
+                      <OrderItemSkeleton />
+                      <OrderItemSkeleton />
+                      <OrderItemSkeleton />
+                    </>
+                  ) : (
+                    checkout?.summary.items.map((item) => (
+                      <div key={item.id} className="flex gap-4">
+                        <div className="relative">
+                          <img
+                            src={item.variant.imageUrl}
+                            alt="Noir Mini Dress"
+                            className="h-[62px] w-[62px] rounded-lg object-cover"
+                            style={{
+                              imageRendering: "auto",
+                              // Use pixel density aware srcset for higher quality on retina screens
+                            }}
+                            srcSet={
+                              item.variant.imageUrl
+                                ? `${
+                                    item.variant.imageUrl
+                                  } 1x, ${item.variant.imageUrl.replace(
+                                    /(\.[\w\d_-]+)$/i,
+                                    "@2x$1"
+                                  )} 2x`
+                                : undefined
+                            }
+                            loading="lazy"
+                            decoding="async"
+                            width={62}
+                            height={62}
+                          />
+                          <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-[rgb(102,102,102)] text-xs font-medium text-white">
+                            {item.quantity}
+                          </div>
                         </div>
-                      </div>
-                      <div className="mt-4 flex-1">
-                        <h3 className="text-sm">{item.product.name}</h3>
-                        <p className="text-xs text-gray-600">
-                          {item.variant.name}
+                        <div className="mt-4 flex-1">
+                          <h3 className="text-sm">{item.product.name}</h3>
+                          <p className="text-xs text-gray-600">
+                            {item.variant.name}
+                          </p>
+                        </div>
+                        <p className="mt-4 text-sm">
+                          {item.adjustedAmount > 0
+                            ? formatMoney(item.adjustedAmount)
+                            : "Free"}
                         </p>
                       </div>
-                      <p className="mt-4 text-sm">
-                        {item.adjustedAmount > 0
-                          ? formatMoney(item.adjustedAmount)
-                          : "Free"}
+                    ))
+                  )}
+
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="Discount code"
+                      value={discountCode}
+                      onChange={(e) => setDiscountCode(e.target.value)}
+                      className="flex-1 bg-white"
+                      onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                          handleApplyDiscountCode();
+                        }
+                      }}
+                    />
+                    <Button
+                      variant="outline"
+                      className="border-gray-300 bg-gray-300 text-gray-700 hover:bg-gray-400"
+                      onClick={handleApplyDiscountCode}
+                      disabled={isApplying || !discountCode.trim()}
+                    >
+                      {isApplying ? "Applying..." : "Apply"}
+                    </Button>
+                  </div>
+
+                  {/* Applied discounts */}
+                  {appliedDiscounts && appliedDiscounts.length > 0 && (
+                    <div className="space-y-2">
+                      {appliedDiscounts
+                        .filter((discount) => discount.promotionCodeId)
+                        .map((discount) => (
+                          <div
+                            key={discount.id}
+                            className="flex items-center justify-between rounded border border-green-200 bg-green-50 p-2"
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="text-sm font-medium text-green-800">
+                                {discount.promotion.name} - Discount applied
+                              </span>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                handleRemoveDiscountCode(discount.promotionId)
+                              }
+                              disabled={isRemoving}
+                              className="text-sm text-red-600 hover:text-red-800 disabled:opacity-50"
+                            >
+                              {isRemoving ? "Removing..." : "Remove"}
+                            </button>
+                          </div>
+                        ))}
+                    </div>
+                  )}
+
+                  {/* Discount error */}
+                  {discountsError && (
+                    <div className="rounded border border-red-200 bg-red-50 p-2">
+                      <p className="text-sm text-red-600">
+                        {discountsError.message}
                       </p>
                     </div>
-                  ))
-                )}
+                  )}
 
-                <div className="flex gap-2">
-                  <Input
-                    placeholder="Discount code"
-                    value={discountCode}
-                    onChange={(e) => setDiscountCode(e.target.value)}
-                    className="flex-1 bg-white"
-                    onKeyPress={(e) => {
-                      if (e.key === "Enter") {
-                        handleApplyDiscountCode();
-                      }
-                    }}
-                  />
-                  <Button
-                    variant="outline"
-                    className="border-gray-300 bg-gray-300 text-gray-700 hover:bg-gray-400"
-                    onClick={handleApplyDiscountCode}
-                    disabled={isApplying || !discountCode.trim()}
-                  >
-                    {isApplying ? "Applying..." : "Apply"}
-                  </Button>
-                </div>
-
-                {/* Applied discounts */}
-                {appliedDiscounts && appliedDiscounts.length > 0 && (
-                  <div className="space-y-2">
-                    {appliedDiscounts
-                      .filter((discount) => discount.promotionCodeId)
-                      .map((discount) => (
-                        <div
-                          key={discount.id}
-                          className="flex items-center justify-between rounded border border-green-200 bg-green-50 p-2"
-                        >
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm font-medium text-green-800">
-                              {discount.promotion.name} - Discount applied
-                            </span>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() =>
-                              handleRemoveDiscountCode(discount.promotionId)
-                            }
-                            disabled={isRemoving}
-                            className="text-sm text-red-600 hover:text-red-800 disabled:opacity-50"
-                          >
-                            {isRemoving ? "Removing..." : "Remove"}
-                          </button>
-                        </div>
-                      ))}
+                  <div className="space-y-3">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-900">Subtotal</span>
+                      <span className="text-gray-900">
+                        {formatMoney(
+                          (checkout?.summary as any)?.subtotalAdjustedAmount ||
+                            0
+                        )}
+                      </span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <div className="flex items-center gap-1">
+                        <span className="text-gray-900">Shipping</span>
+                      </div>
+                      <span className="text-gray-500">Free</span>
+                    </div>
                   </div>
-                )}
 
-                {/* Discount error */}
-                {discountsError && (
-                  <div className="rounded border border-red-200 bg-red-50 p-2">
-                    <p className="text-sm text-red-600">
-                      {discountsError.message}
-                    </p>
-                  </div>
-                )}
-
-                <div className="space-y-3">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-900">Subtotal</span>
-                    <span className="text-gray-900">
-                      {formatMoney(
-                        (checkout?.summary as any)?.subtotalAdjustedAmount || 0
-                      )}
+                  <div className="flex justify-between pt-3 text-[19px] font-semibold">
+                    <span className="font-bold text-gray-900">Total</span>
+                    <span className="font-bold text-gray-900">
+                      {formatMoney(checkout?.summary.totalAdjustedAmount || 0)}
                     </span>
                   </div>
-                  <div className="flex justify-between text-sm">
-                    <div className="flex items-center gap-1">
-                      <span className="text-gray-900">Shipping</span>
-                    </div>
-                    <span className="text-gray-500">Free</span>
+                </div>
+
+                {/* Customer Reviews */}
+                <div className="space-y-4">
+                  <div className="flex flex-col gap-3.5 rounded-lg border border-[rgb(222,222,222)] p-3.5">
+                    {pluginConfig.customerReviews.map((review, index) => (
+                      <div
+                        key={`review-${review.name}-${index}`}
+                        className="flex flex-col gap-[5px]"
+                      >
+                        <div className="flex items-center gap-2 text-sm font-bold">
+                          {review.name}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="79"
+                            height="11"
+                            viewBox="0 0 79 11"
+                            fill="none"
+                          >
+                            <path
+                              d="M7.56989 4.29954C7.77491 4.09451 7.77491 3.7621 7.56989 3.55708C7.36486 3.35205 7.03245 3.35205 6.82743 3.55708L4.74866 5.63585L3.89489 4.78208C3.68986 4.57705 3.35745 4.57705 3.15243 4.78208C2.9474 4.9871 2.9474 5.31951 3.15243 5.52454L4.37743 6.74954C4.58245 6.95456 4.91486 6.95456 5.11989 6.74954L7.56989 4.29954Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              fillRule="evenodd"
+                              clipRule="evenodd"
+                              d="M10.1737 4.97831C10.1737 7.6845 7.97985 9.87831 5.27366 9.87831C2.56746 9.87831 0.373657 7.6845 0.373657 4.97831C0.373657 2.27211 2.56746 0.0783081 5.27366 0.0783081C7.97985 0.0783081 10.1737 2.27211 10.1737 4.97831ZM9.12366 4.97831C9.12366 7.1046 7.39995 8.82831 5.27366 8.82831C3.14736 8.82831 1.42366 7.1046 1.42366 4.97831C1.42366 2.85201 3.14736 1.12831 5.27366 1.12831C7.39995 1.12831 9.12366 2.85201 9.12366 4.97831Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M15.2082 8.97833L12.6106 1.93243H13.5334L15.6037 7.84064H15.6819L17.7522 1.93243H18.675L16.0774 8.97833H15.2082Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M21.4631 9.07111C19.9592 9.07111 19.051 8.01642 19.051 6.36603V6.36115C19.051 4.73517 19.9787 3.62189 21.4094 3.62189C22.8401 3.62189 23.7092 4.68634 23.7092 6.25861V6.59064H19.9201C19.9445 7.6795 20.5451 8.31427 21.4826 8.31427C22.1955 8.31427 22.635 7.97736 22.7766 7.65997L22.7961 7.61603H23.6457L23.636 7.65509C23.4553 8.36798 22.7033 9.07111 21.4631 9.07111ZM21.4045 4.37872C20.6233 4.37872 20.0276 4.91095 19.9348 5.91193H22.8449C22.757 4.87189 22.1809 4.37872 21.4045 4.37872Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M25.0276 8.97833V3.71466H25.8772V4.49591H25.9553C26.1555 3.94415 26.6487 3.62189 27.3615 3.62189C27.5227 3.62189 27.7033 3.64142 27.7863 3.65607V4.48126C27.6106 4.45197 27.4494 4.43243 27.2639 4.43243C26.4533 4.43243 25.8772 4.94513 25.8772 5.71661V8.97833H25.0276Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M29.2854 2.69904C28.9631 2.69904 28.6994 2.43536 28.6994 2.1131C28.6994 1.79083 28.9631 1.52716 29.2854 1.52716C29.6076 1.52716 29.8713 1.79083 29.8713 2.1131C29.8713 2.43536 29.6076 2.69904 29.2854 2.69904ZM28.8557 8.97833V3.71466H29.7053V8.97833H28.8557Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M31.6584 8.97833V4.41779H30.7844V3.71466H31.6584V3.12872C31.6584 2.07892 32.1858 1.57599 33.1867 1.57599C33.3918 1.57599 33.5774 1.59064 33.7531 1.62482V2.30353C33.6506 2.284 33.509 2.27911 33.3576 2.27911C32.7522 2.27911 32.508 2.57697 32.508 3.15314V3.71466H33.7043V4.41779H32.508V8.97833H31.6584Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M35.3791 2.69904C35.0569 2.69904 34.7932 2.43536 34.7932 2.1131C34.7932 1.79083 35.0569 1.52716 35.3791 1.52716C35.7014 1.52716 35.9651 1.79083 35.9651 2.1131C35.9651 2.43536 35.7014 2.69904 35.3791 2.69904ZM34.9494 8.97833V3.71466H35.799V8.97833H34.9494Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M39.549 9.07111C38.0451 9.07111 37.1369 8.01642 37.1369 6.36603V6.36115C37.1369 4.73517 38.0647 3.62189 39.4953 3.62189C40.926 3.62189 41.7951 4.68634 41.7951 6.25861V6.59064H38.0061C38.0305 7.6795 38.6311 8.31427 39.5686 8.31427C40.2815 8.31427 40.7209 7.97736 40.8625 7.65997L40.882 7.61603H41.7317L41.7219 7.65509C41.5412 8.36798 40.7893 9.07111 39.549 9.07111ZM39.4904 4.37872C38.7092 4.37872 38.1135 4.91095 38.0207 5.91193H40.9309C40.843 4.87189 40.2668 4.37872 39.4904 4.37872Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M45.0569 9.07111C43.7238 9.07111 42.8498 7.992 42.8498 6.35138V6.34161C42.8498 4.69122 43.719 3.62189 45.0569 3.62189C45.7795 3.62189 46.4094 3.98322 46.6975 4.54474H46.7756V1.62482H47.6252V8.97833H46.7756V8.13849H46.6975C46.3752 8.72443 45.7893 9.07111 45.0569 9.07111ZM45.2522 8.31915C46.2092 8.31915 46.7951 7.5672 46.7951 6.35138V6.34161C46.7951 5.12579 46.2092 4.37384 45.2522 4.37384C44.2903 4.37384 43.719 5.11603 43.719 6.34161V6.35138C43.719 7.57697 44.2903 8.31915 45.2522 8.31915Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M52.176 8.97833V1.93243H54.8713C56.1653 1.93243 56.9563 2.61115 56.9563 3.68536V3.69513C56.9563 4.42267 56.4192 5.08673 55.7404 5.2088V5.28693C56.7024 5.409 57.3127 6.06818 57.3127 6.99591V7.00568C57.3127 8.24103 56.424 8.97833 54.925 8.97833H52.176ZM54.6858 2.7088H53.0549V4.96954H54.4612C55.5256 4.96954 56.0676 4.58868 56.0676 3.8465V3.83673C56.0676 3.12384 55.5598 2.7088 54.6858 2.7088ZM54.7102 5.72638H53.0549V8.20197H54.7932C55.8528 8.20197 56.4094 7.77228 56.4094 6.96173V6.95197C56.4094 6.14142 55.8332 5.72638 54.7102 5.72638Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M60.4035 9.07111C59.2072 9.07111 58.592 8.36798 58.592 7.12286V3.71466H59.4416V6.91779C59.4416 7.86505 59.7834 8.31915 60.6233 8.31915C61.551 8.31915 62.0442 7.75275 62.0442 6.8299V3.71466H62.8938V8.97833H62.0442V8.1922H61.966C61.7072 8.75372 61.175 9.07111 60.4035 9.07111Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M64.9299 10.824C64.8176 10.824 64.6711 10.8143 64.5539 10.7947V10.0965C64.6565 10.116 64.7883 10.1209 64.9055 10.1209C65.3889 10.1209 65.6819 9.90118 65.8723 9.29572L65.9699 8.98322L64.0217 3.71466H64.9299L66.3752 8.04572H66.4533L67.8938 3.71466H68.7873L66.7317 9.3006C66.2971 10.4822 65.8625 10.824 64.9299 10.824Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M71.8635 9.07111C70.3596 9.07111 69.4514 8.01642 69.4514 6.36603V6.36115C69.4514 4.73517 70.3791 3.62189 71.8098 3.62189C73.2404 3.62189 74.1096 4.68634 74.1096 6.25861V6.59064H70.3205C70.3449 7.6795 70.9455 8.31427 71.883 8.31427C72.5959 8.31427 73.0354 7.97736 73.177 7.65997L73.1965 7.61603H74.0461L74.0363 7.65509C73.8557 8.36798 73.1037 9.07111 71.8635 9.07111ZM71.8049 4.37872C71.0237 4.37872 70.4279 4.91095 70.3352 5.91193H73.2453C73.1574 4.87189 72.5813 4.37872 71.8049 4.37872Z"
+                              fill="#00A57D"
+                            />
+                            <path
+                              d="M75.4279 8.97833V3.71466H76.2776V4.49591H76.3557C76.5559 3.94415 77.049 3.62189 77.7619 3.62189C77.9231 3.62189 78.1037 3.64142 78.1867 3.65607V4.48126C78.011 4.45197 77.8498 4.43243 77.6643 4.43243C76.8537 4.43243 76.2776 4.94513 76.2776 5.71661V8.97833H75.4279Z"
+                              fill="#00A57D"
+                            />
+                          </svg>
+                        </div>
+                        <div className="flex items-center gap-[5px]">
+                          {[...Array(5)].map((_, i) => (
+                            <Star
+                              key={i}
+                              className="h-4 w-4 fill-yellow-400 text-yellow-400"
+                            />
+                          ))}
+                        </div>
+                        <p className="text-xs leading-[18px]">
+                          {review.review}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                <div className="flex justify-between pt-3 text-[19px] font-semibold">
-                  <span className="font-bold text-gray-900">Total</span>
-                  <span className="font-bold text-gray-900">
-                    {formatMoney(checkout?.summary.totalAdjustedAmount || 0)}
-                  </span>
-                </div>
-              </div>
-
-              {/* Customer Reviews */}
-              <div className="space-y-4">
-                <div className="flex flex-col gap-3.5 rounded-lg border border-[rgb(222,222,222)] p-3.5">
-                  {pluginConfig.customerReviews.map((review, index) => (
-                    <div
-                      key={`review-${review.name}-${index}`}
-                      className="flex flex-col gap-[5px]"
+                <Collapsible className="rounded-lg border border-gray-200 bg-[hsl(0,0%,83%)]">
+                  <CollapsibleTrigger className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-left text-sm font-medium text-gray-900 transition-colors duration-200 focus:outline-none">
+                    <span>{pluginConfig?.terms?.title}</span>
+                    <svg
+                      className="h-4 w-4 text-gray-500 transition-transform duration-200 data-[state=open]:rotate-180"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
-                      <div className="flex items-center gap-2 text-sm font-bold">
-                        {review.name}
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="79"
-                          height="11"
-                          viewBox="0 0 79 11"
-                          fill="none"
-                        >
-                          <path
-                            d="M7.56989 4.29954C7.77491 4.09451 7.77491 3.7621 7.56989 3.55708C7.36486 3.35205 7.03245 3.35205 6.82743 3.55708L4.74866 5.63585L3.89489 4.78208C3.68986 4.57705 3.35745 4.57705 3.15243 4.78208C2.9474 4.9871 2.9474 5.31951 3.15243 5.52454L4.37743 6.74954C4.58245 6.95456 4.91486 6.95456 5.11989 6.74954L7.56989 4.29954Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M10.1737 4.97831C10.1737 7.6845 7.97985 9.87831 5.27366 9.87831C2.56746 9.87831 0.373657 7.6845 0.373657 4.97831C0.373657 2.27211 2.56746 0.0783081 5.27366 0.0783081C7.97985 0.0783081 10.1737 2.27211 10.1737 4.97831ZM9.12366 4.97831C9.12366 7.1046 7.39995 8.82831 5.27366 8.82831C3.14736 8.82831 1.42366 7.1046 1.42366 4.97831C1.42366 2.85201 3.14736 1.12831 5.27366 1.12831C7.39995 1.12831 9.12366 2.85201 9.12366 4.97831Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M15.2082 8.97833L12.6106 1.93243H13.5334L15.6037 7.84064H15.6819L17.7522 1.93243H18.675L16.0774 8.97833H15.2082Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M21.4631 9.07111C19.9592 9.07111 19.051 8.01642 19.051 6.36603V6.36115C19.051 4.73517 19.9787 3.62189 21.4094 3.62189C22.8401 3.62189 23.7092 4.68634 23.7092 6.25861V6.59064H19.9201C19.9445 7.6795 20.5451 8.31427 21.4826 8.31427C22.1955 8.31427 22.635 7.97736 22.7766 7.65997L22.7961 7.61603H23.6457L23.636 7.65509C23.4553 8.36798 22.7033 9.07111 21.4631 9.07111ZM21.4045 4.37872C20.6233 4.37872 20.0276 4.91095 19.9348 5.91193H22.8449C22.757 4.87189 22.1809 4.37872 21.4045 4.37872Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M25.0276 8.97833V3.71466H25.8772V4.49591H25.9553C26.1555 3.94415 26.6487 3.62189 27.3615 3.62189C27.5227 3.62189 27.7033 3.64142 27.7863 3.65607V4.48126C27.6106 4.45197 27.4494 4.43243 27.2639 4.43243C26.4533 4.43243 25.8772 4.94513 25.8772 5.71661V8.97833H25.0276Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M29.2854 2.69904C28.9631 2.69904 28.6994 2.43536 28.6994 2.1131C28.6994 1.79083 28.9631 1.52716 29.2854 1.52716C29.6076 1.52716 29.8713 1.79083 29.8713 2.1131C29.8713 2.43536 29.6076 2.69904 29.2854 2.69904ZM28.8557 8.97833V3.71466H29.7053V8.97833H28.8557Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M31.6584 8.97833V4.41779H30.7844V3.71466H31.6584V3.12872C31.6584 2.07892 32.1858 1.57599 33.1867 1.57599C33.3918 1.57599 33.5774 1.59064 33.7531 1.62482V2.30353C33.6506 2.284 33.509 2.27911 33.3576 2.27911C32.7522 2.27911 32.508 2.57697 32.508 3.15314V3.71466H33.7043V4.41779H32.508V8.97833H31.6584Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M35.3791 2.69904C35.0569 2.69904 34.7932 2.43536 34.7932 2.1131C34.7932 1.79083 35.0569 1.52716 35.3791 1.52716C35.7014 1.52716 35.9651 1.79083 35.9651 2.1131C35.9651 2.43536 35.7014 2.69904 35.3791 2.69904ZM34.9494 8.97833V3.71466H35.799V8.97833H34.9494Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M39.549 9.07111C38.0451 9.07111 37.1369 8.01642 37.1369 6.36603V6.36115C37.1369 4.73517 38.0647 3.62189 39.4953 3.62189C40.926 3.62189 41.7951 4.68634 41.7951 6.25861V6.59064H38.0061C38.0305 7.6795 38.6311 8.31427 39.5686 8.31427C40.2815 8.31427 40.7209 7.97736 40.8625 7.65997L40.882 7.61603H41.7317L41.7219 7.65509C41.5412 8.36798 40.7893 9.07111 39.549 9.07111ZM39.4904 4.37872C38.7092 4.37872 38.1135 4.91095 38.0207 5.91193H40.9309C40.843 4.87189 40.2668 4.37872 39.4904 4.37872Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M45.0569 9.07111C43.7238 9.07111 42.8498 7.992 42.8498 6.35138V6.34161C42.8498 4.69122 43.719 3.62189 45.0569 3.62189C45.7795 3.62189 46.4094 3.98322 46.6975 4.54474H46.7756V1.62482H47.6252V8.97833H46.7756V8.13849H46.6975C46.3752 8.72443 45.7893 9.07111 45.0569 9.07111ZM45.2522 8.31915C46.2092 8.31915 46.7951 7.5672 46.7951 6.35138V6.34161C46.7951 5.12579 46.2092 4.37384 45.2522 4.37384C44.2903 4.37384 43.719 5.11603 43.719 6.34161V6.35138C43.719 7.57697 44.2903 8.31915 45.2522 8.31915Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M52.176 8.97833V1.93243H54.8713C56.1653 1.93243 56.9563 2.61115 56.9563 3.68536V3.69513C56.9563 4.42267 56.4192 5.08673 55.7404 5.2088V5.28693C56.7024 5.409 57.3127 6.06818 57.3127 6.99591V7.00568C57.3127 8.24103 56.424 8.97833 54.925 8.97833H52.176ZM54.6858 2.7088H53.0549V4.96954H54.4612C55.5256 4.96954 56.0676 4.58868 56.0676 3.8465V3.83673C56.0676 3.12384 55.5598 2.7088 54.6858 2.7088ZM54.7102 5.72638H53.0549V8.20197H54.7932C55.8528 8.20197 56.4094 7.77228 56.4094 6.96173V6.95197C56.4094 6.14142 55.8332 5.72638 54.7102 5.72638Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M60.4035 9.07111C59.2072 9.07111 58.592 8.36798 58.592 7.12286V3.71466H59.4416V6.91779C59.4416 7.86505 59.7834 8.31915 60.6233 8.31915C61.551 8.31915 62.0442 7.75275 62.0442 6.8299V3.71466H62.8938V8.97833H62.0442V8.1922H61.966C61.7072 8.75372 61.175 9.07111 60.4035 9.07111Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M64.9299 10.824C64.8176 10.824 64.6711 10.8143 64.5539 10.7947V10.0965C64.6565 10.116 64.7883 10.1209 64.9055 10.1209C65.3889 10.1209 65.6819 9.90118 65.8723 9.29572L65.9699 8.98322L64.0217 3.71466H64.9299L66.3752 8.04572H66.4533L67.8938 3.71466H68.7873L66.7317 9.3006C66.2971 10.4822 65.8625 10.824 64.9299 10.824Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M71.8635 9.07111C70.3596 9.07111 69.4514 8.01642 69.4514 6.36603V6.36115C69.4514 4.73517 70.3791 3.62189 71.8098 3.62189C73.2404 3.62189 74.1096 4.68634 74.1096 6.25861V6.59064H70.3205C70.3449 7.6795 70.9455 8.31427 71.883 8.31427C72.5959 8.31427 73.0354 7.97736 73.177 7.65997L73.1965 7.61603H74.0461L74.0363 7.65509C73.8557 8.36798 73.1037 9.07111 71.8635 9.07111ZM71.8049 4.37872C71.0237 4.37872 70.4279 4.91095 70.3352 5.91193H73.2453C73.1574 4.87189 72.5813 4.37872 71.8049 4.37872Z"
-                            fill="#00A57D"
-                          />
-                          <path
-                            d="M75.4279 8.97833V3.71466H76.2776V4.49591H76.3557C76.5559 3.94415 77.049 3.62189 77.7619 3.62189C77.9231 3.62189 78.1037 3.64142 78.1867 3.65607V4.48126C78.011 4.45197 77.8498 4.43243 77.6643 4.43243C76.8537 4.43243 76.2776 4.94513 76.2776 5.71661V8.97833H75.4279Z"
-                            fill="#00A57D"
-                          />
-                        </svg>
-                      </div>
-                      <div className="flex items-center gap-[5px]">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className="h-4 w-4 fill-yellow-400 text-yellow-400"
-                          />
-                        ))}
-                      </div>
-                      <p className="text-xs leading-[18px]">{review.review}</p>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="px-4 pb-4 text-sm leading-relaxed text-gray-700">
+                    <div className="space-y-3">
+                      <p>{pluginConfig?.terms?.paragraphFirst}</p>
+                      {pluginConfig?.terms?.bullets && (
+                        <ul className="space-y-2 pl-4">
+                          {pluginConfig.terms.bullets.map((bullet, index) => (
+                            <li key={index} className="flex items-start">
+                              <span className="mr-2 text-green-600">•</span>
+                              <span>{bullet}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <p>{pluginConfig?.terms?.paragraphEnd}</p>
                     </div>
-                  ))}
-                </div>
+                  </CollapsibleContent>
+                </Collapsible>
               </div>
-
-              <Collapsible className="rounded-lg border border-gray-200 bg-[hsl(0,0%,83%)]">
-                <CollapsibleTrigger className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-left text-sm font-medium text-gray-900 transition-colors duration-200 focus:outline-none">
-                  <span>{pluginConfig?.terms?.title}</span>
-                  <svg
-                    className="h-4 w-4 text-gray-500 transition-transform duration-200 data-[state=open]:rotate-180"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </CollapsibleTrigger>
-                <CollapsibleContent className="px-4 pb-4 text-sm leading-relaxed text-gray-700">
-                  <div className="space-y-3">
-                    <p>{pluginConfig?.terms?.paragraphFirst}</p>
-                    {pluginConfig?.terms?.bullets && (
-                      <ul className="space-y-2 pl-4">
-                        {pluginConfig.terms.bullets.map((bullet, index) => (
-                          <li key={index} className="flex items-start">
-                            <span className="mr-2 text-green-600">•</span>
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                    <p>{pluginConfig?.terms?.paragraphEnd}</p>
-                  </div>
-                </CollapsibleContent>
-              </Collapsible>
-            </div>
-            <div className="mt-auto flex flex-wrap gap-4 border-t border-gray-200 pt-3.5 text-sm text-gray-600 lg:hidden">
-              <a
-                href={pluginConfig?.footerLinks?.refundPolicy?.href}
-                className="transition-colors hover:text-gray-900"
-              >
-                {pluginConfig?.footerLinks?.refundPolicy?.text}
-              </a>
-              <a
-                href={pluginConfig?.footerLinks?.shipping?.href}
-                className="transition-colors hover:text-gray-900"
-              >
-                {pluginConfig?.footerLinks?.shipping?.text}
-              </a>
-              <a
-                href={pluginConfig?.footerLinks?.privacyPolicy?.href}
-                className="transition-colors hover:text-gray-900"
-              >
-                {pluginConfig?.footerLinks?.privacyPolicy?.text}
-              </a>
-              <a
-                href={pluginConfig?.footerLinks?.termsOfService?.href}
-                className="transition-colors hover:text-gray-900"
-              >
-                {pluginConfig?.footerLinks?.termsOfService?.text}
-              </a>
-              <a
-                href={pluginConfig?.footerLinks?.cancellations?.href}
-                className="transition-colors hover:text-gray-900"
-              >
-                {pluginConfig?.footerLinks?.cancellations?.text}
-              </a>
-              <a
-                href={pluginConfig?.footerLinks?.contact?.href}
-                className="transition-colors hover:text-gray-900"
-              >
-                {pluginConfig?.footerLinks?.contact?.text}
-              </a>
-            </div>
-          </div>
-        </div>
+              <div className="mt-auto flex flex-wrap gap-4 border-t border-gray-200 pt-3.5 text-sm text-gray-600 lg:hidden">
+                <a
+                  href={pluginConfig?.footerLinks?.refundPolicy?.href}
+                  className="transition-colors hover:text-gray-900"
+                >
+                  {pluginConfig?.footerLinks?.refundPolicy?.text}
+                </a>
+                <a
+                  href={pluginConfig?.footerLinks?.shipping?.href}
+                  className="transition-colors hover:text-gray-900"
+                >
+                  {pluginConfig?.footerLinks?.shipping?.text}
+                </a>
+                <a
+                  href={pluginConfig?.footerLinks?.privacyPolicy?.href}
+                  className="transition-colors hover:text-gray-900"
+                >
+                  {pluginConfig?.footerLinks?.privacyPolicy?.text}
+                </a>
+                <a
+                  href={pluginConfig?.footerLinks?.termsOfService?.href}
+                  className="transition-colors hover:text-gray-900"
+                >
+                  {pluginConfig?.footerLinks?.termsOfService?.text}
+                </a>
+                <a
+                  href={pluginConfig?.footerLinks?.cancellations?.href}
+                  className="transition-colors hover:text-gray-900"
+                >
+                  {pluginConfig?.footerLinks?.cancellations?.text}
+                </a>
+                <a
+                  href={pluginConfig?.footerLinks?.contact?.href}
+                  className="transition-colors hover:text-gray-900"
+                >
+                  {pluginConfig?.footerLinks?.contact?.text}
+                </a>
+              </div>
+            </>
+          }
+        />
       </div>
     </div>
   );

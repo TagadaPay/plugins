@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { TooltipProvider } from '@/components/ui/tooltip';
-import { TagadaProvider } from '@tagadapay/plugin-sdk/react';
-import { ReactNode } from 'react';
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { TagadaProvider } from "@tagadapay/plugin-sdk/react";
+import { ReactNode } from "react";
 
 type ProvidersProps = {
   children: ReactNode;
@@ -11,7 +11,7 @@ type ProvidersProps = {
 function Providers({ children }: ProvidersProps) {
   return (
     <TooltipProvider>
-      <TagadaProvider environment="production" localConfig="default">
+      <TagadaProvider environment="production" localConfig="lavishIvy">
         {children}
       </TagadaProvider>
     </TooltipProvider>

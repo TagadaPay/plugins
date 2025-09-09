@@ -1,9 +1,21 @@
 import CheckoutPage from "@/components/checkout-page";
 import Providers from "@/components/providers";
+import ThankYou from "@/components/thank-you";
 import { PluginConfig } from "@/types/plugin-config";
 import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
 import { Suspense, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
+
+function LoadingSpinner() {
+  return (
+    <div className="flex min-h-screen items-center justify-center">
+      <div className="text-center">
+        <div className="mx-auto h-8 w-8 animate-spin rounded-full border-b-2 border-blue-600"></div>
+        <p className="mt-2 text-gray-600">Loading...</p>
+      </div>
+    </div>
+  );
+}
 
 function CheckoutContent() {
   const searchParams = new URLSearchParams(window.location.search);
@@ -30,6 +42,39 @@ function CheckoutContent() {
 }
 
 function CheckoutRoute() {
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <CheckoutContent />
+    </Suspense>
+  );
+}
+
+function ThankYouContent() {
+  const { orderId } = useParams<{ orderId: string }>();
+  if (!orderId) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-xl font-semibold text-red-600">
+            Order ID Required
+          </h1>
+          <p className="mt-2 text-gray-600">No order ID provided in the URL.</p>
+        </div>
+      </div>
+    );
+  }
+  return <ThankYou orderId={orderId} />;
+}
+
+function ThankYouRoute() {
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <ThankYouContent />
+    </Suspense>
+  );
+}
+
+function AppRoutes() {
   const { config } = usePluginConfig<PluginConfig>();
 
   // Set page metadata when plugin config is loaded
@@ -59,34 +104,18 @@ function CheckoutRoute() {
   }, [config]);
 
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-gray-50 py-8">
-          <div className="mx-auto max-w-md">
-            <div className="rounded-lg bg-white p-6 shadow">
-              <div className="mx-auto h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900"></div>
-              <p className="mt-2 text-center text-sm text-gray-600">
-                Loading...
-              </p>
-            </div>
-          </div>
-        </div>
-      }
-    >
-      <CheckoutContent />
-    </Suspense>
+    <Routes>
+      <Route path="/checkout" element={<CheckoutRoute />} />
+      <Route path="/thankyou/:orderId" element={<ThankYouRoute />} />
+      {/* Catch all route - redirect to home */}
+    </Routes>
   );
 }
 
 function App() {
   return (
     <Providers>
-      <Routes>
-        <Route path="/checkout" element={<CheckoutRoute />} />
-        {/* <Route path="/thankyou/:orderId" element={<ThankYouRoute />} />
-        <Route path="/post/:orderId" element={<PostPurchaseRoute />} />
-        {/* Catch all route - redirect to home */}
-      </Routes>
+      <AppRoutes />
     </Providers>
   );
 }

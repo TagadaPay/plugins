@@ -30,8 +30,9 @@
   },
   "logo": "/logo.png",
   "texts": {
+    "name": "Tagada",
     "header": {
-      "logoAlt": "Lavish Ivy"
+      "logoAlt": "Tagada"
     },
     "orderSummary": {
       "title": "Order summary",
@@ -93,6 +94,53 @@
         "phonePlaceholder": "Phone",
         "phoneTooltip": "In case we need to contact you about your order"
       }
+    },
+    "thankYou": {
+      "title": "Order Confirmed!",
+      "subtitle": "Thank you for your order. We've received your order #{orderId} and will begin processing it shortly.",
+      "orderDetails": {
+        "title": "Order Details",
+        "orderNumber": "Order Number:",
+        "orderDate": "Order Date:",
+        "paymentStatus": "Payment Status:",
+        "fulfillmentStatus": "Fulfillment Status:",
+        "totalPaid": "Total Paid:"
+      },
+      "shipping": {
+        "title": "Shipping Information",
+        "shipTo": "Ship to:"
+      },
+      "billing": {
+        "title": "Billing Information",
+        "billTo": "Bill to:"
+      },
+      "customer": {
+        "title": "Customer Information",
+        "email": "Email:",
+        "phone": "Phone:"
+      },
+      "nextSteps": {
+        "title": "What's Next?",
+        "step1": {
+          "title": "Order Confirmation",
+          "description": "You'll receive an email confirmation with your order details shortly."
+        },
+        "step2": {
+          "title": "Processing",
+          "description": "We'll prepare your order for shipment within 1-2 business days."
+        },
+        "step3": {
+          "title": "Tracking",
+          "description": "You'll receive tracking information once your order ships."
+        }
+      },
+      "support": {
+        "title": "Need Help?",
+        "description": "If you have any questions about your order, our customer support team is here to help.",
+        "emailButton": "Email Support",
+        "phoneButton": "Call Support"
+      },
+      "continueShopping": "Continue Shopping"
     }
   },
   "terms": {
@@ -136,27 +184,27 @@
   "customerReviews": [
     {
       "name": "Jessica Giudice",
-      "review": "Shopping at Lavish Ivy is a delight! The quality is outstanding, with careful stitching and no odd smells. Their sizing is spot-on—I'm 175 cm with a 75E bust, and everything fits perfectly. Great service and attention to detail make every order feel special."
+      "review": "Shopping at Tagada is a delight! The quality is outstanding, with careful stitching and no odd smells. Their sizing is spot-on—I'm 175 cm with a 75E bust, and everything fits perfectly. Great service and attention to detail make every order feel special."
     },
     {
       "name": "Megan Miller",
-      "review": "Wore my Ivy Midi Dress from Lavish Ivy for a night out in Sorrento and felt incredible. The quality and fit were perfect, showcasing why Lavish Ivy is my go-to store. Got tons of compliments!"
+      "review": "Wore my Ivy Midi Dress from Tagada for a night out in Sorrento and felt incredible. The quality and fit were perfect, showcasing why Tagada is my go-to store. Got tons of compliments!"
     },
     {
       "name": "Carly Scarpati",
-      "review": "Such a gorgeous dress from Lavish Ivy—I'm obsessed! 🤩 The quality and fit make it my new favorite."
+      "review": "Such a gorgeous dress from Tagada—I'm obsessed! 🤩 The quality and fit make it my new favorite."
     },
     {
       "name": "Brooke Spinelle",
-      "review": "I was nervous ordering online, but Lavish Ivy delivered in every way. The shipping was faster than I expected, and the dress was stunning. The fabric felt high-end, and the fit was perfect—snug but breathable. I've seen people say online shopping can be tricky, but if you take your measurements and check the size chart like I did, you'll be good to go! The dress made me feel so confident, and I even reached out to their support for tracking info—they were super quick to reply and really nice. Will definitely shop here again!"
+      "review": "I was nervous ordering online, but Tagada delivered in every way. The shipping was faster than I expected, and the dress was stunning. The fabric felt high-end, and the fit was perfect—snug but breathable. I've seen people say online shopping can be tricky, but if you take your measurements and check the size chart like I did, you'll be good to go! The dress made me feel so confident, and I even reached out to their support for tracking info—they were super quick to reply and really nice. Will definitely shop here again!"
     },
     {
       "name": "Caroline Durkin",
-      "review": "I've shopped at Lavish Ivy multiple times now, and I keep coming back because their dresses make me feel so confident and classy. The designs are elegant, and the materials feel amazing for the price. My most recent purchase—a flowy maxi dress called the Rosalind Maxi Dress—was perfect for my anniversary dinner. It fit like a dream and was even more beautiful in person. I always recommend Lavish Ivy to my girlfriends. Can't wait to add more to my collection!"
+      "review": "I've shopped at Tagada multiple times now, and I keep coming back because their dresses make me feel so confident and classy. The designs are elegant, and the materials feel amazing for the price. My most recent purchase—a flowy maxi dress called the Rosalind Maxi Dress—was perfect for my anniversary dinner. It fit like a dream and was even more beautiful in person. I always recommend Tagada to my girlfriends. Can't wait to add more to my collection!"
     },
     {
       "name": "Madi Kemberly",
-      "review": "Ladies, Lavish Ivy is IT. I've been seeing their ads everywhere and finally caved during their sale. I got two dresses for the price of one dress anywhere else, and they were both perfect for my style—sexy but still classy. I wore one for a date night, and let's just say my boyfriend was speechless. 😂 Shipping wasn't Amazon-fast, but the tracking updates made it easy to plan ahead. Worth every penny!"
+      "review": "Ladies, Tagada is IT. I've been seeing their ads everywhere and finally caved during their sale. I got two dresses for the price of one dress anywhere else, and they were both perfect for my style—sexy but still classy. I wore one for a date night, and let's just say my boyfriend was speechless. 😂 Shipping wasn't Amazon-fast, but the tracking updates made it easy to plan ahead. Worth every penny!"
     },
     {
       "name": "Alexa Laws",
@@ -164,11 +212,11 @@
     },
     {
       "name": "Anne Marie Miller",
-      "review": "Okay, let me just say that Lavish Ivy has completely leveled up my wardrobe. I was tired of wearing the same boring outfits, and their dresses have added so much variety to my closet. My favorite so far is the Selena Mini Dress that fits like a glove. And don't even get me started on their customer service—so helpful and kind!!! If you're on the fence about ordering, just do it."
+      "review": "Okay, let me just say that Tagada has completely leveled up my wardrobe. I was tired of wearing the same boring outfits, and their dresses have added so much variety to my closet. My favorite so far is the Selena Mini Dress that fits like a glove. And don't even get me started on their customer service—so helpful and kind!!! If you're on the fence about ordering, just do it."
     },
     {
       "name": "Olivia Schmitt",
-      "review": "I rarely leave reviews, but Lavish Ivy deserves the recognition. I needed a dress for my sister's engagement dinner and stumbled upon their website during a late-night scrolling session. The prices seemed almost suspiciously low, but the designs were gorgeous. After some deliberation, I decided to take a chance—and I'm so glad I did.\n\nThe ordering process was straightforward, and their updates kept me reassured during the wait. The dress arrived in about two weeks, and I was blown away by how elegant it looked. The color was rich, the fit was perfect, and the detailing made it look far more expensive than it was. I even compared it to a similar dress I saw in a boutique for four times the price, and honestly, Lavish Ivy's version was better.\n\nI was so impressed that I placed another order for two more dresses shortly after. One of them needed a slight adjustment in the straps, but their customer service team was so accommodating. They offered to cover the cost of tailoring or send a replacement. I opted for the tailoring, and it turned out perfectly.\n\nLavish Ivy has quickly become my go-to for special occasions. I've already recommended it to my sisters and friends, and now my closet is filling up with their stunning, affordable pieces."
+      "review": "I rarely leave reviews, but Tagada deserves the recognition. I needed a dress for my sister's engagement dinner and stumbled upon their website during a late-night scrolling session. The prices seemed almost suspiciously low, but the designs were gorgeous. After some deliberation, I decided to take a chance—and I'm so glad I did.\n\nThe ordering process was straightforward, and their updates kept me reassured during the wait. The dress arrived in about two weeks, and I was blown away by how elegant it looked. The color was rich, the fit was perfect, and the detailing made it look far more expensive than it was. I even compared it to a similar dress I saw in a boutique for four times the price, and honestly, Tagada's version was better.\n\nI was so impressed that I placed another order for two more dresses shortly after. One of them needed a slight adjustment in the straps, but their customer service team was so accommodating. They offered to cover the cost of tailoring or send a replacement. I opted for the tailoring, and it turned out perfectly.\n\nTagada has quickly become my go-to for special occasions. I've already recommended it to my sisters and friends, and now my closet is filling up with their stunning, affordable pieces."
     },
     {
       "name": "Jamie O'Brien",
