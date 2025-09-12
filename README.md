@@ -22,6 +22,13 @@ Experience the plugins in action:
 - **Red Theme**: [https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2](https://express-01-red--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2)
 - **Blue Theme**: [https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2](https://express-01-blue--store_b9dd071b3e3a.cdn.tagadapay.com/checkout2)
 
+### **Express Checkout 2 Plugin** - Multi-Language & SEO Optimized
+
+**Multi-Language Express Checkout:**
+
+- **English Version**: [https://bt4q1s.cdn.tagadapay.com/checkout?checkoutToken=11ea7dee31382982228e7d5525ad](https://bt4q1s.cdn.tagadapay.com/checkout?checkoutToken=11ea7dee31382982228e7d5525ad)
+- **French Version**: [https://6pjq07.cdn.tagadapay.com/checkout?checkoutToken=11ea7dee31382982228e7d5525ad](https://6pjq07.cdn.tagadapay.com/checkout?checkoutToken=11ea7dee31382982228e7d5525ad)
+
 ### **V2 Demo Plugin** - Configuration & Theming
 
 - **Green Theme**: [https://green--store_b9dd071b3e3a.cdn.tagadapay.com/](https://green--store_b9dd071b3e3a.cdn.tagadapay.com/)
@@ -51,6 +58,16 @@ Experience the plugins in action:
 
 > 🎯 **Try the checkout flow** with test card: `4242 4242 4242 4242`, expiry: `12/28`, CVC: `123`
 
+### **Three Variants Plugin** - Multi-Language Health Product Checkout
+
+**Multi-Language Health Product Checkout:**
+
+- **English Version**: [https://hbwcin.cdn.tagadapay.com/](https://hbwcin.cdn.tagadapay.com/)
+- **French Version**: [https://qnhawk.cdn.tagadapay.com/](https://qnhawk.cdn.tagadapay.com/)
+- **Spanish Version**: [https://mi3ztw.cdn.tagadapay.com/](https://mi3ztw.cdn.tagadapay.com/)
+
+> 🎯 **Try the checkout flow** with test card: `4242 4242 4242 4242`, expiry: `12/28`, CVC: `123`
+
 ## 🎯 What's Inside
 
 This repository contains production-ready plugin examples demonstrating how to build custom checkout experiences, landing pages, and interactive components with the TagadaPay V2 platform.
@@ -61,13 +78,14 @@ This repository contains production-ready plugin examples demonstrating how to b
 | --------------------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
 | **[three-step-funnel](./v1/three-step-funnel/)**    | High-converting sales funnel            | ✅ Three-step conversion flow<br/>✅ Smart checkout session init<br/>✅ Real order data display<br/>✅ Google Autocomplete + ISO mapping<br/>✅ shadcn/ui + React 19<br/>✅ SDK v2.2.0         | ✅ **Active** |
 | **[express-checkout](./express-checkout/)**         | Modern express checkout flow            | ✅ Dynamic branding system<br/>✅ Multi-theme support<br/>✅ Two checkout variants (`/` & `/checkout2`)<br/>✅ ISO address validation<br/>✅ Real-time config injection<br/>✅ SDK v2.2.0      | ✅ **Active** |
+| **[express-checkout-2](./express-checkout-2/)**     | Multi-language express checkout         | ✅ English & French configurations<br/>✅ Dynamic SEO metadata<br/>✅ Google Places API integration<br/>✅ Responsive design<br/>✅ Customer reviews integration<br/>✅ SDK v2.2.0             | ✅ **Active** |
 | **[bogo-three-variants](./bogo-three-variants/)**   | BOGO multi-bundle checkout              | ✅ Three BOGO variants (1+1, 2+1, 3+2)<br/>✅ Instant bundle switching<br/>✅ Google Autocomplete<br/>✅ Professional top bar<br/>✅ Mobile-first responsive<br/>✅ SDK v2.2.0                 | ✅ **Active** |
 | **[demo-plugin-v2](./demo-plugin-v2/)**             | Complete V2 plugin showcase             | ✅ Advanced routing<br/>✅ Live config injection<br/>✅ A/B testing<br/>✅ Modern React 19<br/>✅ TypeScript + Vite                                                                            | ✅ **Active** |
 | **[advertorial](./advertorial/)**                   | Complete checkout experience            | ✅ Smart card formatting<br/>✅ Google Autocomplete<br/>✅ ISO address mapping<br/>✅ Payment processing<br/>✅ SDK v2.1.3                                                                     | ✅ **Active** |
 | **[post-purchase-upsell](./post-purchase-upsell/)** | Enhanced post-purchase upsells          | ✅ Backend-managed offers<br/>✅ Variant selection with real-time pricing<br/>✅ Fire-and-forget payment flow<br/>✅ Multi-offer navigation<br/>✅ Dynamic branding & themes<br/>✅ SDK v2.2.2 | ✅ **Active** |
 | **[quiz-funnel](./quiz-funnel/)**                   | Interactive product recommendation quiz | ✅ Multi-step quiz flow<br/>✅ Personalized product recommendations<br/>✅ Skin type assessment<br/>✅ Dynamic pricing display<br/>✅ Mobile-responsive design<br/>✅ SDK v2.2.0               | ✅ **Active** |
 
-> **💡 Note**: These plugins demonstrate different aspects of the TagadaPay platform - express-checkout showcases dynamic branding and modern UI patterns, demo-plugin-v2 focuses on routing and configuration, while advertorial demonstrates a complete checkout flow.
+> **💡 Note**: These plugins demonstrate different aspects of the TagadaPay platform - express-checkout showcases dynamic branding and modern UI patterns, express-checkout-2 demonstrates multi-language support and SEO optimization, demo-plugin-v2 focuses on routing and configuration, while advertorial demonstrates a complete checkout flow.
 
 ## 🏗️ Architecture
 
@@ -107,6 +125,11 @@ pnpm dev
 
 # Or try the complete checkout experience
 cd ../advertorial
+pnpm install
+pnpm dev
+
+# Or try the multi-language express checkout
+cd ../express-checkout-2
 pnpm install
 pnpm dev
 

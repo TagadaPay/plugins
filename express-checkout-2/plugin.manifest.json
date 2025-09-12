@@ -1,0 +1,34 @@
+{
+  "name": "Express checkout 2",
+  "pluginId": "express-checkout-2",
+  "description": "An express checkout experience",
+  "version": "1.0.2",
+  "author": "TagadaPay Team",
+  "mode": "direct-mode",
+  "category": "ecommerce",
+  "tags": ["checkout", "ecommerce", "payment"],
+  "router": {
+    "basePath": "/",
+    "matcher": "/checkout*",
+    "excluder": "/post*",
+    "entryPoints": [
+      {
+        "type": "checkout",
+        "path": "/checkout"
+      }
+    ]
+  },
+  "features": {
+    "googleAutocomplete": true,
+    "paymentProcessing": true,
+    "orderConfirmation": true,
+    "responsiveDesign": true,
+    "configurationSystem": true
+  },
+  "requirements": {
+    "sdk": "^2.1.0",
+    "environment": {
+      "VITE_GOOGLE_MAPS_API_KEY": "required"
+    }
+  }
+}

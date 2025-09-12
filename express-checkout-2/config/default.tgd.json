@@ -1,0 +1,226 @@
+{
+  "configName": "default",
+  "metadata": {
+    "title": "Tagada - Express Checkout",
+    "description": "Complete your purchase with our secure and fast express checkout process. Shop the latest fashion trends with confidence.",
+    "keywords": [
+      "fashion",
+      "checkout",
+      "shopping",
+      "express",
+      "secure",
+      "payment",
+      "dresses",
+      "clothing"
+    ]
+  },
+  "defaultCurrency": "USD",
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": true
+  },
+  "alert": {
+    "title": "This exact dress is trending — over 300 girls bought it today.",
+    "subtitle": "Checkout now before your size sells out."
+  },
+  "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow",
+  "routes": {
+    "basePath": "/"
+  },
+  "logo": "/logo.png",
+  "texts": {
+    "name": "Tagada",
+    "header": {
+      "logoAlt": "Tagada"
+    },
+    "orderSummary": {
+      "title": "Order summary",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "shippingFree": "Free",
+      "total": "Total",
+      "discount": {
+        "placeholder": "Discount code",
+        "apply": "Apply",
+        "applying": "Applying...",
+        "remove": "Remove",
+        "removing": "Removing...",
+        "appliedLabelSuffix": " - Discount applied"
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "emailPlaceholder": "Email"
+    },
+    "delivery": {
+      "title": "Delivery",
+      "countryLabel": "Country/Region",
+      "firstNameLabel": "First name",
+      "lastNameLabel": "Last name",
+      "addressLabel": "Address",
+      "addressPlaceholder": "Start typing your address...",
+      "addressSelectCountryFirst": "Please select country first",
+      "address2Placeholder": "Apartment, suite, etc. (optional)",
+      "cityPlaceholder": "City",
+      "statePlaceholder": "State",
+      "postalPlaceholder": "ZIP code",
+      "phonePlaceholder": "Phone",
+      "phoneTooltip": "In case we need to contact you about your order"
+    },
+    "shippingMethod": {
+      "title": "Shipping method",
+      "subtitle": "Enter your shipping address to view available shipping methods."
+    },
+    "payment": {
+      "title": "Credit card",
+      "cardNumberPlaceholder": "Card number",
+      "expiryPlaceholder": "Expiration date (MM / YY)",
+      "cvcPlaceholder": "Security code",
+      "cvcTooltip": "3-digit security code usually found on the back of your card. American Express cards have a 4-digit code located on the front.",
+      "useShippingAsBilling": "Use shipping address as billing address",
+      "billingTitle": "Billing address",
+      "billing": {
+        "countryLabel": "Country/Region",
+        "firstNameLabel": "First name",
+        "lastNameLabel": "Last name",
+        "addressLabel": "Address",
+        "addressPlaceholder": "Start typing your address...",
+        "addressSelectCountryFirst": "Please select country first",
+        "address2Placeholder": "Apartment, suite, etc. (optional)",
+        "cityPlaceholder": "City",
+        "statePlaceholder": "State",
+        "postalPlaceholder": "ZIP code",
+        "phonePlaceholder": "Phone",
+        "phoneTooltip": "In case we need to contact you about your order"
+      }
+    },
+    "thankYou": {
+      "title": "Order Confirmed!",
+      "subtitle": "Thank you for your order. We've received your order #{orderId} and will begin processing it shortly.",
+      "orderDetails": {
+        "title": "Order Details",
+        "orderNumber": "Order Number:",
+        "orderDate": "Order Date:",
+        "paymentStatus": "Payment Status:",
+        "fulfillmentStatus": "Fulfillment Status:",
+        "totalPaid": "Total Paid:"
+      },
+      "shipping": {
+        "title": "Shipping Information",
+        "shipTo": "Ship to:"
+      },
+      "billing": {
+        "title": "Billing Information",
+        "billTo": "Bill to:"
+      },
+      "customer": {
+        "title": "Customer Information",
+        "email": "Email:",
+        "phone": "Phone:"
+      },
+      "nextSteps": {
+        "title": "What's Next?",
+        "step1": {
+          "title": "Order Confirmation",
+          "description": "You'll receive an email confirmation with your order details shortly."
+        },
+        "step2": {
+          "title": "Processing",
+          "description": "We'll prepare your order for shipment within 1-2 business days."
+        },
+        "step3": {
+          "title": "Tracking",
+          "description": "You'll receive tracking information once your order ships."
+        }
+      },
+      "support": {
+        "title": "Need Help?",
+        "description": "If you have any questions about your order, our customer support team is here to help.",
+        "emailButton": "Email Support",
+        "phoneButton": "Call Support"
+      },
+      "continueShopping": "Continue Shopping"
+    }
+  },
+  "terms": {
+    "title": "IVY CLUB® TERMS & SERVICES",
+    "paragraphFirst": "By taking advantage of this offer, you will be signed up for our exclusive Ivy Club program. The Ivy Club is an exclusive program that provides you with:",
+    "paragraphEnd": "You will be billed $29.99 monthly until cancellation. If you do not want to continue the Ivy Club after the introductory period or if you wish to cancel the Ivy Club at any time, you may do so by filling out the Cancel Membership form on our website, by emailing us, or filling out the form on our website at least 3 days before the next billing period with your full name and the email and physical address associated with your use of the Service.",
+    "bullets": [
+      "Access to VIP pricing on all website products",
+      "Access to trending products through the Ivy Portal",
+      "Free shipping on all Ivy Portal orders",
+      "Lowest price guarantee on all VIP Portal orders",
+      "Priority 24/7 customer support"
+    ]
+  },
+  "footerLinks": {
+    "refundPolicy": {
+      "text": "Refund policy",
+      "href": "#"
+    },
+    "shipping": {
+      "text": "Shipping",
+      "href": "#"
+    },
+    "privacyPolicy": {
+      "text": "Privacy policy",
+      "href": "#"
+    },
+    "termsOfService": {
+      "text": "Terms of service",
+      "href": "#"
+    },
+    "cancellations": {
+      "text": "Cancellations",
+      "href": "#"
+    },
+    "contact": {
+      "text": "Contact",
+      "href": "#"
+    }
+  },
+  "customerReviews": [
+    {
+      "name": "Jessica Giudice",
+      "review": "Shopping at Tagada is a delight! The quality is outstanding, with careful stitching and no odd smells. Their sizing is spot-on—I'm 175 cm with a 75E bust, and everything fits perfectly. Great service and attention to detail make every order feel special."
+    },
+    {
+      "name": "Megan Miller",
+      "review": "Wore my Ivy Midi Dress from Tagada for a night out in Sorrento and felt incredible. The quality and fit were perfect, showcasing why Tagada is my go-to store. Got tons of compliments!"
+    },
+    {
+      "name": "Carly Scarpati",
+      "review": "Such a gorgeous dress from Tagada—I'm obsessed! 🤩 The quality and fit make it my new favorite."
+    },
+    {
+      "name": "Brooke Spinelle",
+      "review": "I was nervous ordering online, but Tagada delivered in every way. The shipping was faster than I expected, and the dress was stunning. The fabric felt high-end, and the fit was perfect—snug but breathable. I've seen people say online shopping can be tricky, but if you take your measurements and check the size chart like I did, you'll be good to go! The dress made me feel so confident, and I even reached out to their support for tracking info—they were super quick to reply and really nice. Will definitely shop here again!"
+    },
+    {
+      "name": "Caroline Durkin",
+      "review": "I've shopped at Tagada multiple times now, and I keep coming back because their dresses make me feel so confident and classy. The designs are elegant, and the materials feel amazing for the price. My most recent purchase—a flowy maxi dress called the Rosalind Maxi Dress—was perfect for my anniversary dinner. It fit like a dream and was even more beautiful in person. I always recommend Tagada to my girlfriends. Can't wait to add more to my collection!"
+    },
+    {
+      "name": "Madi Kemberly",
+      "review": "Ladies, Tagada is IT. I've been seeing their ads everywhere and finally caved during their sale. I got two dresses for the price of one dress anywhere else, and they were both perfect for my style—sexy but still classy. I wore one for a date night, and let's just say my boyfriend was speechless. 😂 Shipping wasn't Amazon-fast, but the tracking updates made it easy to plan ahead. Worth every penny!"
+    },
+    {
+      "name": "Alexa Laws",
+      "review": "I was worried the dress wouldn't look like the picture because of some reviews, but it was literally identical. The color, fit, and style were spot on—so glad I trusted my gut and ordered. Just so anyone reading knows, I ordered the Noir Mini Dress! The one with the bow tie at the back. Highlyyyy recommend this one."
+    },
+    {
+      "name": "Anne Marie Miller",
+      "review": "Okay, let me just say that Tagada has completely leveled up my wardrobe. I was tired of wearing the same boring outfits, and their dresses have added so much variety to my closet. My favorite so far is the Selena Mini Dress that fits like a glove. And don't even get me started on their customer service—so helpful and kind!!! If you're on the fence about ordering, just do it."
+    },
+    {
+      "name": "Olivia Schmitt",
+      "review": "I rarely leave reviews, but Tagada deserves the recognition. I needed a dress for my sister's engagement dinner and stumbled upon their website during a late-night scrolling session. The prices seemed almost suspiciously low, but the designs were gorgeous. After some deliberation, I decided to take a chance—and I'm so glad I did.\n\nThe ordering process was straightforward, and their updates kept me reassured during the wait. The dress arrived in about two weeks, and I was blown away by how elegant it looked. The color was rich, the fit was perfect, and the detailing made it look far more expensive than it was. I even compared it to a similar dress I saw in a boutique for four times the price, and honestly, Tagada's version was better.\n\nI was so impressed that I placed another order for two more dresses shortly after. One of them needed a slight adjustment in the straps, but their customer service team was so accommodating. They offered to cover the cost of tailoring or send a replacement. I opted for the tailoring, and it turned out perfectly.\n\nTagada has quickly become my go-to for special occasions. I've already recommended it to my sisters and friends, and now my closet is filling up with their stunning, affordable pieces."
+    },
+    {
+      "name": "Jamie O'Brien",
+      "review": "I had a little problem with my first order because the size I picked was out of stock, but their team emailed me right away and offered a replacement. The new dress shipped super fast, and it's actually cuter than the one I originally ordered. I really appreciate how they handled everything—it's rare to find online stores that actually care!"
+    }
+  ]
+}
