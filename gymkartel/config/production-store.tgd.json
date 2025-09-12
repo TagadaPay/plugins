@@ -1,0 +1,134 @@
+{
+  "configName": "production-store",
+  "product": {
+    "productId": "product_387016fc4ea3",
+    "defaultVariantId": "variant_bf691218089f",
+    "defaultPriceId": "price_992f48a688bd",
+    "productMapping": [
+      {
+        "productId": "product_387016fc4ea3"
+      },
+      {
+        "productId": "product_c1f9b41da1db"
+      },
+      {
+        "productId": "product_deafce030387"
+      },
+      {
+        "productId": "product_a4aa9410b09d"
+      }
+    ]
+  },
+  "storeConfig": {
+    "storeId": "store_3c0f870210b5",
+    "accountId": "acc_47a93cc912de"
+  },
+  "branding": {
+    "companyName": "GymKartel",
+    "logoText": "GymKartel",
+    "primaryColor": "#e11d48",
+    "secondaryColor": "#9333ea",
+    "logoHeight": 40
+  },
+  "content": {
+    "sections": {
+      "en": {
+        "announcementText": "🔥 LIMITED TIME: Up to 62% OFF + FREE Worldwide Shipping!",
+        "heroTitle": "Transform Your Body with 3D Sculpting Technology",
+        "heroDescription": "Reduce cellulite faster, effortlessly tone your legs, instantly lift and shape your bum for a sleeker, sexier figure",
+        "primaryButton": "Shop Now",
+        "secondaryButton": "LIMITED TIME OFFER - UP TO 62% OFF",
+        "trustText": "15,000+ verified reviews",
+        "featuresTitle": "How It Works",
+        "featuresDescription": "Our technology works to transform your body",
+        "technologyTitle": "Revolutionary Technology",
+        "technologyDescription": "Discover the science behind our technology",
+        "scientificTitle": "Scientifically Proven Results",
+        "videosTitle": "See Product in Action",
+        "videosDescription": "Watch real customers experience the transformation",
+        "packageTitle": "Choose Your Package",
+        "packageDescription": "Select the package that best fits your needs and budget",
+        "guaranteeTitle": "180-Day Money-Back Guarantee",
+        "guaranteeDescription": "Try Gymkartel risk-free for 180 days. If you don't see amazing results, we'll refund every penny!",
+        "footerDescription": "Transform your body with our revolutionary technology.",
+        "footerRating": "4.9/5 • 15,000+ reviews",
+        "footerQuickLinksTitle": "Quick Links",
+        "footerLegalTitle": "Legal",
+        "footerContactTitle": "Contact Us",
+        "footerSocialTitle": "Follow Us"
+      }
+    },
+    "colorOptions": [
+      {
+        "name": "Pink",
+        "image": "/images/leggings-pink.png",
+        "variantId": "variant_bf691218089f"
+      },
+      {
+        "name": "Light Blue", 
+        "image": "/images/leggings-light-blue.png",
+        "variantId": "variant_e66866b1a7bc"
+      },
+      {
+        "name": "Beige",
+        "image": "/images/leggings-beige.png", 
+        "variantId": "variant_163fa285da2a"
+      },
+      {
+        "name": "Black",
+        "image": "/images/leggings-black.png",
+        "variantId": "variant_ff221bae5bd1"
+      }
+    ],
+    "features": [
+      {
+        "iconName": "zap",
+        "title": "3D SCULPTING\nTECHNOLOGY",
+        "description": "Advanced fabric technology that shapes and contours",
+        "delay": "0ms"
+      },
+      {
+        "iconName": "heart",
+        "title": "REDUCES\nCELLULITE",
+        "description": "Clinically proven to smooth skin texture",
+        "delay": "100ms"
+      },
+      {
+        "iconName": "target", 
+        "title": "INSTANT\nLIFT & SHAPE",
+        "description": "Immediate results for enhanced curves",
+        "delay": "200ms"
+      },
+      {
+        "iconName": "shield",
+        "title": "BREATHABLE\nFABRIC",
+        "description": "Moisture-wicking technology for all-day comfort",
+        "delay": "300ms"
+      },
+      {
+        "iconName": "truck",
+        "title": "FREE WORLDWIDE\nSHIPPING",
+        "description": "Fast delivery to your door",
+        "delay": "400ms"
+      },
+      {
+        "iconName": "award",
+        "title": "180-DAY\nGUARANTEE",
+        "description": "Love it or get your money back",
+        "delay": "500ms"
+      }
+    ]
+  },
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": false,
+    "enableRecentPurchasePopup": true,
+    "enableStickyAddToCart": true,
+    "enableReviews": true,
+    "enableFaq": true
+  },
+  "routes": {
+    "basePath": "/"
+  }
+}

@@ -1,0 +1,405 @@
+{
+  "configName": "showcase-customization",
+  "product": {
+    "productId": "product_387016fc4ea3",
+    "defaultVariantId": "variant_bf691218089f", 
+    "defaultPriceId": "price_992f48a688bd",
+    "productMapping": [
+      {"productId": "product_387016fc4ea3"},
+      {"productId": "product_c1f9b41da1db"},
+      {"productId": "product_deafce030387"},
+      {"productId": "product_a4aa9410b09d"}
+    ]
+  },
+  "storeConfig": {
+    "storeId": "store_3c0f870210b5",
+    "accountId": "acc_47a93cc912de"
+  },
+  "branding": {
+    "companyName": "StyleForge",
+    "logoText": "StyleForge",
+    "primaryColor": "#7c3aed",
+    "secondaryColor": "#f59e0b",
+    "logoHeight": 45
+  },
+  "content": {
+    "sections": {
+      "en": {
+        "announcementText": "🎨 SHOWCASE MODE: See All Customization Options! | Free Design Consultation",
+        "heroTitle": "🎨 SHOWCASE MODE: All Customization Possibilities",
+        "heroDescription": "This config demonstrates every customizable element - colors, text, features, images, and more. Perfect for seeing what's possible!",
+        "primaryButton": "Explore Customization",
+        "secondaryButton": "FULLY CUSTOMIZABLE DEMO",
+        "trustText": "Trusted by designers worldwide",
+        "featuresTitle": "Customization Showcase",
+        "featuresDescription": "Every element you see can be customized - from colors to content to functionality",
+        "technologyTitle": "Design System Flexibility", 
+        "technologyDescription": "Explore our extensive customization capabilities",
+        "scientificTitle": "Proven Customization Power",
+        "videosTitle": "See Customization in Action",
+        "videosDescription": "Watch how easy it is to customize every aspect",
+        "packageTitle": "Choose Your Style Package",
+        "packageDescription": "Different packages showcase various customization levels",
+        "guaranteeTitle": "100% Customization Guarantee", 
+        "guaranteeDescription": "If you can dream it, we can customize it! Unlimited design revisions included.",
+        "ctaTitle": "Ready to Start Customizing?",
+        "ctaDescription": "Join creative professionals worldwide who trust StyleForge for their complete design customization needs",
+        "productTechTitle": "🎨 Advanced Design Technology",
+        "productTechDescription": "Cutting-edge customization systems that adapt to your brand vision and create stunning visual experiences",
+        "footerDescription": "Showcasing the power of complete customization.",
+        "footerRating": "5.0/5 • Completely customizable",
+        "footerQuickLinksTitle": "Customization Options",
+        "footerLegalTitle": "Design Terms",
+        "footerContactTitle": "Design Support",
+        "footerSocialTitle": "Design Gallery",
+        "colorShowcaseTitle": "Available in 4 Stunning Design Colors",
+        "colorShowcaseDescription": "Each color represents a different design philosophy - choose the one that matches your brand vision",
+        "heroImageAlt": "StyleForge Design Showcase",
+        "featuresImageAlt": "Advanced Design Features",
+        "celluliteImageAlt": "Design Impact Analysis",
+        "calorieImageAlt": "Performance Comparison Chart", 
+        "sslSecureAlt": "Secure Design Platform"
+      },
+      "fr": {
+        "heroTitle": "Vitrine de Toutes les Possibilités de Personnalisation",
+        "heroDescription": "Cette configuration démontre chaque élément personnalisable",
+        "announcementText": "🎨 MODE VITRINE: Voir Toutes les Options! | Consultation Gratuite",
+        "colorShowcaseTitle": "Disponible en 4 Couleurs de Design Époustouflantes",
+        "colorShowcaseDescription": "Chaque couleur représente une philosophie de design différente",
+        "productTechTitle": "🎨 Technologie de Design Avancée",
+        "productTechDescription": "Systèmes de personnalisation de pointe qui s'adaptent à votre vision de marque"
+      },
+      "es": {
+        "heroTitle": "Muestra de Todas las Posibilidades de Personalización", 
+        "heroDescription": "Esta configuración demuestra cada elemento personalizable",
+        "announcementText": "🎨 MODO SHOWCASE: ¡Ve Todas las Opciones! | Consulta Gratis",
+        "colorShowcaseTitle": "Disponible en 4 Colores de Diseño Impresionantes",
+        "colorShowcaseDescription": "Cada color representa una filosofía de diseño diferente",
+        "productTechTitle": "🎨 Tecnología de Diseño Avanzada",
+        "productTechDescription": "Sistemas de personalización de vanguardia que se adaptan a tu visión de marca"
+      }
+    },
+    "colorOptions": [
+      {
+        "name": "Cosmic Purple",
+        "image": "/images/leggings-pink.png",
+        "variantId": "variant_bf691218089f"
+      },
+      {
+        "name": "Ocean Breeze",
+        "image": "/images/leggings-light-blue.png",
+        "variantId": "variant_e66866b1a7bc" 
+      },
+      {
+        "name": "Desert Sand",
+        "image": "/images/leggings-beige.png",
+        "variantId": "variant_163fa285da2a"
+      },
+      {
+        "name": "Midnight Shadow", 
+        "image": "/images/leggings-black.png",
+        "variantId": "variant_ff221bae5bd1"
+      }
+    ],
+    "features": [
+      {
+        "iconName": "Palette",
+        "title": "UNLIMITED\nCOLOR OPTIONS",
+        "description": "Choose any color scheme that matches your brand",
+        "delay": "0ms"
+      },
+      {
+        "iconName": "Type",
+        "title": "CUSTOM\nTYPOGRAPHY", 
+        "description": "Personalize fonts, sizes, and text content",
+        "delay": "100ms"
+      },
+      {
+        "iconName": "Layout",
+        "title": "FLEXIBLE\nLAYOUTS",
+        "description": "Rearrange sections to match your vision",
+        "delay": "200ms"
+      },
+      {
+        "iconName": "Image",
+        "title": "CUSTOM\nIMAGERY",
+        "description": "Upload your own product photos and assets",
+        "delay": "300ms"
+      },
+      {
+        "iconName": "Globe",
+        "title": "MULTI-LANGUAGE\nSUPPORT",
+        "description": "Localize content for global audiences",
+        "delay": "400ms"
+      },
+      {
+        "iconName": "Zap",
+        "title": "ADVANCED\nFEATURES",
+        "description": "Toggle functionality and add custom features",
+        "delay": "500ms"
+      }
+    ],
+    "technologyFeatures": [
+      {
+        "iconName": "Brush",
+        "title": {
+          "en": "Brand Customization",
+          "fr": "Personnalisation de Marque",
+          "es": "Personalización de Marca"
+        },
+        "description": {
+          "en": "Complete brand identity customization",
+          "fr": "Personnalisation complète de l'identité de marque", 
+          "es": "Personalización completa de identidad de marca"
+        }
+      },
+      {
+        "iconName": "Settings",
+        "title": {
+          "en": "Advanced Configuration",
+          "fr": "Configuration Avancée",
+          "es": "Configuración Avanzada"
+        },
+        "description": {
+          "en": "Granular control over every aspect",
+          "fr": "Contrôle granulaire sur chaque aspect",
+          "es": "Control granular sobre cada aspecto"
+        }
+      },
+      {
+        "iconName": "Layers",
+        "title": {
+          "en": "Modular Components", 
+          "fr": "Composants Modulaires",
+          "es": "Componentes Modulares"
+        },
+        "description": {
+          "en": "Mix and match different sections",
+          "fr": "Mélangez et assortissez différentes sections",
+          "es": "Mezcla y combina diferentes secciones"
+        }
+      }
+    ],
+    "scientificStats": [
+      {
+        "value": {
+          "en": "99%",
+          "fr": "99%", 
+          "es": "99%"
+        },
+        "label": {
+          "en": "Customization Flexibility",
+          "fr": "Flexibilité de Personnalisation",
+          "es": "Flexibilidad de Personalización"
+        }
+      },
+      {
+        "value": {
+          "en": "50+", 
+          "fr": "50+",
+          "es": "50+"
+        },
+        "label": {
+          "en": "Configurable Elements",
+          "fr": "Éléments Configurables", 
+          "es": "Elementos Configurables"
+        }
+      },
+      {
+        "value": {
+          "en": "∞",
+          "fr": "∞",
+          "es": "∞"
+        },
+        "label": {
+          "en": "Design Possibilities",
+          "fr": "Possibilités de Design",
+          "es": "Posibilidades de Diseño"
+        }
+      }
+    ],
+    "mediaPartners": [
+      {
+        "name": "Design Weekly",
+        "logoUrl": "/images/vogue-logo.png",
+        "altText": "Featured in Design Weekly",
+        "width": 120,
+        "height": 60
+      },
+      {
+        "name": "Customization Today",
+        "logoUrl": "/images/elle-logo.png", 
+        "altText": "Featured in Customization Today",
+        "width": 100,
+        "height": 50
+      },
+      {
+        "name": "Brand Builders",
+        "logoUrl": "/images/glamour-logo.png",
+        "altText": "Featured in Brand Builders",
+        "width": 140,
+        "height": 70
+      }
+    ],
+    "trustBadges": [
+      {
+        "text": {
+          "en": "Fully Customizable",
+          "fr": "Entièrement Personnalisable",
+          "es": "Totalmente Personalizable"  
+        },
+        "iconName": "Brush"
+      },
+      {
+        "text": {
+          "en": "Design Support",
+          "fr": "Support Design",
+          "es": "Soporte de Diseño"
+        },
+        "iconName": "Headphones"
+      },
+      {
+        "text": {
+          "en": "Fast Deployment", 
+          "fr": "Déploiement Rapide",
+          "es": "Despliegue Rápido"
+        },
+        "iconName": "Zap"
+      },
+      {
+        "text": {
+          "en": "Mobile Optimized",
+          "fr": "Optimisé Mobile",
+          "es": "Optimizado Móvil"
+        },
+        "iconName": "Smartphone"
+      }
+    ],
+    "guaranteeItems": [
+      {
+        "title": {
+          "en": "Unlimited Revisions",
+          "fr": "Révisions Illimitées", 
+          "es": "Revisiones Ilimitadas"
+        },
+        "description": {
+          "en": "Perfect your design with unlimited changes",
+          "fr": "Perfectionnez votre design avec des changements illimités",
+          "es": "Perfecciona tu diseño con cambios ilimitados"
+        },
+        "iconName": "RefreshCw",
+        "iconUrl": "/images/ssl-secure.png"
+      },
+      {
+        "title": {
+          "en": "24/7 Design Support",
+          "fr": "Support Design 24/7",
+          "es": "Soporte de Diseño 24/7"
+        },
+        "description": {
+          "en": "Get help customizing anytime, anywhere",
+          "fr": "Obtenez de l'aide pour personnaliser à tout moment",
+          "es": "Obtén ayuda personalizando en cualquier momento"
+        },
+        "iconName": "Clock",
+        "iconUrl": "/images/trustpilot-logo.png"
+      },
+      {
+        "title": {
+          "en": "Brand Match Guarantee", 
+          "fr": "Garantie de Correspondance de Marque",
+          "es": "Garantía de Coincidencia de Marca"
+        },
+        "description": {
+          "en": "Perfect brand integration or full refund",
+          "fr": "Intégration de marque parfaite ou remboursement complet",
+          "es": "Integración de marca perfecta o reembolso completo"
+        },
+        "iconName": "Award",
+        "iconUrl": "/images/ssl-secure.png"
+      }
+    ],
+    "socialLinks": [
+      {
+        "url": "https://instagram.com/showcase",
+        "iconName": "Instagram",
+        "platform": "instagram",
+        "label": "Design Gallery"
+      },
+      {
+        "url": "https://twitter.com/showcase", 
+        "iconName": "Twitter",
+        "platform": "twitter",
+        "label": "Design Updates"
+      },
+      {
+        "url": "https://youtube.com/showcase",
+        "iconName": "Youtube", 
+        "platform": "youtube",
+        "label": "Customization Tutorials"
+      }
+    ],
+    "footerQuickLinks": [
+      {
+        "text": {
+          "en": "Customization Guide",
+          "fr": "Guide de Personnalisation",
+          "es": "Guía de Personalización"
+        },
+        "url": "/customization-guide"
+      },
+      {
+        "text": {
+          "en": "Design Templates",
+          "fr": "Modèles de Design", 
+          "es": "Plantillas de Diseño"
+        },
+        "url": "/templates"
+      },
+      {
+        "text": {
+          "en": "Brand Assets",
+          "fr": "Ressources de Marque",
+          "es": "Recursos de Marca" 
+        },
+        "url": "/brand-assets"
+      }
+    ],
+    "footerLegalLinks": [
+      {
+        "text": {
+          "en": "Design Terms",
+          "fr": "Conditions de Design",
+          "es": "Términos de Diseño"
+        },
+        "url": "/design-terms"
+      },
+      {
+        "text": {
+          "en": "Customization Policy",
+          "fr": "Politique de Personnalisation",
+          "es": "Política de Personalización"
+        },
+        "url": "/customization-policy"
+      }
+    ],
+    "contactInfo": {
+      "phone": "+1-555-DESIGN",
+      "email": "design@styleforge.com", 
+      "hours": "24/7 Design Support Available",
+      "address": "Creative District, Design City"
+    }
+  },
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": true,
+    "enableRecentPurchasePopup": true,
+    "enableStickyAddToCart": true,
+    "enableReviews": true,
+    "enableFaq": true
+  },
+  "routes": {
+    "basePath": "/"
+  }
+}
