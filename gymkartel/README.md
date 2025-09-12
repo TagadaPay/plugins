@@ -2,6 +2,10 @@
 
 A React/TypeScript e-commerce landing page plugin for Tagada, featuring 3D sculpting leggings with dynamic product showcase and real store integration.
 
+# Demo Link
+
+https://g0s0hb.cdn.tagadapay.com/#choose-package
+
 ## 🚀 Features
 
 - **Real Store Integration** - Connect to actual Tagada store data with multiple products
