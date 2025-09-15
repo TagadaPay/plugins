@@ -93,8 +93,8 @@ importers:
         specifier: 1.1.6
         version: 1.1.6(@types/react-dom@18.3.7(@types/react@18.3.24))(@types/react@18.3.24)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tagadapay/plugin-sdk':
-        specifier: ^2.3.5
-        version: 2.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.0.2)
+        specifier: ^2.4.3
+        version: 2.4.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.0.2)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.5.0)
@@ -1401,8 +1401,8 @@ packages:
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
 
-  '@tagadapay/plugin-sdk@2.3.5':
-    resolution: {integrity: sha512-6oHyiXKuDxJJiyHPPlBaLSCKZhQtKfUhZoOgWxwezoymAwGElwbbCTPO7EWUp+tHAy9iM6Gcal725e6x/U9kXQ==}
+  '@tagadapay/plugin-sdk@2.4.3':
+    resolution: {integrity: sha512-03sXK7BwBY+eM/qHyq9F2MS83TA+4xUXDrdMwQoL99itMa181qhGsyt4P7TubgyFWZAKA2/rp5sILC5uBJfmSw==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
@@ -3889,7 +3889,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@tagadapay/plugin-sdk@2.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.0.2)':
+  '@tagadapay/plugin-sdk@2.4.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.0.2)':
     dependencies:
       '@basis-theory/apple-pay-js': 2.0.2
       '@basis-theory/basis-theory-js': 4.30.0

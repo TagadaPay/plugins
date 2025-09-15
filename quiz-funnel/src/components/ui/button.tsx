@@ -79,8 +79,6 @@ const Button = React.forwardRef<
       return baseStyle;
     };
 
-    console.log(getButtonStyle());
-
     return (
       <Comp
         data-slot="button"

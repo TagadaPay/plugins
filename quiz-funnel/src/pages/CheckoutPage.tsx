@@ -274,10 +274,8 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   }, [isLoading]);
 
   const updateQuantity = (variantId: string, newQuantity: number) => {
-    console.log("updateQuantity", variantId, newQuantity, checkout);
     if (!checkout) return;
     setIsSummaryLoading(true);
-    console.log("lineItems", lineItems);
     setLineItems(
       lineItems?.map((item) =>
         item.variantId === variantId ? { ...item, quantity: newQuantity } : item
@@ -359,7 +357,6 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   );
   const saveCheckoutInfo = useCallback(
     async (addressData: CheckoutFormData) => {
-      console.log("saveCheckoutInfo", addressData);
       if (!checkout?.checkoutSession?.id) {
         return;
       }
@@ -388,8 +385,6 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         ) {
           return;
         }
-
-        console.log("HERERERERE");
 
         await updateCustomerAndSessionInfo({
           customerData: {
@@ -430,7 +425,6 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
-    console.log("HERERERERE");
 
     const subscription = watch((value) => {
       // Clear any existing timeout
@@ -459,8 +453,6 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   }, [watch, saveCheckoutInfo]);
 
   const handlePayment = async () => {
-    console.log("💳 Payment button clicked - starting validation...");
-
     // Step 1: Validate address form first (using React Hook Form)
     const addressValid = await form.trigger([
       "firstName",
@@ -487,8 +479,6 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
     // Step 3: Focus on first error field if validation fails
     if (!addressValid || !cardValid) {
-      console.log("❌ Validation failed, focusing first error...");
-
       // Enhanced error focusing logic
       // Priority order: firstName, lastName, email, phone, address1, country, city, state, postal, cardNumber, expiryDate, cvc
       const addressFieldPriority: string[] = [
@@ -610,8 +600,6 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       return;
     }
 
-    console.log("✅ All validation passed, proceeding with payment...");
-
     // Make sure checkout session is ready
     if (!checkout?.checkoutSession?.id || !updateCustomerAndSessionInfo) {
       toast.error("Checkout session not ready. Please try again.");
@@ -628,12 +616,6 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         formData.state && formData.state.trim() ? formData.state.trim() : "N/A",
     };
 
-    console.log("✅ PAYMENT Using form data:", {
-      originalState: formData.state,
-      enhancedState: enhancedPaymentData.state,
-      country: enhancedPaymentData.country,
-    });
-
     // Handle state requirement validation for specific countries
     const isStateRequired = ["US", "CA", "GB"].includes(
       enhancedPaymentData.country
@@ -648,8 +630,6 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     try {
       // ✅ NO REDUNDANT SAVE: Auto-save keeps data up-to-date
       // Data is already saved via saveCheckoutInfo (triggered by useAddress hook)
-      console.log("✅ Proceeding with payment (auto-save keeps data current)");
-
       // Process payment using validated card data (address data handled by useAddress hook)
       const cardData = form.getValues();
       await processCardPayment(
