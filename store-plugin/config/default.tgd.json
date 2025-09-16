@@ -1,0 +1,196 @@
+{
+  "configName": "default",
+  "products": {
+    "productIds": ["product_ced4f3b6868d", "product_f435f2bc6ef2"]
+  },
+  "content": {
+    "assets": {
+      "logo": "/ACME.svg",
+      "heroImage": "/placeholder.jpg",
+      "placeholderImage": "/placeholder.svg",
+      "thumbnails": {
+        "logo": "/placeholder-logo.svg",
+        "hero": "/placeholder.jpg",
+        "product": "/placeholder.svg"
+      }
+    },
+    "text": {
+      "en": {
+        "tagline": "Beautiful products, simplified.",
+        "heroQuote": "Refined. Minimal. Never boring.",
+        "descriptionLines": [
+          "Furniture that speaks softly, but stands out loud.",
+          "Clean lines, crafted with wit.",
+          "Elegance with a wink — style first"
+        ],
+        "home": "home",
+        "shop": "Shop",
+        "shopAll": "shop all",
+        "categories": "Categories",
+        "latestDrop": "latest drop",
+        "bestSeller": "Best Seller",
+        "addToCart": "Add to Cart",
+        "pageNotFound": "Page Not Found.",
+        "goBackHome": "Go Back Home",
+        "pageNotFoundDescription": "Sorry, we couldn't find the page you're looking for. The page might have been moved, deleted, or you entered the wrong URL.",
+        "noProductsAvailable": "No Products Available",
+        "noProductsDescription": "There are currently no products to display.",
+        "loadingProducts": "Loading products...",
+        "siteName": "Beautiful Products Store",
+        "siteDescription": "Discover our curated collection of refined, minimal products.",
+        "brandName": "Beautiful Products Store",
+        "menu": "Menu",
+        "close": "Close",
+        "cart": "cart",
+        "remove": "Remove",
+        "sortBy": "Sort by",
+        "clearAllFilters": "Clear all filters",
+        "copyright": "© — All rights reserved",
+        "allRightsReserved": "All rights reserved"
+      },
+      "fr": {
+        "tagline": "De beaux produits, simplifiés.",
+        "heroQuote": "Raffiné. Minimal. Jamais ennuyeux.",
+        "descriptionLines": [
+          "Du mobilier qui parle doucement, mais qui se distingue clairement.",
+          "Des lignes épurées, conçues avec esprit.",
+          "Élégance avec un clin d'œil — le style avant tout"
+        ],
+        "home": "accueil",
+        "shop": "Boutique",
+        "shopAll": "tout acheter",
+        "categories": "Catégories",
+        "latestDrop": "dernière collection",
+        "bestSeller": "Meilleure vente",
+        "addToCart": "Ajouter au panier",
+        "pageNotFound": "Page non trouvée.",
+        "goBackHome": "Retour à l'accueil",
+        "pageNotFoundDescription": "Désolé, nous n'avons pas pu trouver la page que vous recherchez. La page a peut-être été déplacée, supprimée, ou vous avez entré une mauvaise URL.",
+        "noProductsAvailable": "Aucun produit disponible",
+        "noProductsDescription": "Il n'y a actuellement aucun produit à afficher.",
+        "loadingProducts": "Chargement des produits...",
+        "siteName": "Boutique de Beaux Produits",
+        "siteDescription": "Découvrez notre collection sélectionnée de produits raffinés et minimalistes.",
+        "brandName": "Boutique de Beaux Produits",
+        "menu": "Menu",
+        "close": "Fermer",
+        "cart": "panier",
+        "remove": "Supprimer",
+        "sortBy": "Trier par",
+        "clearAllFilters": "Effacer tous les filtres",
+        "copyright": "© — Tous droits réservés",
+        "allRightsReserved": "Tous droits réservés"
+      }
+    },
+    "seo": {
+      "en": {
+        "/": {
+          "title": "Home - Beautiful Products Store",
+          "description": "Discover our curated collection of refined, minimal products.",
+          "keywords": "furniture, home decor, minimal design, modern furniture"
+        },
+        "/shop": {
+          "title": "Shop All - Beautiful Products Store",
+          "description": "Browse our complete collection of beautiful products.",
+          "keywords": "shop, products, furniture, home decor"
+        },
+        "/not-found": {
+          "title": "Page Not Found - Beautiful Products Store",
+          "description": "The page you're looking for could not be found.",
+          "keywords": "404, not found, error"
+        }
+      },
+      "fr": {
+        "/": {
+          "title": "Accueil - Boutique de Beaux Produits",
+          "description": "Découvrez notre collection sélectionnée de produits raffinés et minimalistes.",
+          "keywords": "mobilier, décoration, design minimal, mobilier moderne"
+        },
+        "/shop": {
+          "title": "Tout Acheter - Boutique de Beaux Produits",
+          "description": "Parcourez notre collection complète de beaux produits.",
+          "keywords": "boutique, produits, mobilier, décoration"
+        },
+        "/not-found": {
+          "title": "Page Non Trouvée - Boutique de Beaux Produits",
+          "description": "La page que vous recherchez n'a pas pu être trouvée.",
+          "keywords": "404, non trouvé, erreur"
+        }
+      }
+    },
+    "navigation": {
+      "header": [
+        {
+          "label": "home",
+          "href": "/"
+        },
+        {
+          "label": "shop all",
+          "href": "/shop"
+        }
+      ]
+    },
+    "links": {
+      "contact": [
+        {
+          "label": "37°47'33.4\"N 122°24'18.6\"W",
+          "href": "https://maps.app.goo.gl/MnpbPDEHxoDydc9M9",
+          "target": "_blank"
+        },
+        {
+          "label": "(269) 682-1402",
+          "href": "https://joyco.studio/showcase",
+          "target": "_blank"
+        },
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/joyco.studio/",
+          "target": "_blank"
+        }
+      ]
+    }
+  },
+  "theme": {
+    "colors": {
+      "background": "#ffffff",
+      "foreground": "#0a0a0b",
+      "card": "#ffffff",
+      "cardForeground": "#0a0a0b",
+      "popover": "#ffffff",
+      "popoverForeground": "#0a0a0b",
+      "primary": "#18181b",
+      "primaryForeground": "#fafafa",
+      "secondary": "#f4f4f5",
+      "secondaryForeground": "#18181b",
+      "muted": "#f4f4f5",
+      "mutedForeground": "#71717a",
+      "accent": "#f4f4f5",
+      "accentForeground": "#18181b",
+      "destructive": "#ef4444",
+      "destructiveForeground": "#fafafa",
+      "border": "#e4e4e7",
+      "input": "#e4e4e7",
+      "ring": "#18181b"
+    },
+    "spacing": {
+      "sides": "1rem",
+      "modalSides": "0.75rem",
+      "topSpacing": "5rem"
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": "var(--font-geist-sans), sans-serif",
+        "mono": "var(--font-geist-mono), monospace"
+      },
+      "fontSize": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "lg": "1.125rem",
+        "xl": "1.25rem",
+        "2xl": "1.5rem"
+      }
+    },
+    "borderRadius": "0.5rem"
+  }
+}

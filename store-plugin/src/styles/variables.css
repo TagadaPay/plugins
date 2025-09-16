@@ -1,0 +1,56 @@
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .base-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--sides);
+  }
+
+  .base-gap {
+    gap: var(--sides);
+  }
+
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+  }
+}
+
+:root {
+  --sides: 1rem;
+  --modal-sides: 0.75rem;
+  --top-spacing: 5rem;
+  --height-fold: 100vh;
+  --height-fold: 100svh;
+
+  @variant md {
+    --sides: 1.5rem;
+    --modal-sides: 1rem;
+    --top-spacing: 9rem;
+  }
+
+  @variant lg {
+    --modal-sides: 1.5rem;
+  }
+}

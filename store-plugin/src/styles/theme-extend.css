@@ -1,0 +1,103 @@
+@theme {
+  /* Container configuration */
+  --container-padding: var(--sides);
+
+  /* Font families */
+  --font-family-sans: var(--font-geist-sans), sans-serif;
+  --font-family-mono: var(--font-geist-mono), monospace;
+
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Border radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Spacing variables */
+  --spacing-sides: var(--sides);
+  --spacing-modal-sides: var(--modal-sides);
+  --spacing-top-spacing: var(--top-spacing);
+  --spacing-fold: var(--height-fold);
+
+  /* Font sizes with line height and letter spacing */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.2;
+  --text-xs--letter-spacing: -0.015em;
+  
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.2;
+  --text-sm--letter-spacing: -0.015em;
+  
+  --text-base: 1rem;
+  --text-base--line-height: 1.2;
+  --text-base--letter-spacing: -0.015em;
+  
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.2;
+  --text-lg--letter-spacing: -0.015em;
+  
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.2;
+  --text-xl--letter-spacing: -0.015em;
+  
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 1.2;
+  --text-2xl--letter-spacing: -0.015em;
+
+  /* Animations */
+  --animate-collapsible-down: collapsible-down 0.2s ease-out;
+  --animate-collapsible-up: collapsible-up 0.2s ease-out;
+
+  /* Keyframes for animations */
+  @keyframes collapsible-down {
+    from { height: 0; }
+    to { height: var(--radix-collapsible-content-height); }
+  }
+
+  @keyframes collapsible-up {
+    from { height: var(--radix-collapsible-content-height); }
+    to { height: 0; }
+  }
+}
