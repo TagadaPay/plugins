@@ -76,6 +76,10 @@ Experience the plugins in action:
 
 - **Live Demo**: [https://g0s0hb.cdn.tagadapay.com](https://g0s0hb.cdn.tagadapay.com)
 
+### **Derma Pen Plugin** - Skincare Device Landing Page
+
+- **Live Demo**: [https://kzwn53.cdn.tagadapay.com](https://kzwn53.cdn.tagadapay.com)
+
 ## 🎯 What's Inside
 
 This repository contains production-ready plugin examples demonstrating how to build custom checkout experiences, landing pages, and interactive components with the TagadaPay V2 platform.
@@ -94,6 +98,7 @@ This repository contains production-ready plugin examples demonstrating how to b
 | **[quiz-funnel](./quiz-funnel/)**                   | Interactive product recommendation quiz | ✅ Multi-step quiz flow<br/>✅ Personalized product recommendations<br/>✅ Skin type assessment<br/>✅ Dynamic pricing display<br/>✅ Mobile-responsive design<br/>✅ SDK v2.2.0               | ✅ **Active** |
 | **[skincare-migration](./skincare-migration/)**     | Skincare product experience            | ✅ Skincare product catalog<br/>✅ Product customization<br/>✅ Modern UI design<br/>✅ Responsive layout                                                                                    | ✅ **Active** |
 | **[gymkartel](./gymkartel/)**                       | Fitness & gym equipment                | ✅ Gym equipment showcase<br/>✅ Fitness product catalog<br/>✅ Modern checkout experience<br/>✅ Mobile-optimized design                                                                    | ✅ **Active** |
+| **[derma](./derma/)**                               | Skincare device landing page          | ✅ Derma pen device showcase<br/>✅ Config-driven pricing<br/>✅ Multi-pack checkout system<br/>✅ Before/after galleries<br/>✅ SDK v2.3.8                                                | ✅ **Active** |
 
 > **💡 Note**: These plugins demonstrate different aspects of the TagadaPay platform - express-checkout showcases dynamic branding and modern UI patterns, express-checkout-2 demonstrates multi-language support and SEO optimization, demo-plugin-v2 focuses on routing and configuration, while advertorial demonstrates a complete checkout flow.
 

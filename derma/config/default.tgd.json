@@ -1,0 +1,175 @@
+{
+  "configName": "derma-pen-default",
+
+  "productIds": ["product_cb0ca0e58dd1"],
+
+  "pricing": {
+    "singlePackPrice": 80,
+    "dualPackPrice": 160,
+    "triplePackPrice": 240,
+    "singlePackDiscount": 0,
+    "dualPackDiscount": 25,
+    "triplePackDiscount": 40,
+    "displayDiscountPricing": true,
+    "currency": "USD"
+  },
+
+  "branding": {
+    "primaryColor": "#34b1eb",
+    "secondaryColor": "#34eb8f",
+    "accentColor": "#fbbf24",
+    "companyName": "Tagada",
+    "logoText": "Tagada®",
+    "logoSize": "md"
+  },
+
+  "assets": {
+    "heroImages": ["/images/hero-image.png"],
+    "beforeAfterImages": [
+      {
+        "title": "7-Day Results",
+        "imageUrl": "/images/results-7-days.webp",
+        "alt": "Visible results in just 7 days"
+      },
+      {
+        "title": "Skin Tags Removal Results",
+        "imageUrl": "/images/skin-tags-results.webp",
+        "alt": "Complete skin tag removal in 14 days"
+      }
+    ],
+    "certificationLogos": [
+      {
+        "name": "FDA",
+        "imageUrl": "https://example.com/fda-logo.png",
+        "alt": "FDA Approved"
+      },
+      {
+        "name": "CE",
+        "imageUrl": "https://example.com/ce-logo.png",
+        "alt": "CE Certified"
+      },
+      {
+        "name": "ISO",
+        "imageUrl": "https://example.com/iso-logo.png",
+        "alt": "ISO Certified"
+      }
+    ],
+    "videoUrl": "https://example.com/demo-video.mp4",
+    "videoPoster": "/images/hero-image.png"
+  },
+
+  "content": {
+    "sections": {
+      "en": {
+        "heroTitle": "Eliminate moles, warts, skin tags, and dark spots",
+        "heroSubtitle": "Transform your skin at home with the Kidsneed® Non-Invasive Laser Pen",
+        "heroDescription": "Experience professional-grade skin treatment with advanced CO₂ laser technology designed for safe, effective home use.",
+        "primaryButton": "SHOP NOW",
+        "secondaryButton": "WATCH DEMO",
+        "trustText": "FDA Approved & Clinically Certified",
+        "guaranteeText": "180-Day Money-Back Guarantee",
+        "successRate": "98% Clinical Success Rate",
+
+        "featuresTitle": "Why Choose the Kidsneed® Laser Pen?",
+        "featuresSubtitle": "Professional-grade skin treatment with advanced technology",
+
+        "advantagesTitle": "Advanced CO₂ Laser Technology",
+        "advantagesDescription": "Precisely targets skin imperfections without damaging surrounding tissue",
+
+        "howItWorksTitle": "How It Works",
+        "howItWorksDescription": "Advanced ionic electrical technology eliminates unwanted tissue",
+
+        "reviewsTitle": "Real Results - Real People",
+        "reviewsSubtitle": "Join thousands of satisfied customers who transformed their skin",
+
+        "guaranteeTitle": "180-Day Money-Back Guarantee",
+        "guaranteeDescription": "Try risk-free for 6 months. Complete refund if not satisfied.",
+
+        "finalCtaTitle": "Transform Your Skin Today",
+        "finalCtaDescription": "Experience professional-grade skin treatment at home"
+      }
+    },
+
+    "customerReviews": [
+      {
+        "name": "Sarah M.",
+        "rating": 5,
+        "text": "Amazing results! My skin tags disappeared in just 2 weeks. So much better than expensive clinic visits.",
+        "verified": true,
+        "location": "California, USA"
+      },
+      {
+        "name": "Michael R.",
+        "rating": 5,
+        "text": "I was skeptical at first, but this really works. Removed several moles safely at home.",
+        "verified": true,
+        "location": "New York, USA"
+      },
+      {
+        "name": "Emma L.",
+        "rating": 5,
+        "text": "Professional results without the professional price. Highly recommend!",
+        "verified": true,
+        "location": "Texas, USA"
+      },
+      {
+        "name": "David K.",
+        "rating": 4,
+        "text": "Easy to use and effective. Noticed improvements within the first week.",
+        "verified": true,
+        "location": "Florida, USA"
+      }
+    ],
+
+    "socialLinks": [
+      {
+        "platform": "instagram",
+        "url": "https://instagram.com/kidsneed",
+        "iconUrl": "https://cdn-icons-png.flaticon.com/512/174/174855.png",
+        "label": "Follow us on Instagram"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://facebook.com/kidsneed",
+        "iconUrl": "https://cdn-icons-png.flaticon.com/512/174/174848.png",
+        "label": "Like us on Facebook"
+      }
+    ],
+
+    "pressLogos": [
+      {
+        "name": "Vogue",
+        "logoUrl": "https://example.com/vogue-logo.png",
+        "alt": "Featured in Vogue"
+      },
+      {
+        "name": "Harper's Bazaar",
+        "logoUrl": "https://example.com/harpers-logo.png",
+        "alt": "Featured in Harper's Bazaar"
+      },
+      {
+        "name": "Elle",
+        "logoUrl": "https://example.com/elle-logo.png",
+        "alt": "Featured in Elle"
+      }
+    ]
+  },
+
+  "features": {
+    "enableReviews": true,
+    "enableVideoSection": true,
+    "enableResultsGallery": true,
+    "enableCertifications": true,
+    "enablePressBar": true,
+    "reviewCount": 1000,
+    "averageRating": 4.9,
+    "enableBuyerNotifications": true,
+    "enableGuaranteeSection": true
+  },
+
+  "seo": {
+    "title": "Kidsneed® Laser Pen - Remove Moles & Skin Tags at Home",
+    "description": "FDA-approved laser pen removes moles, warts, and skin tags safely at home. 98% success rate, 180-day guarantee.",
+    "keywords": ["laser pen", "mole removal", "skin tags", "home treatment"]
+  }
+}

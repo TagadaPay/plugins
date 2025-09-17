@@ -1,0 +1,16 @@
+{
+  "pluginId": "derma-pen-landing-v1",
+  "name": "Derma Pen Landing Page",
+  "version": "1.0.0",
+  "mode": "direct-mode",
+  "description": "Complete derma pen skincare device landing page with multi-pack checkout system",
+  "author": "Tagada Plugin",
+  "license": "MIT",
+  "config": {
+    "title": "Derma Pen Landing",
+    "routes": {
+      "basePath": "/",
+      "customDomain": false
+    }
+  }
+}
