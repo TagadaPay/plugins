@@ -26,7 +26,9 @@ function App() {
     ) {
       navigate("/enter", { replace: true });
     }
-  }, [isAuthenticated, location, navigate]);
+  }, [isAuthenticated, isInitialized, isLoading, location, navigate]);
+
+  console.log(isAuthenticated, isInitialized, isLoading);
 
   return (
     <>

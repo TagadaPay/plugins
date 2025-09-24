@@ -15,7 +15,11 @@ import {
 } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { PluginConfig } from "@/types/plugin-config";
-import { formatMoney, usePluginConfig } from "@tagadapay/plugin-sdk/react";
+import {
+  formatMoney,
+  usePluginConfig,
+  useProducts,
+} from "@tagadapay/plugin-sdk/react";
 
 interface OfferSummary {
   currency: string;
@@ -83,60 +87,33 @@ export function OfferCard({
 }: OfferCardProps) {
   const { config } = usePluginConfig<PluginConfig>();
   const [isConfirming, setIsConfirming] = useState(false);
-  const [_, setSelectedVariants] = useState<string[]>([]);
-  // const { fetchCms } = useCmsAuth();
-
-  // Get the summary for the current currency
+  const [selectedVariants, setSelectedVariants] = useState<
+    Record<string, string>
+  >({});
   const summary = offer.summaries.find((s: any) => s.currency === currency);
+  const productIds = summary?.items.map((item) => item.productId) || [];
+  const { products } = useProducts({
+    productIds,
+    includeVariants: true,
+    includePrices: true,
+    enabled: true,
+  });
+
   if (!summary) return null;
 
   // Initialize selected variants when offer line items are available
   useEffect(() => {
     if (offer.offerLineItems?.length) {
-      setSelectedVariants(
-        offer.offerLineItems.map((item) => item.price.variant.id)
-      );
+      const initialSelections: Record<string, string> = {};
+      offer.offerLineItems.forEach((item) => {
+        const productId = item.price.variant.product.id;
+        initialSelections[productId] = item.price.variant.id;
+      });
+      setSelectedVariants(initialSelections);
     }
   }, [offer.offerLineItems]);
 
   // Group variants by type (e.g., color, size, weight)
-  const getVariantGroups = (variantName: string) => {
-    const groups: Record<string, string[]> = {};
-    const parts = variantName.split(" / ");
-
-    parts.forEach((part: string, index: number) => {
-      const groupName = index === 0 ? "Color" : index === 1 ? "Size" : "Weight";
-      if (!groups[groupName]) {
-        groups[groupName] = [];
-      }
-      if (!groups[groupName].includes(part)) {
-        groups[groupName].push(part);
-      }
-    });
-
-    return groups;
-  };
-
-  // Get color class based on color name
-  const getColorClass = (colorName: string) => {
-    const colorMap: Record<string, string> = {
-      Blue: "bg-blue-500",
-      Red: "bg-red-500",
-      Green: "bg-green-500",
-      Black: "bg-black",
-      White: "bg-white border border-gray-300",
-      Gray: "bg-gray-500",
-      Navy: "bg-indigo-900",
-      Stone: "bg-stone-500",
-      Purple: "bg-purple-500",
-      Pink: "bg-pink-500",
-      Yellow: "bg-yellow-400",
-      Orange: "bg-orange-500",
-      Brown: "bg-amber-800",
-    };
-
-    return colorMap[colorName] || "bg-gray-300";
-  };
 
   const handleConfirmPurchase = async () => {
     setIsConfirming(true);
@@ -338,10 +315,23 @@ export function OfferCard({
 
                     <div className="space-y-4">
                       {summary.items.map((item) => {
-                        const variantGroups = getVariantGroups(
-                          item.variant.name
+                        const product = products?.find(
+                          (p) => p.id === item.productId
                         );
-                        const selectedVariant = item.variant;
+                        const variantOptions = product?.variants || [];
+                        const selectedVariantId =
+                          selectedVariants[item.productId] ||
+                          (item.variant as any).id;
+                        const selectedVariant: any =
+                          variantOptions.find(
+                            (v) => v.id === selectedVariantId
+                          ) || item.variant;
+                        const selectedPrice =
+                          selectedVariant?.prices?.[0]?.currencyOptions?.[
+                            currency
+                          ]?.amount || 0;
+                        const unitAmountToShow =
+                          selectedPrice ?? item.unitAmount;
 
                         return (
                           <div
@@ -353,7 +343,10 @@ export function OfferCard({
                               <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md bg-zinc-100 dark:bg-zinc-800 sm:h-24 sm:w-24">
                                 <div className="absolute inset-0 bg-gradient-to-b from-black/5 to-black/10 dark:from-black/20 dark:to-black/30" />
                                 <img
-                                  src={selectedVariant?.imageUrl}
+                                  src={
+                                    selectedVariant?.imageUrl ||
+                                    item.variant?.imageUrl
+                                  }
                                   alt={item.product.name}
                                   className="h-full w-full object-cover"
                                 />
@@ -377,7 +370,7 @@ export function OfferCard({
                                       className="font-medium"
                                       style={{ color: themeColor }}
                                     >
-                                      {formatMoney(item.unitAmount, currency)}
+                                      {formatMoney(unitAmountToShow, currency)}
                                     </p>
                                   </div>
                                 </div>
@@ -389,78 +382,63 @@ export function OfferCard({
                                     }}
                                   />
                                 )}
-
-                                {/* Variant Selection */}
-                                <div className="mt-2 space-y-3">
-                                  {Object.entries(variantGroups).map(
-                                    ([groupName, options]) => (
-                                      <div
-                                        key={`${item.id}-${groupName}`}
-                                        className="space-y-2"
-                                      >
-                                        <div className="flex items-center">
-                                          <span className="text-xs font-medium text-zinc-500">
-                                            {groupName}
-                                          </span>
-                                        </div>
-                                        <div className="flex flex-wrap gap-2">
-                                          {options.map((option) => {
-                                            const isSelected =
-                                              selectedVariant?.name.includes(
-                                                option
-                                              );
-
-                                            return (
-                                              <button
-                                                key={`${item.id}-${groupName}-${option}`}
-                                                type="button"
-                                                className={`relative flex h-10 min-w-[45px] items-center justify-center rounded-md px-3 transition-all duration-150 ${
-                                                  isSelected
-                                                    ? "bg-primary-50 text-primary-700 border-primary-500 dark:bg-primary-900/20 dark:text-primary-300 dark:border-primary-500 border-2"
-                                                    : "hover:border-primary-300 dark:hover:border-primary-700 border border-zinc-200 bg-white text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
-                                                } `}
-                                                style={
-                                                  isSelected
-                                                    ? {
-                                                        borderColor: themeColor,
-                                                        color: themeColor,
-                                                      }
-                                                    : {}
-                                                }
-                                                title={option}
-                                              >
-                                                {groupName.toLowerCase() ===
-                                                "color" ? (
-                                                  <div className="flex items-center">
-                                                    <span
-                                                      className={`h-5 w-5 rounded-full ${getColorClass(
-                                                        option
-                                                      )}`}
-                                                    ></span>
-                                                    <span className="ml-1.5 text-xs font-medium">
-                                                      {option}
-                                                    </span>
-                                                  </div>
-                                                ) : groupName.toLowerCase() ===
-                                                  "weight" ? (
-                                                  <div className="flex items-center">
-                                                    <span className="text-xs font-medium">
-                                                      {option}g
-                                                    </span>
-                                                  </div>
-                                                ) : (
-                                                  <span className="text-xs font-medium">
-                                                    {option}
-                                                  </span>
+                                {variantOptions.length > 0 && (
+                                  <div className="mt-2 space-y-2">
+                                    <div className="text-xs font-medium text-zinc-500">
+                                      Choose a variant
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                      {variantOptions.map((variant: any) => {
+                                        const price = (
+                                          variant?.prices || []
+                                        ).find(
+                                          (pr: any) => pr.currency === currency
+                                        );
+                                        const checked =
+                                          selectedVariantId === variant.id;
+                                        return (
+                                          <label
+                                            key={`${item.id}-${variant.id}`}
+                                            className={`flex cursor-pointer items-center gap-2 rounded-md border px-3 py-2 text-sm transition-colors ${
+                                              checked
+                                                ? "border-primary-500 bg-primary-50 dark:bg-primary-900/20"
+                                                : "border-zinc-200 dark:border-zinc-700"
+                                            }`}
+                                            style={
+                                              checked
+                                                ? { borderColor: themeColor }
+                                                : {}
+                                            }
+                                          >
+                                            <input
+                                              type="radio"
+                                              name={`variant-${item.productId}`}
+                                              className="h-4 w-4"
+                                              checked={checked}
+                                              onChange={() => {
+                                                setSelectedVariants((prev) => ({
+                                                  ...prev,
+                                                  [item.productId]: variant.id,
+                                                }));
+                                              }}
+                                            />
+                                            <span className="whitespace-nowrap">
+                                              {variant.name}
+                                            </span>
+                                            {price?.unitAmount != null && (
+                                              <span className="ml-2 whitespace-nowrap text-xs text-zinc-500">
+                                                {formatMoney(
+                                                  price.unitAmount,
+                                                  currency
                                                 )}
-                                              </button>
-                                            );
-                                          })}
-                                        </div>
-                                      </div>
-                                    )
-                                  )}
-                                </div>
+                                              </span>
+                                            )}
+                                          </label>
+                                        );
+                                      })}
+                                    </div>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           </div>

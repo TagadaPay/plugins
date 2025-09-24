@@ -1,7 +1,23 @@
 import CustomerPortal from "@/components/CustomerPortal";
-import { Route, Router, Switch } from "wouter";
+import { useAuth } from "@tagadapay/plugin-sdk/react";
+import { useEffect } from "react";
+import { Route, Router, Switch, useLocation } from "wouter";
 
 function ClubPortalContent() {
+  const { isAuthenticated, isInitialized, isLoading } = useAuth();
+  const [location, navigate] = useLocation();
+
+  useEffect(() => {
+    if (
+      !isAuthenticated &&
+      location !== "/enter" &&
+      isInitialized &&
+      !isLoading
+    ) {
+      navigate("/enter", { replace: true });
+    }
+  }, [isAuthenticated, isInitialized, isLoading, location, navigate]);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="mx-auto">

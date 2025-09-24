@@ -82,7 +82,7 @@ Experience the plugins in action:
 
 ### **Club Plugin** - Membership Portal & Offers
 
-- **Live Demo**: [https://ygm49c.cdn.tagadapay.com/](https://ygm49c.cdn.tagadapay.com/)
+- **Live Demo**: [https://vnh6zp.cdn.tagadapay.com/](https://vnh6zp.cdn.tagadapay.com/)
 
 ## 🎯 What's Inside
 
