@@ -1,0 +1,25 @@
+{
+  "name": "Club 01",
+  "pluginId": "club-01",
+  "description": "A club plugin",
+  "version": "1.0.0",
+  "author": "TagadaPay Team",
+  "mode": "direct-mode",
+  "category": "club",
+  "tags": ["club", "payment", "ecommerce", "shadcn"],
+  "router": {
+    "basePath": "/",
+    "matcher": ".*",
+    "excluder": null
+  },
+  "features": {
+    "expressCheckout": true,
+    "shippingCalculation": true,
+    "orderSummary": true,
+    "responsiveDesign": true,
+    "modernUI": true
+  },
+  "requirements": {
+    "sdk": "^2.1.0"
+  }
+}

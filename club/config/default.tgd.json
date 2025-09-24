@@ -1,0 +1,262 @@
+{
+  "configName": "default",
+  "branding": {
+    "companyName": "Tagadapay Club",
+    "colors": {
+      "primary": "#f59e0b",
+      "secondary": "#fbbf24"
+    }
+  },
+  "products": {
+    "variantId": "variant_592e5ab3aeff"
+  },
+  "texts": {
+    "enter": {
+      "title": "Enter the Club",
+      "subtitle": "VIP deals for Tagada Customers",
+      "poweredBy": "Powered By",
+      "enterButton": "Enter the Club",
+      "loginEmailPlaceholder": "Enter your email",
+      "loginCodePlaceholder": "0000",
+      "sendCode": "Send Code",
+      "sendingCode": "Sending...",
+      "verifyCode": "Verify Code",
+      "verifyingCode": "Verifying..."
+    },
+    "subscriptions": {
+      "mySubscriptions": "My Subscriptions",
+      "subscriptionsLabel": "subscriptions",
+      "noActiveSubscriptions": "You have no active subscriptions",
+      "loadingSubscriptions": "Loading your subscriptions...",
+      "qty": "Qty",
+      "id": "ID",
+      "billingPlan": "Billing Plan",
+      "customer": "Customer",
+      "currentPeriod": "Current Period",
+      "trialPeriod": "Trial Period",
+      "cancellationNotice": "Cancellation Notice",
+      "subscriptionCancellationEndPeriod": "Your subscription will be canceled at the end of the current period.",
+      "created": "Created",
+      "productId": "Product ID",
+      "resumeSubscription": "Resume Subscription",
+      "resuming": "Resuming...",
+      "cancelSubscription": "Cancel Subscription",
+      "canceling": "Canceling...",
+      "cancelSubscriptionTitle": "Cancel Subscription",
+      "cancelSubscriptionNotice": "Are you sure you want to cancel this subscription?",
+      "confirmProceed": "Please confirm to proceed.",
+      "yesCancel": "Yes, cancel",
+      "yesLoseBenefits": "Yes, lose benefits",
+      "keepSubscription": "Keep Subscription",
+      "cancelClubMembership": "Cancel your Club membership",
+      "byCanceling": "By canceling, you will:",
+      "loseClubAdvantages": "Lose access to club advantages",
+      "loseAccumulatedCredits": "Lose accumulated credits",
+      "losePromotionCode": "Lose your promotion code",
+      "status": {
+        "active": "active",
+        "trial": "trial",
+        "canceling": "canceling"
+      }
+    }
+  },
+  "meta": {
+    "title": "Tagadapay Club",
+    "description": "A brief description of what Tagada Club offers",
+    "tagline": "Join the VIP Club"
+  },
+  "footer": {
+    "social": {
+      "title": "Follow Us",
+      "items": [
+        {
+          "icon": "Twitter",
+          "url": "https://twitter.com/tagadapay",
+          "title": "Follow us on Twitter"
+        },
+        {
+          "icon": "Facebook",
+          "url": "https://facebook.com/tagadapay",
+          "title": "Follow us on Facebook"
+        },
+        {
+          "icon": "Instagram",
+          "url": "https://instagram.com/tagadapay",
+          "title": "Follow us on Instagram"
+        }
+      ]
+    },
+    "sections": [
+      {
+        "title": "About",
+        "items": [
+          {
+            "title": "Our Store",
+            "url": "/our-store"
+          },
+          {
+            "title": "Careers",
+            "url": "/careers"
+          },
+          {
+            "title": "Press",
+            "url": "/press"
+          }
+        ]
+      },
+      {
+        "title": "Support",
+        "items": [
+          {
+            "title": "Help Center",
+            "url": "/help"
+          },
+          {
+            "title": "Contact Us",
+            "url": "/contact-us"
+          },
+          {
+            "title": "FAQs",
+            "url": "/faqs"
+          }
+        ]
+      },
+      {
+        "title": "Tagada Club",
+        "items": [
+          {
+            "title": "Powered by TagadaPay",
+            "url": "/powered-by-tagadapay"
+          }
+        ]
+      }
+    ],
+    "poweredBy": "Powered by Tagadapay",
+    "copyright": "© {year} {title}. All rights reserved."
+  },
+  "header": {
+    "navigation": {
+      "benefits": "Benefits",
+      "deals": "Deals",
+      "faq": "FAQ",
+      "account": "My Account"
+    },
+    "hero": {
+      "badge": "VIP Exclusive",
+      "title": "Welcome to Tagadapay Club",
+      "subtitle": "Unlock exclusive deals, premium offers, and VIP benefits reserved for our most valued customers.",
+      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+      "cta": {
+        "primary": "Explore Benefits",
+        "secondary": "View Deals"
+      }
+    },
+    "userStatus": {
+      "tier": "Gold",
+      "points": 2450,
+      "nextTier": "Platinum",
+      "pointsToNextTier": 550
+    }
+  },
+  "benefits": {
+    "badge": "Exclusive Benefits",
+    "title": "Why Join Tagadapay Club?",
+    "subtitle": "Unlock a world of exclusive perks, premium services, and VIP treatment designed specifically for our most valued customers.",
+    "items": [
+      {
+        "icon": "Zap",
+        "title": "Lightning Fast Checkout",
+        "description": "Skip the queue with our express checkout process. Complete your purchases in seconds, not minutes."
+      },
+      {
+        "icon": "Gift",
+        "title": "Exclusive Deals & Offers",
+        "description": "Access to member-only discounts, early bird sales, and special promotions not available to regular customers."
+      },
+      {
+        "icon": "Shield",
+        "title": "Priority Support",
+        "description": "Get dedicated customer support with faster response times and priority handling for all your inquiries."
+      }
+    ]
+  },
+  "offers": {
+    "badge": "Exclusive Deals",
+    "title": "Member-Only Offers",
+    "subtitle": "Discover incredible deals and discounts available exclusively to Tagadapay Club members. Save more on your favorite products.",
+    "categories": [
+      {
+        "name": "All Categories",
+        "active": true
+      },
+      {
+        "name": "Fashion"
+      },
+      {
+        "name": "Electronics"
+      },
+      {
+        "name": "Home"
+      }
+    ],
+    "errorMessages": {
+      "loading": "Error loading offers",
+      "noOffers": "No offers available",
+      "checkBack": "Check back later for new offers"
+    },
+    "labels": {
+      "vipOnly": "VIP Only",
+      "products": "products",
+      "bundleContents": "Bundle contents",
+      "addingToCart": "Adding to cart...",
+      "getDealNow": "Get deal now"
+    },
+    "cta": {
+      "viewDeal": "View Deal"
+    }
+  },
+  "faq": {
+    "badge": "FAQs",
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about Tagadapay Club.",
+    "items": [
+      {
+        "question": "What is Tagadapay Club?",
+        "answer": "Tagadapay Club is a VIP membership with exclusive deals and benefits for our valued customers."
+      },
+      {
+        "question": "How do I redeem a deal?",
+        "answer": "Click on a deal, review the bundle, and proceed to checkout to redeem it."
+      },
+      {
+        "question": "Can I cancel my membership?",
+        "answer": "Yes, you can cancel anytime from your account portal."
+      }
+    ]
+  },
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "What our members say",
+    "subtitle": "Real stories from Tagadapay Club members.",
+    "items": [
+      {
+        "image": "https://ui-avatars.com/api/?name=Sophie+M&background=amber-500&color=fff",
+        "name": "Sophie M.",
+        "title": "Member",
+        "quote": "I've saved over €1,200 in just 6 months with Tagada Club. The weekly deals on electronics and fashion are incredible. Best investment ever!"
+      },
+      {
+        "image": "https://ui-avatars.com/api/?name=Thomas+L&background=amber-500&color=fff",
+        "name": "Thomas L.",
+        "title": "Member",
+        "quote": "As a small business owner, Tagada Club has been a game-changer. I get early access to bulk deals and save 30-40% on my regular purchases. The membership pays for itself!"
+      },
+      {
+        "image": "https://ui-avatars.com/api/?name=Emma+R&background=amber-500&color=fff",
+        "name": "Emma R.",
+        "title": "Member",
+        "quote": "I was skeptical at first, but the exclusive flash sales and member-only discounts have saved me hundreds. The app notifications for new deals are super helpful!"
+      }
+    ]
+  }
+}
