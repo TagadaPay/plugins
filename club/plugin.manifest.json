@@ -2,7 +2,7 @@
   "name": "Club 01",
   "pluginId": "club-01",
   "description": "A club plugin",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "TagadaPay Team",
   "mode": "direct-mode",
   "category": "club",
