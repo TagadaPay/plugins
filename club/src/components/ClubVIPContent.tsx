@@ -1,4 +1,5 @@
 import { Benefits } from "@/components/Benefits";
+import { CreditRedeemSection } from "@/components/CreditRedeemSection";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -17,6 +18,9 @@ function ClubVIPContent() {
 
         {/* Offers/Deals Section */}
         <OffersSection />
+
+        {/* Credit Redeem Section */}
+        <CreditRedeemSection />
 
         {/* FAQ Section */}
         <FAQ />

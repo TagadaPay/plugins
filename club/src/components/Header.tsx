@@ -4,9 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PluginConfig } from "@/types/plugin-config";
 import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
-import { Crown, Menu, X } from "lucide-react";
+import { Crown, Gift, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
+
+// Hardcoded credits data (matching CreditRedeemSection)
+const USER_CREDITS = 7;
 
 export function Header() {
   const { config } = usePluginConfig<PluginConfig>();
@@ -63,6 +66,12 @@ export function Header() {
               {config.header.navigation.deals}
             </button>
             <button
+              onClick={() => scrollToSection("credits")}
+              className="text-sm font-medium transition-colors hover:text-primary-500"
+            >
+              Credits
+            </button>
+            <button
               onClick={() => scrollToSection("faq")}
               className="text-sm font-medium transition-colors hover:text-primary-500"
             >
@@ -70,16 +79,27 @@ export function Header() {
             </button>
           </nav>
 
-          {/* Desktop Account Button */}
-          <Button
-            size="sm"
-            variant="outline"
-            className="hidden md:flex border-primary-200 hover:bg-primary-50 hover:text-primary-600"
-            onClick={handlePortalNavigation}
-          >
-            <Crown className="mr-2 h-4 w-4 text-[var(--primary-color)]" />
-            {config.header.navigation.account}
-          </Button>
+          {/* Desktop Credits & Account Section */}
+          <div className="hidden md:flex items-center space-x-4">
+            {/* Credits Display */}
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-primary-50 dark:bg-primary-950/30 rounded-full border border-primary-100 dark:border-primary-800">
+              <Gift className="h-4 w-4 text-[var(--primary-color)]" />
+              <span className="text-sm font-semibold text-[var(--primary-color)]">
+                {USER_CREDITS} Credits
+              </span>
+            </div>
+
+            {/* Account Button */}
+            <Button
+              size="sm"
+              variant="outline"
+              className="border-primary-200 hover:bg-primary-50 hover:text-primary-600"
+              onClick={handlePortalNavigation}
+            >
+              <Crown className="mr-2 h-4 w-4 text-[var(--primary-color)]" />
+              {config.header.navigation.account}
+            </Button>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -151,6 +171,17 @@ export function Header() {
                   {pointsToNextTier} more points until {nextTier} status
                 </p>
               </div>
+
+              {/* Credits Display in Mobile */}
+              <div className="mt-3 flex items-center justify-between gap-2 px-4 py-3 bg-white dark:bg-zinc-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                <div className="flex items-center gap-2">
+                  <Gift className="h-5 w-5 text-[var(--primary-color)]" />
+                  <span className="font-medium">Your Credits</span>
+                </div>
+                <span className="text-lg font-bold text-[var(--primary-color)]">
+                  {USER_CREDITS}
+                </span>
+              </div>
             </div>
 
             {/* Navigation Links */}
@@ -166,6 +197,12 @@ export function Header() {
                 className="w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-medium"
               >
                 {config.header.navigation.deals}
+              </button>
+              <button
+                onClick={() => scrollToSection("credits")}
+                className="w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-medium"
+              >
+                Credits
               </button>
               <button
                 onClick={() => scrollToSection("faq")}

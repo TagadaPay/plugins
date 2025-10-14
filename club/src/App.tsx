@@ -5,6 +5,7 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import { PluginConfig } from "@/types/plugin-config";
 import { useAuth, usePluginConfig } from "@tagadapay/plugin-sdk/react";
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import { Route, Router, Switch, useLocation } from "wouter";
 
 function App() {
@@ -28,8 +29,6 @@ function App() {
     }
   }, [isAuthenticated, isInitialized, isLoading, location, navigate]);
 
-  console.log(isAuthenticated, isInitialized, isLoading);
-
   return (
     <>
       {" "}
@@ -42,6 +41,7 @@ function App() {
       }`,
         }}
       />
+      <Toaster position="top-center" />
       <Router>
         <Switch>
           <Route path="/enter">
