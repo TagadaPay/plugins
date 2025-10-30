@@ -23,7 +23,6 @@
     "title": "Cette robe exacte est tendance — plus de 300 femmes l'ont achetée aujourd'hui.",
     "subtitle": "Passez commande maintenant avant que votre taille ne soit en rupture."
   },
-  "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow",
   "routes": {
     "basePath": "/"
   },

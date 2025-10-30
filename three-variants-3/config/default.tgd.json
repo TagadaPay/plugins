@@ -155,7 +155,6 @@
     "showConfigViewer": true,
     "demoMode": true
   },
-  "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow",
   "routes": {
     "basePath": "/"
   },

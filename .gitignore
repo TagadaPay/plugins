@@ -1,0 +1,3 @@
+# TagadaPay Authentication files
+.tgdcli-auth*
+!.tgdcli-auth*.example
