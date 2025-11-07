@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PluginConfig } from "@/types/plugin-config";
-import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
+import { usePluginConfig } from "@tagadapay/plugin-sdk/v2";
 import { Award, CheckCircle, Sparkles, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 

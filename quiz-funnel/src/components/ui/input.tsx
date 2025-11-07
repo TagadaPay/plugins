@@ -1,5 +1,5 @@
 import { PluginConfig } from "@/types/plugin-config";
-import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
+import { usePluginConfig } from "@tagadapay/plugin-sdk/v2";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";

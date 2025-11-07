@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { PluginConfig } from "@/types/plugin-config";
-import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
+import { usePluginConfig } from "@tagadapay/plugin-sdk/v2";
 
 export interface ComboboxOption {
   value: string;

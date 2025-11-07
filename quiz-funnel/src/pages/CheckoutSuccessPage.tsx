@@ -3,12 +3,11 @@ import { Card } from "@/components/ui/card";
 import { PluginConfig } from "@/types/plugin-config";
 import {
   formatMoney,
-  OrderItem,
   useCurrency,
   useISOData,
   useOrder,
   usePluginConfig,
-} from "@tagadapay/plugin-sdk/react";
+} from "@tagadapay/plugin-sdk/v2";
 import { useNavigate } from "react-router-dom";
 
 type CheckoutSuccessPageProps = {
@@ -20,7 +19,6 @@ export default function CheckoutSuccessPage({
 }: CheckoutSuccessPageProps) {
   const { order, isLoading, error } = useOrder({
     orderId,
-    autoFetch: true,
     enabled: Boolean(orderId),
   });
   const { countries } = useISOData();
@@ -79,7 +77,7 @@ export default function CheckoutSuccessPage({
 
   // Get items for the current currency only (filters out duplicate currency items)
   const currentCurrencyItems = order.items.filter(
-    (item: OrderItem) => item.currency === currency
+    (item) => item.currency === currency
   );
 
   console.log(countries);
@@ -163,7 +161,7 @@ export default function CheckoutSuccessPage({
                 {/* Order Items */}
                 {currentCurrencyItems.length > 0 ? (
                   <div className="space-y-3">
-                    {currentCurrencyItems.map((item: OrderItem) => (
+                    {currentCurrencyItems.map((item) => (
                       <div
                         key={item.id}
                         className="flex items-center gap-4 p-3 bg-muted/30 rounded-lg"
@@ -223,8 +221,7 @@ export default function CheckoutSuccessPage({
                         {formatMoney(
                           currentSummary.subtotalAdjustedAmount ||
                             currentCurrencyItems.reduce(
-                              (sum: number, item: OrderItem) =>
-                                sum + item.adjustedAmount,
+                              (sum: number, item) => sum + item.adjustedAmount,
                               0
                             ),
                           currency

@@ -1,17 +1,33 @@
 "use client";
 
-import { TagadaProvider } from "@tagadapay/plugin-sdk/react";
-import { PropsWithChildren } from "react";
+import {
+  RawPluginConfig,
+  TagadaProvider,
+  createRawPluginConfig,
+} from "@tagadapay/plugin-sdk/v2";
+import { PropsWithChildren, useEffect, useState } from "react";
 
 type ProvidersProps = PropsWithChildren<{}>;
 
 function Providers({ children }: ProvidersProps) {
+  const [rawPluginConfig, setRawPluginConfig] = useState<
+    RawPluginConfig | undefined
+  >(undefined);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    createRawPluginConfig().then((config) => {
+      console.log("config", config);
+      setRawPluginConfig(config);
+      setIsLoading(false);
+    });
+  }, []);
+
+  if (isLoading) {
+    return null;
+  }
   return (
-    <TagadaProvider
-      localConfig="supplements"
-      environment="production"
-      blockUntilSessionReady
-    >
+    <TagadaProvider environment="development" rawPluginConfig={rawPluginConfig}>
       {children}
     </TagadaProvider>
   );

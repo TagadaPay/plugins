@@ -3,15 +3,33 @@ import { Card } from "@/components/ui/card";
 import { PluginConfig } from "@/types/plugin-config";
 import {
   formatMoney,
-  usePluginConfig,
-  useProducts,
-} from "@tagadapay/plugin-sdk/react";
-import {
   Product,
   ProductVariant,
-} from "node_modules/@tagadapay/plugin-sdk/dist/react/hooks/useProducts";
+  usePluginConfig,
+  useProducts,
+} from "@tagadapay/plugin-sdk/v2";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Type definitions for product and variant data
+type VariantData = {
+  product: {
+    id: string;
+    name: string;
+    description?: string;
+  };
+  variant: {
+    id: string;
+    name: string;
+    description?: string;
+    imageUrl?: string;
+    prices: Array<{
+      currencyOptions: {
+        [key: string]: { amount: number };
+      };
+    }>;
+  };
+};
 
 type QuizResults = {
   [key: string]: string | string[];
@@ -24,20 +42,23 @@ export default function QuizResultsPage({}: QuizResultsPageProps) {
   const [showResults, setShowResults] = useState(false);
   const [quizResults, setQuizResults] = useState<QuizResults | null>(null);
   const navigate = useNavigate();
-  const { config } = usePluginConfig<PluginConfig>();
-  const { getVariant } = useProducts({
+  const { config, storeId } = usePluginConfig<PluginConfig>();
+  const { getVariant, products } = useProducts({
     enabled: true,
     includeVariants: true,
     includePrices: true,
   });
 
-  const variants = config?.variants?.map(
-    (variant) =>
-      getVariant(variant) as {
-        product: Product;
-        variant: ProductVariant;
-      }
-  );
+  const variants = config?.variants
+    ?.map((variant) => {
+      const result = getVariant(variant);
+      console.log(result, variant);
+      return result;
+    })
+    .filter((variant) => !!variant) as {
+    product: Product;
+    variant: ProductVariant;
+  }[];
 
   // Helper function to get the label for an answer
   const getAnswerLabel = (questionIndex: number, answerId: string): string => {
@@ -137,6 +158,8 @@ export default function QuizResultsPage({}: QuizResultsPageProps) {
       </div>
     );
   }
+
+  console.log(variants);
 
   return (
     <div className="min-h-screen bg-background">

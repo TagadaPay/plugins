@@ -1,0 +1,223 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Quiz Funnel Configuration",
+  "type": "object",
+  "properties": {
+    "configName": {
+      "type": "string",
+      "title": "Config Name",
+      "default": "default"
+    },
+    "title": {
+      "type": "string",
+      "title": "Title",
+      "default": "Quiz Funnel"
+    },
+    "variants": {
+      "type": "array",
+      "title": "Product Variants",
+      "items": {
+        "type": "string",
+        "format": "variantSelector"
+      },
+      "default": []
+    },
+    "defaultCurrency": {
+      "type": "string",
+      "title": "Default Currency",
+      "default": "USD"
+    },
+    "googleApiKey": {
+      "type": "string",
+      "title": "Google API Key",
+      "format": "uri"
+    },
+    "primaryColor": {
+      "type": "string",
+      "title": "Primary Color",
+      "format": "color",
+      "default": "#000000"
+    },
+    "primaryForeground": {
+      "type": "string",
+      "title": "Primary Foreground Color",
+      "format": "color",
+      "default": "#ffffff"
+    },
+    "loading": {
+      "type": "object",
+      "title": "Loading Screen",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title",
+          "default": "Loading..."
+        },
+        "subtitles": {
+          "type": "array",
+          "title": "Subtitles",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      },
+      "required": ["title"]
+    },
+    "results": {
+      "type": "object",
+      "title": "Results Screen",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title",
+          "default": "Results"
+        },
+        "subtitle": {
+          "type": "string",
+          "title": "Subtitle"
+        },
+        "answersTitle": {
+          "type": "string",
+          "title": "Answers Title",
+          "default": "Your Answers"
+        }
+      },
+      "required": ["title"]
+    },
+    "home": {
+      "type": "object",
+      "title": "Home Page",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title",
+          "default": "Welcome"
+        },
+        "accentuatedTitle": {
+          "type": "string",
+          "title": "Accentuated Title"
+        },
+        "subtitle": {
+          "type": "string",
+          "title": "Subtitle"
+        },
+        "badge": {
+          "type": "string",
+          "title": "Badge Text"
+        },
+        "cards": {
+          "type": "object",
+          "title": "Feature Cards",
+          "properties": {
+            "personalizedAnalysis": {
+              "type": "string",
+              "title": "Personalized Analysis"
+            },
+            "expertFormulated": {
+              "type": "string",
+              "title": "Expert Formulated"
+            },
+            "provenResults": {
+              "type": "string",
+              "title": "Proven Results"
+            }
+          }
+        }
+      },
+      "required": ["title"]
+    },
+    "thankYou": {
+      "type": "object",
+      "title": "Thank You Page",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title",
+          "default": "Thank You!"
+        },
+        "subtitle": {
+          "type": "string",
+          "title": "Subtitle"
+        },
+        "steps": {
+          "type": "array",
+          "title": "Steps",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "title": "Step Title"
+              },
+              "subtitle": {
+                "type": "string",
+                "title": "Step Subtitle"
+              }
+            },
+            "required": ["title", "subtitle"]
+          },
+          "default": []
+        }
+      },
+      "required": ["title"]
+    },
+    "quizzQuestions": {
+      "type": "array",
+      "title": "Quiz Questions",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Question Title"
+          },
+          "subtitle": {
+            "type": "string",
+            "title": "Question Subtitle"
+          },
+          "label": {
+            "type": "string",
+            "title": "Question Label"
+          },
+          "options": {
+            "type": "array",
+            "title": "Options",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "title": "Option ID"
+                },
+                "label": {
+                  "type": "string",
+                  "title": "Option Label"
+                },
+                "description": {
+                  "type": "string",
+                  "title": "Option Description"
+                },
+                "image": {
+                  "type": "string",
+                  "title": "Option Image",
+                  "format": "uri"
+                }
+              },
+              "required": ["id", "label"]
+            },
+            "default": []
+          }
+        },
+        "required": ["title", "label", "options"]
+      },
+      "default": []
+    },
+    "supportEmail": {
+      "type": "string",
+      "title": "Support Email",
+      "format": "email"
+    }
+  },
+  "required": ["configName", "title"]
+}

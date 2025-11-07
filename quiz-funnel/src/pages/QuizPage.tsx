@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { useQuizAnswers } from "@/hooks/useQuizAnswers";
 import { PluginConfig } from "@/types/plugin-config";
-import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
+import { usePluginConfig } from "@tagadapay/plugin-sdk/v2";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 

@@ -1,7 +1,7 @@
 {
   "configName": "supplements",
   "title": "Supplements",
-  "variants": ["variant_8c36c17c4ea2", "variant_5e28fa63df4c"],
+  "variants": ["variant_5e5701575994", "variant_bf81b89e561c"],
   "defaultCurrency": "USD",
   "primaryColor": "#e53935",
   "primaryForeground": "#fff5f5",

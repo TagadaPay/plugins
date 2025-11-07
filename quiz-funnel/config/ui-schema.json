@@ -1,0 +1,73 @@
+{
+  "ui:grouping": {
+    "tabs": [
+      { "id": "general", "title": "General" },
+      { "id": "content", "title": "Content" },
+      { "id": "quiz", "title": "Quiz" }
+    ],
+    "sections": [
+      { "id": "basic", "title": "Basic Settings", "tabId": "general" },
+      { "id": "branding", "title": "Branding", "tabId": "general" },
+      { "id": "products", "title": "Products", "tabId": "general" },
+      { "id": "home", "title": "Home Page", "tabId": "content" },
+      { "id": "loading", "title": "Loading Screen", "tabId": "content" },
+      { "id": "results", "title": "Results Screen", "tabId": "content" },
+      { "id": "thankYou", "title": "Thank You Page", "tabId": "content" },
+      { "id": "questions", "title": "Quiz Questions", "tabId": "quiz" }
+    ]
+  },
+  "configName": {
+    "ui:tab": "general",
+    "ui:section": "basic"
+  },
+  "title": {
+    "ui:tab": "general",
+    "ui:section": "basic"
+  },
+  "variants": {
+    "ui:tab": "general",
+    "ui:section": "products"
+  },
+  "defaultCurrency": {
+    "ui:tab": "general",
+    "ui:section": "basic"
+  },
+  "googleApiKey": {
+    "ui:tab": "general",
+    "ui:section": "basic"
+  },
+  "primaryColor": {
+    "ui:tab": "general",
+    "ui:section": "branding",
+    "ui:widget": "color"
+  },
+  "primaryForeground": {
+    "ui:tab": "general",
+    "ui:section": "branding",
+    "ui:widget": "color"
+  },
+  "loading": {
+    "ui:tab": "content",
+    "ui:section": "loading"
+  },
+  "results": {
+    "ui:tab": "content",
+    "ui:section": "results"
+  },
+  "home": {
+    "ui:tab": "content",
+    "ui:section": "home"
+  },
+  "thankYou": {
+    "ui:tab": "content",
+    "ui:section": "thankYou"
+  },
+  "quizzQuestions": {
+    "ui:tab": "quiz",
+    "ui:section": "questions"
+  },
+  "supportEmail": {
+    "ui:tab": "general",
+    "ui:section": "basic"
+  }
+}

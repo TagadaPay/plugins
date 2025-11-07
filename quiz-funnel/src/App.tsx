@@ -1,8 +1,6 @@
 import Loader from "@/components/Loader";
 import QuizResultsPage from "@/pages/QuizResultsPage";
-import { PluginConfig } from "@/types/plugin-config";
-import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import {
   Navigate,
   Route,
@@ -68,13 +66,13 @@ function ThankYouRouter() {
 }
 
 function AppRoutes() {
-  const { config } = usePluginConfig<PluginConfig>();
+  // const { config } = usePluginConfig<PluginConfig>();
 
-  useEffect(() => {
-    if (config?.title) {
-      document.title = config.title;
-    }
-  }, [config?.title]);
+  // useEffect(() => {
+  //   if (config?.title) {
+  //     document.title = config.title;
+  //   }
+  // }, [config?.title]);
 
   return (
     <Routes>

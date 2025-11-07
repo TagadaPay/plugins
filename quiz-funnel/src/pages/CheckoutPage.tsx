@@ -1,6 +1,5 @@
 import type React from "react";
 
-import Loader from "@/components/Loader";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Combobox } from "@/components/ui/combobox";
@@ -18,7 +17,7 @@ import {
   usePayment,
   usePluginConfig,
   type GooglePrediction,
-} from "@tagadapay/plugin-sdk/react";
+} from "@tagadapay/plugin-sdk/v2";
 import { CreditCard, LockIcon, Mail, MapPin, Phone, User } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -94,7 +93,6 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     init,
     updateLineItems,
     isLoading,
-    isInitialized,
     error,
     updateCustomerAndSessionInfo,
   } = useCheckout({
@@ -114,6 +112,9 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   const [isSummaryLoading, setIsSummaryLoading] = useState(false);
   const [lineItems, setLineItems] = useState<CheckoutLineItem[]>();
   const debounceTimeoutRef = useRef<NodeJS.Timeout>();
+  const shouldSkipDebouncedUpdateRef = useRef(true); // Skip initial update
+  const previousLineItemsRef = useRef<CheckoutLineItem[]>();
+  const isMountedRef = useRef(true);
 
   // Google Places and ISO data hooks
   const {
@@ -139,30 +140,85 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   const [isCountrySelected, setIsCountrySelected] = useState(false);
 
   useEffect(() => {
-    if (isInitialized && checkout && !isLineItemsInitialized.current) {
-      setLineItems(
-        checkout.summary.items.map((item) => ({
-          variantId: item.variantId,
-          quantity: item.quantity,
-        }))
-      );
+    if (checkout && !isLineItemsInitialized.current) {
+      const initialLineItems = checkout.summary.items.map((item) => ({
+        variantId: item.variantId,
+        quantity: item.quantity,
+      }));
+      setLineItems(initialLineItems);
+      previousLineItemsRef.current = initialLineItems;
       isLineItemsInitialized.current = true;
+      // Allow debounced updates after initial setup
+      shouldSkipDebouncedUpdateRef.current = false;
     }
   }, [isInitFailed, checkout]);
 
   // Debounced effect to call updateLineItems when lineItems changes
   useEffect(() => {
-    if (lineItems && isInitialized) {
-      // Clear existing timeout
-      if (debounceTimeoutRef.current) {
-        clearTimeout(debounceTimeoutRef.current);
-      }
-
-      // Set new timeout to call updateLineItems after 2 seconds
-      debounceTimeoutRef.current = setTimeout(() => {
-        updateLineItems(lineItems);
-      }, 2000);
+    // Skip if this is the initial load
+    if (shouldSkipDebouncedUpdateRef.current || !lineItems) {
+      return;
     }
+
+    // If we don't have a previous value yet, store it and skip (initial setup)
+    if (!previousLineItemsRef.current) {
+      previousLineItemsRef.current = lineItems;
+      return;
+    }
+
+    // Create a deep comparison function to check if lineItems actually changed
+    const hasChanged = (() => {
+      if (lineItems.length !== previousLineItemsRef.current!.length) {
+        return true;
+      }
+      // Sort by variantId for comparison (order might differ but items are same)
+      const currentSorted = [...lineItems].sort((a, b) => {
+        const aId = a.variantId || "";
+        const bId = b.variantId || "";
+        return aId.localeCompare(bId);
+      });
+      const previousSorted = [...previousLineItemsRef.current!].sort((a, b) => {
+        const aId = a.variantId || "";
+        const bId = b.variantId || "";
+        return aId.localeCompare(bId);
+      });
+      return currentSorted.some(
+        (item, index) =>
+          item.variantId !== previousSorted[index]?.variantId ||
+          item.quantity !== previousSorted[index]?.quantity
+      );
+    })();
+
+    if (!hasChanged) {
+      return;
+    }
+
+    // Clear existing timeout
+    if (debounceTimeoutRef.current) {
+      clearTimeout(debounceTimeoutRef.current);
+    }
+
+    // Capture the current lineItems value for the timeout callback
+    const lineItemsToUpdate = lineItems;
+
+    // Set new timeout to call updateLineItems after 2 seconds
+    debounceTimeoutRef.current = setTimeout(async () => {
+      try {
+        await updateLineItems(lineItemsToUpdate);
+        // Update ref with the value we actually sent to the API
+        if (isMountedRef.current) {
+          previousLineItemsRef.current = lineItemsToUpdate;
+        }
+      } catch (error) {
+        console.error("Failed to update line items:", error);
+        // Don't update previousLineItemsRef on error so we can retry
+      } finally {
+        // Always set loading to false after the operation completes (if still mounted)
+        if (isMountedRef.current) {
+          setIsSummaryLoading(false);
+        }
+      }
+    }, 2000);
 
     // Cleanup timeout on unmount or when lineItems changes
     return () => {
@@ -170,7 +226,7 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         clearTimeout(debounceTimeoutRef.current);
       }
     };
-  }, [lineItems, isInitialized, updateLineItems]);
+  }, [lineItems, updateLineItems]);
 
   useEffect(() => {
     if (
@@ -267,11 +323,15 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     }
   }, [watchedCountry, getRegions, setValue, watch]);
 
+  // Cleanup on unmount
   useEffect(() => {
-    if (isLoading === false) {
-      setIsSummaryLoading(false);
-    }
-  }, [isLoading]);
+    return () => {
+      isMountedRef.current = false;
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const updateQuantity = (variantId: string, newQuantity: number) => {
     if (!checkout) return;
@@ -664,10 +724,6 @@ export default function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       toast.error(errorMsg);
     }
   };
-
-  if (!isInitialized) {
-    return <Loader />;
-  }
 
   if (error || isInitFailed) {
     return (

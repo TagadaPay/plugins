@@ -1,6 +1,6 @@
 import { PluginConfig } from "@/types/plugin-config";
 import { Slot } from "@radix-ui/react-slot";
-import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
+import { usePluginConfig } from "@tagadapay/plugin-sdk/v2";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 

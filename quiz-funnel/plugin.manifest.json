@@ -1,12 +1,72 @@
 {
-  "pluginId": "quiz-funnel",
   "name": "Quiz Funnel",
+  "pluginId": "quiz-funnel",
+  "description": "An interactive quiz funnel that guides users through questions and leads to personalized product recommendations and checkout",
   "version": "1.0.3",
   "author": "TagadaPay Team",
   "mode": "direct-mode",
+  "category": "funnel",
+  "tags": ["quiz", "funnel", "checkout", "v2"],
+  "pages": [
+    {
+      "path": "/",
+      "features": [
+        {
+          "type": "landing"
+        }
+      ],
+      "remappable": false
+    },
+    {
+      "path": "/checkout",
+      "features": [
+        {
+          "type": "checkout",
+          "requirements": [
+            {
+              "resource": "checkoutSession",
+              "params": [
+                {
+                  "name": "checkoutToken",
+                  "type": "query",
+                  "required": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "remappable": false
+    },
+    {
+      "path": "/thankyou/:orderId",
+      "features": [
+        {
+          "type": "thankyou",
+          "requirements": [
+            {
+              "resource": "order",
+              "params": [
+                {
+                  "name": "orderId",
+                  "type": "path",
+                  "required": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "remappable": false
+    }
+  ],
   "router": {
     "basePath": "/",
     "matcher": ".*",
     "excluder": "/checkout"
+  },
+  "requirements": {
+    "sdk": "^2.2.0",
+    "sdkVersion": "v2"
   }
 }

@@ -1,6 +1,6 @@
 import { PluginConfig } from "@/types/plugin-config";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
+import { usePluginConfig } from "@tagadapay/plugin-sdk/v2";
 import { Check } from "lucide-react";
 import * as React from "react";
 

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { PluginConfig } from "@/types/plugin-config";
-import { usePluginConfig } from "@tagadapay/plugin-sdk/react";
+import { usePluginConfig } from "@tagadapay/plugin-sdk/v2";
 
 interface AnswerButtonProps {
   id: string;
