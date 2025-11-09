@@ -1,0 +1,1306 @@
+{
+  "configName": "default",
+  "branding": {
+    "logoUrl": "https://tagadapay.com/logo-landing.png",
+    "companyName": {
+      "en": "Tagada",
+      "fr": "Tagada",
+      "es": "Tagada"
+    },
+    "supportEmail": "tagada@customer.online",
+    "storeName": {
+      "en": "Tagada",
+      "fr": "Tagada",
+      "es": "Tagada"
+    }
+  },
+  "variants": {
+    "regular": "variant_2e2df30a9607",
+    "bogo": "variant_e913e372d493",
+    "special": "variant_4bff9b488878"
+  },
+  "prices": {
+    "variant_2e2df30a9607": {
+      "oneTime": "price_d700dc96305f"
+    },
+    "variant_e913e372d493": {
+      "oneTime": "price_762c1918f398"
+    },
+    "variant_4bff9b488878": {
+      "oneTime": "price_1e334b833fb7"
+    }
+  },
+  "orderBumpId": "up_sell_ob_offer_5a786ece2e7e",
+  "defaultCurrency": "USD",
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": true
+  },
+  "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow",
+  "routes": {
+    "basePath": "/"
+  },
+  "content": {
+    "app": {
+      "redirect": {
+        "redirectingMessage": {
+          "en": "Redirecting to checkout...",
+          "fr": "Redirection vers la caisse...",
+          "es": "Redirigiendo al pago..."
+        },
+        "loadingMessage": {
+          "en": "Loading...",
+          "fr": "Chargement...",
+          "es": "Cargando..."
+        }
+      },
+      "suspense": {
+        "defaultLoading": {
+          "en": "Loading...",
+          "fr": "Chargement...",
+          "es": "Cargando..."
+        },
+        "checkoutLoading": {
+          "en": "Loading...",
+          "fr": "Chargement...",
+          "es": "Cargando..."
+        },
+        "orderLoading": {
+          "en": "Loading order details...",
+          "fr": "Chargement des détails de la commande...",
+          "es": "Cargando los detalles del pedido..."
+        }
+      },
+      "errors": {
+        "orderIdRequiredTitle": {
+          "en": "Order ID Required",
+          "fr": "Numéro de commande requis",
+          "es": "Se requiere ID de pedido"
+        },
+        "orderIdRequiredDescription": {
+          "en": "No order ID provided in the URL.",
+          "fr": "Aucun numéro de commande fourni dans l’URL.",
+          "es": "No se proporcionó un ID de pedido en la URL."
+        }
+      }
+    },
+    "checkout": {
+      "banner": {
+        "title": {
+          "en": "Limited Time Offer",
+          "fr": "Offre limitée dans le temps",
+          "es": "Oferta por tiempo limitado"
+        },
+        "descriptionPrefix": {
+          "en": "Enjoy a limited discount with",
+          "fr": "Profitez d'une remise limitée avec",
+          "es": "Disfruta de un descuento limitado con"
+        },
+        "freeShippingHighlight": {
+          "en": "FREE SHIPPING",
+          "fr": "LIVRAISON GRATUITE",
+          "es": "ENVÍO GRATIS"
+        },
+        "descriptionSuffix": {
+          "en": "Limited inventory.",
+          "fr": "Stock limité.",
+          "es": "Inventario limitado."
+        },
+        "sellOutRisk": {
+          "en": "Sell Out Risk High.",
+          "fr": "Risque élevé de rupture de stock.",
+          "es": "Alto riesgo de agotarse."
+        }
+      },
+      "navigation": {
+        "secureCheckoutLabel": {
+          "en": "Secure Checkout",
+          "fr": "Paiement sécurisé",
+          "es": "Pago seguro"
+        },
+        "supportLabel": {
+          "en": "Support:",
+          "fr": "Support :",
+          "es": "Soporte:"
+        }
+      },
+      "notices": {
+        "freeShipping": {
+          "en": "FREE Worldwide Shipping Included",
+          "fr": "LIVRAISON gratuite dans le monde entier incluse",
+          "es": "ENVÍO mundial GRATIS incluido"
+        },
+        "cartTimer": {
+          "en": "Limited Time: Cart expires in {time}",
+          "fr": "Temps limité : le panier expire dans {time}",
+          "es": "Tiempo limitado: el carrito expira en {time}"
+        },
+        "limitedStock": {
+          "en": "Limited stock: Only {count} units remaining",
+          "fr": "Stock limité : plus que {count} unités restantes",
+          "es": "Existencias limitadas: solo quedan {count} unidades"
+        }
+      },
+      "packages": {
+        "title": {
+          "en": "Select Your Package",
+          "fr": "Choisissez votre pack",
+          "es": "Elige tu paquete"
+        },
+        "subtitle": {
+          "en": "Choose the package that best fits your needs",
+          "fr": "Choisissez la formule qui correspond le mieux à vos besoins",
+          "es": "Elige el paquete que mejor se adapte a tus necesidades"
+        },
+        "packageDetailsLabel": {
+          "en": "Package Details",
+          "fr": "Détails du pack",
+          "es": "Detalles del paquete"
+        },
+        "pricePerUnitLabel": {
+          "en": "Price Per Unit",
+          "fr": "Prix par unité",
+          "es": "Precio por unidad"
+        },
+        "loadingMessage": {
+          "en": "Loading packages...",
+          "fr": "Chargement des offres...",
+          "es": "Cargando los paquetes..."
+        },
+        "bestValueBadge": {
+          "en": "⭐ Best Value",
+          "fr": "⭐ Meilleur rapport qualité-prix",
+          "es": "⭐ Mejor valor"
+        },
+        "perUnitLabel": {
+          "en": "per unit",
+          "fr": "par unité",
+          "es": "por unidad"
+        },
+        "freeShippingLabel": {
+          "en": "+ Free Shipping",
+          "fr": "+ Livraison gratuite",
+          "es": "+ Envío gratis"
+        }
+      },
+      "orderBump": {
+        "badgeLabel": {
+          "en": "Add-on",
+          "fr": "Ajout",
+          "es": "Complemento"
+        },
+        "title": {
+          "en": "🚚 Expedited Shipping",
+          "fr": "🚚 Livraison express",
+          "es": "🚚 Envío exprés"
+        },
+        "addedBadge": {
+          "en": "✓ Added",
+          "fr": "✓ Ajouté",
+          "es": "✓ Añadido"
+        },
+        "headline": {
+          "en": "⚡ Get Your Order Faster",
+          "fr": "⚡ Recevez votre commande plus vite",
+          "es": "⚡ Recibe tu pedido más rápido"
+        },
+        "description": {
+          "en": "Upgrade to <strong>Expedited Shipping</strong> and receive your order in record time.",
+          "fr": "Optez pour la <strong>livraison express</strong> et recevez votre commande en un temps record.",
+          "es": "Pásate al <strong>envío exprés</strong> y recibe tu pedido en tiempo récord."
+        },
+        "priorityProcessing": {
+          "en": "Priority order processing",
+          "fr": "Traitement prioritaire de la commande",
+          "es": "Procesamiento prioritario del pedido"
+        },
+        "fasterDelivery": {
+          "en": "Faster delivery times",
+          "fr": "Délais de livraison plus courts",
+          "es": "Tiempos de entrega más rápidos"
+        },
+        "trackingIncluded": {
+          "en": "Tracking included",
+          "fr": "Suivi inclus",
+          "es": "Seguimiento incluido"
+        },
+        "dedicatedSupport": {
+          "en": "Dedicated shipping support",
+          "fr": "Support d'expédition dédié",
+          "es": "Soporte de envío dedicado"
+        }
+      },
+      "customerInformation": {
+        "title": {
+          "en": "Customer Information",
+          "fr": "Informations client",
+          "es": "Información del cliente"
+        },
+        "firstNamePlaceholder": {
+          "en": "First Name*",
+          "fr": "Prénom*",
+          "es": "Nombre*"
+        },
+        "lastNamePlaceholder": {
+          "en": "Last Name*",
+          "fr": "Nom*",
+          "es": "Apellido*"
+        },
+        "emailPlaceholder": {
+          "en": "Email Address*",
+          "fr": "Adresse e-mail*",
+          "es": "Correo electrónico*"
+        },
+        "phonePlaceholder": {
+          "en": "Phone number*",
+          "fr": "Numéro de téléphone*",
+          "es": "Número de teléfono*"
+        }
+      },
+      "shippingInformation": {
+        "title": {
+          "en": "Shipping Information",
+          "fr": "Informations de livraison",
+          "es": "Información de envío"
+        },
+        "countryLabel": {
+          "en": "Country *",
+          "fr": "Pays *",
+          "es": "País *"
+        },
+        "countryPlaceholder": {
+          "en": "Select Country",
+          "fr": "Sélectionnez un pays",
+          "es": "Selecciona un país"
+        },
+        "countryToast": {
+          "en": "Great! Now you can enter your address details below.",
+          "fr": "Super ! Vous pouvez maintenant saisir votre adresse ci-dessous.",
+          "es": "¡Genial! Ahora puedes introducir tu dirección más abajo."
+        },
+        "helperMessage": {
+          "en": "Please select your country first. This will enable address autocomplete and ensure accurate shipping options.",
+          "fr": "Veuillez d'abord sélectionner votre pays. Cela activera la saisie automatique de l'adresse et garantira des options d'expédition précises.",
+          "es": "Primero selecciona tu país. Esto activará el autocompletado de direcciones y garantizará opciones de envío precisas."
+        },
+        "streetLabel": {
+          "en": "Street Address *",
+          "fr": "Adresse *",
+          "es": "Dirección *"
+        },
+        "streetPlaceholder": {
+          "en": "Start typing your address...",
+          "fr": "Commencez à saisir votre adresse...",
+          "es": "Empieza a escribir tu dirección..."
+        },
+        "streetLockedPlaceholder": {
+          "en": "Please select country first",
+          "fr": "Veuillez sélectionner un pays d'abord",
+          "es": "Selecciona primero el país"
+        },
+        "address2Label": {
+          "en": "Apartment, Suite, etc.",
+          "fr": "Appartement, suite, etc.",
+          "es": "Apartamento, suite, etc."
+        },
+        "address2Placeholder": {
+          "en": "Apartment, suite, etc.",
+          "fr": "Appartement, suite, etc.",
+          "es": "Apartamento, suite, etc."
+        },
+        "cityLabel": {
+          "en": "City *",
+          "fr": "Ville *",
+          "es": "Ciudad *"
+        },
+        "cityPlaceholder": {
+          "en": "Enter city",
+          "fr": "Saisissez la ville",
+          "es": "Introduce la ciudad"
+        },
+        "stateLabel": {
+          "en": "State / Province *",
+          "fr": "État / Province *",
+          "es": "Estado / Provincia *"
+        },
+        "stateSelectPlaceholder": {
+          "en": "Select State/Province",
+          "fr": "Sélectionnez l’état/province",
+          "es": "Selecciona el estado/provincia"
+        },
+        "stateInputPlaceholder": {
+          "en": "Enter state/province",
+          "fr": "Saisissez l’état/province",
+          "es": "Introduce el estado/provincia"
+        },
+        "stateLockedPlaceholder": {
+          "en": "Select country first",
+          "fr": "Sélectionnez d'abord un pays",
+          "es": "Selecciona primero el país"
+        },
+        "stateOptionsSuffix": {
+          "en": "{count} options",
+          "fr": "{count} options",
+          "es": "{count} opciones"
+        },
+        "stateManualSuffix": {
+          "en": "text input",
+          "fr": "saisie manuelle",
+          "es": "entrada manual"
+        },
+        "postalLabel": {
+          "en": "Zip / Postcode *",
+          "fr": "Code postal *",
+          "es": "Código postal *"
+        },
+        "postalPlaceholder": {
+          "en": "Zip / Postcode*",
+          "fr": "Code postal*",
+          "es": "Código postal*"
+        },
+        "requiredFieldsNote": {
+          "en": "* Required fields",
+          "fr": "* Champs obligatoires",
+          "es": "* Campos obligatorios"
+        }
+      },
+      "payment": {
+        "title": {
+          "en": "Secure Payment",
+          "fr": "Paiement sécurisé",
+          "es": "Pago seguro"
+        },
+        "securityMessage": {
+          "en": "All transactions are secure and encrypted with 256-bit SSL.",
+          "fr": "Toutes les transactions sont sécurisées et chiffrées avec un SSL 256 bits.",
+          "es": "Todas las transacciones son seguras y están cifradas con SSL de 256 bits."
+        },
+        "cardMethodLabel": {
+          "en": "Credit/Debit Card",
+          "fr": "Carte de crédit/débit",
+          "es": "Tarjeta de crédito/débito"
+        },
+        "cardNumberPlaceholder": {
+          "en": "Card number*",
+          "fr": "Numéro de carte*",
+          "es": "Número de tarjeta*"
+        },
+        "expiryPlaceholder": {
+          "en": "MM/YY*",
+          "fr": "MM/AA*",
+          "es": "MM/AA*"
+        },
+        "cvcPlaceholder": {
+          "en": "CVC*",
+          "fr": "CVC*",
+          "es": "CVC*"
+        },
+        "processingLabel": {
+          "en": "Processing Payment...",
+          "fr": "Traitement du paiement...",
+          "es": "Procesando el pago..."
+        },
+        "buttonLabel": {
+          "en": "Complete Purchase",
+          "fr": "Finaliser l'achat",
+          "es": "Completar compra"
+        },
+        "buttonProcessingLabel": {
+          "en": "Processing Payment...",
+          "fr": "Traitement du paiement...",
+          "es": "Procesando el pago..."
+        },
+        "guaranteeTitle": {
+          "en": "90-Day Money Back Guarantee",
+          "fr": "Garantie de remboursement de 90 jours",
+          "es": "Garantía de devolución de dinero de 90 días"
+        },
+        "guaranteeSubtitle": {
+          "en": "Shop with confidence. We’ve got your back.",
+          "fr": "Achetez en toute confiance. Nous sommes là pour vous.",
+          "es": "Compra con confianza. Estamos contigo."
+        },
+        "guaranteeBadgeTitle": {
+          "en": "90-Day Money Back Guarantee",
+          "fr": "Garantie de remboursement de 90 jours",
+          "es": "Garantía de devolución de dinero de 90 días"
+        },
+        "guaranteeBadgeDescription": {
+          "en": "If you are not completely satisfied with your purchase, we offer a 90-day guarantee on all purchases. Simply contact our customer support for a full refund or replacement.",
+          "fr": "Si vous n'êtes pas totalement satisfait de votre achat, nous offrons une garantie de 90 jours sur toutes les commandes. Il vous suffit de contacter notre service client pour un remboursement complet ou un remplacement.",
+          "es": "Si no quedas completamente satisfecho con tu compra, ofrecemos una garantía de 90 días en todos los pedidos. Solo tienes que contactar con nuestro soporte para obtener un reembolso completo o un reemplazo."
+        },
+        "sslBadge": {
+          "en": "SSL Secured",
+          "fr": "Sécurisé SSL",
+          "es": "SSL seguro"
+        },
+        "encryptionBadge": {
+          "en": "256-bit Encryption",
+          "fr": "Chiffrement 256 bits",
+          "es": "Cifrado de 256 bits"
+        },
+        "nortonBadge": {
+          "en": "Norton Verified",
+          "fr": "Vérifié par Norton",
+          "es": "Verificado por Norton"
+        },
+        "agreementText": {
+          "en": "By completing the payment, you agree to our Terms of Service and Refund Policy.",
+          "fr": "En finalisant le paiement, vous acceptez nos Conditions d'utilisation et notre politique de remboursement.",
+          "es": "Al completar el pago, aceptas nuestros Términos de servicio y la Política de reembolso."
+        },
+        "secureFooter": {
+          "en": "Secure 256-bit SSL encryption",
+          "fr": "Chiffrement SSL sécurisé 256 bits",
+          "es": "Cifrado SSL seguro de 256 bits"
+        }
+      },
+      "reviews": {
+        "topSectionTitle": {
+          "en": "Our Top Customer Reviews",
+          "fr": "Nos meilleurs avis clients",
+          "es": "Nuestros mejores comentarios de clientes"
+        },
+        "gridSectionTitle": {
+          "en": "More Customer Reviews",
+          "fr": "D'autres avis clients",
+          "es": "Más comentarios de clientes"
+        },
+        "likeAction": {
+          "en": "Like",
+          "fr": "J'aime",
+          "es": "Me gusta"
+        },
+        "replyAction": {
+          "en": "Reply",
+          "fr": "Répondre",
+          "es": "Responder"
+        },
+        "verifiedAlt": {
+          "en": "Verified",
+          "fr": "Vérifié",
+          "es": "Verificado"
+        },
+        "starsAlt": {
+          "en": "5 stars",
+          "fr": "5 étoiles",
+          "es": "5 estrellas"
+        }
+      },
+      "stickyBar": {
+        "freeShipping": {
+          "en": "FREE Shipping",
+          "fr": "LIVRAISON gratuite",
+          "es": "Envío GRATIS"
+        },
+        "guarantee": {
+          "en": "90-Day Guarantee",
+          "fr": "Garantie 90 jours",
+          "es": "Garantía de 90 días"
+        },
+        "ssl": {
+          "en": "SSL Secured",
+          "fr": "Sécurisé SSL",
+          "es": "SSL seguro"
+        },
+        "buttonLabel": {
+          "en": "Complete Purchase",
+          "fr": "Finaliser l'achat",
+          "es": "Completar compra"
+        },
+        "buttonProcessingLabel": {
+          "en": "Processing...",
+          "fr": "Traitement...",
+          "es": "Procesando..."
+        }
+      },
+      "footer": {
+        "termsLabel": {
+          "en": "Terms & Conditions",
+          "fr": "Conditions générales",
+          "es": "Términos y condiciones"
+        },
+        "privacyLabel": {
+          "en": "Privacy Policy",
+          "fr": "Politique de confidentialité",
+          "es": "Política de privacidad"
+        },
+        "wirelessLabel": {
+          "en": "Wireless Policy",
+          "fr": "Politique sans fil",
+          "es": "Política inalámbrica"
+        },
+        "rightsReserved": {
+          "en": "© {year} / {company} / All rights reserved.",
+          "fr": "© {year} / {company} / Tous droits réservés.",
+          "es": "© {year} / {company} / Todos los derechos reservados."
+        }
+      },
+      "validation": {
+        "firstNameRequired": {
+          "en": "First name is required",
+          "fr": "Le prénom est requis",
+          "es": "El nombre es obligatorio"
+        },
+        "lastNameRequired": {
+          "en": "Last name is required",
+          "fr": "Le nom est requis",
+          "es": "El apellido es obligatorio"
+        },
+        "emailRequired": {
+          "en": "Valid email is required",
+          "fr": "Un email valide est requis",
+          "es": "Se requiere un correo válido"
+        },
+        "phoneRequired": {
+          "en": "Phone number is required",
+          "fr": "Le numéro de téléphone est requis",
+          "es": "El número de teléfono es obligatorio"
+        },
+        "addressRequired": {
+          "en": "Street address is required",
+          "fr": "L'adresse est requise",
+          "es": "La dirección es obligatoria"
+        },
+        "countryRequired": {
+          "en": "Country is required",
+          "fr": "Le pays est requis",
+          "es": "El país es obligatorio"
+        },
+        "cityRequired": {
+          "en": "City is required",
+          "fr": "La ville est requise",
+          "es": "La ciudad es obligatoria"
+        },
+        "stateRequired": {
+          "en": "State/Province is required",
+          "fr": "L’état/province est requis",
+          "es": "El estado/provincia es obligatorio"
+        },
+        "postalRequired": {
+          "en": "Postal code is required",
+          "fr": "Le code postal est requis",
+          "es": "El código postal es obligatorio"
+        },
+        "cardNumberRequired": {
+          "en": "Valid card number is required",
+          "fr": "Un numéro de carte valide est requis",
+          "es": "Se requiere un número de tarjeta válido"
+        },
+        "expiryRequired": {
+          "en": "Valid expiry date (MM/YY) is required",
+          "fr": "Une date d’expiration valide (MM/AA) est requise",
+          "es": "Se requiere una fecha de expiración válida (MM/AA)"
+        },
+        "cvcRequired": {
+          "en": "Valid CVC is required",
+          "fr": "Un CVC valide est requis",
+          "es": "Se requiere un CVC válido"
+        }
+      },
+      "fieldLabels": {
+        "firstName": {
+          "en": "First Name",
+          "fr": "Prénom",
+          "es": "Nombre"
+        },
+        "lastName": {
+          "en": "Last Name",
+          "fr": "Nom",
+          "es": "Apellido"
+        },
+        "email": {
+          "en": "Email Address",
+          "fr": "Adresse e-mail",
+          "es": "Correo electrónico"
+        },
+        "phone": {
+          "en": "Phone Number",
+          "fr": "Numéro de téléphone",
+          "es": "Número de teléfono"
+        },
+        "address1": {
+          "en": "Street Address",
+          "fr": "Adresse",
+          "es": "Dirección"
+        },
+        "country": {
+          "en": "Country",
+          "fr": "Pays",
+          "es": "País"
+        },
+        "city": {
+          "en": "City",
+          "fr": "Ville",
+          "es": "Ciudad"
+        },
+        "state": {
+          "en": "State/Province",
+          "fr": "État/Province",
+          "es": "Estado/Provincia"
+        },
+        "postal": {
+          "en": "Zip/Postal Code",
+          "fr": "Code postal",
+          "es": "Código postal"
+        },
+        "cardNumber": {
+          "en": "Card Number",
+          "fr": "Numéro de carte",
+          "es": "Número de tarjeta"
+        },
+        "expiryDate": {
+          "en": "Expiry Date",
+          "fr": "Date d’expiration",
+          "es": "Fecha de vencimiento"
+        },
+        "cvc": {
+          "en": "CVC",
+          "fr": "CVC",
+          "es": "CVC"
+        }
+      },
+      "toasts": {
+        "orderBumpAdded": {
+          "en": "Expedited shipping added!",
+          "fr": "Livraison express ajoutée !",
+          "es": "¡Envío exprés añadido!"
+        },
+        "orderBumpRemoved": {
+          "en": "Expedited shipping removed!",
+          "fr": "Livraison express retirée !",
+          "es": "¡Envío exprés eliminado!"
+        },
+        "orderBumpFailed": {
+          "en": "Failed to update expedited shipping. Please try again.",
+          "fr": "Impossible de mettre à jour la livraison express. Veuillez réessayer.",
+          "es": "No se pudo actualizar el envío exprés. Inténtalo de nuevo."
+        },
+        "pricingUnavailable": {
+          "en": "Price not available for this option. Please try again.",
+          "fr": "Prix indisponible pour cette option. Veuillez réessayer.",
+          "es": "Precio no disponible para esta opción. Inténtalo de nuevo."
+        },
+        "subscriptionEnabled": {
+          "en": "Switched to subscription pricing! 💰",
+          "fr": "Tarification par abonnement activée ! 💰",
+          "es": "¡Precio por suscripción activado! 💰"
+        },
+        "subscriptionDisabled": {
+          "en": "Switched to one-time purchase pricing.",
+          "fr": "Tarification à l’achat unique activée.",
+          "es": "Precio de compra única activado."
+        },
+        "subscriptionFailed": {
+          "en": "Failed to update pricing. Please try again.",
+          "fr": "Impossible de mettre à jour les prix. Veuillez réessayer.",
+          "es": "No se pudo actualizar el precio. Inténtalo de nuevo."
+        },
+        "selectionFailed": {
+          "en": "Failed to update selection. Please try again.",
+          "fr": "Impossible de mettre à jour la sélection. Veuillez réessayer.",
+          "es": "No se pudo actualizar la selección. Inténtalo de nuevo."
+        },
+        "validationField": {
+          "en": "Please check the {field} field",
+          "fr": "Veuillez vérifier le champ {field}",
+          "es": "Revisa el campo {field}"
+        },
+        "validationGeneric": {
+          "en": "Please check all required fields",
+          "fr": "Veuillez vérifier tous les champs obligatoires",
+          "es": "Revisa todos los campos obligatorios"
+        },
+        "checkoutNotReady": {
+          "en": "Checkout session not ready. Please try again.",
+          "fr": "La session de paiement n'est pas prête. Veuillez réessayer.",
+          "es": "La sesión de pago no está lista. Inténtalo de nuevo."
+        },
+        "stateMissing": {
+          "en": "Please enter a state/province for the selected country.",
+          "fr": "Veuillez saisir un état/province pour le pays sélectionné.",
+          "es": "Introduce un estado/provincia para el país seleccionado."
+        },
+        "paymentSuccess": {
+          "en": "Payment successful! 🎉",
+          "fr": "Paiement réussi ! 🎉",
+          "es": "¡Pago realizado con éxito! 🎉"
+        },
+        "paymentSuccessDetailed": {
+          "en": "Payment of {amount} completed successfully! Your order is being processed.",
+          "fr": "Paiement de {amount} effectué avec succès ! Votre commande est en cours de traitement.",
+          "es": "El pago de {amount} se completó con éxito. Tu pedido está en proceso."
+        },
+        "paymentFailed": {
+          "en": "Payment failed. Please try again.",
+          "fr": "Échec du paiement. Veuillez réessayer.",
+          "es": "El pago falló. Inténtalo de nuevo."
+        },
+        "paymentFailedWithReason": {
+          "en": "Payment failed: {reason}",
+          "fr": "Échec du paiement : {reason}",
+          "es": "Pago fallido: {reason}"
+        },
+        "paymentVerificationRequired": {
+          "en": "Please complete the additional security verification...",
+          "fr": "Veuillez compléter la vérification de sécurité supplémentaire...",
+          "es": "Completa la verificación de seguridad adicional..."
+        },
+        "addressToast": {
+          "en": "Great! Now you can enter your address details below.",
+          "fr": "Super ! Vous pouvez maintenant saisir votre adresse ci-dessous.",
+          "es": "¡Genial! Ahora puedes introducir tu dirección más abajo."
+        }
+      },
+      "images": {
+        "guaranteeBadge": "https://img.funnelish.com/9938/69802/1678959839-op.webp",
+        "guaranteeLightBadge": "https://img.funnelish.com/9938/69802/1678959839-op.webp",
+        "reviewVerifiedBadge": "https://img.funnelish.com/78897/762729/1742988496-checked.png",
+        "reviewStarsBadge": "https://img.funnelish.com/3947/36340/1662480996-amazon-5-stars-png-1-.png",
+        "trustBadges": "/badges.webp"
+      }
+    },
+    "thankYou": {
+      "header": {
+        "badge": {
+          "en": "ORDER CONFIRMED",
+          "fr": "COMMANDE CONFIRMÉE",
+          "es": "PEDIDO CONFIRMADO"
+        },
+        "description": {
+          "en": "Thank you for your purchase! Your order has been successfully processed.",
+          "fr": "Merci pour votre achat ! Votre commande a été traitée avec succès.",
+          "es": "¡Gracias por tu compra! Tu pedido se ha procesado correctamente."
+        },
+        "navConfirmation": {
+          "en": "Order Confirmed",
+          "fr": "Commande confirmée",
+          "es": "Pedido confirmado"
+        },
+        "navSupportLabel": {
+          "en": "Support:",
+          "fr": "Support :",
+          "es": "Soporte:"
+        }
+      },
+      "order": {
+        "successAlert": {
+          "en": "Your order has been confirmed and will be processed shortly!",
+          "fr": "Votre commande a été confirmée et sera traitée sous peu !",
+          "es": "¡Tu pedido ha sido confirmado y se procesará en breve!"
+        },
+        "title": {
+          "en": "ORDER DETAILS",
+          "fr": "DÉTAILS DE LA COMMANDE",
+          "es": "DETALLES DEL PEDIDO"
+        },
+        "orderNumberPrefix": {
+          "en": "Order #",
+          "fr": "Commande n°",
+          "es": "Pedido n.º "
+        },
+        "placedOnPrefix": {
+          "en": "Placed on",
+          "fr": "Passé le",
+          "es": "Realizado el"
+        },
+        "itemsTitle": {
+          "en": "Items Ordered ({currency})",
+          "fr": "Articles commandés ({currency})",
+          "es": "Artículos pedidos ({currency})"
+        },
+        "noItemsMessage": {
+          "en": "No items found for {currency}",
+          "fr": "Aucun article trouvé pour {currency}",
+          "es": "No se encontraron artículos para {currency}"
+        },
+        "quantityLabel": {
+          "en": "Quantity: {count}",
+          "fr": "Quantité : {count}",
+          "es": "Cantidad: {count}"
+        },
+        "productFallbackAlt": {
+          "en": "Product",
+          "fr": "Produit",
+          "es": "Producto"
+        }
+      },
+      "shipping": {
+        "title": {
+          "en": "SHIPPING INFORMATION",
+          "fr": "INFORMATIONS DE LIVRAISON",
+          "es": "INFORMACIÓN DE ENVÍO"
+        },
+        "phoneLabel": {
+          "en": "Phone:",
+          "fr": "Téléphone :",
+          "es": "Teléfono:"
+        }
+      },
+      "guarantee": {
+        "imageUrl": "https://img.funnelish.com/9938/69802/1678959839-op.webp",
+        "imageAlt": {
+          "en": "90 Day Guarantee",
+          "fr": "Garantie 90 jours",
+          "es": "Garantía de 90 días"
+        },
+        "title": {
+          "en": "90 DAYS GUARANTEE",
+          "fr": "GARANTIE 90 JOURS",
+          "es": "GARANTÍA DE 90 DÍAS"
+        },
+        "description": {
+          "en": "If you are not completely thrilled with your purchase, we are offering you a 90 day guarantee on all purchases. Simply contact our customer support for a full refund or replacement.",
+          "fr": "Si vous n'êtes pas totalement satisfait de votre achat, nous vous offrons une garantie de 90 jours sur toutes les commandes. Contactez simplement notre service client pour un remboursement complet ou un remplacement.",
+          "es": "Si no estás completamente encantado con tu compra, ofrecemos una garantía de 90 días en todas las compras. Solo tienes que contactar con nuestro soporte para un reembolso completo o un reemplazo."
+        }
+      },
+      "actions": {
+        "continueShopping": {
+          "en": "Continue Shopping",
+          "fr": "Continuer vos achats",
+          "es": "Seguir comprando"
+        },
+        "returnToCheckout": {
+          "en": "Return to Checkout",
+          "fr": "Retourner au paiement",
+          "es": "Volver al pago"
+        }
+      },
+      "footer": {
+        "termsLabel": {
+          "en": "Terms & Conditions",
+          "fr": "Conditions générales",
+          "es": "Términos y condiciones"
+        },
+        "privacyLabel": {
+          "en": "Privacy Policy",
+          "fr": "Politique de confidentialité",
+          "es": "Política de privacidad"
+        },
+        "wirelessLabel": {
+          "en": "Wireless Policy",
+          "fr": "Politique sans fil",
+          "es": "Política inalámbrica"
+        },
+        "rightsReserved": {
+          "en": "© {year} / {company} / All rights reserved.",
+          "fr": "© {year} / {company} / Tous droits réservés.",
+          "es": "© {year} / {company} / Todos los derechos reservados."
+        }
+      },
+      "errors": {
+        "loadingMessage": {
+          "en": "Loading order details...",
+          "fr": "Chargement des détails de la commande...",
+          "es": "Cargando los detalles del pedido..."
+        },
+        "errorTitle": {
+          "en": "Order Not Found",
+          "fr": "Commande introuvable",
+          "es": "Pedido no encontrado"
+        },
+        "errorMessage": {
+          "en": "We could not find the order you are looking for.",
+          "fr": "Nous n'avons pas trouvé la commande recherchée.",
+          "es": "No pudimos encontrar el pedido que buscas."
+        },
+        "errorButton": {
+          "en": "Return to Checkout",
+          "fr": "Retourner au paiement",
+          "es": "Volver al pago"
+        }
+      }
+    },
+    "postPurchase": {
+      "bannerImages": {
+        "specialOffer": "/special-offer.webp",
+        "steps": "/steps.webp",
+        "product": "/natural.webp",
+        "priceBadge": "/pricepic.webp",
+        "trustBadges": "/badges.webp"
+      },
+      "banner": {
+        "offerExpires": {
+          "en": "This Offer Expires When Sold Out!",
+          "fr": "Cette offre expire une fois les stocks épuisés !",
+          "es": "¡Esta oferta termina cuando se agote!"
+        },
+        "headline": {
+          "en": "Wait, your order is not complete...",
+          "fr": "Attendez, votre commande n’est pas terminée...",
+          "es": "Espera, tu pedido no está completo..."
+        },
+        "persuasiveMessage": {
+          "en": "Others who have purchased <strong>Joint Boost</strong> have also had benefit with this <strong>mega sale!</strong> Would you like to add this to your order?",
+          "fr": "D'autres clients qui ont acheté <strong>Joint Boost</strong> ont profité de cette <strong>méga promotion !</strong> Souhaitez-vous l'ajouter à votre commande ?",
+          "es": "Otros clientes que compraron <strong>Joint Boost</strong> también aprovecharon esta <strong>mega oferta.</strong> ¿Quieres añadirla a tu pedido?"
+        }
+      },
+      "product": {
+        "badgeLabel": {
+          "en": "REG",
+          "fr": "PRIX",
+          "es": "REG"
+        },
+        "priceLabel": {
+          "en": "Regular price",
+          "fr": "Prix normal",
+          "es": "Precio regular"
+        },
+        "fallbackProductName": {
+          "en": "FORTIVIR MAX",
+          "fr": "FORTIVIR MAX",
+          "es": "FORTIVIR MAX"
+        },
+        "fallbackFormula": {
+          "en": "HIGH POTENCY FORMULA",
+          "fr": "FORMULE HAUTE PUISSANCE",
+          "es": "FÓRMULA DE ALTA POTENCIA"
+        },
+        "fallbackSupplement": {
+          "en": "DIETARY SUPPLEMENT",
+          "fr": "COMPLÉMENT ALIMENTAIRE",
+          "es": "SUPLEMENTO DIETÉTICO"
+        },
+        "fallbackCount": {
+          "en": "60 CAPSULES",
+          "fr": "60 GÉLULES",
+          "es": "60 CÁPSULAS"
+        },
+        "sectionTitle": {
+          "en": "OUR #1 BEST SELLING",
+          "fr": "NOTRE BEST-SELLER N°1",
+          "es": "NUESTRO N.º 1 EN VENTAS"
+        },
+        "supportHeadline": {
+          "en": "SUPPORT YOUR JOINTS!",
+          "fr": "SOUTENEZ VOS ARTICULATIONS !",
+          "es": "¡APOYA TUS ARTICULACIONES!"
+        },
+        "powerfulHeadline": {
+          "en": "THE MOST POWERFUL JOINTS SUPPLEMENT!",
+          "fr": "LE COMPLÉMENT POUR LES ARTICULATIONS LE PLUS PUISSANT !",
+          "es": "¡EL SUPLEMENTO PARA ARTICULACIONES MÁS POTENTE!"
+        },
+        "bulletOne": {
+          "en": "Reduces joint discomfort",
+          "fr": "Réduit l’inconfort articulaire",
+          "es": "Reduce las molestias articulares"
+        },
+        "bulletTwo": {
+          "en": "Supports flexibility",
+          "fr": "Soutient la flexibilité",
+          "es": "Apoya la flexibilidad"
+        },
+        "bulletThree": {
+          "en": "Promotes cartilage health",
+          "fr": "Favorise la santé du cartilage",
+          "es": "Favorece la salud del cartílago"
+        },
+        "claimToday": {
+          "en": "Claim your order Today ONLY !",
+          "fr": "Profitez-en aujourd’hui seulement !",
+          "es": "¡Aprovecha tu pedido solo HOY!"
+        },
+        "priceSuffix": {
+          "en": "/BOX",
+          "fr": "/BOÎTE",
+          "es": "/CAJA"
+        },
+        "scarcityMessage": {
+          "en": "ONLY 22 LEFT!",
+          "fr": "PLUS QUE 22 EN STOCK !",
+          "es": "¡SOLO QUEDAN 22!"
+        }
+      },
+      "actions": {
+        "confirmLabel": {
+          "en": "YES! Add This to My Order",
+          "fr": "OUI ! Ajoutez-le à ma commande",
+          "es": "¡SÍ! Añádelo a mi pedido"
+        },
+        "processingLabel": {
+          "en": "Processing...",
+          "fr": "Traitement...",
+          "es": "Procesando..."
+        },
+        "declineLabel": {
+          "en": "NO, I DON'T WANT TO TURBO CHARGE MY RESULTS",
+          "fr": "NON, JE NE VEUX PAS BOOSTER MES RÉSULTATS",
+          "es": "NO, NO QUIERO POTENCIAR MIS RESULTADOS"
+        },
+        "thankYouButton": {
+          "en": "Continue to Thank You Page",
+          "fr": "Continuer vers la page de remerciement",
+          "es": "Continuar a la página de confirmación"
+        }
+      },
+      "footer": {
+        "copyright": {
+          "en": "© {year} {company}. All Rights Reserved",
+          "fr": "© {year} {company}. Tous droits réservés",
+          "es": "© {year} {company}. Todos los derechos reservados"
+        }
+      },
+      "loadingMessage": {
+        "en": "Loading offers...",
+        "fr": "Chargement des offres...",
+        "es": "Cargando ofertas..."
+      },
+      "errorTitle": {
+        "en": "Error Loading Offers",
+        "fr": "Erreur lors du chargement des offres",
+        "es": "Error al cargar las ofertas"
+      },
+      "errorButton": {
+        "en": "Continue to Thank You Page",
+        "fr": "Continuer vers la page de remerciement",
+        "es": "Continuar a la página de confirmación"
+      }
+    }
+  },
+  "reviews": [
+    {
+      "name": {
+        "en": "James",
+        "fr": "James",
+        "es": "James"
+      },
+      "rating": 5,
+      "text": {
+        "en": "Tagada Pills has made a huge difference in my knee pain. I can move freely now without that constant discomfort, and my flexibility has improved!",
+        "fr": "Tagada Pills a fait une énorme différence pour mes douleurs au genou. Je peux bouger librement sans cette gêne constante et ma flexibilité s'est améliorée !",
+        "es": "Tagada Pills ha marcado una gran diferencia en el dolor de mis rodillas. Ahora puedo moverme libremente sin esa molestia constante y mi flexibilidad ha mejorado."
+      },
+      "image": "//img.funnelish.com/44844/789857/1745500940-5.png",
+      "verified": true
+    },
+    {
+      "name": {
+        "en": "Carla",
+        "fr": "Carla",
+        "es": "Carla"
+      },
+      "rating": 5,
+      "text": {
+        "en": "My joint pain used to limit me, but since taking Tagada Pills, I've been able to move with more ease and without the sharp pain I used to feel.",
+        "fr": "Mes douleurs articulaires me limitaient, mais depuis que je prends Tagada Pills, je peux bouger plus facilement et sans les vives douleurs d'avant.",
+        "es": "El dolor articular solía limitarme, pero desde que tomo Tagada Pills me muevo con más facilidad y sin los pinchazos que sentía antes."
+      },
+      "image": "//img.funnelish.com/44844/836693/1750150574-6.png",
+      "verified": true
+    },
+    {
+      "name": {
+        "en": "Jenny",
+        "fr": "Jenny",
+        "es": "Jenny"
+      },
+      "rating": 5,
+      "text": {
+        "en": "This supplement works wonders for my joints. I've experienced less pain, and my range of motion is noticeably improved after just a few weeks of use.",
+        "fr": "Ce complément fait des merveilles pour mes articulations. J'ai moins de douleurs et mon amplitude de mouvement s'est nettement améliorée après quelques semaines seulement.",
+        "es": "Este suplemento hace maravillas por mis articulaciones. Tengo menos dolor y mi rango de movimiento ha mejorado notablemente tras solo unas semanas de uso."
+      },
+      "image": "//img.funnelish.com/44844/837622/1751808381-01.jpeg",
+      "verified": true
+    },
+    {
+      "name": {
+        "en": "John",
+        "fr": "John",
+        "es": "John"
+      },
+      "rating": 5,
+      "text": {
+        "en": "After using Tagada Pills for a month, I feel like I have my old mobility back. It's been incredibly effective in reducing joint stiffness.",
+        "fr": "Après un mois avec Tagada Pills, j'ai l'impression d'avoir retrouvé ma mobilité d'avant. C'est extrêmement efficace pour réduire la raideur articulaire.",
+        "es": "Tras un mes con Tagada Pills, siento que recuperé mi movilidad de siempre. Ha sido increíblemente eficaz para reducir la rigidez articular."
+      },
+      "image": "//img.funnelish.com/44844/837622/1751808529-WhatsApp%20Image%202025-07-06%20at%204.23.28%20PM.jpeg",
+      "verified": true
+    },
+    {
+      "name": {
+        "en": "Luca",
+        "fr": "Luca",
+        "es": "Luca"
+      },
+      "rating": 5,
+      "text": {
+        "en": "Tagada Pills helped reduce the inflammation in my joints and improved my flexibility. I'm now able to enjoy exercise again without worrying about pain.",
+        "fr": "Tagada Pills a réduit l'inflammation de mes articulations et amélioré ma flexibilité. Je peux à nouveau profiter du sport sans craindre la douleur.",
+        "es": "Tagada Pills redujo la inflamación de mis articulaciones y mejoró mi flexibilidad. Ahora puedo volver a disfrutar del ejercicio sin preocuparme por el dolor."
+      },
+      "image": "//img.funnelish.com/44844/789857/1745501065-4.png",
+      "verified": true
+    },
+    {
+      "name": {
+        "en": "Ahmed",
+        "fr": "Ahmed",
+        "es": "Ahmed"
+      },
+      "rating": 5,
+      "text": {
+        "en": "Since starting Tagada Pills, I've noticed a major difference in the way my joints feel—less stiffness and more comfort throughout the day.",
+        "fr": "Depuis que j'ai commencé Tagada Pills, je ressens une vraie différence : moins de raideur et plus de confort toute la journée.",
+        "es": "Desde que empecé con Tagada Pills noto una gran diferencia: menos rigidez y mucho más confort durante todo el día."
+      },
+      "image": "//img.funnelish.com/44844/836693/1750150662-11.png",
+      "verified": true
+    },
+    {
+      "name": {
+        "en": "Anna",
+        "fr": "Anna",
+        "es": "Anna"
+      },
+      "rating": 5,
+      "text": {
+        "en": "I was skeptical at first, but Tagada Pills really works. My joints feel less painful, and I've noticed better recovery after long walks.",
+        "fr": "J'étais sceptique au départ, mais Tagada Pills fonctionne vraiment. Mes articulations sont moins douloureuses et je récupère mieux après de longues marches.",
+        "es": "Era escéptica al principio, pero Tagada Pills realmente funciona. Mis articulaciones duelen menos y recupero mejor después de largas caminatas."
+      },
+      "image": "//img.funnelish.com/44844/836693/1750150589-7.png",
+      "verified": true
+    },
+    {
+      "name": {
+        "en": "Santiago",
+        "fr": "Santiago",
+        "es": "Santiago"
+      },
+      "rating": 5,
+      "text": {
+        "en": "I've tried many joint supplements before, but Tagada Pills is by far the most effective. My knees feel stronger, and the pain has significantly decreased.",
+        "fr": "J'ai essayé beaucoup de compléments articulaires, mais Tagada Pills est de loin le plus efficace. Mes genoux sont plus forts et la douleur a fortement diminué.",
+        "es": "He probado muchos suplementos articulares, pero Tagada Pills es con diferencia el más efectivo. Mis rodillas están más fuertes y el dolor se ha reducido mucho."
+      },
+      "image": "//img.funnelish.com/44844/836693/1750150456-1.png",
+      "verified": true
+    },
+    {
+      "name": {
+        "en": "Jess",
+        "fr": "Jess",
+        "es": "Jess"
+      },
+      "rating": 5,
+      "text": {
+        "en": "Tagada Pills has been great for my joint health. It's improved my comfort level and recovery time after strenuous activities.",
+        "fr": "Tagada Pills est excellent pour la santé de mes articulations. Mon confort et mon temps de récupération après l'effort se sont améliorés.",
+        "es": "Tagada Pills ha sido genial para la salud de mis articulaciones. Ha mejorado mi comodidad y mi tiempo de recuperación tras actividades exigentes."
+      },
+      "image": "//img.funnelish.com/44844/789857/1745501114-7.png",
+      "verified": true
+    },
+    {
+      "name": {
+        "en": "David",
+        "fr": "David",
+        "es": "David"
+      },
+      "rating": 5,
+      "text": {
+        "en": "Tagada Pills has been a lifesaver! I'm experiencing less joint pain and more range of motion, and I'm finally able to get back to my favorite activities.",
+        "fr": "Tagada Pills m'a sauvé la mise ! J'ai moins de douleurs articulaires, plus d'amplitude, et je peux enfin reprendre mes activités préférées.",
+        "es": "¡Tagada Pills ha sido un salvavidas! Tengo menos dolor articular, más movilidad y por fin puedo volver a mis actividades favoritas."
+      },
+      "image": "//img.funnelish.com/44844/837622/1751808363-10.jpeg",
+      "verified": true
+    },
+    {
+      "name": {
+        "en": "Ravi",
+        "fr": "Ravi",
+        "es": "Ravi"
+      },
+      "rating": 5,
+      "text": {
+        "en": "Tagada Pills has helped my mobility tremendously. I feel more active and less restricted by joint pain, especially during my physical activities.",
+        "fr": "Tagada Pills a vraiment amélioré ma mobilité. Je me sens plus actif et moins limité par la douleur, surtout pendant mes activités physiques.",
+        "es": "Tagada Pills ha mejorado muchísimo mi movilidad. Me siento más activo y menos limitado por el dolor, especialmente cuando hago actividad física."
+      },
+      "image": "//img.funnelish.com/44844/837622/1751808369-11.jpeg",
+      "verified": true
+    },
+    {
+      "name": {
+        "en": "Javier",
+        "fr": "Javier",
+        "es": "Javier"
+      },
+      "rating": 5,
+      "text": {
+        "en": "After using Tagada Pills, my joints no longer ache like they used to. I feel much more mobile and energized, and it's made a noticeable impact on my daily life.",
+        "fr": "Depuis que j'utilise Tagada Pills, mes articulations ne me font plus souffrir comme avant. Je suis bien plus mobile et plein d'énergie, l'impact est net au quotidien.",
+        "es": "Desde que uso Tagada Pills, mis articulaciones ya no duelen como antes. Me siento mucho más móvil y con energía, ha marcado la diferencia en mi día a día."
+      },
+      "image": "//img.funnelish.com/44844/836693/1750150644-10.png",
+      "verified": true
+    }
+  ],
+  "testimonials": [
+    {
+      "name": {
+        "en": "Robert",
+        "fr": "Robert",
+        "es": "Robert"
+      },
+      "avatar": "elderly-man.jpg",
+      "text": {
+        "en": "After using Tagada Pills for a few weeks, I've noticed a significant improvement in my joint flexibility and a reduction in pain. It's been a game-changer for my daily activities, and I feel more mobile than ever!",
+        "fr": "Après quelques semaines avec Tagada Pills, j'ai constaté une nette amélioration de ma flexibilité et une réduction de la douleur. C'est un vrai tournant pour mon quotidien et je me sens plus mobile que jamais !",
+        "es": "Tras unas semanas con Tagada Pills he notado una gran mejora en mi flexibilidad y menos dolor. Ha cambiado mi día a día y me siento más móvil que nunca."
+      },
+      "likes": 27,
+      "time": {
+        "en": "1 week ago",
+        "fr": "Il y a 1 semaine",
+        "es": "Hace 1 semana"
+      }
+    },
+    {
+      "name": {
+        "en": "David",
+        "fr": "David",
+        "es": "David"
+      },
+      "avatar": "elderly-man-2.jpg",
+      "text": {
+        "en": "Tagada Pills has helped ease the discomfort in my knees and joints. I'm now able to move with less pain, and my recovery after workouts is much faster. I highly recommend it to anyone dealing with joint issues!",
+        "fr": "Tagada Pills a soulagé l'inconfort dans mes genoux et mes articulations. Je bouge avec moins de douleur et je récupère beaucoup plus vite après l'effort. Je le recommande à tous ceux qui ont des problèmes articulaires !",
+        "es": "Tagada Pills ha aliviado las molestias en mis rodillas y articulaciones. Ahora me muevo con menos dolor y recupero mucho más rápido tras entrenar. ¡Lo recomiendo a cualquiera con problemas articulares!"
+      },
+      "likes": 95,
+      "time": {
+        "en": "2 weeks ago",
+        "fr": "Il y a 2 semaines",
+        "es": "Hace 2 semanas"
+      }
+    },
+    {
+      "name": {
+        "en": "Susan",
+        "fr": "Susan",
+        "es": "Susan"
+      },
+      "avatar": "elderly-woman.jpg",
+      "text": {
+        "en": "As someone who deals with arthritis, finding Tagada Pills was a blessing. My morning stiffness has decreased significantly, and I can now enjoy my daily walks without the usual discomfort. The results came faster than I expected!",
+        "fr": "Souffrant d'arthrite, découvrir Tagada Pills a été une bénédiction. Ma raideur matinale a fortement diminué et je profite de mes promenades sans gêne. Les résultats sont arrivés plus vite que prévu !",
+        "es": "Como persona con artritis, encontrar Tagada Pills fue una bendición. La rigidez matutina ha bajado muchísimo y ahora disfruto mis paseos sin molestias. ¡Los resultados llegaron antes de lo que esperaba!"
+      },
+      "likes": 43,
+      "time": {
+        "en": "3 days ago",
+        "fr": "Il y a 3 jours",
+        "es": "Hace 3 días"
+      }
+    }
+  ]
+}
