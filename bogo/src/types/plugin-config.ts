@@ -60,6 +60,14 @@ export interface CheckoutPackagesContent {
   bestValueBadge: TranslationText;
   perUnitLabel: TranslationText;
   freeShippingLabel: TranslationText;
+  subscriptionToggleLabel: TranslationText;
+  fallbackBundleRegular: TranslationText;
+  fallbackBundleBogo: TranslationText;
+  fallbackBundleSpecial: TranslationText;
+  fallbackProductName: TranslationText;
+  fallbackVariantRegular: TranslationText;
+  fallbackVariantBogo: TranslationText;
+  fallbackVariantSpecial: TranslationText;
 }
 
 export interface CheckoutOrderBumpContent {
@@ -226,6 +234,12 @@ export interface CheckoutContent {
   fieldLabels: CheckoutFieldLabels;
   toasts: CheckoutToastContent;
   images: CheckoutImagesContent;
+  errors: CheckoutErrorsContent;
+}
+
+export interface CheckoutErrorsContent {
+  genericTitle: TranslationText;
+  genericDescription: TranslationText;
 }
 
 export interface ThankYouHeaderContent {

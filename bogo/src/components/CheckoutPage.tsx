@@ -33,6 +33,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { formatMoney } from "@tagadapay/plugin-sdk";
 import {
   useCheckout,
+  useFunnel,
+  useGeoLocation,
   useGoogleAutocomplete,
   useISOData,
   useOrderBump,
@@ -130,10 +132,20 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     checkoutToken,
   });
   const { t } = useTranslation();
+  const { next, initializeSession } = useFunnel({
+    enabled: true,
+  });
+  const { data } = useGeoLocation();
+
+  // Prefill country in form based on geolocation data
 
   const [selectedBundle, setSelectedBundle] = useState<string | null>(null); // Start with null, derive from data
   const [isUpdating, setIsUpdating] = useState(false);
   const [isUserInitiatedUpdate, setIsUserInitiatedUpdate] = useState(false);
+  const [pendingVariantId, setPendingVariantId] = useState<string | null>(null);
+  const [pendingSubscriptionState, setPendingSubscriptionState] = useState<
+    boolean | null
+  >(null);
   const [subscribeAndSave, setSubscribeAndSave] = useState<boolean>(false);
 
   // 📱 Mobile sticky button state
@@ -145,6 +157,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   const timerSeconds = 59;
   const timerMinutes = 9;
   const secondsInMinute = 60;
+  const limitedStockCount = 15;
 
   // Cart reserved timer state (start at 9:59)
   const [cartTimer, setCartTimer] = useState(
@@ -201,8 +214,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   const { config: pluginConfig, storeId } = usePluginConfig<PluginConfig>();
   const storeName = t(pluginConfig.branding.storeName);
   const companyName = t(pluginConfig.branding.companyName);
-
-  console.log("pluginConfig", pluginConfig);
+  const currentYear = new Date().getFullYear().toString();
 
   // Card form setup - address form is handled by useAddress hook below
   const form = useForm<CheckoutFormData>({
@@ -229,6 +241,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     watch,
     setFocus,
     setValue,
+    getValues,
   } = form;
 
   // Fetch products data - SDK now handles all complexity internally!
@@ -258,21 +271,27 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     return {
       bundle1: {
         variantId: pluginConfig.variants.regular,
-        name: baseVariant?.variant.name || "Buy 1 Regular Price",
+        name:
+          baseVariant?.variant.name ||
+          t(pluginConfig.content.checkout.packages.fallbackBundleRegular),
         dealType: "regular",
         variant: baseVariant?.variant,
         product: baseVariant?.product,
       },
       bundle2: {
         variantId: pluginConfig.variants.bogo,
-        name: bogoVariant?.variant.name || "Buy 1 Get 1 Free (BOGO)",
+        name:
+          bogoVariant?.variant.name ||
+          t(pluginConfig.content.checkout.packages.fallbackBundleBogo),
         dealType: "bogo",
         variant: bogoVariant?.variant,
         product: bogoVariant?.product,
       },
       bundle3: {
         variantId: pluginConfig.variants.special,
-        name: specialVariant?.variant.name || "Buy 1 Get 2 Free",
+        name:
+          specialVariant?.variant.name ||
+          t(pluginConfig.content.checkout.packages.fallbackBundleSpecial),
         dealType: "special",
         variant: specialVariant?.variant,
         product: specialVariant?.product,
@@ -297,7 +316,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       form.setValue("lastName", customer?.lastName || "");
       form.setValue("email", customer?.email || "");
       form.setValue("phone", shipping?.phone || "");
-      form.setValue("country", shipping?.country || "");
+      form.setValue("country", data?.country_code || shipping?.country || "");
       form.setValue("address1", shipping?.address1 || "");
       form.setValue("address2", shipping?.address2 || "");
       form.setValue("city", shipping?.city || "");
@@ -307,7 +326,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       // Mark as initialized
       hasInitializedForm.current = true;
     }
-  }, [checkout?.checkoutSession, form]);
+  }, [checkout?.checkoutSession, form, data?.country_code]);
 
   // Note: Auto-save is now handled directly by the useAddress hook!
   // No need for complex detection logic - the hook calls saveCheckoutInfo
@@ -321,9 +340,77 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
   // Get current item data from checkout
   const firstItem = checkout?.summary?.items?.[0];
-  const currentVariantId = checkout?.checkoutSession?.sessionLineItems.find(
+  const sessionLineItems = checkout?.checkoutSession?.sessionLineItems;
+  const currentVariantId = sessionLineItems?.find(
     (lineItem: any) => lineItem.isOrderBump === false
   )?.variantId;
+
+  useEffect(() => {
+    if (isUpdating && pendingSubscriptionState !== null) {
+      return;
+    }
+
+    const primaryLineItem = sessionLineItems?.find(
+      (lineItem: any) => lineItem?.isOrderBump === false
+    );
+
+    if (!primaryLineItem) {
+      return;
+    }
+
+    const variantId: string | undefined = primaryLineItem?.variantId;
+
+    if (!variantId) {
+      return;
+    }
+
+    const priceMapping =
+      pluginConfig.prices[variantId as keyof typeof pluginConfig.prices];
+
+    if (!priceMapping) {
+      return;
+    }
+
+    const currentPriceId =
+      (primaryLineItem as any)?.priceId ??
+      (primaryLineItem as any)?.price?.id ??
+      (primaryLineItem as any)?.price?.priceId;
+
+    if (!currentPriceId) {
+      return;
+    }
+
+    const desiredState =
+      priceMapping.recurring && currentPriceId === priceMapping.recurring
+        ? true
+        : priceMapping.oneTime && currentPriceId === priceMapping.oneTime
+        ? false
+        : null;
+
+    if (desiredState === null) {
+      return;
+    }
+
+    if (pendingSubscriptionState !== null) {
+      if (desiredState === pendingSubscriptionState) {
+        if (subscribeAndSave !== desiredState) {
+          setSubscribeAndSave(desiredState);
+        }
+        setPendingSubscriptionState(null);
+      }
+      return;
+    }
+
+    if (desiredState !== subscribeAndSave) {
+      setSubscribeAndSave(desiredState);
+    }
+  }, [
+    sessionLineItems,
+    pluginConfig,
+    isUpdating,
+    subscribeAndSave,
+    pendingSubscriptionState,
+  ]);
 
   // Helper function: resolve priceId based on mode (one-time vs subscription)
   // Helper function to get display amount by variant and currency based on current mode
@@ -355,16 +442,22 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
         // SDK automatically handles bidirectional refresh - no manual refresh needed! 🎉
         const message = selected
-          ? "Expedited shipping added!"
-          : "Expedited shipping removed!";
+          ? String(t(pluginConfig.content.checkout.toasts.orderBumpAdded, ""))
+          : String(
+              t(pluginConfig.content.checkout.toasts.orderBumpRemoved, "")
+            );
         toast.success(message, { duration: 2000 });
       } else {
         console.error("❌ Order bump update failed:", result);
-        toast.error("Failed to update expedited shipping. Please try again.");
+        toast.error(
+          String(t(pluginConfig.content.checkout.toasts.orderBumpFailed, ""))
+        );
       }
     } catch (error) {
       console.error("❌ Order bump toggle failed:", error);
-      toast.error("Failed to update expedited shipping. Please try again.");
+      toast.error(
+        String(t(pluginConfig.content.checkout.toasts.orderBumpFailed, ""))
+      );
     }
   };
 
@@ -373,7 +466,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     const currency = item?.currency || pluginConfig.defaultCurrency;
 
     // Get product and variant info from the actual data structure
-    const productName = item?.name || "Product";
+    const productName =
+      item?.name ||
+      t(pluginConfig.content.checkout.packages.fallbackProductName);
 
     return [
       {
@@ -397,7 +492,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
           [],
         bestValue: false,
         productName: variantMappings.bundle1.product?.name || productName,
-        variantName: variantMappings.bundle1.variant?.name || "Regular",
+        variantName:
+          variantMappings.bundle1.variant?.name ||
+          t(pluginConfig.content.checkout.packages.fallbackVariantRegular),
         currency,
         dealType: "regular",
       },
@@ -420,7 +517,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
           [],
         bestValue: false,
         productName: variantMappings.bundle2.product?.name || productName,
-        variantName: variantMappings.bundle2.variant?.name || "BOGO Deal",
+        variantName:
+          variantMappings.bundle2.variant?.name ||
+          t(pluginConfig.content.checkout.packages.fallbackVariantBogo),
         currency,
         dealType: "bogo",
       },
@@ -443,7 +542,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
           [],
         bestValue: true,
         productName: variantMappings.bundle3.product?.name || productName,
-        variantName: variantMappings.bundle3.variant?.name || "Special Deal",
+        variantName:
+          variantMappings.bundle3.variant?.name ||
+          t(pluginConfig.content.checkout.packages.fallbackVariantSpecial),
         currency,
         dealType: "special",
       },
@@ -464,8 +565,15 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
   // Sync selected bundle with checkout session data
   useEffect(() => {
-    // Don't sync during user-initiated updates to prevent race conditions
-    if (isUserInitiatedUpdate) return;
+    // While we are waiting for the checkout to reflect the requested change,
+    // keep the optimistic UI state and avoid resyncing to stale backend data.
+    if (isUserInitiatedUpdate) {
+      if (pendingVariantId && currentVariantId === pendingVariantId) {
+        setIsUserInitiatedUpdate(false);
+        setPendingVariantId(null);
+      }
+      return;
+    }
 
     if (currentVariantId && bundles.length > 0) {
       const matchingBundle = bundles.find(
@@ -473,34 +581,22 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       );
 
       if (matchingBundle) {
-        // console.log("🔄 Syncing selected bundle:", {
-        //   currentVariantId,
-        //   matchingBundleId: matchingBundle.id,
-        //   currentSelectedBundle: selectedBundle,
-        // });
-
-        // Only update if different from current selection
         if (matchingBundle.id !== selectedBundle) {
           setSelectedBundle(matchingBundle.id);
         }
-      } else {
-        // console.warn(
-        //   "⚠️ No matching bundle found for variant:",
-        //   currentVariantId
-        // );
-        // Fallback to third bundle if no match found
-        if (selectedBundle === null) {
-          setSelectedBundle("bundle3");
-        }
+      } else if (selectedBundle === null) {
+        setSelectedBundle("bundle3");
       }
     } else if (selectedBundle === null && bundles.length > 0) {
-      // Initial fallback when no checkout data is available yet
-      // console.log(
-      //   "🔄 Setting initial bundle to bundle3 (no checkout data yet)"
-      // );
       setSelectedBundle("bundle3");
     }
-  }, [currentVariantId, bundles.length, isUserInitiatedUpdate]); // Removed selectedBundle from deps to prevent loops
+  }, [
+    currentVariantId,
+    bundles.length,
+    isUserInitiatedUpdate,
+    pendingVariantId,
+    selectedBundle,
+  ]); // Carefully manage deps to avoid sync loops
 
   const handleSubscriptionChange = async (checked: boolean) => {
     // Store the previous state for potential rollback
@@ -535,12 +631,15 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         );
         // Revert UI on critical error
         setSubscribeAndSave(previousState);
-        toast.error("Price not available for this option. Please try again.");
+        toast.error(
+          String(t(pluginConfig.content.checkout.toasts.pricingUnavailable, ""))
+        );
         return;
       }
 
       // 🔄 BACKGROUND PROCESSING - Update backend without blocking UI
       setIsUpdating(true);
+      setPendingSubscriptionState(checked);
 
       try {
         const lineItems = [
@@ -563,17 +662,24 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
         // Show success feedback
         const message = checked
-          ? "Switched to subscription pricing! 💰"
-          : "Switched to one-time purchase pricing.";
+          ? String(
+              t(pluginConfig.content.checkout.toasts.subscriptionEnabled, "")
+            )
+          : String(
+              t(pluginConfig.content.checkout.toasts.subscriptionDisabled, "")
+            );
         toast.success(message, { duration: 2000 });
       } catch (error) {
         console.error("❌ Background subscription update failed:", error);
 
         // 🔄 ROLLBACK ON ERROR - Revert to previous state
         setSubscribeAndSave(previousState);
+        setPendingSubscriptionState(null);
 
         // Show error feedback
-        toast.error("Failed to update pricing. Please try again.");
+        toast.error(
+          String(t(pluginConfig.content.checkout.toasts.subscriptionFailed, ""))
+        );
       } finally {
         setIsUpdating(false);
         console.log("🏁 Background subscription update process completed");
@@ -611,6 +717,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
       // Initialize with the third bundle variant from mappings (Best Value)
       const thirdVariant = variantMappings.bundle3;
+      initializeSession();
       if (thirdVariant?.variantId) {
         init({
           storeId: storeId,
@@ -776,25 +883,33 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
         // Show error toast with field name
         const fieldDisplayNames: Record<string, string> = {
-          firstName: "First Name",
-          lastName: "Last Name",
-          email: "Email Address",
-          phone: "Phone Number",
-          address1: "Street Address",
-          country: "Country",
-          city: "City",
-          state: "State/Province",
-          postal: "Zip/Postal Code",
-          cardNumber: "Card Number",
-          expiryDate: "Expiry Date",
-          cvc: "CVC",
+          firstName: t(pluginConfig.content.checkout.fieldLabels.firstName),
+          lastName: t(pluginConfig.content.checkout.fieldLabels.lastName),
+          email: t(pluginConfig.content.checkout.fieldLabels.email),
+          phone: t(pluginConfig.content.checkout.fieldLabels.phone),
+          address1: t(pluginConfig.content.checkout.fieldLabels.address1),
+          country: t(pluginConfig.content.checkout.fieldLabels.country),
+          city: t(pluginConfig.content.checkout.fieldLabels.city),
+          state: t(pluginConfig.content.checkout.fieldLabels.state),
+          postal: t(pluginConfig.content.checkout.fieldLabels.postal),
+          cardNumber: t(pluginConfig.content.checkout.fieldLabels.cardNumber),
+          expiryDate: t(pluginConfig.content.checkout.fieldLabels.expiryDate),
+          cvc: t(pluginConfig.content.checkout.fieldLabels.cvc),
         };
 
         const displayName =
           fieldDisplayNames[firstErrorField] || firstErrorField;
-        toast.error(`Please check the ${displayName} field`);
+        toast.error(
+          String(
+            t(pluginConfig.content.checkout.toasts.validationField, "", {
+              field: displayName,
+            })
+          )
+        );
       } else {
-        toast.error("Please check all required fields");
+        toast.error(
+          String(t(pluginConfig.content.checkout.toasts.validationGeneric, ""))
+        );
       }
 
       return;
@@ -804,7 +919,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
     // Make sure checkout session is ready
     if (!checkout?.checkoutSession?.id || !updateCustomerAndSessionInfo) {
-      toast.error("Checkout session not ready. Please try again.");
+      toast.error(
+        String(t(pluginConfig.content.checkout.toasts.checkoutNotReady, ""))
+      );
       return;
     }
 
@@ -838,7 +955,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       enhancedPaymentData.country
     );
     if (isStateRequired && !enhancedPaymentData.state?.trim()) {
-      toast.error("Please enter a state/province for the selected country.");
+      toast.error(
+        String(t(pluginConfig.content.checkout.toasts.stateMissing, ""))
+      );
       // Focus state field
       setFocus("state");
       return;
@@ -863,40 +982,77 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
           initiatedBy: "customer", // SDK now defaults to customer
           source: "checkout", // Source is checkout for plugin usage
           onSuccess: () => {
-            toast.success("Payment successful! 🎉");
+            toast.success(
+              String(t(pluginConfig.content.checkout.toasts.paymentSuccess, ""))
+            );
 
             // Show success message with payment details
-            const amount =
-              checkout?.summary?.currency ||
-              pluginConfig.defaultCurrency +
-                " " +
-                ((checkout?.summary?.totalAdjustedAmount || 0) / 100).toFixed(
-                  2
-                );
+            const currency =
+              checkout?.summary?.currency || pluginConfig.defaultCurrency;
+            const amountValue = `${currency} ${(
+              (checkout?.summary?.totalAdjustedAmount || 0) / 100
+            ).toFixed(2)}`;
+
+            console.log("paymentSuccess", amountValue);
 
             toast.success(
-              `Payment of ${amount} completed successfully! Your order is being processed.`,
+              String(
+                t(
+                  pluginConfig.content.checkout.toasts.paymentSuccessDetailed,
+                  "",
+                  { amount: amountValue }
+                )
+              ),
               {
                 duration: 5000,
               }
             );
           },
           onFailure: (errorMsg) => {
-            toast.error(`Payment failed: ${errorMsg}`);
+            toast.error(
+              String(
+                t(
+                  pluginConfig.content.checkout.toasts.paymentFailedWithReason,
+                  "",
+                  { reason: errorMsg }
+                )
+              )
+            );
           },
           onRequireAction: () => {
             toast.loading(
-              "Please complete the additional security verification..."
+              String(
+                t(
+                  pluginConfig.content.checkout.toasts
+                    .paymentVerificationRequired,
+                  ""
+                )
+              )
             );
           },
         }
-      );
+      ).then((amountValue) => {
+        console.log("paymentSuccess", amountValue);
+        next({
+          type: "paymentSuccess",
+          data: {
+            amount: amountValue.payment,
+          },
+        });
+      });
     } catch (error) {
-      const errorMsg =
-        error instanceof Error
-          ? error.message
-          : "Payment failed. Please try again.";
-      toast.error(errorMsg);
+      const errorMsg = error instanceof Error ? error.message : null;
+      toast.error(
+        String(
+          errorMsg
+            ? t(
+                pluginConfig.content.checkout.toasts.paymentFailedWithReason,
+                "",
+                { reason: errorMsg }
+              )
+            : t(pluginConfig.content.checkout.toasts.paymentFailed, "")
+        )
+      );
     }
   };
   // Instant bundle change with background update - now switches variants instead of quantities
@@ -933,11 +1089,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     if (!priceId) {
       // Revert UI on critical error
       setSelectedBundle(previousSelection);
-      toast.error("Price not available for this option. Please try again.");
+      toast.error(
+        String(t(pluginConfig.content.checkout.toasts.pricingUnavailable, ""))
+      );
       return;
     }
 
     // Mark as user-initiated update to prevent sync interference
+    setPendingVariantId(selectedBundleData.variantId);
     setIsUserInitiatedUpdate(true);
 
     // 🔄 BACKGROUND PROCESSING - Update backend without blocking UI
@@ -966,12 +1125,15 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
       // 🔄 ROLLBACK ON ERROR - Revert to previous selection
       setSelectedBundle(previousSelection);
+      setPendingVariantId(null);
+      setIsUserInitiatedUpdate(false);
 
       // Show error feedback
-      toast.error("Failed to update selection. Please try again.");
+      toast.error(
+        String(t(pluginConfig.content.checkout.toasts.selectionFailed, ""))
+      );
     } finally {
       setIsUpdating(false);
-      setIsUserInitiatedUpdate(false); // Clear flag after update completes
       console.log("🏁 Background update process completed for:", bundleId);
     }
   };
@@ -1118,7 +1280,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
       if (countryCode && !isCountrySelected) {
         // Show a helpful message when country is first selected
-        toast.success("Great! Now you can enter your address details below.");
+        toast.success(
+          String(
+            t(
+              pluginConfig.content.checkout.shippingInformation.countryToast,
+              ""
+            )
+          )
+        );
       }
     },
     [setValue, isCountrySelected]
@@ -1126,12 +1295,19 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
   const saveCheckoutInfo = useCallback(
     async (addressData: CheckoutFormData) => {
-      if (!checkout?.checkoutSession?.id) {
+      if (!addressData) {
         return;
       }
 
-      // If no data passed, skip (this will be called from useAddress hook with data)
-      if (!addressData) {
+      if (!checkout?.checkoutSession?.id) {
+        console.debug("⏳ Skipping auto-save: checkout session not ready yet.");
+        return;
+      }
+
+      if (typeof updateCustomerAndSessionInfo !== "function") {
+        console.warn(
+          "⚠️ Skipping auto-save: updateCustomerAndSessionInfo is not available."
+        );
         return;
       }
 
@@ -1192,35 +1368,49 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     [checkout?.checkoutSession?.id, updateCustomerAndSessionInfo]
   );
 
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
+
   // Auto-save form data when fields change with 2-second debounce
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    const relevantFields: Array<keyof CheckoutFormData> = [
+      "email",
+      "firstName",
+      "lastName",
+      "phone",
+      "address1",
+      "address2",
+      "city",
+      "country",
+      "state",
+      "postal",
+    ];
 
-    const subscription = watch((value) => {
-      // Clear any existing timeout
-      clearTimeout(timeoutId);
-
-      // Only save if we have meaningful data
-      if (
-        value.firstName ||
-        value.lastName ||
-        value.email ||
-        value.phone ||
-        value.address1 ||
-        value.country
-      ) {
-        // Debounce the save call by 2 seconds
-        timeoutId = setTimeout(() => {
-          saveCheckoutInfo(value as CheckoutFormData);
-        }, 2000);
+    const subscription = watch((_, { name, type }) => {
+      if (!name || type !== "change") {
+        return;
       }
+
+      if (!relevantFields.includes(name as keyof CheckoutFormData)) {
+        return;
+      }
+
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+
+      debounceTimerRef.current = setTimeout(() => {
+        const currentValues = getValues();
+        saveCheckoutInfo(currentValues as CheckoutFormData);
+      }, 600);
     });
 
     return () => {
       subscription.unsubscribe();
-      clearTimeout(timeoutId);
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
     };
-  }, [watch, saveCheckoutInfo]);
+  }, [watch, getValues, saveCheckoutInfo]);
 
   // Show error state for products
   if (productsError) {
@@ -1235,7 +1425,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         <div className="mx-auto max-w-md">
           <div className="rounded-lg bg-white p-6 shadow">
             <h1 className="mb-4 text-xl font-semibold text-red-600">
-              Checkout Error
+              {t(pluginConfig.content.checkout.errors.genericTitle)}
             </h1>
             {error && (
               <p className="mb-4 text-gray-600">
@@ -1243,8 +1433,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
               </p>
             )}
             <p className="text-sm text-gray-500">
-              Please refresh the page to try again. If it doesn't work, contact
-              support at {pluginConfig.branding.supportEmail}.
+              {t(pluginConfig.content.checkout.errors.genericDescription, "", {
+                supportEmail: pluginConfig.branding.supportEmail,
+              })}
             </p>
           </div>
         </div>
@@ -1261,12 +1452,19 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       <header className="bg-slate-800 p-3 text-center text-white">
         <div className="flex items-center justify-center gap-2">
           <Sun className="h-5 w-5 text-amber-400" />
-          <p className="font-semibold">Limited Time Offer</p>
+          <p className="font-semibold">
+            {t(pluginConfig.content.checkout.banner.title)}
+          </p>
         </div>
         <p className="text-sm opacity-90">
-          Enjoy a limited discount with{" "}
-          <span className="font-semibold">FREE SHIPPING</span>. Limited
-          inventory. <span className="underline">Sell Out Risk High.</span>
+          {t(pluginConfig.content.checkout.banner.descriptionPrefix)}{" "}
+          <span className="font-semibold">
+            {t(pluginConfig.content.checkout.banner.freeShippingHighlight)}
+          </span>{" "}
+          {t(pluginConfig.content.checkout.banner.descriptionSuffix)}{" "}
+          <span className="underline">
+            {t(pluginConfig.content.checkout.banner.sellOutRisk)}
+          </span>
         </p>
       </header>
 
@@ -1282,11 +1480,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
               <div className="mb-1 flex items-center justify-end gap-1">
                 <Lock className="h-3 w-3 text-emerald-600" />
                 <p className="text-xs font-medium text-gray-700 sm:text-sm">
-                  Secure Checkout
+                  {t(
+                    pluginConfig.content.checkout.navigation.secureCheckoutLabel
+                  )}
                 </p>
               </div>
               <p className="text-xs text-gray-600 sm:text-sm">
-                Support: {pluginConfig.branding.supportEmail}
+                {t(pluginConfig.content.checkout.navigation.supportLabel)}{" "}
+                {pluginConfig.branding.supportEmail}
               </p>
             </div>
           </div>
@@ -1299,11 +1500,13 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
           <div className="space-y-5 sm:space-y-6 lg:col-span-3">
             <div className="flex items-center justify-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center text-sm font-medium text-emerald-800 sm:p-4 sm:text-base">
               <GlobeIcon />
-              FREE Worldwide Shipping Included
+              {t(pluginConfig.content.checkout.notices.freeShipping)}
             </div>
             <div className="flex items-center justify-center gap-2 rounded-lg border border-orange-200 bg-orange-50 p-4 text-center text-sm font-medium text-orange-800 sm:p-4 sm:text-base">
               <TruckIcon />
-              Limited Time: Cart expires in {formatCartTimer(cartTimer)}
+              {t(pluginConfig.content.checkout.notices.cartTimer, "", {
+                time: formatCartTimer(cartTimer),
+              })}
             </div>
 
             {/* Step 1 */}
@@ -1319,17 +1522,17 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       1
                     </div>
                     <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">
-                      Select Your Package
+                      {t(pluginConfig.content.checkout.packages.title)}
                     </h2>
                   </div>
                   <p className="text-sm text-gray-600 sm:text-base">
-                    Choose the package that best fits your needs
+                    {t(pluginConfig.content.checkout.packages.subtitle)}
                   </p>
                 </div>
               </div>
 
               {/* Subscribe & Save toggle */}
-              {/* <div className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 sm:px-4">
+              <div className="flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 sm:px-4">
                 <div className="flex items-center gap-3">
                   <Checkbox
                     id="subscribe-and-save"
@@ -1345,22 +1548,33 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       className="flex cursor-pointer items-center gap-2 text-sm font-medium text-slate-700"
                     >
                       <span className="text-emerald-600">💰</span>
-                      Subscribe & Save Money
+                      {t(
+                        pluginConfig.content.checkout.packages
+                          .subscriptionToggleLabel
+                      )}
                     </Label>
                   </div>
                 </div>
-              </div> */}
+              </div>
 
               <div className="flex justify-between px-2 text-xs font-medium text-gray-600 sm:px-4 sm:text-sm">
-                <span>Package Details</span>
-                <span>Price Per Unit</span>
+                <span>
+                  {t(
+                    pluginConfig.content.checkout.packages.packageDetailsLabel
+                  )}
+                </span>
+                <span>
+                  {t(pluginConfig.content.checkout.packages.pricePerUnitLabel)}
+                </span>
               </div>
 
               {/* Show loading state while selectedBundle is null */}
               {selectedBundle === null ? (
                 <div className="flex items-center justify-center py-8">
                   <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-blue-600"></div>
-                  <p className="ml-2 text-gray-600">Loading packages...</p>
+                  <p className="ml-2 text-gray-600">
+                    {t(pluginConfig.content.checkout.packages.loadingMessage)}
+                  </p>
                 </div>
               ) : (
                 <RadioGroup
@@ -1381,7 +1595,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       {bundle.bestValue && (
                         <div className="absolute -right-3 -top-3 z-10">
                           <span className="rounded-full border border-emerald-500 bg-gradient-to-r from-emerald-600 to-emerald-700 px-3 py-1.5 text-xs font-semibold text-white shadow-sm">
-                            ⭐ Best Value
+                            {t(
+                              pluginConfig.content.checkout.packages
+                                .bestValueBadge
+                            )}
                           </span>
                         </div>
                       )}
@@ -1435,9 +1652,16 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                             )
                           )}
                         </p>
-                        <p className="text-sm text-gray-500">per unit</p>
+                        <p className="text-sm text-gray-500">
+                          {t(
+                            pluginConfig.content.checkout.packages.perUnitLabel
+                          )}
+                        </p>
                         <p className="text-sm font-medium text-emerald-600">
-                          + Free Shipping
+                          {t(
+                            pluginConfig.content.checkout.packages
+                              .freeShippingLabel
+                          )}
                         </p>
 
                         {basePrice !==
@@ -1459,7 +1683,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
             </div>
 
             <p className="rounded-lg border border-orange-200 bg-orange-50 py-3 text-center text-sm font-medium text-orange-700 sm:text-base">
-              Limited stock: Only 15 units remaining
+              {t(pluginConfig.content.checkout.notices.limitedStock, "", {
+                count: limitedStockCount,
+              })}
             </p>
 
             <div
@@ -1471,7 +1697,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
               onClick={() => handleOrderBumpToggle(!orderBumpSelected)}
             >
               <div className="absolute -right-2 -top-2 rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white shadow-sm">
-                Add-on
+                {t(pluginConfig.content.checkout.orderBump.badgeLabel)}
               </div>
 
               <div className="flex items-start gap-4">
@@ -1509,41 +1735,62 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                           : "text-slate-700"
                       }`}
                     >
-                      🚚 Expedited Shipping
+                      {t(pluginConfig.content.checkout.orderBump.title)}
                     </span>
                     {orderBumpSelected && (
                       <span className="ml-auto rounded-full bg-emerald-500 px-2 py-0.5 text-xs font-semibold text-white">
-                        ✓ Added
+                        {t(pluginConfig.content.checkout.orderBump.addedBadge)}
                       </span>
                     )}
                   </div>
                   <div className="space-y-2">
                     <h4 className="text-lg font-semibold text-gray-900 sm:text-xl">
-                      ⚡ Get Your Order Faster
+                      {t(pluginConfig.content.checkout.orderBump.headline)}
                     </h4>
-                    <p className="text-base leading-relaxed text-gray-700">
-                      Upgrade to{" "}
-                      <span className="font-medium text-slate-700">
-                        Expedited Shipping
-                      </span>{" "}
-                      and receive your order in record time.
-                    </p>
+                    <p
+                      className="text-base leading-relaxed text-gray-700"
+                      dangerouslySetInnerHTML={{
+                        __html: t(
+                          pluginConfig.content.checkout.orderBump.description
+                        ),
+                      }}
+                    />
                     <div className="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-600 sm:grid-cols-2">
                       <div className="flex items-center gap-2">
                         <span className="text-emerald-600">✓</span>
-                        <span>Priority order processing</span>
+                        <span>
+                          {t(
+                            pluginConfig.content.checkout.orderBump
+                              .priorityProcessing
+                          )}
+                        </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-emerald-600">✓</span>
-                        <span>Faster delivery times</span>
+                        <span>
+                          {t(
+                            pluginConfig.content.checkout.orderBump
+                              .fasterDelivery
+                          )}
+                        </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-emerald-600">✓</span>
-                        <span>Tracking included</span>
+                        <span>
+                          {t(
+                            pluginConfig.content.checkout.orderBump
+                              .trackingIncluded
+                          )}
+                        </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-emerald-600">✓</span>
-                        <span>Dedicated shipping support</span>
+                        <span>
+                          {t(
+                            pluginConfig.content.checkout.orderBump
+                              .dedicatedSupport
+                          )}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -1558,7 +1805,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   2
                 </div>
                 <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">
-                  Customer Information
+                  {t(pluginConfig.content.checkout.customerInformation.title)}
                 </h2>
               </div>
               {/* 🚀 NEW: Using useAddress hook for cleaner form handling */}
@@ -1566,7 +1813,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 <div>
                   <Input
                     {...form.register("firstName")}
-                    placeholder="First Name*"
+                    placeholder={t(
+                      pluginConfig.content.checkout.customerInformation
+                        .firstNamePlaceholder
+                    )}
                     data-address-field="firstName"
                     className={cn(
                       `h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100`,
@@ -1578,14 +1828,20 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   />
                   {errors.firstName && (
                     <p className="mt-2 text-sm text-red-600">
-                      {errors.firstName.message}
+                      {t(
+                        pluginConfig.content.checkout.validation
+                          .firstNameRequired
+                      )}
                     </p>
                   )}
                 </div>
                 <div>
                   <Input
                     {...form.register("lastName")}
-                    placeholder="Last Name*"
+                    placeholder={t(
+                      pluginConfig.content.checkout.customerInformation
+                        .lastNamePlaceholder
+                    )}
                     data-address-field="lastName"
                     className={cn(
                       `h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100`,
@@ -1597,7 +1853,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   />
                   {errors.lastName && (
                     <p className="mt-2 text-sm text-red-600">
-                      {errors.lastName.message}
+                      {t(
+                        pluginConfig.content.checkout.validation
+                          .lastNameRequired
+                      )}
                     </p>
                   )}
                 </div>
@@ -1605,7 +1864,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   <Input
                     {...form.register("email")}
                     type="email"
-                    placeholder="Email Address*"
+                    placeholder={t(
+                      pluginConfig.content.checkout.customerInformation
+                        .emailPlaceholder
+                    )}
                     data-address-field="email"
                     className={cn(
                       `h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100`,
@@ -1617,7 +1879,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   />
                   {errors.email && (
                     <p className="mt-2 text-sm text-red-600">
-                      {errors.email.message}
+                      {t(
+                        pluginConfig.content.checkout.validation.emailRequired
+                      )}
                     </p>
                   )}
                 </div>
@@ -1625,7 +1889,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   <Input
                     {...form.register("phone")}
                     type="tel"
-                    placeholder="Phone number*"
+                    placeholder={t(
+                      pluginConfig.content.checkout.customerInformation
+                        .phonePlaceholder
+                    )}
                     data-address-field="phone"
                     className={cn(
                       `h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100`,
@@ -1637,7 +1904,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   />
                   {errors.phone && (
                     <p className="mt-2 text-sm text-red-600">
-                      {errors.phone.message}
+                      {t(
+                        pluginConfig.content.checkout.validation.phoneRequired
+                      )}
                     </p>
                   )}
                 </div>
@@ -1648,14 +1917,17 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   3
                 </div>
                 <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">
-                  Shipping Information
+                  {t(pluginConfig.content.checkout.shippingInformation.title)}
                 </h2>
               </div>
               <div className="space-y-4">
                 {/* Country Selection - Must be first */}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="country" className="mb-1">
-                    Country *
+                    {t(
+                      pluginConfig.content.checkout.shippingInformation
+                        .countryLabel
+                    )}
                   </Label>
                   <Combobox
                     options={Object.values(countries).map((country: any) => ({
@@ -1667,18 +1939,29 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       setValue("country", countryCode);
                       if (countryCode && !isCountrySelected) {
                         toast.success(
-                          "Great! Now you can enter your address details below."
+                          String(
+                            t(
+                              pluginConfig.content.checkout.shippingInformation
+                                .countryToast,
+                              ""
+                            )
+                          )
                         );
                       }
                     }}
-                    placeholder="Select Country"
+                    placeholder={t(
+                      pluginConfig.content.checkout.shippingInformation
+                        .countryPlaceholder
+                    )}
                     error={!!errors.country}
                     className="h-14"
                     data-address-field="country"
                   />
                   {errors.country && (
                     <p className="mt-2 text-sm text-red-600">
-                      {errors.country.message}
+                      {t(
+                        pluginConfig.content.checkout.validation.countryRequired
+                      )}
                     </p>
                   )}
                 </div>
@@ -1702,9 +1985,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       </div>
                       <div className="ml-3">
                         <p className="text-sm leading-relaxed text-blue-800">
-                          Please select your country first. This will enable
-                          address autocomplete and ensure accurate shipping
-                          options.
+                          {t(
+                            pluginConfig.content.checkout.shippingInformation
+                              .helperMessage
+                          )}
                         </p>
                       </div>
                     </div>
@@ -1719,7 +2003,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 >
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="address1" className="mb-1">
-                      Street Address *
+                      {t(
+                        pluginConfig.content.checkout.shippingInformation
+                          .streetLabel
+                      )}
                     </Label>
                     <div className="relative">
                       <Input
@@ -1729,8 +2016,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                         disabled={!isCountrySelected}
                         placeholder={
                           isCountrySelected
-                            ? "Start typing your address..."
-                            : "Please select country first"
+                            ? t(
+                                pluginConfig.content.checkout
+                                  .shippingInformation.streetPlaceholder
+                              )
+                            : t(
+                                pluginConfig.content.checkout
+                                  .shippingInformation.streetLockedPlaceholder
+                              )
                         }
                         data-address-field="address1"
                         className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-gray-100 ${
@@ -1770,21 +2063,30 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     </div>
                     {errors.address1 && (
                       <p className="mt-2 text-sm text-red-600">
-                        {errors.address1.message}
+                        {t(
+                          pluginConfig.content.checkout.validation
+                            .addressRequired
+                        )}
                       </p>
                     )}
                   </div>
 
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="address2" className="mb-1">
-                      Apartment, Suite, etc.
+                      {t(
+                        pluginConfig.content.checkout.shippingInformation
+                          .address2Label
+                      )}
                     </Label>
                     <Input
                       id="address2"
                       value={watch("address2")}
                       onChange={(e) => setValue("address2", e.target.value)}
                       disabled={!isCountrySelected}
-                      placeholder="Apartment, suite, etc."
+                      placeholder={t(
+                        pluginConfig.content.checkout.shippingInformation
+                          .address2Placeholder
+                      )}
                       data-address-field="address2"
                       className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-gray-100 ${
                         errors.address2
@@ -1802,14 +2104,20 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="flex w-full flex-col gap-2">
                       <Label htmlFor="city" className="mb-1">
-                        City *
+                        {t(
+                          pluginConfig.content.checkout.shippingInformation
+                            .cityLabel
+                        )}
                       </Label>
                       <Input
                         id="city"
                         value={watch("city")}
                         onChange={(e) => setValue("city", e.target.value)}
                         disabled={!isCountrySelected}
-                        placeholder="Enter city"
+                        placeholder={t(
+                          pluginConfig.content.checkout.shippingInformation
+                            .cityPlaceholder
+                        )}
                         data-address-field="city"
                         className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-gray-100 ${
                           errors.city
@@ -1819,18 +2127,32 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       />
                       {errors.city && (
                         <p className="mt-2 text-sm text-red-600">
-                          {errors.city.message}
+                          {t(
+                            pluginConfig.content.checkout.validation
+                              .cityRequired
+                          )}
                         </p>
                       )}
                     </div>
                     <div className="flex w-full flex-col gap-2">
                       <Label htmlFor="state" className="mb-1">
-                        State / Province *
+                        {t(
+                          pluginConfig.content.checkout.shippingInformation
+                            .stateLabel
+                        )}
                         <span className="ml-2 text-xs text-gray-500">
                           (
                           {availableStates.length > 0
-                            ? `${availableStates.length} options`
-                            : "text input"}
+                            ? t(
+                                pluginConfig.content.checkout
+                                  .shippingInformation.stateOptionsSuffix,
+                                "",
+                                { count: availableStates.length }
+                              )
+                            : t(
+                                pluginConfig.content.checkout
+                                  .shippingInformation.stateManualSuffix
+                              )}
                           )
                         </span>
                       </Label>
@@ -1844,7 +2166,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                           onValueChange={(stateCode: string) =>
                             setValue("state", stateCode)
                           }
-                          placeholder="Select State/Province"
+                          placeholder={t(
+                            pluginConfig.content.checkout.shippingInformation
+                              .stateSelectPlaceholder
+                          )}
                           error={!!errors.state}
                           className="h-14"
                         />
@@ -1855,8 +2180,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                           disabled={!isCountrySelected}
                           placeholder={
                             isCountrySelected
-                              ? "Enter state/province"
-                              : "Select country first"
+                              ? t(
+                                  pluginConfig.content.checkout
+                                    .shippingInformation.stateInputPlaceholder
+                                )
+                              : t(
+                                  pluginConfig.content.checkout
+                                    .shippingInformation.stateLockedPlaceholder
+                                )
                           }
                           data-address-field="state"
                           className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-gray-100 ${
@@ -1868,7 +2199,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       )}
                       {errors.state && (
                         <p className="mt-2 text-sm text-red-600">
-                          {errors.state.message}
+                          {t(
+                            pluginConfig.content.checkout.validation
+                              .stateRequired
+                          )}
                         </p>
                       )}
                     </div>
@@ -1877,13 +2211,19 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="flex w-full flex-col gap-2">
                       <Label htmlFor="postal" className="mb-1">
-                        Zip / Postcode *
+                        {t(
+                          pluginConfig.content.checkout.shippingInformation
+                            .postalLabel
+                        )}
                       </Label>
                       <Input
                         value={watch("postal")}
                         onChange={(e) => setValue("postal", e.target.value)}
                         disabled={!isCountrySelected}
-                        placeholder="Zip / Postcode*"
+                        placeholder={t(
+                          pluginConfig.content.checkout.shippingInformation
+                            .postalPlaceholder
+                        )}
                         data-address-field="postal"
                         className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-gray-100 ${
                           errors.postal
@@ -1893,13 +2233,21 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       />
                       {errors.postal && (
                         <p className="mt-2 text-sm text-red-600">
-                          {errors.postal.message}
+                          {t(
+                            pluginConfig.content.checkout.validation
+                              .postalRequired
+                          )}
                         </p>
                       )}
                     </div>
                   </div>
                 </div>
-                <p className="mt-2 text-sm text-slate-600">* Required fields</p>
+                <p className="mt-2 text-sm text-slate-600">
+                  {t(
+                    pluginConfig.content.checkout.shippingInformation
+                      .requiredFieldsNote
+                  )}
+                </p>
               </div>
             </div>
           </div>
@@ -1915,12 +2263,12 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   4
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Secure Payment
+                  {t(pluginConfig.content.checkout.payment.title)}
                 </h3>
               </div>
               <p className="mb-5 flex items-center gap-2 text-sm text-gray-600">
                 <Lock className="h-4 w-4 text-emerald-600" />
-                All transactions are secure and encrypted with 256-bit SSL.
+                {t(pluginConfig.content.checkout.payment.securityMessage)}
               </p>
 
               {/* Payment Error Display */}
@@ -1934,7 +2282,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 <div className="flex items-center gap-2">
                   <div className="h-3 w-3 rounded-full bg-blue-600 sm:h-4 sm:w-4" />
                   <span className="text-sm font-medium sm:text-base">
-                    Credit/Debit Card
+                    {t(pluginConfig.content.checkout.payment.cardMethodLabel)}
                   </span>
                 </div>
                 <div className="flex gap-1">
@@ -1972,7 +2320,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 <div>
                   <Input
                     value={watch("cardNumber")}
-                    placeholder="Card number*"
+                    placeholder={t(
+                      pluginConfig.content.checkout.payment
+                        .cardNumberPlaceholder
+                    )}
                     className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 ${
                       errors.cardNumber
                         ? "border-red-500 focus:border-red-500 focus:ring-red-100"
@@ -1986,7 +2337,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   />
                   {errors.cardNumber && (
                     <p className="mt-2 text-sm text-red-600">
-                      {errors.cardNumber.message}
+                      {t(
+                        pluginConfig.content.checkout.validation
+                          .cardNumberRequired
+                      )}
                     </p>
                   )}
                 </div>
@@ -1994,7 +2348,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   <div>
                     <Input
                       value={watch("expiryDate")}
-                      placeholder="MM/YY*"
+                      placeholder={t(
+                        pluginConfig.content.checkout.payment.expiryPlaceholder
+                      )}
                       className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 ${
                         errors.expiryDate
                           ? "border-red-500 focus:border-red-500 focus:ring-red-100"
@@ -2008,14 +2364,19 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     />
                     {errors.expiryDate && (
                       <p className="mt-2 text-sm text-red-600">
-                        {errors.expiryDate.message}
+                        {t(
+                          pluginConfig.content.checkout.validation
+                            .expiryRequired
+                        )}
                       </p>
                     )}
                   </div>
                   <div>
                     <Input
                       value={watch("cvc")}
-                      placeholder="CVC*"
+                      placeholder={t(
+                        pluginConfig.content.checkout.payment.cvcPlaceholder
+                      )}
                       className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 ${
                         errors.cvc
                           ? "border-red-500 focus:border-red-500 focus:ring-red-100"
@@ -2029,7 +2390,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     />
                     {errors.cvc && (
                       <p className="mt-2 text-sm text-red-600">
-                        {errors.cvc.message}
+                        {t(
+                          pluginConfig.content.checkout.validation.cvcRequired
+                        )}
                       </p>
                     )}
                   </div>
@@ -2046,28 +2409,36 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 {isPaymentLoading ? (
                   <div className="flex items-center justify-center gap-2">
                     <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white sm:h-6 sm:w-6"></div>
-                    Processing Payment...
+                    {t(
+                      pluginConfig.content.checkout.payment
+                        .buttonProcessingLabel
+                    )}
                   </div>
                 ) : (
-                  "Complete Purchase"
+                  t(pluginConfig.content.checkout.payment.buttonLabel)
                 )}
               </Button>
               <div className="mt-4 space-y-3 text-center">
                 <p className="text-sm font-medium text-gray-600">
-                  90-Day Money Back Guarantee
+                  {t(pluginConfig.content.checkout.payment.guaranteeBadgeTitle)}
                 </p>
                 <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
                   <Lock className="h-3 w-3 text-emerald-600" />
-                  <span>SSL Secured</span>
+                  <span>
+                    {t(pluginConfig.content.checkout.payment.sslBadge)}
+                  </span>
                   <span>•</span>
-                  <span>256-bit Encryption</span>
+                  <span>
+                    {t(pluginConfig.content.checkout.payment.encryptionBadge)}
+                  </span>
                   <span>•</span>
-                  <span>Norton Verified</span>
+                  <span>
+                    {t(pluginConfig.content.checkout.payment.nortonBadge)}
+                  </span>
                 </div>
               </div>
               <p className="my-4 text-center text-xs text-gray-500">
-                By completing the payment, you agree to our Terms of Service and
-                Refund Policy.
+                {t(pluginConfig.content.checkout.payment.agreementText)}
               </p>
               <div className="flex flex-wrap items-center justify-center gap-2">
                 <img
@@ -2108,33 +2479,34 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
               </div>
               <p className="mt-4 flex items-center justify-center gap-2 text-center text-xs text-gray-500 sm:text-sm">
                 <Lock className="h-3 w-3 text-emerald-600 sm:h-4 sm:w-4" />
-                Secure 256-bit SSL encryption
+                {t(pluginConfig.content.checkout.payment.secureFooter)}
               </p>
             </div>
 
             <div className="flex items-center gap-4 rounded-xl border border-emerald-100 bg-emerald-50 p-4">
               <img
                 src="https://img.funnelish.com/9938/69802/1678959839-op.webp"
-                alt="90 Day Guarantee"
+                alt={t(pluginConfig.content.checkout.payment.guaranteeTitle)}
                 width={80}
                 height={80}
                 className="sm:h-[100px] sm:w-[100px]"
               />
               <div>
                 <h4 className="text-base font-semibold text-emerald-800 sm:text-lg">
-                  90-Day Money Back Guarantee
+                  {t(pluginConfig.content.checkout.payment.guaranteeTitle)}
                 </h4>
                 <p className="text-sm leading-relaxed text-emerald-700">
-                  If you are not completely satisfied with your purchase, we
-                  offer a 90-day guarantee on all purchases. Simply contact our
-                  customer support for a full refund or replacement.
+                  {t(
+                    pluginConfig.content.checkout.payment
+                      .guaranteeBadgeDescription
+                  )}
                 </p>
               </div>
             </div>
 
             <div className="space-y-4">
               <h4 className="text-base font-semibold text-gray-900 sm:text-lg">
-                Our Top Customer Reviews
+                {t(pluginConfig.content.checkout.reviews.topSectionTitle)}
               </h4>
               {pluginConfig.testimonials
                 .slice(0, 3)
@@ -2162,10 +2534,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       </div>
                       <div className="flex items-center gap-4 text-xs text-gray-500">
                         <span className="cursor-pointer font-medium hover:text-blue-600">
-                          Like
+                          {t(pluginConfig.content.checkout.reviews.likeAction)}
                         </span>
                         <span className="cursor-pointer font-medium hover:text-blue-600">
-                          Reply
+                          {t(pluginConfig.content.checkout.reviews.replyAction)}
                         </span>
                         <span>{t(testimonial.time)}</span>
                         <div className="ml-auto flex items-center gap-1 rounded-full border border-gray-100 bg-white px-2 py-1 shadow-sm">
@@ -2190,12 +2562,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
           <div className="p-4">
             <div className="mb-3 flex items-center justify-center gap-2 text-xs text-gray-600">
               <span className="font-medium text-emerald-600">
-                FREE Shipping
+                {t(pluginConfig.content.checkout.stickyBar.freeShipping)}
               </span>
               <span>•</span>
-              <span>90-Day Guarantee</span>
+              <span>
+                {t(pluginConfig.content.checkout.stickyBar.guarantee)}
+              </span>
               <span>•</span>
-              <span>SSL Secured</span>
+              <span>{t(pluginConfig.content.checkout.stickyBar.ssl)}</span>
             </div>
             <Button
               className={`w-full touch-manipulation bg-gradient-to-r from-blue-600 to-blue-700 py-4 text-lg font-semibold text-white shadow-sm transition-all duration-200 hover:from-blue-700 hover:to-blue-800 hover:shadow-md ${
@@ -2208,12 +2582,15 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
               {isPaymentLoading ? (
                 <div className="flex items-center justify-center gap-2">
                   <div className="h-4 w-4 animate-spin rounded-full border-b-2 border-white"></div>
-                  Processing...
+                  {t(
+                    pluginConfig.content.checkout.stickyBar
+                      .buttonProcessingLabel
+                  )}
                 </div>
               ) : (
                 <>
                   <Lock className="mr-2 h-4 w-4" />
-                  Complete Purchase
+                  {t(pluginConfig.content.checkout.stickyBar.buttonLabel)}
                 </>
               )}
             </Button>
@@ -2224,7 +2601,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       <section className="bg-white py-12">
         <div className="container mx-auto px-6 md:px-12">
           <h2 className="mb-8 text-center text-2xl font-semibold text-gray-900 sm:text-3xl">
-            More Customer Reviews
+            {t(pluginConfig.content.checkout.reviews.gridSectionTitle)}
           </h2>
           <div className="columns-1 gap-6 sm:columns-2 lg:columns-4">
             {pluginConfig.reviews.slice(0, 8).map((review, index) => {
@@ -2261,7 +2638,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       {review.verified && (
                         <img
                           src="//img.funnelish.com/78897/762729/1742988496-checked.png"
-                          alt="Verified"
+                          alt={t(
+                            pluginConfig.content.checkout.reviews.verifiedAlt
+                          )}
                           width={16}
                           height={16}
                           className="h-4 w-4"
@@ -2271,7 +2650,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     <div className="mb-2 flex">
                       <img
                         src="//img.funnelish.com/3947/36340/1662480996-amazon-5-stars-png-1-.png"
-                        alt="5 stars"
+                        alt={t(pluginConfig.content.checkout.reviews.starsAlt)}
                         width={90}
                         height={18}
                         className="h-4"
@@ -2304,25 +2683,27 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 href="#terms"
                 className="transition-colors hover:text-blue-600"
               >
-                Terms & Conditions
+                {t(pluginConfig.content.checkout.footer.termsLabel)}
               </a>
               <a
                 href="#privacy"
                 className="transition-colors hover:text-blue-600"
               >
-                Privacy Policy
+                {t(pluginConfig.content.checkout.footer.privacyLabel)}
               </a>
               <a
                 href="#wireless"
                 className="transition-colors hover:text-blue-600"
               >
-                Wireless Policy
+                {t(pluginConfig.content.checkout.footer.wirelessLabel)}
               </a>
             </div>
             <div className="text-center text-sm leading-relaxed text-gray-600">
               <p className="mb-2">
-                © {new Date().getFullYear()} / {companyName} / All rights
-                reserved.
+                {t(pluginConfig.content.checkout.footer.rightsReserved, "", {
+                  year: currentYear,
+                  company: companyName,
+                })}
               </p>
               <p className="text-base font-medium">
                 {pluginConfig.branding.supportEmail}

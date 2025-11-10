@@ -1,26 +1,85 @@
 {
-  "name": "Jointboost Plugin",
-  "pluginId": "jointboost-template",
-  "description": "A checkout experience for Jointboost",
-  "version": "1.0.5",
+  "name": "BOGO Checkout",
+  "pluginId": "bogo-checkout",
+  "description": "High-converting checkout with BOGO bundles, post-purchase offers, and TagadaPay V2 SDK integration",
+  "version": "1.0.10",
   "author": "TagadaPay Team",
   "mode": "direct-mode",
-  "category": "ecommerce",
-  "tags": ["jointboost", "checkout", "ecommerce", "payment"],
+  "category": "checkout",
+  "tags": ["checkout", "bogo", "payment"],
+  "pages": [
+    {
+      "path": "/checkout",
+      "features": [
+        {
+          "type": "checkout",
+          "requirements": [
+            {
+              "resource": "checkoutSession",
+              "params": [
+                {
+                  "name": "checkoutToken",
+                  "type": "query",
+                  "required": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "remappable": false
+    },
+    {
+      "path": "/post/:orderId",
+      "features": [
+        {
+          "type": "offer",
+          "requirements": [
+            {
+              "resource": "order",
+              "params": [
+                {
+                  "name": "orderId",
+                  "type": "path",
+                  "required": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "remappable": false
+    },
+    {
+      "path": "/thankyou/:orderId",
+      "features": [
+        {
+          "type": "thankyou",
+          "requirements": [
+            {
+              "resource": "order",
+              "params": [
+                {
+                  "name": "orderId",
+                  "type": "path",
+                  "required": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "remappable": false
+    }
+  ],
   "router": {
     "basePath": "/",
     "matcher": ".*",
     "excluder": null
   },
-  "features": {
-    "googleAutocomplete": true,
-    "paymentProcessing": true,
-    "orderConfirmation": true,
-    "responsiveDesign": true,
-    "configurationSystem": true
-  },
   "requirements": {
-    "sdk": "^2.1.0",
+    "sdk": "^2.7.0",
+    "sdkVersion": "v2",
     "environment": {
       "VITE_GOOGLE_MAPS_API_KEY": "required"
     }

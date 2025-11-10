@@ -15,19 +15,22 @@
     }
   },
   "variants": {
-    "regular": "variant_2e2df30a9607",
-    "bogo": "variant_e913e372d493",
+    "regular": "variant_ad4832325aff",
+    "bogo": "variant_7b496b7db19e",
     "special": "variant_4bff9b488878"
   },
   "prices": {
-    "variant_2e2df30a9607": {
-      "oneTime": "price_d700dc96305f"
+    "variant_ad4832325aff": {
+      "oneTime": "price_515cab8a41a1",
+      "recurring": "price_c8ae4a9a9487"
     },
-    "variant_e913e372d493": {
-      "oneTime": "price_762c1918f398"
+    "variant_7b496b7db19e": {
+      "oneTime": "price_097f4ec7660b",
+      "recurring": "price_300482c62b86"
     },
     "variant_4bff9b488878": {
-      "oneTime": "price_1e334b833fb7"
+      "oneTime": "price_1e334b833fb7",
+      "recurring": "price_b73eee73edeb"
     }
   },
   "orderBumpId": "up_sell_ob_offer_5a786ece2e7e",
@@ -182,6 +185,46 @@
           "en": "+ Free Shipping",
           "fr": "+ Livraison gratuite",
           "es": "+ Envío gratis"
+        },
+        "subscriptionToggleLabel": {
+          "en": "Subscribe & Save Money",
+          "fr": "Abonnez-vous et économisez",
+          "es": "Suscríbete y ahorra"
+        },
+        "fallbackBundleRegular": {
+          "en": "Buy 1 Regular Price",
+          "fr": "Acheter 1 au prix normal",
+          "es": "Compra 1 al precio normal"
+        },
+        "fallbackBundleBogo": {
+          "en": "Buy 1 Get 1 Free (BOGO)",
+          "fr": "Achetez 1, obtenez 1 gratuit (BOGO)",
+          "es": "Compra 1 y recibe 1 gratis (BOGO)"
+        },
+        "fallbackBundleSpecial": {
+          "en": "Buy 1 Get 2 Free",
+          "fr": "Achetez 1, recevez 2 gratuits",
+          "es": "Compra 1 y recibe 2 gratis"
+        },
+        "fallbackProductName": {
+          "en": "Product",
+          "fr": "Produit",
+          "es": "Producto"
+        },
+        "fallbackVariantRegular": {
+          "en": "Regular",
+          "fr": "Classique",
+          "es": "Regular"
+        },
+        "fallbackVariantBogo": {
+          "en": "BOGO Deal",
+          "fr": "Offre BOGO",
+          "es": "Oferta BOGO"
+        },
+        "fallbackVariantSpecial": {
+          "en": "Special Deal",
+          "fr": "Offre spéciale",
+          "es": "Oferta especial"
         }
       },
       "orderBump": {
@@ -760,6 +803,18 @@
         "reviewVerifiedBadge": "https://img.funnelish.com/78897/762729/1742988496-checked.png",
         "reviewStarsBadge": "https://img.funnelish.com/3947/36340/1662480996-amazon-5-stars-png-1-.png",
         "trustBadges": "/badges.webp"
+      },
+      "errors": {
+        "genericTitle": {
+          "en": "Checkout Error",
+          "fr": "Erreur de paiement",
+          "es": "Error en el pago"
+        },
+        "genericDescription": {
+          "en": "Please refresh the page to try again. If it doesn't work, contact support at {supportEmail}.",
+          "fr": "Veuillez actualiser la page et réessayer. Si cela ne fonctionne pas, contactez le support à {supportEmail}.",
+          "es": "Actualiza la página e inténtalo de nuevo. Si no funciona, contacta con soporte en {supportEmail}."
+        }
       }
     },
     "thankYou": {
@@ -916,11 +971,11 @@
     },
     "postPurchase": {
       "bannerImages": {
-        "specialOffer": "/special-offer.webp",
-        "steps": "/steps.webp",
-        "product": "/natural.webp",
-        "priceBadge": "/pricepic.webp",
-        "trustBadges": "/badges.webp"
+        "product": "https://tagadapay.com/logo-landing.png",
+        "specialOffer": "special-offer.webp",
+        "steps": "steps.webp",
+        "priceBadge": "pricepic.webp",
+        "trustBadges": "badges.webp"
       },
       "banner": {
         "offerExpires": {
@@ -934,9 +989,9 @@
           "es": "Espera, tu pedido no está completo..."
         },
         "persuasiveMessage": {
-          "en": "Others who have purchased <strong>Joint Boost</strong> have also had benefit with this <strong>mega sale!</strong> Would you like to add this to your order?",
-          "fr": "D'autres clients qui ont acheté <strong>Joint Boost</strong> ont profité de cette <strong>méga promotion !</strong> Souhaitez-vous l'ajouter à votre commande ?",
-          "es": "Otros clientes que compraron <strong>Joint Boost</strong> también aprovecharon esta <strong>mega oferta.</strong> ¿Quieres añadirla a tu pedido?"
+          "en": "Others who have purchased <strong>Tagada</strong> have also had benefit with this <strong>mega sale!</strong> Would you like to add this to your order?",
+          "fr": "D'autres clients qui ont acheté <strong>Tagada</strong> ont profité de cette <strong>méga promotion !</strong> Souhaitez-vous l'ajouter à votre commande ?",
+          "es": "Otros clientes que compraron <strong>Tagada</strong> también aprovecharon esta <strong>mega oferta.</strong> ¿Quieres añadirla a tu pedido?"
         }
       },
       "product": {
@@ -1091,36 +1146,6 @@
         "es": "El dolor articular solía limitarme, pero desde que tomo Tagada Pills me muevo con más facilidad y sin los pinchazos que sentía antes."
       },
       "image": "//img.funnelish.com/44844/836693/1750150574-6.png",
-      "verified": true
-    },
-    {
-      "name": {
-        "en": "Jenny",
-        "fr": "Jenny",
-        "es": "Jenny"
-      },
-      "rating": 5,
-      "text": {
-        "en": "This supplement works wonders for my joints. I've experienced less pain, and my range of motion is noticeably improved after just a few weeks of use.",
-        "fr": "Ce complément fait des merveilles pour mes articulations. J'ai moins de douleurs et mon amplitude de mouvement s'est nettement améliorée après quelques semaines seulement.",
-        "es": "Este suplemento hace maravillas por mis articulaciones. Tengo menos dolor y mi rango de movimiento ha mejorado notablemente tras solo unas semanas de uso."
-      },
-      "image": "//img.funnelish.com/44844/837622/1751808381-01.jpeg",
-      "verified": true
-    },
-    {
-      "name": {
-        "en": "John",
-        "fr": "John",
-        "es": "John"
-      },
-      "rating": 5,
-      "text": {
-        "en": "After using Tagada Pills for a month, I feel like I have my old mobility back. It's been incredibly effective in reducing joint stiffness.",
-        "fr": "Après un mois avec Tagada Pills, j'ai l'impression d'avoir retrouvé ma mobilité d'avant. C'est extrêmement efficace pour réduire la raideur articulaire.",
-        "es": "Tras un mes con Tagada Pills, siento que recuperé mi movilidad de siempre. Ha sido increíblemente eficaz para reducir la rigidez articular."
-      },
-      "image": "//img.funnelish.com/44844/837622/1751808529-WhatsApp%20Image%202025-07-06%20at%204.23.28%20PM.jpeg",
       "verified": true
     },
     {
