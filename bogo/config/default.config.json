@@ -802,7 +802,7 @@
         "guaranteeLightBadge": "https://img.funnelish.com/9938/69802/1678959839-op.webp",
         "reviewVerifiedBadge": "https://img.funnelish.com/78897/762729/1742988496-checked.png",
         "reviewStarsBadge": "https://img.funnelish.com/3947/36340/1662480996-amazon-5-stars-png-1-.png",
-        "trustBadges": "base/badges.webp"
+        "trustBadges": "/base/badges.webp"
       },
       "errors": {
         "genericTitle": {
@@ -972,10 +972,10 @@
     "postPurchase": {
       "bannerImages": {
         "product": "https://tagadapay.com/logo-landing.png",
-        "specialOffer": "special-offer.webp",
-        "steps": "base/steps.webp",
-        "priceBadge": "base/pricepic.webp",
-        "trustBadges": "base/badges.webp"
+        "specialOffer": "base/special-offer.webp",
+        "steps": "/base/steps.webp",
+        "priceBadge": "/base/pricepic.webp",
+        "trustBadges": "/base/badges.webp"
       },
       "banner": {
         "offerExpires": {
