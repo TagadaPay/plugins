@@ -1,31 +1,49 @@
-import { Environment, TagadaProvider } from '@tagadapay/plugin-sdk/react';
-import { PropsWithChildren } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+'use client';
+
+import { CartProvider } from '@/context/cart-context';
+import { CheckoutSuccessProvider } from '@/context/checkout-success-context';
+import ThemeSetter from '@/context/theme-setter';
+import {
+  RawPluginConfig,
+  TagadaProvider,
+  createRawPluginConfig,
+} from '@tagadapay/plugin-sdk/v2';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { ConfigProvider } from '@/src/context/config/context';
-import { ThemeProvider } from '@/src/context/theme-context';
-import { CartProvider } from '@/src/context/cart-context';
-import { CheckoutSuccessProvider } from '@/src/context/checkout-success-context';
-import { loadConfig, getCurrentConfigName } from '@/src/utils/config-loader';
+import { BrowserRouter } from 'react-router-dom';
 
-const currentConfig = loadConfig(getCurrentConfigName());
+type ProvidersProps = PropsWithChildren<{}>;
 
-export const Providers = ({ children }: PropsWithChildren<{}>) => {
-    return (
-        <HelmetProvider>
-            <BrowserRouter>
-                <ConfigProvider config={currentConfig}>
-                    <ThemeProvider theme={currentConfig.theme}>
-                        <CartProvider>
-                            <CheckoutSuccessProvider>
-                                <TagadaProvider environment={import.meta.env.VITE_TAGADA_ENVIRONMENT as Environment}>
-                                    {children}
-                                </TagadaProvider>
-                            </CheckoutSuccessProvider>
-                        </CartProvider>
-                    </ThemeProvider>
-                </ConfigProvider>
-            </BrowserRouter>
-        </HelmetProvider>
-    )
+export default function Providers({ children }: ProvidersProps) {
+  const [rawPluginConfig, setRawPluginConfig] = useState<
+    RawPluginConfig | undefined
+  >(undefined);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    createRawPluginConfig().then(config => {
+      setRawPluginConfig(config);
+      setIsLoading(false);
+    });
+  }, []);
+
+  if (isLoading) {
+    return null;
+  }
+  return (
+    <HelmetProvider>
+      <BrowserRouter>
+        <CartProvider>
+          <CheckoutSuccessProvider>
+            <TagadaProvider
+              environment={'development'}
+              rawPluginConfig={rawPluginConfig}
+            >
+              <ThemeSetter>{children}</ThemeSetter>
+            </TagadaProvider>
+          </CheckoutSuccessProvider>
+        </CartProvider>
+      </BrowserRouter>
+    </HelmetProvider>
+  );
 }

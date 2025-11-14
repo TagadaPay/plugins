@@ -1,0 +1,1106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Zenith Plugin Configuration",
+  "type": "object",
+  "properties": {
+    "configName": {
+      "type": "string",
+      "title": "Config Name",
+      "default": "default"
+    },
+    "storeData": {
+      "type": "object",
+      "title": "Store Data",
+      "properties": {
+        "productId": {
+          "type": "string",
+          "title": "Product ID",
+          "format": "productSelector"
+        },
+        "variantId": {
+          "type": "string",
+          "title": "Variant ID",
+          "format": "variantSelector"
+        },
+        "priceId": {
+          "type": "string",
+          "title": "Price ID",
+          "format": "priceSelector"
+        },
+        "promotions": {
+          "type": "array",
+          "title": "Promotions",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Promotion ID"
+              },
+              "name": {
+                "type": "string",
+                "title": "Promotion Name"
+              },
+              "quantity": {
+                "type": "number",
+                "title": "Quantity",
+                "minimum": 1
+              },
+              "subtitle": {
+                "type": "string",
+                "title": "Subtitle"
+              },
+              "image": {
+                "type": "string",
+                "title": "Image URL",
+                "format": "uri"
+              },
+              "freeGift": {
+                "type": "string",
+                "title": "Free Gift Text"
+              },
+              "badge": {
+                "type": "string",
+                "title": "Badge Text"
+              }
+            },
+            "required": ["name", "quantity", "subtitle", "image"]
+          },
+          "default": []
+        }
+      },
+      "required": ["productId", "variantId", "priceId", "promotions"]
+    },
+    "productData": {
+      "type": "object",
+      "title": "Product Data",
+      "properties": {
+        "productName": {
+          "type": "string",
+          "title": "Product Name"
+        },
+        "categories": {
+          "type": "array",
+          "title": "Categories",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      },
+      "required": ["productName", "categories"]
+    },
+    "content": {
+      "type": "object",
+      "title": "Content",
+      "properties": {
+        "assets": {
+          "type": "object",
+          "title": "Assets",
+          "properties": {
+            "logo": {
+              "type": "string",
+              "title": "Logo URL",
+              "format": "uri"
+            },
+            "heroImages": {
+              "type": "array",
+              "title": "Hero Images",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "src": {
+                    "type": "string",
+                    "title": "Image Source",
+                    "format": "uri"
+                  },
+                  "alt": {
+                    "type": "string",
+                    "title": "Alt Text"
+                  }
+                },
+                "required": ["src", "alt"]
+              },
+              "default": []
+            },
+            "thumbnails": {
+              "type": "object",
+              "title": "Thumbnails",
+              "additionalProperties": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          },
+          "required": ["logo", "heroImages"]
+        },
+        "hero": {
+          "type": "object",
+          "title": "Hero Section",
+          "properties": {
+            "title1": {
+              "type": "string",
+              "title": "Title 1"
+            },
+            "title2": {
+              "type": "string",
+              "title": "Title 2"
+            },
+            "description": {
+              "type": "string",
+              "title": "Description"
+            },
+            "benefits": {
+              "type": "array",
+              "title": "Benefits",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "title": "Benefit Title"
+                  },
+                  "description": {
+                    "type": "string",
+                    "title": "Benefit Description"
+                  }
+                },
+                "required": ["title", "description"]
+              },
+              "default": []
+            },
+            "usps": {
+              "type": "array",
+              "title": "USPs",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "icon": {
+                    "type": "string",
+                    "title": "Icon Name"
+                  },
+                  "title": {
+                    "type": "string",
+                    "title": "USP Title"
+                  },
+                  "desc": {
+                    "type": "string",
+                    "title": "USP Description"
+                  }
+                },
+                "required": ["icon", "title", "desc"]
+              },
+              "default": []
+            },
+            "productCardText": {
+              "type": "string",
+              "title": "Product Card Text"
+            },
+            "reviews": {
+              "type": "object",
+              "title": "Hero Reviews",
+              "properties": {
+                "rating": {
+                  "type": "string",
+                  "title": "Rating"
+                },
+                "text": {
+                  "type": "string",
+                  "title": "Rating Text"
+                },
+                "reviews": {
+                  "type": "array",
+                  "title": "Reviews",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "author": {
+                        "type": "string",
+                        "title": "Author"
+                      },
+                      "rating": {
+                        "type": "number",
+                        "title": "Rating",
+                        "minimum": 1,
+                        "maximum": 5
+                      },
+                      "comment": {
+                        "type": "string",
+                        "title": "Comment"
+                      },
+                      "verified": {
+                        "type": "boolean",
+                        "title": "Verified"
+                      }
+                    },
+                    "required": ["author", "rating", "comment", "verified"]
+                  },
+                  "default": []
+                },
+                "faq": {
+                  "type": "array",
+                  "title": "FAQ Items",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "question": {
+                        "type": "string",
+                        "title": "Question"
+                      },
+                      "answer": {
+                        "type": "string",
+                        "title": "Answer"
+                      }
+                    },
+                    "required": ["question", "answer"]
+                  },
+                  "default": []
+                }
+              },
+              "required": ["rating", "text", "reviews", "faq"]
+            }
+          },
+          "required": [
+            "title1",
+            "title2",
+            "description",
+            "benefits",
+            "usps",
+            "productCardText",
+            "reviews"
+          ]
+        },
+        "featured": {
+          "type": "object",
+          "title": "Featured Section",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "logos": {
+              "type": "array",
+              "title": "Logos",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "src": {
+                    "type": "string",
+                    "title": "Logo Source",
+                    "format": "uri"
+                  },
+                  "alt": {
+                    "type": "string",
+                    "title": "Alt Text"
+                  },
+                  "href": {
+                    "type": "string",
+                    "title": "Link URL",
+                    "format": "uri"
+                  }
+                },
+                "required": ["src", "alt", "href"]
+              },
+              "default": []
+            }
+          },
+          "required": ["title", "logos"]
+        },
+        "faq": {
+          "type": "array",
+          "title": "FAQ Section",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string",
+                "title": "Question"
+              },
+              "answer": {
+                "type": "string",
+                "title": "Answer"
+              }
+            },
+            "required": ["question", "answer"]
+          },
+          "default": []
+        },
+        "benefitsBar": {
+          "type": "array",
+          "title": "Benefits Bar",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "results": {
+          "type": "object",
+          "title": "Results Section",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "subtitle": {
+              "type": "string",
+              "title": "Subtitle"
+            },
+            "image": {
+              "type": "string",
+              "title": "Image URL",
+              "format": "uri"
+            },
+            "alt": {
+              "type": "string",
+              "title": "Alt Text"
+            },
+            "points": {
+              "type": "array",
+              "title": "Result Points",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "title": "Point Title"
+                  },
+                  "description": {
+                    "type": "string",
+                    "title": "Point Description"
+                  }
+                },
+                "required": ["title", "description"]
+              },
+              "default": []
+            }
+          },
+          "required": ["title", "subtitle", "image", "alt", "points"]
+        },
+        "compare": {
+          "type": "object",
+          "title": "Compare Section",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "subtitle": {
+              "type": "string",
+              "title": "Subtitle"
+            },
+            "image": {
+              "type": "string",
+              "title": "Image URL",
+              "format": "uri"
+            },
+            "alt": {
+              "type": "string",
+              "title": "Alt Text"
+            }
+          },
+          "required": ["title", "subtitle", "image", "alt"]
+        },
+        "factsAndCertifications": {
+          "type": "object",
+          "title": "Facts and Certifications",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "image": {
+              "type": "string",
+              "title": "Image URL",
+              "format": "uri"
+            },
+            "rightText": {
+              "type": "string",
+              "title": "Right Side Text"
+            },
+            "rightPoints": {
+              "type": "array",
+              "title": "Certification Points",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "title": "Point Title"
+                  },
+                  "description": {
+                    "type": "string",
+                    "title": "Point Description"
+                  }
+                },
+                "required": ["title", "description"]
+              },
+              "default": []
+            }
+          },
+          "required": ["title", "image", "rightText", "rightPoints"]
+        },
+        "whyChooseZenith": {
+          "type": "object",
+          "title": "Why Choose Zenith",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "subtitle": {
+              "type": "string",
+              "title": "Subtitle"
+            },
+            "images": {
+              "type": "array",
+              "title": "Images",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "src": {
+                    "type": "string",
+                    "title": "Image Source",
+                    "format": "uri"
+                  },
+                  "alt": {
+                    "type": "string",
+                    "title": "Alt Text"
+                  }
+                },
+                "required": ["src", "alt"]
+              },
+              "default": []
+            },
+            "points": {
+              "type": "array",
+              "title": "Feature Points",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "title": "Point Title"
+                  },
+                  "subtitle": {
+                    "type": "string",
+                    "title": "Point Subtitle"
+                  },
+                  "icon": {
+                    "type": "string",
+                    "title": "Icon Name"
+                  }
+                },
+                "required": ["title", "subtitle", "icon"]
+              },
+              "default": []
+            }
+          },
+          "required": ["title", "subtitle", "images", "points"]
+        },
+        "productDetails": {
+          "type": "object",
+          "title": "Product Details",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "sections": {
+              "type": "array",
+              "title": "Detail Sections",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "title": "Section Title"
+                  },
+                  "points": {
+                    "type": "array",
+                    "title": "Points",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": []
+                  }
+                },
+                "required": ["title", "points"]
+              },
+              "default": []
+            }
+          },
+          "required": ["title", "sections"]
+        },
+        "workForYou": {
+          "type": "object",
+          "title": "How It Works",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "subtitle": {
+              "type": "string",
+              "title": "Subtitle"
+            },
+            "paragraphs": {
+              "type": "array",
+              "title": "Paragraphs",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "title": "Paragraph Title"
+                  },
+                  "subtitle": {
+                    "type": "string",
+                    "title": "Paragraph Subtitle"
+                  }
+                },
+                "required": ["title", "subtitle"]
+              },
+              "default": []
+            }
+          },
+          "required": ["title", "subtitle", "paragraphs"]
+        },
+        "video": {
+          "type": "object",
+          "title": "Video Section",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "subtitle": {
+              "type": "string",
+              "title": "Subtitle"
+            },
+            "videos": {
+              "type": "array",
+              "title": "Videos",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "src": {
+                    "type": "string",
+                    "title": "Video Source",
+                    "format": "uri"
+                  },
+                  "poster": {
+                    "type": "string",
+                    "title": "Poster Image",
+                    "format": "uri"
+                  },
+                  "title": {
+                    "type": "string",
+                    "title": "Video Title"
+                  }
+                },
+                "required": ["src", "poster", "title"]
+              },
+              "default": []
+            }
+          },
+          "required": ["title", "subtitle", "videos"]
+        },
+        "chooseYour": {
+          "type": "object",
+          "title": "Choose Your Product",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "subtitle": {
+              "type": "string",
+              "title": "Subtitle"
+            },
+            "perks": {
+              "type": "array",
+              "title": "Perks",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            }
+          },
+          "required": ["title", "subtitle", "perks"]
+        },
+        "reviews": {
+          "type": "object",
+          "title": "Reviews Section",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "subtitle": {
+              "type": "string",
+              "title": "Subtitle"
+            },
+            "basedOn": {
+              "type": "string",
+              "title": "Based On Text"
+            },
+            "rating": {
+              "type": "string",
+              "title": "Rating"
+            },
+            "reviews": {
+              "type": "array",
+              "title": "Customer Reviews",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "author": {
+                    "type": "string",
+                    "title": "Author"
+                  },
+                  "rating": {
+                    "type": "number",
+                    "title": "Rating",
+                    "minimum": 1,
+                    "maximum": 5
+                  },
+                  "comment": {
+                    "type": "string",
+                    "title": "Comment"
+                  },
+                  "verified": {
+                    "type": "boolean",
+                    "title": "Verified"
+                  }
+                },
+                "required": ["author", "rating", "comment", "verified"]
+              },
+              "default": []
+            }
+          },
+          "required": ["title", "subtitle", "basedOn", "rating", "reviews"]
+        },
+        "guarantee": {
+          "type": "object",
+          "title": "Guarantee Section",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "subtitle": {
+              "type": "string",
+              "title": "Subtitle"
+            },
+            "points": {
+              "type": "array",
+              "title": "Guarantee Points",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "title": "Point Title"
+                  },
+                  "icon": {
+                    "type": "string",
+                    "title": "Icon Name"
+                  }
+                },
+                "required": ["title", "icon"]
+              },
+              "default": []
+            }
+          },
+          "required": ["title", "subtitle", "points"]
+        },
+        "footer": {
+          "type": "object",
+          "title": "Footer Section",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "subtitle": {
+              "type": "string",
+              "title": "Subtitle"
+            },
+            "button": {
+              "type": "string",
+              "title": "Button Text"
+            },
+            "perks": {
+              "type": "array",
+              "title": "Perks",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            }
+          },
+          "required": ["title", "subtitle", "button", "perks"]
+        },
+        "siteName": {
+          "type": "string",
+          "title": "Site Name"
+        },
+        "siteDescription": {
+          "type": "string",
+          "title": "Site Description"
+        },
+        "brandName": {
+          "type": "string",
+          "title": "Brand Name"
+        },
+        "announcementBar": {
+          "type": "object",
+          "title": "Announcement Bar",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enabled"
+            },
+            "text": {
+              "type": "string",
+              "title": "Text"
+            },
+            "backgroundColor": {
+              "type": "string",
+              "title": "Background Color"
+            }
+          },
+          "required": ["enabled", "text", "backgroundColor"]
+        },
+        "uiText": {
+          "type": "object",
+          "title": "UI Text",
+          "properties": {
+            "buyNow": {
+              "type": "string",
+              "title": "Buy Now"
+            },
+            "buyNowWithEmoji": {
+              "type": "string",
+              "title": "Buy Now with Emoji"
+            },
+            "loading": {
+              "type": "string",
+              "title": "Loading"
+            },
+            "readAllReviews": {
+              "type": "string",
+              "title": "Read All Reviews"
+            },
+            "bundleAndSave": {
+              "type": "string",
+              "title": "Bundle and Save"
+            },
+            "quickFAQ": {
+              "type": "string",
+              "title": "Quick FAQ"
+            },
+            "verified": {
+              "type": "string",
+              "title": "Verified"
+            },
+            "toggleNavigationMenu": {
+              "type": "string",
+              "title": "Toggle Navigation Menu"
+            },
+            "productAltTextPrefix": {
+              "type": "string",
+              "title": "Product Alt Text Prefix"
+            },
+            "youSaveText": {
+              "type": "string",
+              "title": "You Save Text"
+            },
+            "logoAlt": {
+              "type": "string",
+              "title": "Logo Alt Text"
+            },
+            "previousImage": {
+              "type": "string",
+              "title": "Previous Image"
+            },
+            "nextImage": {
+              "type": "string",
+              "title": "Next Image"
+            },
+            "recentPurchase": {
+              "type": "object",
+              "title": "Recent Purchase",
+              "properties": {
+                "firstNames": {
+                  "type": "array",
+                  "title": "First Names",
+                  "items": {
+                    "type": "string"
+                  },
+                  "default": []
+                },
+                "flavors": {
+                  "type": "array",
+                  "title": "Flavors",
+                  "items": {
+                    "type": "string"
+                  },
+                  "default": []
+                },
+                "messageTemplate": {
+                  "type": "string",
+                  "title": "Message Template"
+                }
+              },
+              "required": ["firstNames", "flavors", "messageTemplate"]
+            }
+          },
+          "required": [
+            "buyNow",
+            "buyNowWithEmoji",
+            "loading",
+            "readAllReviews",
+            "bundleAndSave",
+            "quickFAQ",
+            "verified",
+            "toggleNavigationMenu",
+            "productAltTextPrefix",
+            "youSaveText",
+            "logoAlt",
+            "previousImage",
+            "nextImage",
+            "recentPurchase"
+          ]
+        },
+        "seo": {
+          "type": "object",
+          "title": "SEO",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "description": {
+              "type": "string",
+              "title": "Description"
+            },
+            "keywords": {
+              "type": "string",
+              "title": "Keywords"
+            },
+            "image": {
+              "type": "string",
+              "title": "Image URL",
+              "format": "uri"
+            },
+            "url": {
+              "type": "string",
+              "title": "URL",
+              "format": "uri"
+            },
+            "type": {
+              "type": "string",
+              "title": "Type",
+              "enum": ["website", "article", "product"]
+            },
+            "siteName": {
+              "type": "string",
+              "title": "Site Name"
+            },
+            "locale": {
+              "type": "string",
+              "title": "Locale"
+            },
+            "twitterCard": {
+              "type": "string",
+              "title": "Twitter Card",
+              "enum": ["summary", "summary_large_image", "app", "player"]
+            },
+            "twitterSite": {
+              "type": "string",
+              "title": "Twitter Site"
+            },
+            "twitterCreator": {
+              "type": "string",
+              "title": "Twitter Creator"
+            },
+            "author": {
+              "type": "string",
+              "title": "Author"
+            },
+            "robots": {
+              "type": "string",
+              "title": "Robots"
+            },
+            "canonical": {
+              "type": "string",
+              "title": "Canonical URL",
+              "format": "uri"
+            },
+            "price": {
+              "type": "string",
+              "title": "Price"
+            },
+            "currency": {
+              "type": "string",
+              "title": "Currency"
+            },
+            "availability": {
+              "type": "string",
+              "title": "Availability"
+            },
+            "brand": {
+              "type": "string",
+              "title": "Brand"
+            },
+            "category": {
+              "type": "string",
+              "title": "Category"
+            }
+          }
+        },
+        "navigation": {
+          "type": "object",
+          "title": "Navigation",
+          "properties": {
+            "header": {
+              "type": "array",
+              "title": "Header Navigation",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "title": "Label"
+                  },
+                  "href": {
+                    "type": "string",
+                    "title": "URL",
+                    "format": "uri"
+                  }
+                },
+                "required": ["label", "href"]
+              },
+              "default": []
+            }
+          },
+          "required": ["header"]
+        },
+        "klaviyo": {
+          "type": "object",
+          "title": "Klaviyo",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enabled"
+            },
+            "scriptId": {
+              "type": "string",
+              "title": "Script ID"
+            }
+          },
+          "required": ["enabled"]
+        }
+      },
+      "required": [
+        "assets",
+        "hero",
+        "featured",
+        "faq",
+        "benefitsBar",
+        "results",
+        "compare",
+        "factsAndCertifications",
+        "whyChooseZenith",
+        "productDetails",
+        "workForYou",
+        "video",
+        "chooseYour",
+        "reviews",
+        "guarantee",
+        "footer",
+        "siteName",
+        "siteDescription",
+        "brandName",
+        "announcementBar",
+        "uiText",
+        "seo",
+        "navigation",
+        "klaviyo"
+      ]
+    },
+    "theme": {
+      "type": "object",
+      "title": "Theme",
+      "properties": {
+        "colors": {
+          "type": "object",
+          "title": "Colors",
+          "properties": {
+            "primaryColor": {
+              "type": "string",
+              "title": "Primary Color",
+              "format": "color",
+              "default": "#DBB55B"
+            },
+            "primaryDark": {
+              "type": "string",
+              "title": "Primary Dark",
+              "format": "color",
+              "default": "#C5A047"
+            },
+            "primaryLight": {
+              "type": "string",
+              "title": "Primary Light",
+              "format": "color",
+              "default": "#E8C470"
+            },
+            "primary50": {
+              "type": "string",
+              "title": "Primary 50",
+              "format": "color",
+              "default": "#FAF8F2"
+            },
+            "footerColor": {
+              "type": "string",
+              "title": "Footer Color",
+              "format": "color",
+              "default": "#e17100"
+            }
+          },
+          "required": [
+            "primaryColor",
+            "primaryDark",
+            "primaryLight",
+            "primary50",
+            "footerColor"
+          ]
+        },
+        "fonts": {
+          "type": "object",
+          "title": "Fonts",
+          "properties": {
+            "body": {
+              "type": "string",
+              "title": "Body Font",
+              "default": "Geist, sans-serif"
+            },
+            "heading": {
+              "type": "string",
+              "title": "Heading Font",
+              "default": "Geist, sans-serif"
+            },
+            "mono": {
+              "type": "string",
+              "title": "Monospace Font",
+              "default": "Geist Mono, monospace"
+            }
+          }
+        }
+      },
+      "required": ["colors"]
+    }
+  },
+  "required": ["configName", "storeData", "productData", "content", "theme"]
+}

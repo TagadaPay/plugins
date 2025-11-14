@@ -1,0 +1,145 @@
+{
+  "ui:grouping": {
+    "tabs": [
+      { "id": "general", "title": "General" },
+      { "id": "store", "title": "Store Data" },
+      { "id": "content", "title": "Content" },
+      { "id": "theme", "title": "Theme" }
+    ],
+    "sections": [
+      { "id": "basic", "title": "Basic Settings", "tabId": "general" },
+      { "id": "products", "title": "Products", "tabId": "store" },
+      { "id": "promotions", "title": "Promotions", "tabId": "store" },
+      { "id": "assets", "title": "Assets", "tabId": "content" },
+      { "id": "hero", "title": "Hero Section", "tabId": "content" },
+      { "id": "sections", "title": "Content Sections", "tabId": "content" },
+      { "id": "ui", "title": "UI Text", "tabId": "content" },
+      { "id": "seo", "title": "SEO", "tabId": "content" },
+      { "id": "navigation", "title": "Navigation", "tabId": "content" },
+      { "id": "colors", "title": "Colors", "tabId": "theme" },
+      { "id": "fonts", "title": "Fonts", "tabId": "theme" }
+    ]
+  },
+  "configName": {
+    "ui:tab": "general",
+    "ui:section": "basic"
+  },
+  "storeData": {
+    "ui:tab": "store",
+    "productId": {
+      "ui:section": "products"
+    },
+    "variantId": {
+      "ui:section": "products"
+    },
+    "priceId": {
+      "ui:section": "products"
+    },
+    "promotions": {
+      "ui:section": "promotions"
+    }
+  },
+  "productData": {
+    "ui:tab": "store",
+    "ui:section": "products"
+  },
+  "content": {
+    "ui:tab": "content",
+    "assets": {
+      "ui:section": "assets"
+    },
+    "hero": {
+      "ui:section": "hero"
+    },
+    "featured": {
+      "ui:section": "sections"
+    },
+    "faq": {
+      "ui:section": "sections"
+    },
+    "benefitsBar": {
+      "ui:section": "sections"
+    },
+    "results": {
+      "ui:section": "sections"
+    },
+    "compare": {
+      "ui:section": "sections"
+    },
+    "factsAndCertifications": {
+      "ui:section": "sections"
+    },
+    "whyChooseZenith": {
+      "ui:section": "sections"
+    },
+    "productDetails": {
+      "ui:section": "sections"
+    },
+    "workForYou": {
+      "ui:section": "sections"
+    },
+    "video": {
+      "ui:section": "sections"
+    },
+    "chooseYour": {
+      "ui:section": "sections"
+    },
+    "reviews": {
+      "ui:section": "sections"
+    },
+    "guarantee": {
+      "ui:section": "sections"
+    },
+    "footer": {
+      "ui:section": "sections"
+    },
+    "siteName": {
+      "ui:section": "ui"
+    },
+    "siteDescription": {
+      "ui:section": "ui"
+    },
+    "brandName": {
+      "ui:section": "ui"
+    },
+    "announcementBar": {
+      "ui:section": "ui"
+    },
+    "uiText": {
+      "ui:section": "ui"
+    },
+    "seo": {
+      "ui:section": "seo"
+    },
+    "navigation": {
+      "ui:section": "navigation"
+    },
+    "klaviyo": {
+      "ui:section": "ui"
+    }
+  },
+  "theme": {
+    "ui:tab": "theme",
+    "colors": {
+      "ui:section": "colors",
+      "primaryColor": {
+        "ui:widget": "color"
+      },
+      "primaryDark": {
+        "ui:widget": "color"
+      },
+      "primaryLight": {
+        "ui:widget": "color"
+      },
+      "primary50": {
+        "ui:widget": "color"
+      },
+      "footerColor": {
+        "ui:widget": "color"
+      }
+    },
+    "fonts": {
+      "ui:section": "fonts"
+    }
+  }
+}

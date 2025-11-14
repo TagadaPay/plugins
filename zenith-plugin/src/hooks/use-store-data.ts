@@ -1,24 +1,36 @@
-import { usePluginConfig } from '@tagadapay/plugin-sdk/react';
-import { useTagataConfig } from './use-tagada-context';
+import { PluginConfig } from '@/types/plugin-config';
+import { usePluginConfig, useProducts } from '@tagadapay/plugin-sdk/v2';
 
-/**
- * Hook to access store data from the configuration
- * This replaces the need for a separate app.config.ts file
- */
-export const useStoreData = () => {
-  const { storeId, accountId } = usePluginConfig();
-  const { config } = useTagataConfig();
-  
-  if (!config) {
-    throw new Error('useStoreData must be used within a ConfigProvider');
-  }
-  
+export function useStoreData() {
+  const { config } = usePluginConfig<PluginConfig>();
+
+  // Get product ID from config
+  const productId = config?.storeData?.productId || '';
+
+  // Fetch products using SDK
+  const { products, isLoading, error } = useProducts({
+    productIds: productId ? [productId] : [],
+    includeVariants: true,
+    includePrices: true,
+    enabled: !!productId,
+  });
+
+  // Get variant ID from config
+  const variantId = config?.storeData?.variantId || '';
+
+  // Get price ID from config
+  const priceId = config?.storeData?.priceId || '';
+
+  // Get promotions from config
+  const promotions = config?.storeData?.promotions || [];
+
   return {
-    storeId,
-    accountId,
-    productId: config.storeData.productId,
-    variantId: config.storeData.variantId,
-    priceId: config.storeData.priceId,
-    promotions: config.storeData.promotions || [],
+    productId,
+    variantId,
+    priceId,
+    promotions,
+    products: products || [],
+    isLoading,
+    error: error?.message || null,
   };
-};
+}

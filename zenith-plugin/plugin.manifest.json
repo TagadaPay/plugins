@@ -1,0 +1,30 @@
+{
+  "name": "Zenith ",
+  "pluginId": "zenith",
+  "description": "Zenith",
+  "version": "2.1.0",
+  "author": "TagadaPay Team",
+  "mode": "direct-mode",
+  "category": "health",
+  "tags": ["health", "payment", "ecommerce", "shadcn"],
+  "pages": [
+    {
+      "path": "/",
+      "features": [
+        {
+          "type": "landing"
+        }
+      ],
+      "remappable": false
+    }
+  ],
+  "router": {
+    "basePath": "/",
+    "matcher": ".*",
+    "excluder": null
+  },
+  "requirements": {
+    "sdk": "^2.2.0",
+    "sdkVersion": "v2"
+  }
+}

@@ -1,11 +1,17 @@
-import { useTagataConfig } from "../hooks/use-tagada-context";
+import { PluginConfig } from '@/types/plugin-config';
+import { usePluginConfig, useTranslation } from '@tagadapay/plugin-sdk/v2';
 
 export function BenefitsBar() {
+  const { config } = usePluginConfig<PluginConfig>();
+  const { t } = useTranslation();
+  const benefitsBar = config?.content?.benefitsBar || [];
+  const benefits = benefitsBar.map(benefit => t(benefit));
 
-  const { config } = useTagataConfig();
-  const benefits = config?.content?.text?.en?.benefitsBar;
-
-  const repeatedBenefits = [...(benefits || []), ...(benefits || []), ...(benefits || [])]
+  const repeatedBenefits = [
+    ...(benefits || []),
+    ...(benefits || []),
+    ...(benefits || []),
+  ];
 
   return (
     <div className="w-full bg-gray-100 py-3 overflow-hidden whitespace-nowrap my-4 rounded-xl">
@@ -24,11 +30,14 @@ export function BenefitsBar() {
       `}</style>
       <div className="inline-block animate-scroll">
         {repeatedBenefits.map((benefit, index) => (
-          <span key={index} className="text-lg font-semibold mx-6 uppercase tracking-wide text-primary-dark">
+          <span
+            key={index}
+            className="text-lg font-semibold mx-6 uppercase tracking-wide text-primary-dark"
+          >
             {benefit}
           </span>
         ))}
       </div>
     </div>
-  )
+  );
 }

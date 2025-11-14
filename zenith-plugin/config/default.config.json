@@ -1,0 +1,1179 @@
+{
+  "configName": "default",
+  "storeData": {
+    "productId": "product_cc27fe568ba0",
+    "variantId": "variant_9b3a5e41b3fb",
+    "priceId": "price_55865fe2b29e",
+    "promotions": [
+      {
+        "id": "",
+        "name": {
+          "en": "1 Pack",
+          "fr": "1 Paquet"
+        },
+        "quantity": 1,
+        "subtitle": {
+          "en": "30-day Supply",
+          "fr": "Approvisionnement de 30 jours"
+        },
+        "image": "/images/1piece.png",
+        "freeGift": {
+          "en": "📚 Free Gift: Testosterone Optimization E-Book",
+          "fr": "📚 Cadeau gratuit : E-Book d'optimisation de la testostérone"
+        }
+      },
+      {
+        "id": "promo_97d48596d292",
+        "name": {
+          "en": "2 + 1 Free",
+          "fr": "2 + 1 Gratuit"
+        },
+        "quantity": 3,
+        "subtitle": {
+          "en": "90-day Supply",
+          "fr": "Approvisionnement de 90 jours"
+        },
+        "image": "/images/3piece.png",
+        "freeGift": {
+          "en": "📚 Free Gift: Testosterone Optimization E-Book",
+          "fr": "📚 Cadeau gratuit : E-Book d'optimisation de la testostérone"
+        },
+        "badge": {
+          "en": "MOST POPULAR",
+          "fr": "LE PLUS POPULAIRE"
+        }
+      },
+      {
+        "id": "promo_1756ad43f673",
+        "name": {
+          "en": "3 + 2 Free",
+          "fr": "3 + 2 Gratuits"
+        },
+        "quantity": 5,
+        "subtitle": {
+          "en": "150-day Supply",
+          "fr": "Approvisionnement de 150 jours"
+        },
+        "image": "/images/5piece.png",
+        "freeGift": {
+          "en": "📚 Free Gift: Testosterone Optimization E-Book",
+          "fr": "📚 Cadeau gratuit : E-Book d'optimisation de la testostérone"
+        },
+        "badge": {
+          "en": "BEST VALUE",
+          "fr": "MEILLEUR RAPPORT QUALITÉ-PRIX"
+        }
+      }
+    ]
+  },
+  "productData": {
+    "productName": "Zenith Pure Himalayan Shilajit Gold Gummies",
+    "categories": ["Supplements", "Shilajit", "Gummies", "Health"]
+  },
+  "content": {
+    "assets": {
+      "logo": "images/zenith-logo-white-bg-cropped.webp",
+      "heroImages": [
+        {
+          "src": "/images/product_images/product_image_1.webp",
+          "alt": {
+            "en": "Zenith Shilajit Gold Gummies",
+            "fr": "Bonbons Zenith Shilajit Gold"
+          }
+        },
+        {
+          "src": "/images/product_images/product_image_2.webp",
+          "alt": {
+            "en": "Zenith Shilajit Gold Gummies - 2",
+            "fr": "Bonbons Zenith Shilajit Gold - 2"
+          }
+        },
+        {
+          "src": "/images/product_images/product_image_3.webp",
+          "alt": {
+            "en": "Zenith Shilajit Gold Gummies - 3",
+            "fr": "Bonbons Zenith Shilajit Gold - 3"
+          }
+        },
+        {
+          "src": "/images/product_images/product_image_4.webp",
+          "alt": {
+            "en": "Zenith Shilajit Gold Gummies - 4",
+            "fr": "Bonbons Zenith Shilajit Gold - 4"
+          }
+        },
+        {
+          "src": "/images/product_images/product_image_5.webp",
+          "alt": {
+            "en": "Zenith Shilajit Gold Gummies - 5",
+            "fr": "Bonbons Zenith Shilajit Gold - 5"
+          }
+        },
+        {
+          "src": "/images/product_images/product_image_6.webp",
+          "alt": {
+            "en": "Zenith Shilajit Gold Gummies - 6",
+            "fr": "Bonbons Zenith Shilajit Gold - 6"
+          }
+        },
+        {
+          "src": "/images/product_images/product_image_7.webp",
+          "alt": {
+            "en": "Zenith Shilajit Gold Gummies - 7",
+            "fr": "Bonbons Zenith Shilajit Gold - 7"
+          }
+        },
+        {
+          "src": "/images/product_images/product_image_8.webp",
+          "alt": {
+            "en": "Zenith Shilajit Gold Gummies - 8",
+            "fr": "Bonbons Zenith Shilajit Gold - 8"
+          }
+        }
+      ]
+    },
+    "hero": {
+      "title1": {
+        "en": "Zenith Pure Himalayan",
+        "fr": "Zenith Pur Himalayen"
+      },
+      "title2": {
+        "en": "Shilajit Gold Gummies",
+        "fr": "Bonbons Shilajit Gold"
+      },
+      "description": {
+        "en": "Unlock Your Peak Potential",
+        "fr": "Libérez Votre Potentiel Maximum"
+      },
+      "benefits": [
+        {
+          "title": {
+            "en": "Increases Testosterone & Muscle Mass",
+            "fr": "Augmente la Testostérone et la Masse Musculaire"
+          },
+          "description": {
+            "en": "Feel stronger, more confident, and ready to conquer your day.",
+            "fr": "Sentez-vous plus fort, plus confiant et prêt à conquérir votre journée."
+          }
+        },
+        {
+          "title": {
+            "en": "More Energy & Less Stress",
+            "fr": "Plus d'Énergie et Moins de Stress"
+          },
+          "description": {
+            "en": "Unlock all-day energy and a calm, focused mind—naturally.",
+            "fr": "Débloquez une énergie toute la journée et un esprit calme et concentré—naturellement."
+          }
+        },
+        {
+          "title": {
+            "en": "Improves Health & Immune System",
+            "fr": "Améliore la Santé et le Système Immunitaire"
+          },
+          "description": {
+            "en": "Boost your immune system and stay healthy.",
+            "fr": "Renforcez votre système immunitaire et restez en bonne santé."
+          }
+        },
+        {
+          "title": {
+            "en": "Elevates Libido & Performance",
+            "fr": "Améliore la Libido et les Performances"
+          },
+          "description": {
+            "en": "Experience a new level of vitality and confidence, every day.",
+            "fr": "Vivez un nouveau niveau de vitalité et de confiance, chaque jour."
+          }
+        }
+      ],
+      "usps": [
+        {
+          "icon": "User",
+          "title": {
+            "en": "12,000+ Customers",
+            "fr": "12 000+ Clients"
+          },
+          "desc": {
+            "en": "Trusted by thousands worldwide",
+            "fr": "Approuvé par des milliers de personnes dans le monde"
+          }
+        },
+        {
+          "icon": "Star",
+          "title": {
+            "en": "Real Reviews",
+            "fr": "Avis Réels"
+          },
+          "desc": {
+            "en": "Backed by real results",
+            "fr": "Soutenu par de vrais résultats"
+          }
+        },
+        {
+          "icon": "Zap",
+          "title": {
+            "en": "Proven in 60 Days",
+            "fr": "Prouvé en 60 Jours"
+          },
+          "desc": {
+            "en": "Noticeable benefits, fast",
+            "fr": "Bénéfices notables, rapidement"
+          }
+        }
+      ],
+      "productCardText": {
+        "en": "Bundle & Save!",
+        "fr": "Achetez en Lot et Économisez !"
+      },
+      "reviews": {
+        "rating": {
+          "en": "4.9/5",
+          "fr": "4,9/5"
+        },
+        "text": {
+          "en": "Based on 17,000+ verified reviews",
+          "fr": "Basé sur plus de 17 000 avis vérifiés"
+        },
+        "reviews": [
+          {
+            "author": "John Smith",
+            "rating": 5,
+            "comment": {
+              "en": "These gummies are amazing! I feel so much more energetic and focused.",
+              "fr": "Ces bonbons sont incroyables ! Je me sens tellement plus énergique et concentré."
+            },
+            "verified": true
+          },
+          {
+            "author": "Jane Doe",
+            "rating": 4,
+            "comment": {
+              "en": "Great product! I've noticed a significant improvement in my overall well-being.",
+              "fr": "Excellent produit ! J'ai remarqué une amélioration significative de mon bien-être général."
+            },
+            "verified": true
+          },
+          {
+            "author": "Peter Jones",
+            "rating": 5,
+            "comment": {
+              "en": "I was skeptical at first, but these gummies really work! Highly recommend.",
+              "fr": "J'étais sceptique au début, mais ces bonbons fonctionnent vraiment ! Je recommande vivement."
+            },
+            "verified": false
+          },
+          {
+            "author": "Mary Brown",
+            "rating": 4,
+            "comment": {
+              "en": "Good quality and taste. I'll definitely be buying more.",
+              "fr": "Bonne qualité et bon goût. Je vais certainement en racheter."
+            },
+            "verified": true
+          }
+        ],
+        "faq": [
+          {
+            "question": {
+              "en": "What is Shilajit Gold?",
+              "fr": "Qu'est-ce que le Shilajit Gold ?"
+            },
+            "answer": {
+              "en": "Shilajit Gold is a powerful natural substance found in the Himalayan mountains, rich in fulvic acid and over 85 trace minerals, known for its extensive health benefits.",
+              "fr": "Le Shilajit Gold est une substance naturelle puissante trouvée dans les montagnes de l'Himalaya, riche en acide fulvique et en plus de 85 oligo-éléments, connue pour ses nombreux bienfaits pour la santé."
+            }
+          },
+          {
+            "question": {
+              "en": "How do I take Zenith Gummies?",
+              "fr": "Comment prendre les bonbons Zenith ?"
+            },
+            "answer": {
+              "en": "Simply take 2 gummies daily. For best results, consult with your healthcare professional.",
+              "fr": "Prenez simplement 2 bonbons par jour. Pour de meilleurs résultats, consultez votre professionnel de la santé."
+            }
+          },
+          {
+            "question": {
+              "en": "Are there any side effects?",
+              "fr": "Y a-t-il des effets secondaires ?"
+            },
+            "answer": {
+              "en": "Zenith Shilajit Gold Gummies are generally safe. However, if you have any pre-existing medical conditions or are on medication, please consult your doctor before use.",
+              "fr": "Les bonbons Zenith Shilajit Gold sont généralement sûrs. Cependant, si vous avez des problèmes de santé préexistants ou si vous prenez des médicaments, veuillez consulter votre médecin avant utilisation."
+            }
+          }
+        ]
+      }
+    },
+    "featured": {
+      "title": {
+        "en": "As Featured In",
+        "fr": "Comme Présenté Dans"
+      },
+      "logos": [
+        {
+          "src": "/images/logobar_images/buzzfeed.webp",
+          "alt": {
+            "en": "Buzzfeed",
+            "fr": "Buzzfeed"
+          },
+          "href": "#"
+        },
+        {
+          "src": "/images/logobar_images/menshealth.webp",
+          "alt": {
+            "en": "Men's Health",
+            "fr": "Men's Health"
+          },
+          "href": "#"
+        },
+        {
+          "src": "/images/logobar_images/sharktank.webp",
+          "alt": {
+            "en": "Shark Tank",
+            "fr": "Shark Tank"
+          },
+          "href": "#"
+        }
+      ]
+    },
+    "faq": [
+      {
+        "question": {
+          "en": "What are Zenith Shilajit Gold Gummies?",
+          "fr": "Que sont les bonbons Zenith Shilajit Gold ?"
+        },
+        "answer": {
+          "en": "Zenith Shilajit Gold Gummies are a pure, lab-tested supplement designed to help men unlock their best physical, mental, and sexual health—naturally. Each gummy delivers the power of Himalayan Shilajit in a delicious, convenient form.",
+          "fr": "Les bonbons Zenith Shilajit Gold sont un supplément pur, testé en laboratoire, conçu pour aider les hommes à libérer leur meilleure santé physique, mentale et sexuelle—naturellement. Chaque bonbon apporte la puissance du Shilajit de l'Himalaya sous une forme délicieuse et pratique."
+        }
+      },
+      {
+        "question": {
+          "en": "How can they help me?",
+          "fr": "Comment peuvent-ils m'aider ?"
+        },
+        "answer": {
+          "en": "Our gummies are crafted to support healthy testosterone, boost energy and stamina, enhance mental clarity, strengthen immunity, and promote overall vitality. Many men also notice improved muscle tone, reduced stress, and a renewed sense of drive.",
+          "fr": "Nos bonbons sont conçus pour soutenir une testostérone saine, augmenter l'énergie et l'endurance, améliorer la clarté mentale, renforcer l'immunité et promouvoir la vitalité globale. Beaucoup d'hommes remarquent également une amélioration du tonus musculaire, une réduction du stress et un sentiment renouvelé de motivation."
+        }
+      },
+      {
+        "question": {
+          "en": "How do I take them?",
+          "fr": "Comment les prendre ?"
+        },
+        "answer": {
+          "en": "Enjoy one gummy daily—any time, with or without food. For best results, take consistently for at least 6-8 weeks. Most men report feeling more energetic and focused within the first month.",
+          "fr": "Prenez un bonbon par jour—à tout moment, avec ou sans nourriture. Pour de meilleurs résultats, prenez-les régulièrement pendant au moins 6 à 8 semaines. La plupart des hommes rapportent se sentir plus énergiques et concentrés dès le premier mois."
+        }
+      },
+      {
+        "question": {
+          "en": "Tired, stressed, or low libido?",
+          "fr": "Fatigué, stressé ou baisse de libido ?"
+        },
+        "answer": {
+          "en": "If you're feeling run down or not quite yourself, you're not alone. Zenith Shilajit Gold Gummies are designed to help you reclaim your energy, confidence, and performance—so you can feel your best, every day.",
+          "fr": "Si vous vous sentez épuisé ou pas tout à fait vous-même, vous n'êtes pas seul. Les bonbons Zenith Shilajit Gold sont conçus pour vous aider à retrouver votre énergie, votre confiance et vos performances—afin que vous puissiez vous sentir au mieux, chaque jour."
+        }
+      }
+    ],
+    "benefitsBar": [
+      {
+        "en": "INCREASES TESTOSTERONE",
+        "fr": "AUGMENTE LA TESTOSTÉRONE"
+      },
+      {
+        "en": "MORE ENERGY & LESS STRESS",
+        "fr": "PLUS D'ÉNERGIE ET MOINS DE STRESS"
+      },
+      {
+        "en": "IMPROVES IMMUNE SYSTEM",
+        "fr": "AMÉLIORE LE SYSTÈME IMMUNITAIRE"
+      },
+      {
+        "en": "ELEVATES LIBIDO & PERFORMANCE",
+        "fr": "AMÉLIORE LA LIBIDO ET LES PERFORMANCES"
+      },
+      {
+        "en": "ENHANCED FOCUS",
+        "fr": "CONCENTRATION AMÉLIORÉE"
+      },
+      {
+        "en": "OVERALL VITALITY",
+        "fr": "VITALITÉ GLOBALE"
+      }
+    ],
+    "results": {
+      "title": {
+        "en": "Results from our 6-Month Clinical Study",
+        "fr": "Résultats de notre étude clinique de 6 mois"
+      },
+      "subtitle": {
+        "en": "Discover the profound impact of Zenith Shilajit Gold Gummies on men's vitality and performance.",
+        "fr": "Découvrez l'impact profond des bonbons Zenith Shilajit Gold sur la vitalité et les performances des hommes."
+      },
+      "image": "/images/zenith-clinical-study.webp",
+      "alt": {
+        "en": "Zenith Clinical Study Results",
+        "fr": "Résultats de l'étude clinique Zenith"
+      },
+      "points": [
+        {
+          "title": {
+            "en": "Testosterone Boost",
+            "fr": "Augmentation de la Testostérone"
+          },
+          "description": {
+            "en": "Participants experienced a significant increase in natural testosterone levels, crucial for male health and vitality.",
+            "fr": "Les participants ont connu une augmentation significative des niveaux de testostérone naturelle, cruciale pour la santé et la vitalité masculine."
+          }
+        },
+        {
+          "title": {
+            "en": "Enhanced Libido",
+            "fr": "Libido Améliorée"
+          },
+          "description": {
+            "en": "A notable improvement in sexual desire and drive was observed, contributing to a more fulfilling intimate life.",
+            "fr": "Une amélioration notable du désir et de la pulsion sexuels a été observée, contribuant à une vie intime plus épanouissante."
+          }
+        },
+        {
+          "title": {
+            "en": "Physical Enhancement",
+            "fr": "Amélioration Physique"
+          },
+          "description": {
+            "en": "Many users reported an increase in physical attributes, including gains in tissue and improved firmness.",
+            "fr": "De nombreux utilisateurs ont signalé une augmentation des attributs physiques, notamment des gains en tissu et une fermeté améliorée."
+          }
+        },
+        {
+          "title": {
+            "en": "Improved Performance",
+            "fr": "Performances Améliorées"
+          },
+          "description": {
+            "en": "The study highlighted a significant enhancement in the quality and duration of erections, leading to greater confidence.",
+            "fr": "L'étude a mis en évidence une amélioration significative de la qualité et de la durée des érections, conduisant à une plus grande confiance."
+          }
+        },
+        {
+          "title": {
+            "en": "Increased Stamina",
+            "fr": "Endurance Accrue"
+          },
+          "description": {
+            "en": "Participants noted a prolonged ability to perform, indicating increased stamina and endurance.",
+            "fr": "Les participants ont noté une capacité prolongée à performer, indiquant une endurance et une résistance accrues."
+          }
+        }
+      ]
+    },
+    "compare": {
+      "title": {
+        "en": "Zenith vs. The Rest",
+        "fr": "Zenith contre les Autres"
+      },
+      "subtitle": {
+        "en": "See how Zenith Shilajit Gold Gummies stand out from traditional supplements and other solutions.",
+        "fr": "Découvrez comment les bonbons Zenith Shilajit Gold se distinguent des suppléments traditionnels et autres solutions."
+      },
+      "image": "/images/zenith-vs-competitors-table.webp",
+      "alt": {
+        "en": "Zenith vs. The Rest",
+        "fr": "Zenith contre les Autres"
+      }
+    },
+    "factsAndCertifications": {
+      "title": {
+        "en": "Zenith Nutrition Facts & Certifications",
+        "fr": "Valeurs Nutritionnelles et Certifications Zenith"
+      },
+      "image": "/images/zenith-nutrition-facts.webp",
+      "rightText": {
+        "en": "Quality Certifications",
+        "fr": "Certifications Qualité"
+      },
+      "rightPoints": [
+        {
+          "title": {
+            "en": "GMP Certified Facility",
+            "fr": "Installation Certifiée BPF"
+          },
+          "description": {
+            "en": "Good Manufacturing Practice standards",
+            "fr": "Normes de Bonnes Pratiques de Fabrication"
+          }
+        },
+        {
+          "title": {
+            "en": "Hormone-Free",
+            "fr": "Sans Hormones"
+          },
+          "description": {
+            "en": "No artificial hormones added",
+            "fr": "Aucune hormone artificielle ajoutée"
+          }
+        },
+        {
+          "title": {
+            "en": "Non-GMO",
+            "fr": "Sans OGM"
+          },
+          "description": {
+            "en": "Genetically modified organism free",
+            "fr": "Sans organisme génétiquement modifié"
+          }
+        },
+        {
+          "title": {
+            "en": "Vegan",
+            "fr": "Végétalien"
+          },
+          "description": {
+            "en": "100% plant-based ingredients",
+            "fr": "100% d'ingrédients d'origine végétale"
+          }
+        },
+        {
+          "title": {
+            "en": "Third Party Tested",
+            "fr": "Testé par un Tiers"
+          },
+          "description": {
+            "en": "Independent lab verified",
+            "fr": "Vérifié par un laboratoire indépendant"
+          }
+        },
+        {
+          "title": {
+            "en": "Made in USA",
+            "fr": "Fabriqué aux États-Unis"
+          },
+          "description": {
+            "en": "Manufactured in American facilities",
+            "fr": "Fabriqué dans des installations américaines"
+          }
+        }
+      ]
+    },
+    "whyChooseZenith": {
+      "title": {
+        "en": "Why Choose Zenith?",
+        "fr": "Pourquoi Choisir Zenith ?"
+      },
+      "subtitle": {
+        "en": "Unlock your full potential with our scientifically formulated Shilajit Gold Gummies.",
+        "fr": "Libérez votre plein potentiel avec nos bonbons Shilajit Gold formulés scientifiquement."
+      },
+      "images": [
+        {
+          "src": "/images/zenith-why-choose.webp",
+          "alt": {
+            "en": "Zenith Why Choose",
+            "fr": "Pourquoi Choisir Zenith"
+          }
+        },
+        {
+          "src": "/images/zenith-vs-raw-supplements-why-choose.webp",
+          "alt": {
+            "en": "Zenith vs. Raw Supplements Why Choose",
+            "fr": "Zenith contre les Suppléments Bruts - Pourquoi Choisir"
+          }
+        }
+      ],
+      "points": [
+        {
+          "title": {
+            "en": "Increases Testosterone & Muscle Mass",
+            "fr": "Augmente la Testostérone et la Masse Musculaire"
+          },
+          "subtitle": {
+            "en": "Naturally support healthy testosterone levels and aid in muscle development for enhanced physical performance.",
+            "fr": "Soutenez naturellement des niveaux de testostérone sains et aidez au développement musculaire pour des performances physiques améliorées."
+          },
+          "icon": "Zap"
+        },
+        {
+          "title": {
+            "en": "More Energy & Less Stress",
+            "fr": "Plus d'Énergie et Moins de Stress"
+          },
+          "subtitle": {
+            "en": "Boost your natural energy production and help your body adapt to stress, promoting a balanced mood.",
+            "fr": "Augmentez votre production d'énergie naturelle et aidez votre corps à s'adapter au stress, favorisant une humeur équilibrée."
+          },
+          "icon": "Brain"
+        },
+        {
+          "title": {
+            "en": "Improves Health & Immune System",
+            "fr": "Améliore la Santé et le Système Immunitaire"
+          },
+          "subtitle": {
+            "en": "Fortify your body's natural defenses and support overall systemic health with essential minerals.",
+            "fr": "Renforcez les défenses naturelles de votre corps et soutenez la santé systémique globale avec des minéraux essentiels."
+          },
+          "icon": "ShieldCheck"
+        },
+        {
+          "title": {
+            "en": "Elevates Libido & Performance",
+            "fr": "Améliore la Libido et les Performances"
+          },
+          "subtitle": {
+            "en": "Enhance your sexual desire and performance, contributing to a more fulfilling intimate life.",
+            "fr": "Améliorez votre désir et vos performances sexuels, contribuant à une vie intime plus épanouissante."
+          },
+          "icon": "Heart"
+        },
+        {
+          "title": {
+            "en": "And Many More Benefits",
+            "fr": "Et Bien D'autres Avantages"
+          },
+          "subtitle": {
+            "en": "Shilajit is a powerful adaptogen offering a wide range of benefits for holistic well-being.",
+            "fr": "Le Shilajit est un adaptogène puissant offrant une large gamme d'avantages pour le bien-être holistique."
+          },
+          "icon": "Leaf"
+        }
+      ]
+    },
+    "productDetails": {
+      "title": {
+        "en": "Gummy Details & Specifications",
+        "fr": "Détails et Spécifications des Bonbons"
+      },
+      "sections": [
+        {
+          "title": {
+            "en": "Ingredients & Purity",
+            "fr": "Ingrédients et Pureté"
+          },
+          "points": [
+            {
+              "en": "Pure Himalayan Shilajit Extract",
+              "fr": "Extrait Pur de Shilajit de l'Himalaya"
+            },
+            {
+              "en": "Natural Fruit Flavors",
+              "fr": "Arômes de Fruits Naturels"
+            },
+            {
+              "en": "No Artificial Colors or Sweeteners",
+              "fr": "Sans Colorants ni Édulcorants Artificiels"
+            },
+            {
+              "en": "Gluten-Free & Vegan Friendly",
+              "fr": "Sans Gluten et Végétalien"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Packaging & Storage",
+            "fr": "Emballage et Stockage"
+          },
+          "points": [
+            {
+              "en": "Child-Resistant Cap",
+              "fr": "Bouchon Sécurisé pour Enfants"
+            },
+            {
+              "en": "Resealable for Freshness",
+              "fr": "Refermable pour la Fraîcheur"
+            },
+            {
+              "en": "Store in a Cool, Dry Place",
+              "fr": "Conserver dans un Endroit Frais et Sec"
+            },
+            {
+              "en": "Available in: 30, 60, 90 Count Jars",
+              "fr": "Disponible en : Pots de 30, 60, 90 unités"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Benefits & Usage",
+            "fr": "Avantages et Utilisation"
+          },
+          "points": [
+            {
+              "en": "Supports Energy & Stamina",
+              "fr": "Soutient l'Énergie et l'Endurance"
+            },
+            {
+              "en": "Enhances Mental Clarity & Focus",
+              "fr": "Améliore la Clarté Mentale et la Concentration"
+            },
+            {
+              "en": "Boosts Immune System",
+              "fr": "Renforce le Système Immunitaire"
+            },
+            {
+              "en": "Recommended: 2 gummies daily",
+              "fr": "Recommandé : 2 bonbons par jour"
+            }
+          ]
+        }
+      ]
+    },
+    "workForYou": {
+      "title": {
+        "en": "How Pure Shilajit Gummies Work for You",
+        "fr": "Comment les Bonbons Shilajit Pur Fonctionnent pour Vous"
+      },
+      "subtitle": {
+        "en": "Pure Shilajit Gummies are designed to seamlessly integrate into your daily routine, delivering ancient wellness in a modern, delicious form.",
+        "fr": "Les bonbons Shilajit Pur sont conçus pour s'intégrer parfaitement dans votre routine quotidienne, offrant un bien-être ancestral sous une forme moderne et délicieuse."
+      },
+      "paragraphs": [
+        {
+          "title": {
+            "en": "Easy Absorption",
+            "fr": "Absorption Facile"
+          },
+          "subtitle": {
+            "en": "Our gummies are formulated for optimal bioavailability, ensuring your body efficiently absorbs the beneficial compounds of Shilajit.",
+            "fr": "Nos bonbons sont formulés pour une biodisponibilité optimale, garantissant que votre corps absorbe efficacement les composés bénéfiques du Shilajit."
+          }
+        },
+        {
+          "title": {
+            "en": "Sustained Vitality",
+            "fr": "Vitalité Durable"
+          },
+          "subtitle": {
+            "en": "Experience a steady release of natural energy and mental clarity throughout your day, without the jitters or crash.",
+            "fr": "Vivez une libération constante d'énergie naturelle et de clarté mentale tout au long de votre journée, sans nervosité ni baisse d'énergie."
+          }
+        },
+        {
+          "title": {
+            "en": "Daily Wellness Ritual",
+            "fr": "Rituel de Bien-être Quotidien"
+          },
+          "subtitle": {
+            "en": "Transform your health routine into a delightful experience with a tasty gummy that supports your overall well-being.",
+            "fr": "Transformez votre routine de santé en une expérience agréable avec un bonbon savoureux qui soutient votre bien-être global."
+          }
+        }
+      ]
+    },
+    "video": {
+      "title": {
+        "en": "See Pure Shilajit Gummies in Action",
+        "fr": "Voir les Bonbons Shilajit Pur en Action"
+      },
+      "subtitle": {
+        "en": "Watch how Pure Shilajit Gummies seamlessly integrate into your daily life, boosting your vitality.",
+        "fr": "Regardez comment les bonbons Shilajit Pur s'intègrent parfaitement dans votre vie quotidienne, boostant votre vitalité."
+      },
+      "videos": [
+        {
+          "src": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7885-YYNhApkdzweaw5PiVl2WkC3TAFllif.MP4",
+          "poster": "/images/video_thumbnail/1.webp",
+          "title": {
+            "en": "Zenith Gummies",
+            "fr": "Bonbons Zenith"
+          }
+        },
+        {
+          "src": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/video_2025-08-03_11-10-22-WnN55Leg3lEtFZhffWDvI3IvzuVizp.mp4",
+          "poster": "/images/video_thumbnail/2.webp",
+          "title": {
+            "en": "Zenith Gummies",
+            "fr": "Bonbons Zenith"
+          }
+        },
+        {
+          "src": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7883-zVztfv0QrQn9SUKpdfG6DtYOfdGKpA.MP4",
+          "poster": "/images/video_thumbnail/3.webp",
+          "title": {
+            "en": "Zenith Gummies",
+            "fr": "Bonbons Zenith"
+          }
+        }
+      ]
+    },
+    "chooseYour": {
+      "title": {
+        "en": "Choose Your Zenith Shilajit Gold Gummies",
+        "fr": "Choisissez Vos Bonbons Zenith Shilajit Gold"
+      },
+      "subtitle": {
+        "en": "Select your preferred count and start your journey to peak performance.",
+        "fr": "Sélectionnez votre quantité préférée et commencez votre voyage vers des performances optimales."
+      },
+      "perks": [
+        {
+          "en": "Free shipping",
+          "fr": "Livraison gratuite"
+        },
+        {
+          "en": "180-day money-back guarantee",
+          "fr": "Garantie de remboursement de 180 jours"
+        },
+        {
+          "en": "Natural Ingredients",
+          "fr": "Ingrédients Naturels"
+        }
+      ]
+    },
+    "reviews": {
+      "title": {
+        "en": "Real Results - Real People",
+        "fr": "Vrais Résultats - Vraies Personnes"
+      },
+      "subtitle": {
+        "en": "Join thousands of satisfied customers who have embraced Pure Shilajit Gummies!",
+        "fr": "Rejoignez des milliers de clients satisfaits qui ont adopté les bonbons Shilajit Pur !"
+      },
+      "basedOn": {
+        "en": "Based on 17,000+ verified reviews",
+        "fr": "Basé sur plus de 17 000 avis vérifiés"
+      },
+      "rating": {
+        "en": "4.9/5",
+        "fr": "4,9/5"
+      },
+      "reviews": [
+        {
+          "author": "John Smith",
+          "rating": 5,
+          "comment": {
+            "en": "These gummies are amazing! I feel so much more energetic and focused.",
+            "fr": "Ces bonbons sont incroyables ! Je me sens tellement plus énergique et concentré."
+          },
+          "verified": true
+        },
+        {
+          "author": "Jane Doe",
+          "rating": 4,
+          "comment": {
+            "en": "Great product! I've noticed a significant improvement in my overall well-being.",
+            "fr": "Excellent produit ! J'ai remarqué une amélioration significative de mon bien-être général."
+          },
+          "verified": true
+        },
+        {
+          "author": "Peter Jones",
+          "rating": 5,
+          "comment": {
+            "en": "I was skeptical at first, but these gummies really work! Highly recommend.",
+            "fr": "J'étais sceptique au début, mais ces bonbons fonctionnent vraiment ! Je recommande vivement."
+          },
+          "verified": false
+        },
+        {
+          "author": "Mary Brown",
+          "rating": 4,
+          "comment": {
+            "en": "Good quality and taste. I'll definitely be buying more.",
+            "fr": "Bonne qualité et bon goût. Je vais certainement en racheter."
+          },
+          "verified": true
+        },
+        {
+          "author": "David Wilson",
+          "rating": 5,
+          "comment": {
+            "en": "Best gummies I've ever tried! They give me the perfect boost I need.",
+            "fr": "Meilleurs bonbons que j'aie jamais essayés ! Ils me donnent le coup de pouce parfait dont j'ai besoin."
+          },
+          "verified": true
+        },
+        {
+          "author": "Sarah Garcia",
+          "rating": 4,
+          "comment": {
+            "en": "I love these gummies! They're a great addition to my daily routine.",
+            "fr": "J'adore ces bonbons ! C'est un excellent ajout à ma routine quotidienne."
+          },
+          "verified": false
+        }
+      ]
+    },
+    "guarantee": {
+      "title": {
+        "en": "180-Day Money-Back Guarantee",
+        "fr": "Garantie de Remboursement de 180 Jours"
+      },
+      "subtitle": {
+        "en": "Try Pure Shilajit Gummies risk-free for 180 days. If you're not completely satisfied with your purchase, we'll provide a complete refund. That's how confident we are in our product!",
+        "fr": "Essayez les bonbons Shilajit Pur sans risque pendant 180 jours. Si vous n'êtes pas entièrement satisfait de votre achat, nous vous rembourserons intégralement. C'est à quel point nous avons confiance en notre produit !"
+      },
+      "points": [
+        {
+          "title": {
+            "en": "180-Day Guarantee",
+            "fr": "Garantie de 180 Jours"
+          },
+          "icon": "ShieldCheck"
+        },
+        {
+          "title": {
+            "en": "Free Worldwide Shipping",
+            "fr": "Livraison Gratuite dans le Monde Entier"
+          },
+          "icon": "Truck"
+        },
+        {
+          "title": {
+            "en": "24/7 Customer Support",
+            "fr": "Support Client 24/7"
+          },
+          "icon": "Headset"
+        }
+      ]
+    },
+    "footer": {
+      "title": {
+        "en": "Unlock Your Peak Potential with Zenith Shilajit Gold Gummies Today",
+        "fr": "Libérez Votre Potentiel Maximum avec les Bonbons Zenith Shilajit Gold Aujourd'hui"
+      },
+      "subtitle": {
+        "en": "Naturally boost testosterone, energy, focus, and libido for a healthier, more vibrant you.",
+        "fr": "Augmentez naturellement la testostérone, l'énergie, la concentration et la libido pour un vous plus sain et plus dynamique."
+      },
+      "button": {
+        "en": "Order Your Zenith Shilajit Gold Gummies Now",
+        "fr": "Commandez Vos Bonbons Zenith Shilajit Gold Maintenant"
+      },
+      "perks": [
+        {
+          "en": "Natural Ingredients",
+          "fr": "Ingrédients Naturels"
+        },
+        {
+          "en": "Enhanced Focus",
+          "fr": "Concentration Améliorée"
+        },
+        {
+          "en": "Sustained Energy",
+          "fr": "Énergie Durable"
+        }
+      ]
+    },
+    "siteName": {
+      "en": "Zenith Nutrition",
+      "fr": "Zenith Nutrition"
+    },
+    "siteDescription": {
+      "en": "Premium Himalayan Shilajit Gold Gummies for enhanced vitality, energy, and performance. Lab-tested, clinically proven results with 180-day guarantee.",
+      "fr": "Bonbons Premium Shilajit Gold de l'Himalaya pour une vitalité, une énergie et des performances améliorées. Testés en laboratoire, résultats cliniquement prouvés avec garantie de 180 jours."
+    },
+    "brandName": {
+      "en": "Zenith",
+      "fr": "Zenith"
+    },
+    "announcementBar": {
+      "enabled": true,
+      "text": {
+        "en": "Summer sale is ending!",
+        "fr": "Les soldes d'été se terminent !"
+      },
+      "backgroundColor": "primary-color"
+    },
+    "uiText": {
+      "buyNow": {
+        "en": "Buy Now",
+        "fr": "Acheter Maintenant"
+      },
+      "buyNowWithEmoji": {
+        "en": "🚀 Buy Now -",
+        "fr": "🚀 Acheter Maintenant -"
+      },
+      "loading": {
+        "en": "Loading...",
+        "fr": "Chargement..."
+      },
+      "readAllReviews": {
+        "en": "Read all reviews",
+        "fr": "Lire tous les avis"
+      },
+      "bundleAndSave": {
+        "en": "Bundle & Save!",
+        "fr": "Achetez en Lot et Économisez !"
+      },
+      "quickFAQ": {
+        "en": "Quick FAQ",
+        "fr": "FAQ Rapide"
+      },
+      "verified": {
+        "en": "Verified",
+        "fr": "Vérifié"
+      },
+      "toggleNavigationMenu": {
+        "en": "Toggle navigation menu",
+        "fr": "Basculer le menu de navigation"
+      },
+      "productAltTextPrefix": {
+        "en": "Pure Shilajit Gummies -",
+        "fr": "Bonbons Shilajit Pur -"
+      },
+      "youSaveText": {
+        "en": "You save $",
+        "fr": "Vous économisez $"
+      },
+      "logoAlt": {
+        "en": "Logo",
+        "fr": "Logo"
+      },
+      "previousImage": {
+        "en": "Previous image",
+        "fr": "Image précédente"
+      },
+      "nextImage": {
+        "en": "Next image",
+        "fr": "Image suivante"
+      },
+      "recentPurchase": {
+        "firstNames": [
+          "Mike",
+          "Sarah",
+          "John",
+          "Emily",
+          "David",
+          "Jessica",
+          "Chris",
+          "Laura",
+          "Robert",
+          "Olivia",
+          "Daniel",
+          "Sophia",
+          "James",
+          "Ava",
+          "William",
+          "Mia",
+          "Alexander",
+          "Isabella",
+          "Joseph",
+          "Charlotte",
+          "Ethan",
+          "Amelia",
+          "Noah",
+          "Harper",
+          "Mason",
+          "Evelyn",
+          "Liam",
+          "Abigail",
+          "Elizabeth",
+          "Michael",
+          "Sofia"
+        ],
+        "flavors": ["Berry", "Mango", "Citrus"],
+        "messageTemplate": {
+          "en": "just bought",
+          "fr": "vient d'acheter"
+        }
+      }
+    },
+    "seo": {
+      "title": {
+        "en": "Zenith Pure Himalayan Shilajit Gold Gummies - Unlock Your Peak Potential",
+        "fr": "Bonbons Zenith Shilajit Gold Pur Himalayen - Libérez Votre Potentiel Maximum"
+      },
+      "description": {
+        "en": "Discover Zenith Pure Himalayan Shilajit Gold Gummies - naturally boost testosterone, energy, focus, and libido. Lab-tested, clinically proven results with 180-day guarantee.",
+        "fr": "Découvrez les bonbons Zenith Shilajit Gold Pur Himalayen - augmentez naturellement la testostérone, l'énergie, la concentration et la libido. Testés en laboratoire, résultats cliniquement prouvés avec garantie de 180 jours."
+      },
+      "keywords": {
+        "en": "shilajit gummies, himalayan shilajit, testosterone boost, energy supplements, male enhancement, natural supplements, vitality, libido, muscle mass, immune system",
+        "fr": "bonbons shilajit, shilajit himalayen, augmentation testostérone, suppléments énergétiques, amélioration masculine, suppléments naturels, vitalité, libido, masse musculaire, système immunitaire"
+      },
+      "image": "images/zenith-logo-white-bg-cropped.webp",
+      "url": "",
+      "type": "product",
+      "siteName": {
+        "en": "Zenith Nutrition",
+        "fr": "Zenith Nutrition"
+      },
+      "locale": "en_US",
+      "twitterCard": "summary_large_image",
+      "twitterSite": "@zenithnutrition",
+      "twitterCreator": "@zenithnutrition",
+      "author": {
+        "en": "Zenith Nutrition",
+        "fr": "Zenith Nutrition"
+      },
+      "robots": "index, follow",
+      "canonical": "",
+      "price": "49.99",
+      "currency": "USD",
+      "availability": "in stock",
+      "brand": {
+        "en": "Zenith",
+        "fr": "Zenith"
+      },
+      "category": {
+        "en": "Supplements",
+        "fr": "Suppléments"
+      }
+    },
+    "navigation": {
+      "header": [
+        {
+          "label": {
+            "en": "Benefits",
+            "fr": "Avantages"
+          },
+          "href": "/#features"
+        },
+        {
+          "label": {
+            "en": "Science",
+            "fr": "Science"
+          },
+          "href": "/#clinical-study"
+        },
+        {
+          "label": {
+            "en": "Videos",
+            "fr": "Vidéos"
+          },
+          "href": "/#see-in-action"
+        },
+        {
+          "label": {
+            "en": "Reviews",
+            "fr": "Avis"
+          },
+          "href": "/#reviews"
+        },
+        {
+          "label": {
+            "en": "Order",
+            "fr": "Commander"
+          },
+          "href": "/#choose-flavor"
+        }
+      ]
+    },
+    "klaviyo": {
+      "enabled": true,
+      "scriptId": "UqX7UW"
+    }
+  },
+  "theme": {
+    "colors": {
+      "primaryColor": "#DBB55B",
+      "primaryDark": "#C5A047",
+      "primaryLight": "#E8C470",
+      "primary50": "#FAF8F2",
+      "footerColor": "#e17100"
+    },
+    "fonts": {
+      "body": "Geist, sans-serif",
+      "heading": "Geist, sans-serif",
+      "mono": "Geist Mono, monospace"
+    }
+  }
+}

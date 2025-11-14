@@ -1,64 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/placeholder-logo.png" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Zenith Pure Himalayan Shilajit Gold Gummies - Unlock Your Zenith Potential" />
-  <title>Zenith</title>
-  
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://connect.facebook.net" />
-  <link rel="dns-prefetch" href="https://www.facebook.com" />
-  
-  <!-- Facebook Pixel Code -->
-  <script>
-    !(function (f, b, e, v, n, t, s) {
-      if (f.fbq) return;
-      n = f.fbq = function () {
-        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-      };
-      if (!f._fbq) f._fbq = n;
-      n.push = n;
-      n.loaded = !0;
-      n.version = '2.0';
-      n.queue = [];
-      t = b.createElement(e);
-      t.async = !0;
-      t.src = v;
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s);
-    })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '24283303074628883');
-    fbq('track', 'PageView');
-
-    // Safety fallback for client-side event tracking
-    if (typeof window !== 'undefined') {
-      if (typeof window.fbq === 'undefined') {
-        window.fbq = function() {
-          (window.fbq.q = window.fbq.q || []).push(arguments);
-        };
-        window.fbq.q = [];
-      }
-    }
-  </script>
-
-  <!-- Klaviyo script is now loaded dynamically via React component -->
-</head>
-<body>
-  <!-- Facebook Pixel noscript fallback -->
-  <noscript>
-    <img
-      height="1"
-      width="1"
-      style="display: none"
-      src="https://www.facebook.com/tr?id=24283303074628883&ev=PageView&noscript=1"
-      alt="fb-pixel"
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/placeholder-logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Zenith Pure Himalayan Shilajit Gold Gummies - Unlock Your Zenith Potential"
     />
-  </noscript>
-  
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
+    <title>Zenith</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
