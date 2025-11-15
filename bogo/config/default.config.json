@@ -972,7 +972,7 @@
     "postPurchase": {
       "bannerImages": {
         "product": "https://tagadapay.com/logo-landing.png",
-        "specialOffer": "base/special-offer.webp",
+        "specialOffer": "/base/special-offer.webp",
         "steps": "/base/steps.webp",
         "priceBadge": "/base/pricepic.webp",
         "trustBadges": "/base/badges.webp"
