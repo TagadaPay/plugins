@@ -1,0 +1,363 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Express Checkout Plugin Config",
+  "type": "object",
+  "required": ["configName", "branding"],
+  "properties": {
+    "configName": {
+      "type": "string",
+      "title": "Configuration Name"
+    },
+    "branding": {
+      "type": "object",
+      "title": "Branding",
+      "required": ["companyName", "primaryColor", "textColorOnPrimary"],
+      "properties": {
+        "companyName": {
+          "type": "string",
+          "title": "Company Name"
+        },
+        "primaryColor": {
+          "type": "string",
+          "title": "Primary Color",
+          "pattern": "^#([0-9a-fA-F]{6})$"
+        },
+        "textColorOnPrimary": {
+          "type": "string",
+          "title": "Text Color on Primary",
+          "pattern": "^#([0-9a-fA-F]{6})$"
+        },
+        "accentColor": {
+          "type": "string",
+          "title": "Accent Color",
+          "pattern": "^#([0-9a-fA-F]{6})$"
+        },
+        "logoUrl": {
+          "type": "string",
+          "title": "Logo URL",
+          "format": "uri"
+        }
+      },
+      "additionalProperties": false
+    },
+    "products": {
+      "type": "object",
+      "title": "Products",
+      "properties": {
+        "variantId": {
+          "type": "string",
+          "title": "Primary Variant ID"
+        }
+      },
+      "additionalProperties": false
+    },
+    "googleApiKey": {
+      "type": "string",
+      "title": "Google Maps API Key"
+    },
+    "links": {
+      "type": "object",
+      "title": "External Links",
+      "properties": {
+        "checkoutUrl": {
+          "type": "string",
+          "title": "Checkout URL"
+        },
+        "continueShoppingUrl": {
+          "type": "string",
+          "title": "Continue Shopping URL"
+        },
+        "trackOrderUrl": {
+          "type": "string",
+          "title": "Track Order URL"
+        },
+        "supportUrl": {
+          "type": "string",
+          "title": "Support URL"
+        }
+      },
+      "additionalProperties": false
+    },
+    "images": {
+      "type": "object",
+      "title": "Images",
+      "properties": {
+        "placeholderProduct": {
+          "type": "string",
+          "title": "Placeholder Product Image"
+        }
+      },
+      "additionalProperties": false
+    },
+    "orderItems": {
+      "type": "array",
+      "title": "Fallback Order Items",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "quantity", "unitPrice"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Item ID"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "quantity": {
+            "type": "number",
+            "title": "Quantity",
+            "minimum": 1
+          },
+          "unitPrice": {
+            "type": "number",
+            "title": "Unit Price (cents)"
+          },
+          "image": {
+            "type": "string",
+            "title": "Emoji / Short Label"
+          },
+          "imageUrl": {
+            "type": "string",
+            "title": "Image URL",
+            "format": "uri"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "shippingOptions": {
+      "type": "array",
+      "title": "Shipping Options",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "description", "price", "estimatedDays"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Option ID"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "price": {
+            "type": "number",
+            "title": "Display Price (cents)"
+          },
+          "estimatedDays": {
+            "type": "string",
+            "title": "Estimated Delivery Window"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "texts": {
+      "type": "object",
+      "title": "Text Content",
+      "properties": {
+        "checkout": {
+          "type": "object",
+          "title": "Checkout Texts",
+          "properties": {
+            "header": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string", "title": "Header Title" },
+                "subtitle": { "type": "string", "title": "Header Subtitle" }
+              }
+            },
+            "contact": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "emailLabel": { "type": "string" },
+                "emailPlaceholder": { "type": "string" },
+                "phoneLabel": { "type": "string" },
+                "phonePlaceholder": { "type": "string" }
+              }
+            },
+            "shipping": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "countryLabel": { "type": "string" },
+                "countryHint": { "type": "string" },
+                "countryPlaceholder": { "type": "string" },
+                "countryHelper": { "type": "string" },
+                "countrySelectedToast": { "type": "string" },
+                "addressLabel": { "type": "string" },
+                "addressPlaceholder": { "type": "string" },
+                "addressPlaceholderNoCountry": { "type": "string" },
+                "address2Label": { "type": "string" },
+                "address2Placeholder": { "type": "string" },
+                "cityLabel": { "type": "string" },
+                "cityPlaceholder": { "type": "string" },
+                "postalLabel": { "type": "string" },
+                "postalPlaceholder": { "type": "string" },
+                "stateLabel": { "type": "string" },
+                "statePlaceholder": { "type": "string" },
+                "stateSelectPlaceholder": { "type": "string" },
+                "stateInputLabel": { "type": "string" }
+              }
+            },
+            "shippingMethod": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "badge": { "type": "string" },
+                "noteTitle": { "type": "string" },
+                "note": { "type": "string" },
+                "freeLabel": { "type": "string" }
+              }
+            },
+            "payment": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "cardNumberLabel": { "type": "string" },
+                "cardNumberPlaceholder": { "type": "string" },
+                "expiryLabel": { "type": "string" },
+                "expiryPlaceholder": { "type": "string" },
+                "cvcLabel": { "type": "string" },
+                "cvcPlaceholder": { "type": "string" }
+              }
+            },
+            "orderSummary": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "subtotalLabel": { "type": "string" },
+                "shippingLabel": { "type": "string" },
+                "shippingCalculatedText": { "type": "string" },
+                "taxLabel": { "type": "string" },
+                "discountLabel": { "type": "string" },
+                "totalLabel": { "type": "string" },
+                "quantityLabel": { "type": "string" }
+              }
+            },
+            "buttons": {
+              "type": "object",
+              "properties": {
+                "completeOrderLabel": { "type": "string" },
+                "processingLabel": { "type": "string" }
+              }
+            },
+            "messages": {
+              "type": "object",
+              "properties": {
+                "initializing": { "type": "string" },
+                "securityTitle": { "type": "string" },
+                "securitySubtitle": { "type": "string" }
+              }
+            },
+            "errors": {
+              "type": "object",
+              "properties": {
+                "validation": { "type": "string" },
+                "stateRequired": { "type": "string" },
+                "checkoutNotReady": { "type": "string" },
+                "initFailed": { "type": "string" }
+              }
+            },
+            "notifications": {
+              "type": "object",
+              "properties": {
+                "paymentSuccess": { "type": "string" },
+                "paymentFailed": { "type": "string" },
+                "paymentFailedWithReason": { "type": "string" },
+                "paymentVerification": { "type": "string" }
+              }
+            }
+          }
+        },
+        "expressLite": {
+          "type": "object",
+          "title": "Express Lite Texts",
+          "properties": {
+            "headerTitle": { "type": "string" },
+            "headerSubtitle": { "type": "string" },
+            "cardTitle": { "type": "string" },
+            "contactLabel": { "type": "string" },
+            "emailPlaceholder": { "type": "string" },
+            "nameLabel": { "type": "string" },
+            "firstNamePlaceholder": { "type": "string" },
+            "lastNamePlaceholder": { "type": "string" },
+            "addressLabel": { "type": "string" },
+            "addressPlaceholder": { "type": "string" },
+            "cityPlaceholder": { "type": "string" },
+            "postalPlaceholder": { "type": "string" },
+            "paymentLabel": { "type": "string" },
+            "cardPlaceholder": { "type": "string" },
+            "expiryPlaceholder": { "type": "string" },
+            "cvcPlaceholder": { "type": "string" },
+            "buttonLabel": { "type": "string" },
+            "processingLabel": { "type": "string" },
+            "securityNote": { "type": "string" },
+            "loadingText": { "type": "string" }
+          }
+        },
+        "thankYou": {
+          "type": "object",
+          "title": "Thank You Texts",
+          "properties": {
+            "loadingText": { "type": "string" },
+            "errorTitle": { "type": "string" },
+            "errorMessage": { "type": "string" },
+            "returnToCheckout": { "type": "string" },
+            "successTitle": { "type": "string" },
+            "successSubtitle": { "type": "string" },
+            "orderDetailsTitle": { "type": "string" },
+            "orderNumberLabel": { "type": "string" },
+            "orderDateLabel": { "type": "string" },
+            "itemsTitle": { "type": "string" },
+            "itemsQuantityLabel": { "type": "string" },
+            "noItemsText": { "type": "string" },
+            "shippingInfoTitle": { "type": "string" },
+            "deliveryAddressTitle": { "type": "string" },
+            "estimatedDeliveryTitle": { "type": "string" },
+            "estimatedDeliveryWindow": { "type": "string" },
+            "phoneLabel": { "type": "string" },
+            "nextStepsTitle": { "type": "string" },
+            "nextSteps": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": { "type": "string" },
+                  "description": { "type": "string" }
+                }
+              }
+            },
+            "orderSummaryTitle": { "type": "string" },
+            "subtotalLabel": { "type": "string" },
+            "discountLabel": { "type": "string" },
+            "shippingLabel": { "type": "string" },
+            "taxLabel": { "type": "string" },
+            "totalPaidLabel": { "type": "string" },
+            "freeLabel": { "type": "string" },
+            "paymentConfirmedTitle": { "type": "string" },
+            "paymentConfirmedText": { "type": "string" },
+            "actions": {
+              "type": "object",
+              "properties": {
+                "trackOrder": { "type": "string" },
+                "contactSupport": { "type": "string" },
+                "continueShopping": { "type": "string" },
+                "helpTitle": { "type": "string" },
+                "helpText": { "type": "string" },
+                "helpLink": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

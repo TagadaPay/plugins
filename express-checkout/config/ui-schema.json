@@ -1,0 +1,64 @@
+{
+  "ui:order": [
+    "configName",
+    "branding",
+    "products",
+    "googleApiKey",
+    "links",
+    "images",
+    "orderItems",
+    "shippingOptions",
+    "texts"
+  ],
+  "branding": {
+    "primaryColor": { "ui:widget": "color" },
+    "textColorOnPrimary": { "ui:widget": "color" },
+    "accentColor": { "ui:widget": "color" },
+    "logoUrl": { "ui:placeholder": "https://example.com/logo.png" }
+  },
+  "products": {
+    "variantId": {
+      "ui:placeholder": "variant_xxx"
+    }
+  },
+  "links": {
+    "checkoutUrl": { "ui:placeholder": "https://..." },
+    "continueShoppingUrl": { "ui:placeholder": "https://..." },
+    "trackOrderUrl": { "ui:placeholder": "https://..." },
+    "supportUrl": { "ui:placeholder": "https://..." }
+  },
+  "images": {
+    "placeholderProduct": { "ui:placeholder": "/placeholder.svg" }
+  },
+  "orderItems": {
+    "items": {
+      "quantity": { "ui:widget": "updown" },
+      "unitPrice": {
+        "ui:widget": "updown",
+        "ui:help": "Enter the value in cents (e.g. 19999)"
+      }
+    }
+  },
+  "shippingOptions": {
+    "items": {
+      "price": {
+        "ui:widget": "updown",
+        "ui:help": "Display value in cents"
+      }
+    }
+  },
+  "texts": {
+    "ui:options": {
+      "orderable": false
+    },
+    "checkout": {
+      "ui:options": { "orderable": false }
+    },
+    "expressLite": {
+      "ui:options": { "orderable": false }
+    },
+    "thankYou": {
+      "ui:options": { "orderable": false }
+    }
+  }
+}

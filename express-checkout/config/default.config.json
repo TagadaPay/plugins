@@ -1,0 +1,248 @@
+{
+  "configName": "default",
+  "branding": {
+    "companyName": "Express Checkout Demo",
+    "primaryColor": "#2563EB",
+    "textColorOnPrimary": "#FFFFFF",
+    "accentColor": "#0EA5E9",
+    "logoUrl": "https://cdn.tagadapay.com/assets/demo-logo.svg"
+  },
+  "products": {
+    "variantId": "variant_demo_01"
+  },
+  "googleApiKey": "",
+  "links": {
+    "checkoutUrl": "/",
+    "continueShoppingUrl": "/",
+    "trackOrderUrl": "/track",
+    "supportUrl": "/support"
+  },
+  "images": {
+    "placeholderProduct": "/placeholder.svg"
+  },
+  "orderItems": [
+    {
+      "id": "premium-headphones",
+      "name": "Premium Wireless Headphones",
+      "quantity": 1,
+      "unitPrice": 19999,
+      "image": "🎧"
+    },
+    {
+      "id": "usb-cable",
+      "name": "USB-C Cable (2m)",
+      "quantity": 2,
+      "unitPrice": 2499,
+      "image": "🔌"
+    }
+  ],
+  "shippingOptions": [
+    {
+      "id": "standard",
+      "label": "Standard Shipping",
+      "description": "5-7 business days",
+      "price": 0,
+      "estimatedDays": "5-7 days"
+    },
+    {
+      "id": "express",
+      "label": "Express Shipping",
+      "description": "2-3 business days",
+      "price": 1599,
+      "estimatedDays": "2-3 days"
+    },
+    {
+      "id": "overnight",
+      "label": "Overnight Shipping",
+      "description": "Next business day",
+      "price": 2999,
+      "estimatedDays": "1 day"
+    }
+  ],
+  "texts": {
+    "checkout": {
+      "header": {
+        "title": "Complete your order",
+        "subtitle": "Secure checkout powered by industry-leading encryption"
+      },
+      "contact": {
+        "title": "Contact Information",
+        "emailLabel": "Email address",
+        "emailPlaceholder": "john@example.com",
+        "phoneLabel": "Phone number",
+        "phonePlaceholder": "+1 (555) 123-4567"
+      },
+      "shipping": {
+        "title": "Shipping Address",
+        "countryLabel": "Country",
+        "countryHint": "(Select country first)",
+        "countryPlaceholder": "Select Country",
+        "countryHelper": "Please select your country first. This will enable address autocomplete and ensure accurate shipping options.",
+        "countrySelectedToast": "Great! Now you can enter your address details below.",
+        "addressLabel": "Street Address",
+        "addressPlaceholder": "Start typing your address...",
+        "addressPlaceholderNoCountry": "Please select country first",
+        "address2Label": "Apartment, suite, etc. (optional)",
+        "address2Placeholder": "Apt 4B",
+        "cityLabel": "City",
+        "cityPlaceholder": "New York",
+        "postalLabel": "ZIP Code",
+        "postalPlaceholder": "10001",
+        "stateLabel": "State/Province",
+        "statePlaceholder": "Enter state/province",
+        "stateSelectPlaceholder": "Select State/Province",
+        "stateInputLabel": "text input"
+      },
+      "shippingMethod": {
+        "title": "Shipping Method",
+        "badge": "Display Only",
+        "noteTitle": "Note",
+        "note": "Shipping method selection is for display purposes only. Actual shipping costs and methods will be calculated during payment processing.",
+        "freeLabel": "Free"
+      },
+      "payment": {
+        "title": "Payment Information",
+        "cardNumberLabel": "Card number",
+        "cardNumberPlaceholder": "4242 4242 4242 4242",
+        "expiryLabel": "Expiry date",
+        "expiryPlaceholder": "12/28",
+        "cvcLabel": "CVV",
+        "cvcPlaceholder": "123"
+      },
+      "orderSummary": {
+        "title": "Order Summary",
+        "subtotalLabel": "Subtotal",
+        "shippingLabel": "Shipping",
+        "shippingCalculatedText": "Calculated at checkout",
+        "taxLabel": "Tax",
+        "discountLabel": "Discount",
+        "totalLabel": "Total",
+        "quantityLabel": "Qty"
+      },
+      "buttons": {
+        "completeOrderLabel": "Complete Order",
+        "processingLabel": "Processing..."
+      },
+      "messages": {
+        "initializing": "Initializing checkout...",
+        "securityTitle": "Secured by 256-bit SSL encryption",
+        "securitySubtitle": "Your payment information is safe and secure"
+      },
+      "errors": {
+        "validation": "Please fix the errors above before continuing.",
+        "stateRequired": "Please enter a state/province for the selected country.",
+        "checkoutNotReady": "Checkout session not ready",
+        "initFailed": "Failed to initialize checkout. Please try again."
+      },
+      "notifications": {
+        "paymentSuccess": "Payment successful! 🎉",
+        "paymentFailed": "Payment processing failed. Please try again.",
+        "paymentFailedWithReason": "Payment failed: {error}",
+        "paymentVerification": "Please complete the additional security verification..."
+      }
+    },
+    "expressLite": {
+      "headerTitle": "Express Checkout",
+      "headerSubtitle": "Quick and secure payment",
+      "cardTitle": "Complete Your Order",
+      "contactLabel": "Contact",
+      "emailPlaceholder": "Email address",
+      "nameLabel": "Name",
+      "firstNamePlaceholder": "First name",
+      "lastNamePlaceholder": "Last name",
+      "addressLabel": "Address",
+      "addressPlaceholder": "Start typing your address...",
+      "cityPlaceholder": "City",
+      "postalPlaceholder": "ZIP code",
+      "paymentLabel": "Payment",
+      "cardPlaceholder": "1234 5678 9012 3456",
+      "expiryPlaceholder": "MM/YY",
+      "cvcPlaceholder": "CVC",
+      "buttonLabel": "Pay",
+      "processingLabel": "Processing...",
+      "securityNote": "🔒 Your payment information is encrypted and secure",
+      "loadingText": "Loading checkout..."
+    },
+    "thankYou": {
+      "loadingText": "Loading order details...",
+      "errorTitle": "Order Not Found",
+      "errorMessage": "We could not find the order you are looking for.",
+      "returnToCheckout": "Return to Checkout",
+      "successTitle": "Thank you for your order!",
+      "successSubtitle": "Your payment has been successfully processed.",
+      "orderDetailsTitle": "Order Details",
+      "orderNumberLabel": "Order Number",
+      "orderDateLabel": "Order Date",
+      "itemsTitle": "Items Ordered",
+      "itemsQuantityLabel": "Quantity",
+      "noItemsText": "No items found for",
+      "shippingInfoTitle": "Shipping Information",
+      "deliveryAddressTitle": "Delivery Address",
+      "estimatedDeliveryTitle": "Estimated Delivery",
+      "estimatedDeliveryWindow": "3-5 business days",
+      "phoneLabel": "Phone:",
+      "nextStepsTitle": "What's Next?",
+      "nextSteps": [
+        {
+          "title": "Order Confirmation",
+          "description": "You'll receive an email confirmation with your order details shortly."
+        },
+        {
+          "title": "Processing",
+          "description": "We'll prepare your order for shipment within 1-2 business days."
+        },
+        {
+          "title": "Shipping Updates",
+          "description": "You'll receive tracking information once your order ships."
+        }
+      ],
+      "orderSummaryTitle": "Order Summary",
+      "subtotalLabel": "Subtotal",
+      "discountLabel": "Discount",
+      "shippingLabel": "Shipping",
+      "taxLabel": "Tax",
+      "totalPaidLabel": "Total Paid",
+      "freeLabel": "FREE",
+      "paymentConfirmedTitle": "Payment Confirmed",
+      "paymentConfirmedText": "Your payment has been successfully processed.",
+      "actions": {
+        "trackOrder": "Track Your Order",
+        "contactSupport": "Contact Support",
+        "continueShopping": "Continue Shopping",
+        "helpTitle": "Need Help?",
+        "helpText": "If you have any questions about your order, our support team is here to help.",
+        "helpLink": "Contact Support →"
+      }
+    },
+    "postPurchase": {
+      "orderIdRequiredTitle": "Order ID required",
+      "orderIdRequiredMessage": "No order ID provided in the URL.",
+      "loadingTitle": "Loading your exclusive offer...",
+      "loadingMessage": "Please wait while we prepare your limited-time upgrade.",
+      "errorTitle": "Unable to load offers",
+      "errorMessage": "We’re having trouble loading your post‑purchase offers right now.",
+      "errorRedirectMessage": "You’ll be redirected to your order confirmation shortly.",
+      "preparingTitle": "Preparing your offer...",
+      "preparingMessage": "Hang tight while we finalize the details of your upgrade.",
+      "timerLabel": "left to claim this offer",
+      "headerTitle": "One more thing before you go",
+      "headerSubtitle": "As a thank you for your order, we’ve unlocked a limited‑time upgrade you can add in one click.",
+      "offerPositionLabel": "Offer {current} of {total}",
+      "bannerBadge": "Limited‑time upgrade",
+      "bannerSubtitle": "Save {discount}% on this exclusive add‑on to your order.",
+      "itemsTitle": "Items included in this upgrade",
+      "chooseVariantLabel": "Choose a variant:",
+      "summaryTitle": "Order upgrade summary",
+      "summaryOriginalTotalLabel": "Original total",
+      "summaryYouSaveLabel": "You save",
+      "summaryTotalWithUpgradeLabel": "Total with upgrade",
+      "primaryCtaLabel": "Yes, add this to my order",
+      "primaryCtaProcessingLabel": "Adding to your order...",
+      "secondaryCtaLabel": "No thanks, continue to order confirmation",
+      "toastOfferAccepted": "Offer added to your order!",
+      "toastOfferFailedNext": "Offer failed to process. Moving to next offer...",
+      "toastOfferFailedRedirect": "Offer failed to process. Redirecting...",
+      "toastVariantFailed": "Failed to update variant selection"
+    }
+  }
+}
