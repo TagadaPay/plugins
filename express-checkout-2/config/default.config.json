@@ -1,0 +1,934 @@
+{
+  "configName": "default",
+  "metadata": {
+    "title": {
+      "en": "Tagada - Express Checkout",
+      "fr": "Tagada - Paiement express",
+      "es": "Tagada - Pago express"
+    },
+    "description": {
+      "en": "Complete your purchase with our secure and fast express checkout process. Shop the latest fashion trends with confidence.",
+      "fr": "Finalisez votre achat avec notre processus de paiement express sécurisé et rapide. Achetez les dernières tendances de la mode en toute confiance.",
+      "es": "Completa tu compra con nuestro proceso de pago express seguro y rápido. Compra las últimas tendencias de moda con confianza."
+    },
+    "keywords": [
+      "fashion",
+      "checkout",
+      "shopping",
+      "express",
+      "secure",
+      "payment",
+      "dresses",
+      "clothing"
+    ]
+  },
+  "defaultCurrency": "USD",
+  "googleApiKey": "",
+  "features": {
+    "enableAdvancedRouting": true,
+    "showConfigViewer": true,
+    "demoMode": true
+  },
+  "routes": {
+    "basePath": "/"
+  },
+  "logo": "/logo.png",
+  "theme": {
+    "colors": {
+      "pageBackground": "#FFFFFF",
+      "panelBackground": "#ededed",
+      "panelBackgroundSoft": "#f3f4f6",
+      "panelHoverBackground": "#e6e6e6",
+      "border": "#dedede",
+      "mutedText": "#707070",
+      "badgeBackground": "#666666",
+      "chartAccent": "#00A57D",
+      "placeholder": "#9ca3af"
+    }
+  },
+  "alert": {
+    "title": {
+      "en": "This exact dress is trending — over 300 girls bought it today.",
+      "fr": "Cette robe exacte est tendance — plus de 300 filles l'ont achetée aujourd'hui.",
+      "es": "Este vestido exacto está de moda — más de 300 chicas lo compraron hoy."
+    },
+    "subtitle": {
+      "en": "Checkout now before your size sells out.",
+      "fr": "Passez à la caisse maintenant avant que votre taille ne soit épuisée.",
+      "es": "Finaliza la compra ahora antes de que se agote tu talla."
+    }
+  },
+  "texts": {
+    "name": {
+      "en": "Tagada",
+      "fr": "Tagada",
+      "es": "Tagada"
+    },
+    "app": {
+      "loading": {
+        "en": "Loading...",
+        "fr": "Chargement...",
+        "es": "Cargando..."
+      },
+      "checkoutTokenRequiredTitle": {
+        "en": "Checkout Token Required",
+        "fr": "Jeton de paiement requis",
+        "es": "Token de pago requerido"
+      },
+      "checkoutTokenRequiredDescription": {
+        "en": "No checkout token provided in the URL.",
+        "fr": "Aucun jeton de paiement fourni dans l'URL.",
+        "es": "No se proporcionó ningún token de pago en la URL."
+      },
+      "orderIdRequiredTitle": {
+        "en": "Order ID Required",
+        "fr": "ID de commande requis",
+        "es": "ID de pedido requerido"
+      },
+      "orderIdRequiredDescription": {
+        "en": "No order ID provided in the URL.",
+        "fr": "Aucun ID de commande fourni dans l'URL.",
+        "es": "No se proporcionó ningún ID de pedido en la URL."
+      }
+    },
+    "header": {
+      "logoAlt": {
+        "en": "Tagada",
+        "fr": "Tagada",
+        "es": "Tagada"
+      }
+    },
+    "orderSummary": {
+      "title": {
+        "en": "Order summary",
+        "fr": "Résumé de la commande",
+        "es": "Resumen del pedido"
+      },
+      "subtotal": {
+        "en": "Subtotal",
+        "fr": "Sous-total",
+        "es": "Subtotal"
+      },
+      "shipping": {
+        "en": "Shipping",
+        "fr": "Livraison",
+        "es": "Envío"
+      },
+      "shippingFree": {
+        "en": "Free",
+        "fr": "Gratuit",
+        "es": "Gratis"
+      },
+      "tax": {
+        "en": "Tax",
+        "fr": "Taxe",
+        "es": "Impuesto"
+      },
+      "total": {
+        "en": "Total",
+        "fr": "Total",
+        "es": "Total"
+      },
+      "discount": {
+        "placeholder": {
+          "en": "Discount code",
+          "fr": "Code de réduction",
+          "es": "Código de descuento"
+        },
+        "apply": {
+          "en": "Apply",
+          "fr": "Appliquer",
+          "es": "Aplicar"
+        },
+        "applying": {
+          "en": "Applying...",
+          "fr": "Application...",
+          "es": "Aplicando..."
+        },
+        "remove": {
+          "en": "Remove",
+          "fr": "Retirer",
+          "es": "Eliminar"
+        },
+        "removing": {
+          "en": "Removing...",
+          "fr": "Retrait...",
+          "es": "Eliminando..."
+        },
+        "appliedLabelSuffix": {
+          "en": " - Discount applied",
+          "fr": " - Réduction appliquée",
+          "es": " - Descuento aplicado"
+        }
+      }
+    },
+    "contact": {
+      "title": {
+        "en": "Contact",
+        "fr": "Contact",
+        "es": "Contacto"
+      },
+      "emailPlaceholder": {
+        "en": "Email",
+        "fr": "E-mail",
+        "es": "Correo electrónico"
+      }
+    },
+    "delivery": {
+      "title": {
+        "en": "Delivery",
+        "fr": "Livraison",
+        "es": "Entrega"
+      },
+      "countryLabel": {
+        "en": "Country/Region",
+        "fr": "Pays/Région",
+        "es": "País/Región"
+      },
+      "countrySelectedToast": {
+        "en": "Great! Now you can enter your address details below.",
+        "fr": "Parfait ! Vous pouvez maintenant saisir les détails de votre adresse ci-dessous.",
+        "es": "¡Excelente! Ahora puedes ingresar los detalles de tu dirección a continuación."
+      },
+      "firstNameLabel": {
+        "en": "First name",
+        "fr": "Prénom",
+        "es": "Nombre"
+      },
+      "lastNameLabel": {
+        "en": "Last name",
+        "fr": "Nom de famille",
+        "es": "Apellido"
+      },
+      "addressLabel": {
+        "en": "Address",
+        "fr": "Adresse",
+        "es": "Dirección"
+      },
+      "addressPlaceholder": {
+        "en": "Start typing your address...",
+        "fr": "Commencez à taper votre adresse...",
+        "es": "Comienza a escribir tu dirección..."
+      },
+      "addressSelectCountryFirst": {
+        "en": "Please select country first",
+        "fr": "Veuillez d'abord sélectionner le pays",
+        "es": "Por favor, selecciona el país primero"
+      },
+      "address2Placeholder": {
+        "en": "Apartment, suite, etc. (optional)",
+        "fr": "Appartement, suite, etc. (optionnel)",
+        "es": "Apartamento, suite, etc. (opcional)"
+      },
+      "cityPlaceholder": {
+        "en": "City",
+        "fr": "Ville",
+        "es": "Ciudad"
+      },
+      "statePlaceholder": {
+        "en": "State",
+        "fr": "État/Province",
+        "es": "Estado/Provincia"
+      },
+      "postalPlaceholder": {
+        "en": "ZIP code",
+        "fr": "Code postal",
+        "es": "Código postal"
+      },
+      "phonePlaceholder": {
+        "en": "Phone",
+        "fr": "Téléphone",
+        "es": "Teléfono"
+      },
+      "phoneTooltip": {
+        "en": "In case we need to contact you about your order",
+        "fr": "Au cas où nous aurions besoin de vous contacter concernant votre commande",
+        "es": "En caso de que necesitemos contactarte sobre tu pedido"
+      }
+    },
+    "shippingMethod": {
+      "title": {
+        "en": "Shipping method",
+        "fr": "Méthode de livraison",
+        "es": "Método de envío"
+      },
+      "subtitle": {
+        "en": "Enter your shipping address to view available shipping methods.",
+        "fr": "Entrez votre adresse de livraison pour voir les méthodes de livraison disponibles.",
+        "es": "Ingresa tu dirección de envío para ver los métodos de envío disponibles."
+      }
+    },
+    "payment": {
+      "title": {
+        "en": "Credit card",
+        "fr": "Carte de crédit",
+        "es": "Tarjeta de crédito"
+      },
+      "cardNumberPlaceholder": {
+        "en": "Card number",
+        "fr": "Numéro de carte",
+        "es": "Número de tarjeta"
+      },
+      "expiryPlaceholder": {
+        "en": "Expiration date (MM / YY)",
+        "fr": "Date d'expiration (MM / AA)",
+        "es": "Fecha de vencimiento (MM / AA)"
+      },
+      "cvcPlaceholder": {
+        "en": "Security code",
+        "fr": "Code de sécurité",
+        "es": "Código de seguridad"
+      },
+      "cvcTooltip": {
+        "en": "3-digit security code usually found on the back of your card. American Express cards have a 4-digit code located on the front.",
+        "fr": "Code de sécurité à 3 chiffres généralement situé au dos de votre carte. Les cartes American Express ont un code à 4 chiffres situé à l'avant.",
+        "es": "Código de seguridad de 3 dígitos que generalmente se encuentra en la parte posterior de tu tarjeta. Las tarjetas American Express tienen un código de 4 dígitos ubicado en el frente."
+      },
+      "useShippingAsBilling": {
+        "en": "Use shipping address as billing address",
+        "fr": "Utiliser l'adresse de livraison comme adresse de facturation",
+        "es": "Usar la dirección de envío como dirección de facturación"
+      },
+      "billingTitle": {
+        "en": "Billing address",
+        "fr": "Adresse de facturation",
+        "es": "Dirección de facturación"
+      },
+      "billing": {
+        "countryLabel": {
+          "en": "Country/Region",
+          "fr": "Pays/Région",
+          "es": "País/Región"
+        },
+        "firstNameLabel": {
+          "en": "First name",
+          "fr": "Prénom",
+          "es": "Nombre"
+        },
+        "lastNameLabel": {
+          "en": "Last name",
+          "fr": "Nom de famille",
+          "es": "Apellido"
+        },
+        "addressLabel": {
+          "en": "Address",
+          "fr": "Adresse",
+          "es": "Dirección"
+        },
+        "addressPlaceholder": {
+          "en": "Start typing your address...",
+          "fr": "Commencez à taper votre adresse...",
+          "es": "Comienza a escribir tu dirección..."
+        },
+        "addressSelectCountryFirst": {
+          "en": "Please select country first",
+          "fr": "Veuillez d'abord sélectionner le pays",
+          "es": "Por favor, selecciona el país primero"
+        },
+        "address2Placeholder": {
+          "en": "Apartment, suite, etc. (optional)",
+          "fr": "Appartement, suite, etc. (optionnel)",
+          "es": "Apartamento, suite, etc. (opcional)"
+        },
+        "cityPlaceholder": {
+          "en": "City",
+          "fr": "Ville",
+          "es": "Ciudad"
+        },
+        "statePlaceholder": {
+          "en": "State",
+          "fr": "État/Province",
+          "es": "Estado/Provincia"
+        },
+        "postalPlaceholder": {
+          "en": "ZIP code",
+          "fr": "Code postal",
+          "es": "Código postal"
+        },
+        "phonePlaceholder": {
+          "en": "Phone",
+          "fr": "Téléphone",
+          "es": "Teléfono"
+        },
+        "phoneTooltip": {
+          "en": "In case we need to contact you about your order",
+          "fr": "Au cas où nous aurions besoin de vous contacter concernant votre commande",
+          "es": "En caso de que necesitemos contactarte sobre tu pedido"
+        }
+      },
+      "applePay": {
+        "buttonLabel": {
+          "en": "Pay with Apple Pay",
+          "fr": "Payer avec Apple Pay",
+          "es": "Pagar con Apple Pay"
+        },
+        "processingLabel": {
+          "en": "Processing...",
+          "fr": "Traitement...",
+          "es": "Procesando..."
+        }
+      }
+    },
+    "thankYou": {
+      "loadingText": {
+        "en": "Loading order details...",
+        "fr": "Chargement des détails de la commande...",
+        "es": "Cargando detalles del pedido..."
+      },
+      "errorTitle": {
+        "en": "Order Not Found",
+        "fr": "Commande introuvable",
+        "es": "Pedido no encontrado"
+      },
+      "errorDescription": {
+        "en": "We could not find the order you are looking for.",
+        "fr": "Nous n'avons pas pu trouver la commande que vous recherchez.",
+        "es": "No pudimos encontrar el pedido que buscas."
+      },
+      "returnToCheckout": {
+        "en": "Return to Checkout",
+        "fr": "Retour au paiement",
+        "es": "Volver al pago"
+      },
+      "title": {
+        "en": "Order Confirmed!",
+        "fr": "Commande confirmée !",
+        "es": "¡Pedido confirmado!"
+      },
+      "subtitle": {
+        "en": "Thank you for your order. We've received your order #{orderId} and will begin processing it shortly.",
+        "fr": "Merci pour votre commande. Nous avons reçu votre commande #{orderId} et commencerons à la traiter sous peu.",
+        "es": "Gracias por tu pedido. Hemos recibido tu pedido #{orderId} y comenzaremos a procesarlo en breve."
+      },
+      "continueShopping": {
+        "en": "Continue Shopping",
+        "fr": "Continuer les achats",
+        "es": "Continuar comprando"
+      },
+      "orderDetails": {
+        "title": {
+          "en": "Order Details",
+          "fr": "Détails de la commande",
+          "es": "Detalles del pedido"
+        },
+        "orderNumber": {
+          "en": "Order Number:",
+          "fr": "Numéro de commande :",
+          "es": "Número de pedido:"
+        },
+        "orderDate": {
+          "en": "Order Date:",
+          "fr": "Date de commande :",
+          "es": "Fecha del pedido:"
+        },
+        "paymentStatus": {
+          "en": "Payment Status:",
+          "fr": "Statut du paiement :",
+          "es": "Estado del pago:"
+        },
+        "fulfillmentStatus": {
+          "en": "Fulfillment Status:",
+          "fr": "Statut de l'exécution :",
+          "es": "Estado del cumplimiento:"
+        },
+        "totalPaid": {
+          "en": "Total Paid:",
+          "fr": "Total payé :",
+          "es": "Total pagado:"
+        }
+      },
+      "shipping": {
+        "title": {
+          "en": "Shipping Information",
+          "fr": "Informations de livraison",
+          "es": "Información de envío"
+        },
+        "shipTo": {
+          "en": "Ship to:",
+          "fr": "Livrer à :",
+          "es": "Enviar a:"
+        }
+      },
+      "billing": {
+        "title": {
+          "en": "Billing Information",
+          "fr": "Informations de facturation",
+          "es": "Información de facturación"
+        },
+        "billTo": {
+          "en": "Bill to:",
+          "fr": "Facturer à :",
+          "es": "Facturar a:"
+        }
+      },
+      "customer": {
+        "title": {
+          "en": "Customer Information",
+          "fr": "Informations client",
+          "es": "Información del cliente"
+        },
+        "email": {
+          "en": "Email:",
+          "fr": "E-mail :",
+          "es": "Correo electrónico:"
+        },
+        "phone": {
+          "en": "Phone:",
+          "fr": "Téléphone :",
+          "es": "Teléfono:"
+        }
+      },
+      "nextSteps": {
+        "title": {
+          "en": "What's Next?",
+          "fr": "Quelle est la suite ?",
+          "es": "¿Qué sigue?"
+        },
+        "step1": {
+          "title": {
+            "en": "Order Confirmation",
+            "fr": "Confirmation de commande",
+            "es": "Confirmación del pedido"
+          },
+          "description": {
+            "en": "You'll receive an email confirmation with your order details shortly.",
+            "fr": "Vous recevrez un e-mail de confirmation avec les détails de votre commande sous peu.",
+            "es": "Recibirás un correo electrónico de confirmación con los detalles de tu pedido en breve."
+          }
+        },
+        "step2": {
+          "title": {
+            "en": "Processing",
+            "fr": "Traitement",
+            "es": "Procesamiento"
+          },
+          "description": {
+            "en": "We'll prepare your order for shipment within 1-2 business days.",
+            "fr": "Nous préparerons votre commande pour l'expédition dans un délai de 1 à 2 jours ouvrables.",
+            "es": "Prepararemos tu pedido para el envío en 1-2 días hábiles."
+          }
+        },
+        "step3": {
+          "title": {
+            "en": "Tracking",
+            "fr": "Suivi",
+            "es": "Seguimiento"
+          },
+          "description": {
+            "en": "You'll receive tracking information once your order ships.",
+            "fr": "Vous recevrez des informations de suivi une fois votre commande expédiée.",
+            "es": "Recibirás información de seguimiento una vez que se envíe tu pedido."
+          }
+        }
+      },
+      "support": {
+        "title": {
+          "en": "Need Help?",
+          "fr": "Besoin d'aide ?",
+          "es": "¿Necesitas ayuda?"
+        },
+        "description": {
+          "en": "If you have any questions about your order, our customer support team is here to help.",
+          "fr": "Si vous avez des questions concernant votre commande, notre équipe de support client est là pour vous aider.",
+          "es": "Si tienes alguna pregunta sobre tu pedido, nuestro equipo de atención al cliente está aquí para ayudarte."
+        },
+        "emailButton": {
+          "en": "Email Support",
+          "fr": "Contacter le support par e-mail",
+          "es": "Soporte por correo electrónico"
+        },
+        "phoneButton": {
+          "en": "Call Support",
+          "fr": "Appeler le support",
+          "es": "Llamar al soporte"
+        }
+      }
+    },
+    "postPurchase": {
+      "orderIdRequiredTitle": {
+        "en": "Order ID Required",
+        "fr": "ID de commande requis",
+        "es": "ID de pedido requerido"
+      },
+      "orderIdRequiredDescription": {
+        "en": "No order ID provided in the URL.",
+        "fr": "Aucun ID de commande fourni dans l'URL.",
+        "es": "No se proporcionó ningún ID de pedido en la URL."
+      },
+      "loadingTitle": {
+        "en": "Loading your exclusive offer...",
+        "fr": "Chargement de votre offre exclusive...",
+        "es": "Cargando tu oferta exclusiva..."
+      },
+      "loadingMessage": {
+        "en": "Please wait while we prepare your limited-time upgrade.",
+        "fr": "Veuillez patienter pendant que nous préparons votre mise à niveau à durée limitée.",
+        "es": "Por favor espera mientras preparamos tu actualización de tiempo limitado."
+      },
+      "errorTitle": {
+        "en": "Unable to load offers",
+        "fr": "Impossible de charger les offres",
+        "es": "No se pudieron cargar las ofertas"
+      },
+      "errorMessage": {
+        "en": "We're having trouble loading your post‑purchase offers right now.",
+        "fr": "Nous avons des difficultés à charger vos offres post-achat en ce moment.",
+        "es": "Estamos teniendo problemas para cargar tus ofertas post-compra en este momento."
+      },
+      "errorRedirectMessage": {
+        "en": "You'll be redirected to your order confirmation shortly.",
+        "fr": "Vous serez redirigé vers votre confirmation de commande sous peu.",
+        "es": "Serás redirigido a la confirmación de tu pedido en breve."
+      },
+      "preparingTitle": {
+        "en": "Preparing your offer...",
+        "fr": "Préparation de votre offre...",
+        "es": "Preparando tu oferta..."
+      },
+      "preparingMessage": {
+        "en": "Hang tight while we finalize the details of your upgrade.",
+        "fr": "Restez patient pendant que nous finalisons les détails de votre mise à niveau.",
+        "es": "Espera mientras finalizamos los detalles de tu actualización."
+      },
+      "timerLabel": {
+        "en": "left to claim this offer",
+        "fr": "restant pour réclamer cette offre",
+        "es": "restante para reclamar esta oferta"
+      },
+      "headerTitle": {
+        "en": "One more thing before you go",
+        "fr": "Une dernière chose avant de partir",
+        "es": "Una cosa más antes de irte"
+      },
+      "headerSubtitle": {
+        "en": "As a thank you for your order, we've unlocked a limited‑time upgrade you can add in one click.",
+        "fr": "En remerciement de votre commande, nous avons débloqué une mise à niveau à durée limitée que vous pouvez ajouter en un clic.",
+        "es": "Como agradecimiento por tu pedido, hemos desbloqueado una actualización de tiempo limitado que puedes agregar con un clic."
+      },
+      "offerPositionLabel": {
+        "en": "Offer {current} of {total}",
+        "fr": "Offre {current} sur {total}",
+        "es": "Oferta {current} de {total}"
+      },
+      "bannerBadge": {
+        "en": "Limited‑time upgrade",
+        "fr": "Mise à niveau à durée limitée",
+        "es": "Actualización de tiempo limitado"
+      },
+      "bannerSubtitle": {
+        "en": "Save {discount}% on this exclusive add‑on to your order.",
+        "fr": "Économisez {discount}% sur cet ajout exclusif à votre commande.",
+        "es": "Ahorra {discount}% en este complemento exclusivo para tu pedido."
+      },
+      "chooseVariantLabel": {
+        "en": "Choose a variant:",
+        "fr": "Choisissez une variante :",
+        "es": "Elige una variante:"
+      },
+      "summaryTitle": {
+        "en": "Order upgrade summary",
+        "fr": "Résumé de la mise à niveau de la commande",
+        "es": "Resumen de la actualización del pedido"
+      },
+      "summaryOriginalTotalLabel": {
+        "en": "Original total",
+        "fr": "Total d'origine",
+        "es": "Total original"
+      },
+      "summaryYouSaveLabel": {
+        "en": "You save",
+        "fr": "Vous économisez",
+        "es": "Ahorras"
+      },
+      "summaryTotalWithUpgradeLabel": {
+        "en": "Total with upgrade",
+        "fr": "Total avec mise à niveau",
+        "es": "Total con actualización"
+      },
+      "primaryCtaLabel": {
+        "en": "Yes, add this to my order",
+        "fr": "Oui, ajoutez ceci à ma commande",
+        "es": "Sí, agrega esto a mi pedido"
+      },
+      "primaryCtaProcessingLabel": {
+        "en": "Adding to your order...",
+        "fr": "Ajout à votre commande...",
+        "es": "Agregando a tu pedido..."
+      },
+      "secondaryCtaLabel": {
+        "en": "No thanks, continue to order confirmation",
+        "fr": "Non merci, continuer vers la confirmation de commande",
+        "es": "No gracias, continuar a la confirmación del pedido"
+      },
+      "toastOfferAccepted": {
+        "en": "Offer added to your order!",
+        "fr": "Offre ajoutée à votre commande !",
+        "es": "¡Oferta agregada a tu pedido!"
+      },
+      "toastOfferFailedNext": {
+        "en": "Offer failed to process. Moving to next offer...",
+        "fr": "Échec du traitement de l'offre. Passage à l'offre suivante...",
+        "es": "Error al procesar la oferta. Pasando a la siguiente oferta..."
+      },
+      "toastOfferFailedRedirect": {
+        "en": "Offer failed to process. Redirecting...",
+        "fr": "Échec du traitement de l'offre. Redirection...",
+        "es": "Error al procesar la oferta. Redirigiendo..."
+      },
+      "toastVariantFailed": {
+        "en": "Failed to update variant selection",
+        "fr": "Échec de la mise à jour de la sélection de variante",
+        "es": "Error al actualizar la selección de variante"
+      }
+    }
+  },
+  "notifications": {
+    "discount": {
+      "enterCode": {
+        "en": "Please enter a discount code",
+        "fr": "Veuillez entrer un code de réduction",
+        "es": "Por favor ingresa un código de descuento"
+      },
+      "applied": {
+        "en": "Discount code applied successfully!",
+        "fr": "Code de réduction appliqué avec succès !",
+        "es": "¡Código de descuento aplicado con éxito!"
+      },
+      "invalid": {
+        "en": "Invalid discount code. Please try again.",
+        "fr": "Code de réduction invalide. Veuillez réessayer.",
+        "es": "Código de descuento inválido. Por favor intenta de nuevo."
+      },
+      "removed": {
+        "en": "Discount code removed",
+        "fr": "Code de réduction retiré",
+        "es": "Código de descuento eliminado"
+      },
+      "removeFailed": {
+        "en": "Failed to remove discount code",
+        "fr": "Échec de la suppression du code de réduction",
+        "es": "Error al eliminar el código de descuento"
+      }
+    },
+    "validation": {
+      "fieldError": {
+        "en": "Please check the {field} field",
+        "fr": "Veuillez vérifier le champ {field}",
+        "es": "Por favor verifica el campo {field}"
+      },
+      "genericError": {
+        "en": "Please check all required fields",
+        "fr": "Veuillez vérifier tous les champs requis",
+        "es": "Por favor verifica todos los campos requeridos"
+      },
+      "stateRequired": {
+        "en": "Please enter a state/province for the selected country.",
+        "fr": "Veuillez entrer un état/province pour le pays sélectionné.",
+        "es": "Por favor ingresa un estado/provincia para el país seleccionado."
+      }
+    },
+    "checkout": {
+      "sessionNotReady": {
+        "en": "Checkout session not ready. Please try again.",
+        "fr": "Session de paiement non prête. Veuillez réessayer.",
+        "es": "Sesión de pago no lista. Por favor intenta de nuevo."
+      },
+      "fatalErrorTitle": {
+        "en": "Checkout Error",
+        "fr": "Erreur de paiement",
+        "es": "Error de pago"
+      },
+      "fatalErrorMessage": {
+        "en": "Please refresh the page to try again.",
+        "fr": "Veuillez actualiser la page pour réessayer.",
+        "es": "Por favor actualiza la página para intentar de nuevo."
+      }
+    },
+    "payment": {
+      "success": {
+        "en": "Payment successful! 🎉",
+        "fr": "Paiement réussi ! 🎉",
+        "es": "¡Pago exitoso! 🎉"
+      },
+      "detailedSuccess": {
+        "en": "Payment of {amount} completed successfully! Your order is being processed.",
+        "fr": "Paiement de {amount} effectué avec succès ! Votre commande est en cours de traitement.",
+        "es": "¡Pago de {amount} completado con éxito! Tu pedido está siendo procesado."
+      },
+      "failure": {
+        "en": "Payment failed: {error}",
+        "fr": "Échec du paiement : {error}",
+        "es": "Error en el pago: {error}"
+      },
+      "verification": {
+        "en": "Please complete the additional security verification...",
+        "fr": "Veuillez compléter la vérification de sécurité supplémentaire...",
+        "es": "Por favor completa la verificación de seguridad adicional..."
+      },
+      "genericError": {
+        "en": "Payment failed. Please try again.",
+        "fr": "Échec du paiement. Veuillez réessayer.",
+        "es": "Error en el pago. Por favor intenta de nuevo."
+      }
+    },
+    "applePay": {
+      "success": {
+        "en": "Payment successful!",
+        "fr": "Paiement réussi !",
+        "es": "¡Pago exitoso!"
+      },
+      "failure": {
+        "en": "Payment failed: {error}",
+        "fr": "Échec du paiement : {error}",
+        "es": "Error en el pago: {error}"
+      },
+      "cancelled": {
+        "en": "Apple Pay payment cancelled",
+        "fr": "Paiement Apple Pay annulé",
+        "es": "Pago de Apple Pay cancelado"
+      }
+    }
+  },
+  "links": {
+    "checkoutUrl": "/checkout",
+    "continueShoppingUrl": "/",
+    "supportEmail": "support@example.com",
+    "supportPhone": "+1234567890"
+  },
+  "terms": {
+    "title": {
+      "en": "TAGADA SHOP® TERMS & SERVICES",
+      "fr": "CONDITIONS ET SERVICES TAGADA SHOP®",
+      "es": "TÉRMINOS Y SERVICIOS DE TAGADA SHOP®"
+    },
+    "paragraphFirst": {
+      "en": "By taking advantage of this offer, you will be signed up for our exclusive tagada shop program. The tagada shop is an exclusive program that provides you with:",
+      "fr": "En profitant de cette offre, vous serez inscrit à notre programme exclusif tagada shop. Le tagada shop est un programme exclusif qui vous offre :",
+      "es": "Al aprovechar esta oferta, te inscribirás en nuestro programa exclusivo tagada shop. El tagada shop es un programa exclusivo que te ofrece:"
+    },
+    "paragraphEnd": {
+      "en": "You will be billed $29.99 monthly until cancellation. If you do not want to continue the tagada shop after the introductory period or if you wish to cancel the tagada shop at any time, you may do so by filling out the Cancel Membership form on our website, by emailing us, or filling out the form on our website at least 3 days before the next billing period with your full name and the email and physical address associated with your use of the Service.",
+      "fr": "Vous serez facturé 29,99 $ par mois jusqu'à annulation. Si vous ne souhaitez pas continuer le tagada shop après la période d'introduction ou si vous souhaitez annuler le tagada shop à tout moment, vous pouvez le faire en remplissant le formulaire d'annulation d'adhésion sur notre site Web, en nous envoyant un e-mail, ou en remplissant le formulaire sur notre site Web au moins 3 jours avant la prochaine période de facturation avec votre nom complet et l'e-mail et l'adresse physique associés à votre utilisation du Service.",
+      "es": "Se te facturará $29.99 mensualmente hasta la cancelación. Si no deseas continuar con tagada shop después del período introductorio o si deseas cancelar tagada shop en cualquier momento, puedes hacerlo completando el formulario de Cancelación de Membresía en nuestro sitio web, enviándonos un correo electrónico, o completando el formulario en nuestro sitio web al menos 3 días antes del próximo período de facturación con tu nombre completo y el correo electrónico y la dirección física asociados con tu uso del Servicio."
+    },
+    "bullets": [
+      {
+        "en": "Access to VIP pricing on all website products",
+        "fr": "Accès aux prix VIP sur tous les produits du site Web",
+        "es": "Acceso a precios VIP en todos los productos del sitio web"
+      },
+      {
+        "en": "Access to trending products through the tagada shop Portal",
+        "fr": "Accès aux produits tendance via le portail tagada shop",
+        "es": "Acceso a productos de tendencia a través del Portal tagada shop"
+      },
+      {
+        "en": "Free shipping on all tagada shop Portal orders",
+        "fr": "Livraison gratuite sur toutes les commandes du portail tagada shop",
+        "es": "Envío gratis en todos los pedidos del Portal tagada shop"
+      },
+      {
+        "en": "Lowest price guarantee on all VIP Portal orders",
+        "fr": "Garantie du prix le plus bas sur toutes les commandes du portail VIP",
+        "es": "Garantía de precio más bajo en todos los pedidos del Portal VIP"
+      },
+      {
+        "en": "Priority 24/7 customer support",
+        "fr": "Support client prioritaire 24/7",
+        "es": "Soporte al cliente prioritario 24/7"
+      }
+    ]
+  },
+  "footerLinks": {
+    "refundPolicy": {
+      "text": {
+        "en": "Refund policy",
+        "fr": "Politique de remboursement",
+        "es": "Política de reembolso"
+      },
+      "href": "#"
+    },
+    "shipping": {
+      "text": {
+        "en": "Shipping",
+        "fr": "Livraison",
+        "es": "Envío"
+      },
+      "href": "#"
+    },
+    "privacyPolicy": {
+      "text": {
+        "en": "Privacy policy",
+        "fr": "Politique de confidentialité",
+        "es": "Política de privacidad"
+      },
+      "href": "#"
+    },
+    "termsOfService": {
+      "text": {
+        "en": "Terms of service",
+        "fr": "Conditions d'utilisation",
+        "es": "Términos de servicio"
+      },
+      "href": "#"
+    },
+    "cancellations": {
+      "text": {
+        "en": "Cancellations",
+        "fr": "Annulations",
+        "es": "Cancelaciones"
+      },
+      "href": "#"
+    },
+    "contact": {
+      "text": {
+        "en": "Contact",
+        "fr": "Contact",
+        "es": "Contacto"
+      },
+      "href": "#"
+    }
+  },
+  "customerReviews": [
+    {
+      "name": "Jessica Giudicee",
+      "review": "Shopping at Tagada is a delight! The quality is outstanding, with careful stitching and no odd smells. Their sizing is spot-on—I'm 175 cm with a 75E bust, and everything fits perfectly. Great service and attention to detail make every order feel special."
+    },
+    {
+      "name": "Megan Miller",
+      "review": "Wore my tagada shop Midi Dress from Tagada for a night out in Sorrento and felt incredible. The quality and fit were perfect, showcasing why Tagada is my go-to store. Got tons of compliments!"
+    },
+    {
+      "name": "Carly Scarpati",
+      "review": "Such a gorgeous dress from Tagada—I'm obsessed! 🤩 The quality and fit make it my new favorite."
+    },
+    {
+      "name": "Brooke Spinelle",
+      "review": "I was nervous ordering online, but Tagada delivered in every way. The shipping was faster than I expected, and the dress was stunning. The fabric felt high-end, and the fit was perfect—snug but breathable. I've seen people say online shopping can be tricky, but if you take your measurements and check the size chart like I did, you'll be good to go! The dress made me feel so confident, and I even reached out to their support for tracking info—they were super quick to reply and really nice. Will definitely shop here again!"
+    },
+    {
+      "name": "Caroline Durkin",
+      "review": "I've shopped at Tagada multiple times now, and I keep coming back because their dresses make me feel so confident and classy. The designs are elegant, and the materials feel amazing for the price. My most recent purchase—a flowy maxi dress called the Rosalind Maxi Dress—was perfect for my anniversary dinner. It fit like a dream and was even more beautiful in person. I always recommend Tagada to my girlfriends. Can't wait to add more to my collection!"
+    },
+    {
+      "name": "Madi Kemberly",
+      "review": "Ladies, Tagada is IT. I've been seeing their ads everywhere and finally caved during their sale. I got two dresses for the price of one dress anywhere else, and they were both perfect for my style—sexy but still classy. I wore one for a date night, and let's just say my boyfriend was speechless. 😂 Shipping wasn't Amazon-fast, but the tracking updates made it easy to plan ahead. Worth every penny!"
+    },
+    {
+      "name": "Alexa Laws",
+      "review": "I was worried the dress wouldn't look like the picture because of some reviews, but it was literally identical. The color, fit, and style were spot on—so glad I trusted my gut and ordered. Just so anyone reading knows, I ordered the Noir Mini Dress! The one with the bow tie at the back. Highlyyyy recommend this one."
+    },
+    {
+      "name": "Anne Marie Miller",
+      "review": "Okay, let me just say that Tagada has completely leveled up my wardrobe. I was tired of wearing the same boring outfits, and their dresses have added so much variety to my closet. My favorite so far is the Selena Mini Dress that fits like a glove. And don't even get me started on their customer service—so helpful and kind!!! If you're on the fence about ordering, just do it."
+    },
+    {
+      "name": "Olivia Schmitt",
+      "review": "I rarely leave reviews, but Tagada deserves the recognition. I needed a dress for my sister's engagement dinner and stumbled upon their website during a late-night scrolling session. The prices seemed almost suspiciously low, but the designs were gorgeous. After some deliberation, I decided to take a chance—and I'm so glad I did.\n\nThe ordering process was straightforward, and their updates kept me reassured during the wait. The dress arrived in about two weeks, and I was blown away by how elegant it looked. The color was rich, the fit was perfect, and the detailing made it look far more expensive than it was. I even compared it to a similar dress I saw in a boutique for four times the price, and honestly, Tagada's version was better.\n\nI was so impressed that I placed another order for two more dresses shortly after. One of them needed a slight adjustment in the straps, but their customer service team was so accommodating. They offered to cover the cost of tailoring or send a replacement. I opted for the tailoring, and it turned out perfectly.\n\nTagada has quickly become my go-to for special occasions. I've already recommended it to my sisters and friends, and now my closet is filling up with their stunning, affordable pieces."
+    },
+    {
+      "name": "Jamie O'Brien",
+      "review": "I had a little problem with my first order because the size I picked was out of stock, but their team emailed me right away and offered a replacement. The new dress shipped super fast, and it's actually cuter than the one I originally ordered. I really appreciate how they handled everything—it's rare to find online stores that actually care!"
+    }
+  ]
+}

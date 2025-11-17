@@ -9,8 +9,8 @@ import {
   useISOData,
   useOrder,
   usePluginConfig,
-  type OrderItem,
-} from "@tagadapay/plugin-sdk/react";
+  useTranslation,
+} from "@tagadapay/plugin-sdk/v2";
 
 interface ThankYouProps {
   orderId: string;
@@ -19,22 +19,26 @@ interface ThankYouProps {
 export default function ThankYou({ orderId }: ThankYouProps) {
   const { order, isLoading, error } = useOrder({
     orderId,
-    autoFetch: true,
     enabled: Boolean(orderId),
   });
   const { countries } = useISOData();
   const currentCurrency = useCurrency();
   const { config } = usePluginConfig<PluginConfig>();
   const texts = config?.texts;
+  const links = config?.links || {};
+  const { t } = useTranslation();
+  const orderSummaryTexts = texts?.orderSummary;
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#f5f3f0] py-8">
+      <div className="min-h-screen bg-[var(--checkout-thankyou-background)] py-8">
         <div className="mx-auto max-w-md">
           <div className="rounded-lg bg-white p-6 shadow">
             <div className="flex items-center justify-center">
               <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900"></div>
-              <p className="ml-2 text-gray-600">Loading order details...</p>
+              <p className="ml-2 text-gray-600">
+                {t(texts?.thankYou?.loadingText, "Loading order details...")}
+              </p>
             </div>
           </div>
         </div>
@@ -45,18 +49,23 @@ export default function ThankYou({ orderId }: ThankYouProps) {
   // Error state
   if (error || !order) {
     return (
-      <div className="min-h-screen bg-[#f5f3f0] py-8">
+      <div className="min-h-screen bg-[var(--checkout-thankyou-background)] py-8">
         <div className="mx-auto max-w-md">
           <div className="rounded-lg bg-white p-6 shadow">
             <h1 className="mb-4 text-xl font-semibold text-red-600">
-              Order Not Found
+              {t(texts?.thankYou?.errorTitle, "Order Not Found")}
             </h1>
             <p className="mb-4 text-gray-600">
               {error?.message ||
-                "We could not find the order you are looking for."}
+                t(
+                  texts?.thankYou?.errorDescription,
+                  "We could not find the order you are looking for."
+                )}
             </p>
-            <a href="/checkout">
-              <Button className="w-full">Return to Checkout</Button>
+            <a href={links.checkoutUrl ?? "/checkout"}>
+              <Button className="w-full">
+                {t(texts?.thankYou?.returnToCheckout, "Return to Checkout")}
+              </Button>
             </a>
           </div>
         </div>
@@ -78,7 +87,7 @@ export default function ThankYou({ orderId }: ThankYouProps) {
 
   // Get items for the current currency only (filters out duplicate currency items)
   const currentCurrencyItems = order.items.filter(
-    (item: OrderItem) => item.currency === currency
+    (item) => item.currency === currency
   );
 
   return (
@@ -107,11 +116,16 @@ export default function ThankYou({ orderId }: ThankYouProps) {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
-                {texts?.thankYou?.title || "Order Confirmed!"}
+                {t(texts?.thankYou?.title, "Order Confirmed!")}
               </h1>
               <p className="text-gray-600">
-                {texts?.thankYou?.subtitle?.replace("{orderId}", order.id) ||
-                  `Thank you for your order. We've received your order #${order.id} and will begin processing it shortly.`}
+                {t(
+                  texts?.thankYou?.subtitle,
+                  `Thank you for your order. We've received your order #${order.id} and will begin processing it shortly.`,
+                  {
+                    orderId: order.id,
+                  }
+                )}
               </p>
             </div>
           </div>
@@ -149,7 +163,7 @@ export default function ThankYou({ orderId }: ThankYouProps) {
                     width={62}
                     height={62}
                   />
-                  <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-[rgb(102,102,102)] text-xs font-medium text-white">
+                  <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-[var(--checkout-badge-bg)] text-xs font-medium text-white">
                     {item.quantity}
                   </div>
                 </div>
@@ -170,14 +184,20 @@ export default function ThankYou({ orderId }: ThankYouProps) {
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
                 <div className="flex items-center gap-1">
-                  <span className="text-gray-900">Shipping</span>
+                  <span className="text-gray-900">
+                    {t(orderSummaryTexts?.shipping, "Shipping")}
+                  </span>
                 </div>
-                <span className="text-gray-500">Free</span>
+                <span className="text-gray-500">
+                  {t(orderSummaryTexts?.shippingFree, "Free")}
+                </span>
               </div>
             </div>
 
             <div className="flex justify-between pt-3 text-[19px] font-semibold">
-              <span className="font-bold text-gray-900">Total</span>
+              <span className="font-bold text-gray-900">
+                {t(orderSummaryTexts?.total, "Total")}
+              </span>
               <span className="font-bold text-gray-900">
                 {formatMoney(order.paidAmount || 0)}
               </span>
@@ -190,19 +210,21 @@ export default function ThankYou({ orderId }: ThankYouProps) {
           {/* Order Details Card */}
           <div className="rounded-lg border border-gray-200 bg-white p-6">
             <h2 className="mb-4 text-lg font-semibold text-gray-900">
-              {texts?.thankYou?.orderDetails?.title || "Order Details"}
+              {t(texts?.thankYou?.orderDetails?.title, "Order Details")}
             </h2>
             <div className="space-y-3">
               <div className="flex justify-between">
                 <span className="text-gray-600">
-                  {texts?.thankYou?.orderDetails?.orderNumber ||
-                    "Order Number:"}
+                  {t(
+                    texts?.thankYou?.orderDetails?.orderNumber,
+                    "Order Number:"
+                  )}
                 </span>
                 <span className="font-medium text-gray-900">{order.id}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">
-                  {texts?.thankYou?.orderDetails?.orderDate || "Order Date:"}
+                  {t(texts?.thankYou?.orderDetails?.orderDate, "Order Date:")}
                 </span>
                 <span className="font-medium text-gray-900">
                   {new Date(order.createdAt).toLocaleDateString("en-US", {
@@ -216,8 +238,10 @@ export default function ThankYou({ orderId }: ThankYouProps) {
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">
-                  {texts?.thankYou?.orderDetails?.paymentStatus ||
-                    "Payment Status:"}
+                  {t(
+                    texts?.thankYou?.orderDetails?.paymentStatus,
+                    "Payment Status:"
+                  )}
                 </span>
                 <span className="font-medium text-green-600 capitalize">
                   Paid
@@ -225,8 +249,10 @@ export default function ThankYou({ orderId }: ThankYouProps) {
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">
-                  {texts?.thankYou?.orderDetails?.fulfillmentStatus ||
-                    "Fulfillment Status:"}
+                  {t(
+                    texts?.thankYou?.orderDetails?.fulfillmentStatus,
+                    "Fulfillment Status:"
+                  )}
                 </span>
                 <span className="font-medium text-blue-600 capitalize">
                   Unfulfilled
@@ -234,7 +260,7 @@ export default function ThankYou({ orderId }: ThankYouProps) {
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">
-                  {texts?.thankYou?.orderDetails?.totalPaid || "Total Paid:"}
+                  {t(texts?.thankYou?.orderDetails?.totalPaid, "Total Paid:")}
                 </span>
                 <span className="font-bold text-gray-900">
                   {formatMoney(order.paidAmount || 0)}
@@ -247,12 +273,12 @@ export default function ThankYou({ orderId }: ThankYouProps) {
           {order.shippingAddress && (
             <div className="rounded-lg border border-gray-200 bg-white p-6">
               <h2 className="mb-4 text-lg font-semibold text-gray-900">
-                {texts?.thankYou?.shipping?.title || "Shipping Information"}
+                {t(texts?.thankYou?.shipping?.title, "Shipping Information")}
               </h2>
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-gray-600">
-                    {texts?.thankYou?.shipping?.shipTo || "Ship to:"}
+                    {t(texts?.thankYou?.shipping?.shipTo, "Ship to:")}
                   </span>
                   <div className="text-right">
                     <p className="font-medium text-gray-900">
@@ -288,12 +314,12 @@ export default function ThankYou({ orderId }: ThankYouProps) {
           {order.billingAddress && (
             <div className="rounded-lg border border-gray-200 bg-white p-6">
               <h2 className="mb-4 text-lg font-semibold text-gray-900">
-                {texts?.thankYou?.billing?.title || "Billing Information"}
+                {t(texts?.thankYou?.billing?.title, "Billing Information")}
               </h2>
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-gray-600">
-                    {texts?.thankYou?.billing?.billTo || "Bill to:"}
+                    {t(texts?.thankYou?.billing?.billTo, "Bill to:")}
                   </span>
                   <div className="text-right">
                     <p className="font-medium text-gray-900">
@@ -328,12 +354,12 @@ export default function ThankYou({ orderId }: ThankYouProps) {
           {order.checkoutSession?.customer && (
             <div className="rounded-lg border border-gray-200 bg-white p-6">
               <h2 className="mb-4 text-lg font-semibold text-gray-900">
-                {texts?.thankYou?.customer?.title || "Customer Information"}
+                {t(texts?.thankYou?.customer?.title, "Customer Information")}
               </h2>
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-gray-600">
-                    {texts?.thankYou?.customer?.email || "Email:"}
+                    {t(texts?.thankYou?.customer?.email, "Email:")}
                   </span>
                   <span className="font-medium text-gray-900">
                     {order.checkoutSession.customer.email}
@@ -342,7 +368,7 @@ export default function ThankYou({ orderId }: ThankYouProps) {
                 {order.checkoutSession.customer.phone && (
                   <div className="flex justify-between">
                     <span className="text-gray-600">
-                      {texts?.thankYou?.customer?.phone || "Phone:"}
+                      {t(texts?.thankYou?.customer?.phone, "Phone:")}
                     </span>
                     <span className="font-medium text-gray-900">
                       {order.checkoutSession.customer.phone}
@@ -356,7 +382,7 @@ export default function ThankYou({ orderId }: ThankYouProps) {
           {/* Next Steps */}
           <div className="rounded-lg border border-blue-200 bg-blue-50 p-6">
             <h2 className="mb-4 text-lg font-semibold text-blue-900">
-              {texts?.thankYou?.nextSteps?.title || "What's Next?"}
+              {t(texts?.thankYou?.nextSteps?.title, "What's Next?")}
             </h2>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
@@ -365,12 +391,16 @@ export default function ThankYou({ orderId }: ThankYouProps) {
                 </div>
                 <div>
                   <p className="font-medium text-blue-900">
-                    {texts?.thankYou?.nextSteps?.step1?.title ||
-                      "Order Confirmation"}
+                    {t(
+                      texts?.thankYou?.nextSteps?.step1?.title,
+                      "Order Confirmation"
+                    )}
                   </p>
                   <p className="text-sm text-blue-700">
-                    {texts?.thankYou?.nextSteps?.step1?.description ||
-                      "You'll receive an email confirmation with your order details shortly."}
+                    {t(
+                      texts?.thankYou?.nextSteps?.step1?.description,
+                      "You'll receive an email confirmation with your order details shortly."
+                    )}
                   </p>
                 </div>
               </div>
@@ -380,11 +410,13 @@ export default function ThankYou({ orderId }: ThankYouProps) {
                 </div>
                 <div>
                   <p className="font-medium text-blue-900">
-                    {texts?.thankYou?.nextSteps?.step2?.title || "Processing"}
+                    {t(texts?.thankYou?.nextSteps?.step2?.title, "Processing")}
                   </p>
                   <p className="text-sm text-blue-700">
-                    {texts?.thankYou?.nextSteps?.step2?.description ||
-                      "We'll prepare your order for shipment within 1-2 business days."}
+                    {t(
+                      texts?.thankYou?.nextSteps?.step2?.description,
+                      "We'll prepare your order for shipment within 1-2 business days."
+                    )}
                   </p>
                 </div>
               </div>
@@ -394,11 +426,13 @@ export default function ThankYou({ orderId }: ThankYouProps) {
                 </div>
                 <div>
                   <p className="font-medium text-blue-900">
-                    {texts?.thankYou?.nextSteps?.step3?.title || "Tracking"}
+                    {t(texts?.thankYou?.nextSteps?.step3?.title, "Tracking")}
                   </p>
                   <p className="text-sm text-blue-700">
-                    {texts?.thankYou?.nextSteps?.step3?.description ||
-                      "You'll receive tracking information once your order ships."}
+                    {t(
+                      texts?.thankYou?.nextSteps?.step3?.description,
+                      "You'll receive tracking information once your order ships."
+                    )}
                   </p>
                 </div>
               </div>
@@ -408,11 +442,13 @@ export default function ThankYou({ orderId }: ThankYouProps) {
           {/* Support Information */}
           <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
             <h2 className="mb-4 text-lg font-semibold text-gray-900">
-              {texts?.thankYou?.support?.title || "Need Help?"}
+              {t(texts?.thankYou?.support?.title, "Need Help?")}
             </h2>
             <p className="mb-4 text-gray-600">
-              {texts?.thankYou?.support?.description ||
-                "If you have any questions about your order, our customer support team is here to help."}
+              {t(
+                texts?.thankYou?.support?.description,
+                "If you have any questions about your order, our customer support team is here to help."
+              )}
             </p>
             <div className="flex flex-col gap-2 sm:flex-row">
               <Button
@@ -420,18 +456,22 @@ export default function ThankYou({ orderId }: ThankYouProps) {
                 className="flex-1"
                 onClick={() =>
                   window.open(
-                    `mailto:support@example.com?subject=Order ${order.id}`
+                    `mailto:${
+                      links.supportEmail || "support@example.com"
+                    }?subject=Order ${order.id}`
                   )
                 }
               >
-                {texts?.thankYou?.support?.emailButton || "Email Support"}
+                {t(texts?.thankYou?.support?.emailButton, "Email Support")}
               </Button>
               <Button
                 variant="outline"
                 className="flex-1"
-                onClick={() => window.open("tel:+1234567890")}
+                onClick={() =>
+                  window.open(`tel:${links.supportPhone || "+1234567890"}`)
+                }
               >
-                {texts?.thankYou?.support?.phoneButton || "Call Support"}
+                {t(texts?.thankYou?.support?.phoneButton, "Call Support")}
               </Button>
             </div>
           </div>
@@ -440,9 +480,11 @@ export default function ThankYou({ orderId }: ThankYouProps) {
           <div className="mt-auto">
             <Button
               className="w-full"
-              onClick={() => (window.location.href = "/")}
+              onClick={() =>
+                (window.location.href = links.continueShoppingUrl || "/")
+              }
             >
-              {texts?.thankYou?.continueShopping || "Continue Shopping"}
+              {t(texts?.thankYou?.continueShopping, "Continue Shopping")}
             </Button>
           </div>
         </div>

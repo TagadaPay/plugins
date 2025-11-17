@@ -1,0 +1,124 @@
+{
+  "ui:order": [
+    "configName",
+    "metadata",
+    "defaultCurrency",
+    "googleApiKey",
+    "logo",
+    "features",
+    "routes",
+    "theme",
+    "alert",
+    "texts",
+    "notifications",
+    "links",
+    "terms",
+    "footerLinks",
+    "customerReviews"
+  ],
+  "metadata": {
+    "keywords": {
+      "ui:options": {
+        "orderable": true
+      }
+    }
+  },
+  "theme": {
+    "colors": {
+      "pageBackground": { "ui:widget": "color" },
+      "panelBackground": { "ui:widget": "color" },
+      "panelHoverBackground": { "ui:widget": "color" },
+      "border": { "ui:widget": "color" },
+      "mutedText": { "ui:widget": "color" },
+      "badgeBackground": { "ui:widget": "color" },
+      "chartAccent": { "ui:widget": "color" },
+      "placeholder": { "ui:widget": "color" }
+    }
+  },
+  "texts": {
+    "ui:options": {
+      "orderable": false
+    },
+    "orderSummary": {
+      "discount": {
+        "ui:options": {
+          "orderable": false
+        }
+      }
+    },
+    "delivery": {
+      "ui:options": {
+        "orderable": false
+      }
+    },
+    "payment": {
+      "billing": {
+        "ui:options": {
+          "orderable": false
+        }
+      },
+      "applePay": {
+        "ui:options": {
+          "orderable": false
+        }
+      }
+    },
+    "thankYou": {
+      "orderDetails": {
+        "ui:options": {
+          "orderable": false
+        }
+      },
+      "shipping": {
+        "ui:options": {
+          "orderable": false
+        }
+      },
+      "billing": {
+        "ui:options": {
+          "orderable": false
+        }
+      },
+      "customer": {
+        "ui:options": {
+          "orderable": false
+        }
+      },
+      "nextSteps": {
+        "ui:options": {
+          "orderable": false
+        },
+        "step1": { "ui:options": { "orderable": false } },
+        "step2": { "ui:options": { "orderable": false } },
+        "step3": { "ui:options": { "orderable": false } }
+      },
+      "support": {
+        "ui:options": {
+          "orderable": false
+        }
+      }
+    }
+  },
+  "notifications": {
+    "ui:options": {
+      "orderable": false
+    }
+  },
+  "links": {
+    "ui:options": {
+      "orderable": false
+    }
+  },
+  "terms": {
+    "bullets": {
+      "ui:options": {
+        "orderable": true
+      }
+    }
+  },
+  "customerReviews": {
+    "ui:options": {
+      "orderable": true
+    }
+  }
+}

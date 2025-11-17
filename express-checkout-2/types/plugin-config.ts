@@ -1,160 +1,258 @@
-type PluginConfigFooterLinks = {
-  text: string;
-  href: string;
+import { TranslationText } from "@tagadapay/plugin-sdk/v2";
+
+type PluginConfigFooterLink = {
+  text?: TranslationText;
+  href?: string;
 };
 
 export interface PluginConfig {
-  configName: string;
-  metadata: {
-    title: string;
-    description: string;
-    keywords: string[];
+  configName?: string;
+  metadata?: {
+    title?: TranslationText;
+    description?: TranslationText;
+    keywords?: string[];
   };
-  features: {
-    enableAdvancedRouting: boolean;
-    showConfigViewer: boolean;
-    demoMode: boolean;
+  defaultCurrency?: string;
+  googleApiKey?: string;
+  features?: {
+    enableAdvancedRouting?: boolean;
+    showConfigViewer?: boolean;
+    demoMode?: boolean;
   };
-  alert: {
-    title: string;
-    subtitle: string;
+  routes?: {
+    basePath?: string;
   };
-  defaultCurrency: string;
-  googleApiKey: string;
-  routes: {
-    basePath: string;
+  logo?: string;
+  theme?: {
+    colors?: {
+      pageBackground?: string;
+      panelBackground?: string;
+      panelBackgroundSoft?: string;
+      panelHoverBackground?: string;
+      border?: string;
+      mutedText?: string;
+      badgeBackground?: string;
+      chartAccent?: string;
+      placeholder?: string;
+    };
   };
-  logo: string;
-  texts: {
-    name: string;
-    header: {
-      logoAlt: string;
+  alert?: {
+    title?: TranslationText;
+    subtitle?: TranslationText;
+  };
+  texts?: {
+    name?: TranslationText;
+    app?: {
+      loading?: TranslationText;
+      checkoutTokenRequiredTitle?: TranslationText;
+      checkoutTokenRequiredDescription?: TranslationText;
+      orderIdRequiredTitle?: TranslationText;
+      orderIdRequiredDescription?: TranslationText;
     };
-    orderSummary: {
-      title: string;
-      subtotal: string;
-      shipping: string;
-      shippingFree: string;
-      total: string;
-      discount: {
-        placeholder: string;
-        apply: string;
-        applying: string;
-        remove: string;
-        removing: string;
-        appliedLabelSuffix: string;
+    header?: {
+      logoAlt?: TranslationText;
+    };
+    orderSummary?: {
+      title?: TranslationText;
+      subtotal?: TranslationText;
+      shipping?: TranslationText;
+      tax?: TranslationText;
+      shippingFree?: TranslationText;
+      total?: TranslationText;
+      discount?: {
+        placeholder?: TranslationText;
+        apply?: TranslationText;
+        applying?: TranslationText;
+        remove?: TranslationText;
+        removing?: TranslationText;
+        appliedLabelSuffix?: TranslationText;
       };
     };
-    contact: {
-      title: string;
-      emailPlaceholder: string;
+    contact?: {
+      title?: TranslationText;
+      emailPlaceholder?: TranslationText;
     };
-    delivery: {
-      title: string;
-      countryLabel: string;
-      firstNameLabel: string;
-      lastNameLabel: string;
-      addressLabel: string;
-      addressPlaceholder: string;
-      addressSelectCountryFirst: string;
-      address2Placeholder: string;
-      cityPlaceholder: string;
-      statePlaceholder: string;
-      postalPlaceholder: string;
-      phonePlaceholder: string;
-      phoneTooltip: string;
+    delivery?: {
+      title?: TranslationText;
+      countryLabel?: TranslationText;
+      countrySelectedToast?: TranslationText;
+      firstNameLabel?: TranslationText;
+      lastNameLabel?: TranslationText;
+      addressLabel?: TranslationText;
+      addressPlaceholder?: TranslationText;
+      addressSelectCountryFirst?: TranslationText;
+      address2Placeholder?: TranslationText;
+      cityPlaceholder?: TranslationText;
+      statePlaceholder?: TranslationText;
+      postalPlaceholder?: TranslationText;
+      phonePlaceholder?: TranslationText;
+      phoneTooltip?: TranslationText;
     };
-    shippingMethod: {
-      title: string;
-      subtitle: string;
+    shippingMethod?: {
+      title?: TranslationText;
+      subtitle?: TranslationText;
     };
-    payment: {
-      title: string;
-      cardNumberPlaceholder: string;
-      expiryPlaceholder: string;
-      cvcPlaceholder: string;
-      cvcTooltip: string;
-      useShippingAsBilling: string;
-      billingTitle: string;
-      billing: {
-        countryLabel: string;
-        firstNameLabel: string;
-        lastNameLabel: string;
-        addressLabel: string;
-        addressPlaceholder: string;
-        addressSelectCountryFirst: string;
-        address2Placeholder: string;
-        cityPlaceholder: string;
-        statePlaceholder: string;
-        postalPlaceholder: string;
-        phonePlaceholder: string;
-        phoneTooltip: string;
+    payment?: {
+      title?: TranslationText;
+      cardNumberPlaceholder?: TranslationText;
+      expiryPlaceholder?: TranslationText;
+      cvcPlaceholder?: TranslationText;
+      cvcTooltip?: TranslationText;
+      useShippingAsBilling?: TranslationText;
+      billingTitle?: TranslationText;
+      billing?: {
+        countryLabel?: TranslationText;
+        firstNameLabel?: TranslationText;
+        lastNameLabel?: TranslationText;
+        addressLabel?: TranslationText;
+        addressPlaceholder?: TranslationText;
+        addressSelectCountryFirst?: TranslationText;
+        address2Placeholder?: TranslationText;
+        cityPlaceholder?: TranslationText;
+        statePlaceholder?: TranslationText;
+        postalPlaceholder?: TranslationText;
+        phonePlaceholder?: TranslationText;
+        phoneTooltip?: TranslationText;
+      };
+      applePay?: {
+        buttonLabel?: TranslationText;
+        processingLabel?: TranslationText;
       };
     };
-    thankYou: {
-      title: string;
-      subtitle: string;
-      orderDetails: {
-        title: string;
-        orderNumber: string;
-        orderDate: string;
-        paymentStatus: string;
-        fulfillmentStatus: string;
-        totalPaid: string;
+    postPurchase?: {
+      orderIdRequiredTitle?: TranslationText;
+      orderIdRequiredDescription?: TranslationText;
+      loadingTitle?: TranslationText;
+      loadingMessage?: TranslationText;
+      errorTitle?: TranslationText;
+      errorMessage?: TranslationText;
+      errorRedirectMessage?: TranslationText;
+      preparingTitle?: TranslationText;
+      preparingMessage?: TranslationText;
+      timerLabel?: TranslationText;
+      headerTitle?: TranslationText;
+      headerSubtitle?: TranslationText;
+      offerPositionLabel?: TranslationText;
+      bannerBadge?: TranslationText;
+      bannerSubtitle?: TranslationText;
+      chooseVariantLabel?: TranslationText;
+      summaryTitle?: TranslationText;
+      summaryOriginalTotalLabel?: TranslationText;
+      summaryYouSaveLabel?: TranslationText;
+      summaryTotalWithUpgradeLabel?: TranslationText;
+      primaryCtaLabel?: TranslationText;
+      primaryCtaProcessingLabel?: TranslationText;
+      secondaryCtaLabel?: TranslationText;
+      toastOfferAccepted?: TranslationText;
+      toastOfferFailedNext?: TranslationText;
+      toastOfferFailedRedirect?: TranslationText;
+      toastVariantFailed?: TranslationText;
+    };
+    thankYou?: {
+      loadingText?: TranslationText;
+      errorTitle?: TranslationText;
+      errorDescription?: TranslationText;
+      returnToCheckout?: TranslationText;
+      title?: TranslationText;
+      subtitle?: TranslationText;
+      continueShopping?: TranslationText;
+      orderDetails?: {
+        title?: TranslationText;
+        orderNumber?: TranslationText;
+        orderDate?: TranslationText;
+        paymentStatus?: TranslationText;
+        fulfillmentStatus?: TranslationText;
+        totalPaid?: TranslationText;
       };
-      shipping: {
-        title: string;
-        shipTo: string;
+      shipping?: {
+        title?: TranslationText;
+        shipTo?: TranslationText;
       };
-      billing: {
-        title: string;
-        billTo: string;
+      billing?: {
+        title?: TranslationText;
+        billTo?: TranslationText;
       };
-      customer: {
-        title: string;
-        email: string;
-        phone: string;
+      customer?: {
+        title?: TranslationText;
+        email?: TranslationText;
+        phone?: TranslationText;
       };
-      nextSteps: {
-        title: string;
-        step1: {
-          title: string;
-          description: string;
+      nextSteps?: {
+        title?: TranslationText;
+        step1?: {
+          title?: TranslationText;
+          description?: TranslationText;
         };
-        step2: {
-          title: string;
-          description: string;
+        step2?: {
+          title?: TranslationText;
+          description?: TranslationText;
         };
-        step3: {
-          title: string;
-          description: string;
+        step3?: {
+          title?: TranslationText;
+          description?: TranslationText;
         };
       };
-      support: {
-        title: string;
-        description: string;
-        emailButton: string;
-        phoneButton: string;
+      support?: {
+        title?: TranslationText;
+        description?: TranslationText;
+        emailButton?: TranslationText;
+        phoneButton?: TranslationText;
       };
-      continueShopping: string;
     };
   };
-  terms: {
-    title: string;
-    paragraphFirst: string;
-    paragraphEnd: string;
-    bullets: string[];
+  notifications?: {
+    discount?: {
+      enterCode?: TranslationText;
+      applied?: TranslationText;
+      invalid?: TranslationText;
+      removed?: TranslationText;
+      removeFailed?: TranslationText;
+    };
+    validation?: {
+      fieldError?: TranslationText;
+      genericError?: TranslationText;
+      stateRequired?: TranslationText;
+    };
+    checkout?: {
+      sessionNotReady?: TranslationText;
+      fatalErrorTitle?: TranslationText;
+      fatalErrorMessage?: TranslationText;
+    };
+    payment?: {
+      success?: TranslationText;
+      detailedSuccess?: TranslationText;
+      failure?: TranslationText;
+      verification?: TranslationText;
+      genericError?: TranslationText;
+    };
+    applePay?: {
+      success?: TranslationText;
+      failure?: TranslationText;
+      cancelled?: TranslationText;
+    };
   };
-  footerLinks: {
-    refundPolicy: PluginConfigFooterLinks;
-    shipping: PluginConfigFooterLinks;
-    privacyPolicy: PluginConfigFooterLinks;
-    termsOfService: PluginConfigFooterLinks;
-    cancellations: PluginConfigFooterLinks;
-    contact: PluginConfigFooterLinks;
+  links?: {
+    checkoutUrl?: string;
+    continueShoppingUrl?: string;
+    supportEmail?: string;
+    supportPhone?: string;
   };
-  customerReviews: {
-    name: string;
-    review: string;
+  terms?: {
+    title?: TranslationText;
+    paragraphFirst?: TranslationText;
+    paragraphEnd?: TranslationText;
+    bullets?: TranslationText[];
+  };
+  footerLinks?: {
+    refundPolicy?: PluginConfigFooterLink;
+    shipping?: PluginConfigFooterLink;
+    privacyPolicy?: PluginConfigFooterLink;
+    termsOfService?: PluginConfigFooterLink;
+    cancellations?: PluginConfigFooterLink;
+    contact?: PluginConfigFooterLink;
+  };
+  customerReviews?: {
+    name?: string;
+    review?: string;
   }[];
 }

@@ -2,7 +2,7 @@
   "name": "Express checkout 2",
   "pluginId": "express-checkout-2",
   "description": "An express checkout experience",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "TagadaPay Team",
   "mode": "direct-mode",
   "category": "ecommerce",

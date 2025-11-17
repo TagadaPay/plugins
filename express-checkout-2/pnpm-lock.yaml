@@ -93,8 +93,8 @@ importers:
         specifier: 1.1.6
         version: 1.1.6(@types/react-dom@19.0.0)(@types/react@19.0.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tagadapay/plugin-sdk':
-        specifier: ^2.3.8
-        version: 2.3.8(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.0.2)
+        specifier: ^2.7.16
+        version: 2.7.16(@types/react-dom@19.0.0)(@types/react@19.0.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.0.2)
       '@vercel/analytics':
         specifier: 1.3.1
         version: 1.3.1(next@15.2.4(@babel/core@7.28.3)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.92.0))(react@19.0.0)
@@ -137,6 +137,9 @@ importers:
       lucide-react:
         specifier: ^0.542.0
         version: 0.542.0(react@19.0.0)
+      my-v0-project:
+        specifier: 'link:'
+        version: 'link:'
       next-themes:
         specifier: ^0.4.4
         version: 0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -693,6 +696,15 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  '@google-pay/button-react@3.2.1':
+    resolution: {integrity: sha512-PO4mmK4P43EteCsXmxMjiEpuSmTjsVvQxcTBxJ9HpBMrp9/q2UDDhjMFxp8+8QBDr1ZOguQIrlWDc4AIlXPMZw==}
+    engines: {node: '>=8.0.0'}
+    peerDependencies:
+      '@types/react': '>=16.0.0'
+      '@types/react-dom': '>=16.0.0'
+      react: '>=16.3.0'
+      react-dom: '>=16.3.0'
 
   '@hookform/resolvers@3.9.1':
     resolution: {integrity: sha512-ud2HqmGBM0P0IABqoskKWI6PEf6ZDDBZkFqe2Vnl+mTHCEHzr3ISjjZyCwTjC/qpL25JC9aIDkloQejvMeq0ug==}
@@ -1946,11 +1958,19 @@ packages:
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
 
-  '@tagadapay/plugin-sdk@2.3.8':
-    resolution: {integrity: sha512-b2jC8YZJxUeAiyzRdOJhBNAnF8FHq23B1Mb7pZM6KZDEQJEDbfXrWowXAPCdSElljtjtGOZoifNVqczMa9r6ug==}
+  '@tagadapay/plugin-sdk@2.7.16':
+    resolution: {integrity: sha512-t9wJJ+4BYOVo/IsN6aVRSQ3gqwY4xJzw8HSr6Lfd1/CrcubBjKCLie/84PYFOcnQ9cbARdaO3+I2fEdNP6mEww==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
+
+  '@tanstack/query-core@5.90.9':
+    resolution: {integrity: sha512-UFOCQzi6pRGeVTVlPNwNdnAvT35zugcIydqjvFUzG62dvz2iVjElmNp/hJkUoM5eqbUPfSU/GJIr/wbvD8bTUw==}
+
+  '@tanstack/react-query@5.90.9':
+    resolution: {integrity: sha512-Zke2AaXiaSfnG8jqPZR52m8SsclKT2d9//AgE/QIzyNvbpj/Q2ln+FsZjb1j69bJZUouBvX2tg9PHirkTm8arw==}
+    peerDependencies:
+      react: ^18 || ^19
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1993,6 +2013,9 @@ packages:
 
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
+
+  '@types/googlepay@0.7.8':
+    resolution: {integrity: sha512-EHl7G7jIeit/Px/fi/Du/19SZDvqrRhy0DjJX40Vzs/97m3sro9mzVyAYNC0pfzpWGDY+zPjtTLEfhV+OYWUcQ==}
 
   '@types/hoist-non-react-statics@3.3.7':
     resolution: {integrity: sha512-PQTyIulDkIDro8P+IHbKCsw7U2xxBYflVzW/FgWdCAePD9xGSidgA76/GeJ6lBKoblyhf9pBY763gbrN+1dI8g==}
@@ -2275,6 +2298,10 @@ packages:
   delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
+
+  dequal@2.0.3:
+    resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
+    engines: {node: '>=6'}
 
   detect-libc@1.0.3:
     resolution: {integrity: sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==}
@@ -2826,6 +2853,9 @@ packages:
     resolution: {integrity: sha512-Xa4Nw17FS9ApQFJ9umLiJS4orGjm7ZzwUrwamcGQuHSzDyth9boKDaycYdDcZDuqYATXw4HFXgaqWTctW/v1HA==}
     engines: {node: '>=16 || 14 >=14.18'}
 
+  path-to-regexp@8.3.0:
+    resolution: {integrity: sha512-7jdwVIRtsP8MYpdXSwOS0YdD0Du+qOoF/AEPIt88PcCFrZCzx41oxku1jD88hZBwbNUIEfpqvuhjFaMAqMTWnA==}
+
   path@0.12.7:
     resolution: {integrity: sha512-aXXC6s+1w7otVF9UletFkFcDsJeO7lSZBPUQhtb5O0xJe8LtYhj/GxldoL09bBj9+ZmE2hNoHqQSFMN5fikh4Q==}
 
@@ -3320,6 +3350,11 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  swr@2.3.6:
+    resolution: {integrity: sha512-wfHRmHWk/isGNMwlLGlZX5Gzz/uTgo0o2IRuTMcf4CPuPFJZlq0rDaKUx+ozB5nBOReNV1kiOyzMfj+MBMikLw==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   sync-child-process@1.0.2:
     resolution: {integrity: sha512-8lD+t2KrrScJ/7KXCSyfhT3/hRq78rC0wBFqNJXv3mZyn6hW2ypM05JmlSvtqRbeq6jqA94oHbxAr2vYsJ8vDA==}
@@ -3867,6 +3902,14 @@ snapshots:
       tslib: 2.8.1
     optionalDependencies:
       typescript: 5.0.2
+
+  '@google-pay/button-react@3.2.1(@types/react-dom@19.0.0)(@types/react@19.0.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@types/googlepay': 0.7.8
+      '@types/react': 19.0.0
+      '@types/react-dom': 19.0.0
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   '@hookform/resolvers@3.9.1(react-hook-form@7.54.1(react@19.0.0))':
     dependencies:
@@ -5004,20 +5047,34 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@tagadapay/plugin-sdk@2.3.8(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.0.2)':
+  '@tagadapay/plugin-sdk@2.7.16(@types/react-dom@19.0.0)(@types/react@19.0.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.0.2)':
     dependencies:
       '@basis-theory/apple-pay-js': 2.0.2
       '@basis-theory/basis-theory-js': 4.30.0
       '@basis-theory/basis-theory-react': 1.32.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@basis-theory/web-threeds': 1.3.3
+      '@google-pay/button-react': 3.2.1(@types/react-dom@19.0.0)(@types/react@19.0.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@tagadapay/plugin-sdk': 'link:'
+      '@tanstack/react-query': 5.90.9(react@19.0.0)
       axios: 1.11.0
       iso3166-2-db: 2.3.11
+      path-to-regexp: 8.3.0
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       react-intl: 7.1.11(react@19.0.0)(typescript@5.0.2)
+      swr: 2.3.6(react@19.0.0)
     transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
       - debug
       - typescript
+
+  '@tanstack/query-core@5.90.9': {}
+
+  '@tanstack/react-query@5.90.9(react@19.0.0)':
+    dependencies:
+      '@tanstack/query-core': 5.90.9
+      react: 19.0.0
 
   '@types/babel__core@7.20.5':
     dependencies:
@@ -5065,6 +5122,8 @@ snapshots:
   '@types/d3-timer@3.0.2': {}
 
   '@types/estree@1.0.8': {}
+
+  '@types/googlepay@0.7.8': {}
 
   '@types/hoist-non-react-statics@3.3.7(@types/react@19.0.0)':
     dependencies:
@@ -5340,6 +5399,8 @@ snapshots:
   decimal.js@10.6.0: {}
 
   delayed-stream@1.0.0: {}
+
+  dequal@2.0.3: {}
 
   detect-libc@1.0.3:
     optional: true
@@ -5879,6 +5940,8 @@ snapshots:
       lru-cache: 10.4.3
       minipass: 7.1.2
 
+  path-to-regexp@8.3.0: {}
+
   path@0.12.7:
     dependencies:
       process: 0.11.10
@@ -6382,6 +6445,12 @@ snapshots:
       has-flag: 4.0.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  swr@2.3.6(react@19.0.0):
+    dependencies:
+      dequal: 2.0.3
+      react: 19.0.0
+      use-sync-external-store: 1.5.0(react@19.0.0)
 
   sync-child-process@1.0.2:
     dependencies:

@@ -1,0 +1,447 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Express Checkout Config",
+  "type": "object",
+  "required": ["configName", "metadata", "texts"],
+  "properties": {
+    "configName": {
+      "type": "string",
+      "title": "Configuration Name"
+    },
+    "metadata": {
+      "type": "object",
+      "title": "Page Metadata",
+      "required": ["title", "description"],
+      "properties": {
+        "title": { "type": "string", "title": "Page Title" },
+        "description": { "type": "string", "title": "Meta Description" },
+        "keywords": {
+          "type": "array",
+          "title": "Keywords",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "defaultCurrency": {
+      "type": "string",
+      "title": "Default Currency (ISO code)"
+    },
+    "googleApiKey": {
+      "type": "string",
+      "title": "Google Maps API Key"
+    },
+    "features": {
+      "type": "object",
+      "title": "Feature Flags",
+      "properties": {
+        "enableAdvancedRouting": { "type": "boolean" },
+        "showConfigViewer": { "type": "boolean" },
+        "demoMode": { "type": "boolean" }
+      }
+    },
+    "routes": {
+      "type": "object",
+      "title": "Routes",
+      "properties": {
+        "basePath": { "type": "string", "title": "Base Path" }
+      }
+    },
+    "logo": {
+      "type": "string",
+      "title": "Logo URL"
+    },
+    "theme": {
+      "type": "object",
+      "title": "Theme",
+      "properties": {
+        "colors": {
+          "type": "object",
+          "properties": {
+            "pageBackground": {
+              "type": "string",
+              "title": "Page Background",
+              "format": "color"
+            },
+            "panelBackground": {
+              "type": "string",
+              "title": "Panel Background",
+              "format": "color"
+            },
+            "panelHoverBackground": {
+              "type": "string",
+              "title": "Panel Hover Background",
+              "format": "color"
+            },
+            "border": {
+              "type": "string",
+              "title": "Border Color",
+              "format": "color"
+            },
+            "mutedText": {
+              "type": "string",
+              "title": "Muted Text Color",
+              "format": "color"
+            },
+            "badgeBackground": {
+              "type": "string",
+              "title": "Badge Background",
+              "format": "color"
+            },
+            "chartAccent": {
+              "type": "string",
+              "title": "Chart Accent",
+              "format": "color"
+            },
+            "placeholder": {
+              "type": "string",
+              "title": "Input Placeholder",
+              "format": "color"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "alert": {
+      "type": "object",
+      "title": "Hero Alert",
+      "properties": {
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" }
+      }
+    },
+    "texts": {
+      "type": "object",
+      "title": "UI Texts",
+      "properties": {
+        "name": { "type": "string", "title": "Brand Name" },
+        "app": {
+          "type": "object",
+          "properties": {
+            "loading": { "type": "string" },
+            "checkoutTokenRequiredTitle": { "type": "string" },
+            "checkoutTokenRequiredDescription": { "type": "string" },
+            "orderIdRequiredTitle": { "type": "string" },
+            "orderIdRequiredDescription": { "type": "string" }
+          }
+        },
+        "header": {
+          "type": "object",
+          "properties": {
+            "logoAlt": { "type": "string" }
+          }
+        },
+        "orderSummary": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "subtotal": { "type": "string" },
+            "shipping": { "type": "string" },
+            "tax": { "type": "string" },
+            "shippingFree": { "type": "string" },
+            "total": { "type": "string" },
+            "discount": {
+              "type": "object",
+              "properties": {
+                "placeholder": { "type": "string" },
+                "apply": { "type": "string" },
+                "applying": { "type": "string" },
+                "remove": { "type": "string" },
+                "removing": { "type": "string" },
+                "appliedLabelSuffix": { "type": "string" }
+              }
+            }
+          }
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "emailPlaceholder": { "type": "string" }
+          }
+        },
+        "delivery": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "countryLabel": { "type": "string" },
+            "countrySelectedToast": { "type": "string" },
+            "firstNameLabel": { "type": "string" },
+            "lastNameLabel": { "type": "string" },
+            "addressLabel": { "type": "string" },
+            "addressPlaceholder": { "type": "string" },
+            "addressSelectCountryFirst": { "type": "string" },
+            "address2Placeholder": { "type": "string" },
+            "cityPlaceholder": { "type": "string" },
+            "statePlaceholder": { "type": "string" },
+            "postalPlaceholder": { "type": "string" },
+            "phonePlaceholder": { "type": "string" },
+            "phoneTooltip": { "type": "string" }
+          }
+        },
+        "shippingMethod": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "subtitle": { "type": "string" }
+          }
+        },
+        "payment": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "cardNumberPlaceholder": { "type": "string" },
+            "expiryPlaceholder": { "type": "string" },
+            "cvcPlaceholder": { "type": "string" },
+            "cvcTooltip": { "type": "string" },
+            "useShippingAsBilling": { "type": "string" },
+            "billingTitle": { "type": "string" },
+            "billing": {
+              "type": "object",
+              "properties": {
+                "countryLabel": { "type": "string" },
+                "firstNameLabel": { "type": "string" },
+                "lastNameLabel": { "type": "string" },
+                "addressLabel": { "type": "string" },
+                "addressPlaceholder": { "type": "string" },
+                "addressSelectCountryFirst": { "type": "string" },
+                "address2Placeholder": { "type": "string" },
+                "cityPlaceholder": { "type": "string" },
+                "statePlaceholder": { "type": "string" },
+                "postalPlaceholder": { "type": "string" },
+                "phonePlaceholder": { "type": "string" },
+                "phoneTooltip": { "type": "string" }
+              }
+            },
+            "applePay": {
+              "type": "object",
+              "properties": {
+                "buttonLabel": { "type": "string" },
+                "processingLabel": { "type": "string" }
+              }
+            }
+          }
+        },
+        "thankYou": {
+          "type": "object",
+          "properties": {
+            "loadingText": { "type": "string" },
+            "errorTitle": { "type": "string" },
+            "errorDescription": { "type": "string" },
+            "returnToCheckout": { "type": "string" },
+            "title": { "type": "string" },
+            "subtitle": { "type": "string" },
+            "continueShopping": { "type": "string" },
+            "orderDetails": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "orderNumber": { "type": "string" },
+                "orderDate": { "type": "string" },
+                "paymentStatus": { "type": "string" },
+                "fulfillmentStatus": { "type": "string" },
+                "totalPaid": { "type": "string" }
+              }
+            },
+            "shipping": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "shipTo": { "type": "string" }
+              }
+            },
+            "billing": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "billTo": { "type": "string" }
+              }
+            },
+            "customer": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "email": { "type": "string" },
+                "phone": { "type": "string" }
+              }
+            },
+            "nextSteps": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "step1": {
+                  "type": "object",
+                  "properties": {
+                    "title": { "type": "string" },
+                    "description": { "type": "string" }
+                  }
+                },
+                "step2": {
+                  "type": "object",
+                  "properties": {
+                    "title": { "type": "string" },
+                    "description": { "type": "string" }
+                  }
+                },
+                "step3": {
+                  "type": "object",
+                  "properties": {
+                    "title": { "type": "string" },
+                    "description": { "type": "string" }
+                  }
+                }
+              }
+            },
+            "support": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "description": { "type": "string" },
+                "emailButton": { "type": "string" },
+                "phoneButton": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "notifications": {
+      "type": "object",
+      "title": "Notifications",
+      "properties": {
+        "discount": {
+          "type": "object",
+          "properties": {
+            "enterCode": { "type": "string" },
+            "applied": { "type": "string" },
+            "invalid": { "type": "string" },
+            "removed": { "type": "string" },
+            "removeFailed": { "type": "string" }
+          }
+        },
+        "validation": {
+          "type": "object",
+          "properties": {
+            "fieldError": { "type": "string" },
+            "genericError": { "type": "string" },
+            "stateRequired": { "type": "string" }
+          }
+        },
+        "checkout": {
+          "type": "object",
+          "properties": {
+            "sessionNotReady": { "type": "string" },
+            "fatalErrorTitle": { "type": "string" },
+            "fatalErrorMessage": { "type": "string" }
+          }
+        },
+        "payment": {
+          "type": "object",
+          "properties": {
+            "success": { "type": "string" },
+            "detailedSuccess": { "type": "string" },
+            "failure": { "type": "string" },
+            "verification": { "type": "string" },
+            "genericError": { "type": "string" }
+          }
+        },
+        "applePay": {
+          "type": "object",
+          "properties": {
+            "success": { "type": "string" },
+            "failure": { "type": "string" },
+            "cancelled": { "type": "string" }
+          }
+        }
+      }
+    },
+    "links": {
+      "type": "object",
+      "title": "Helpful Links",
+      "properties": {
+        "checkoutUrl": { "type": "string", "title": "Checkout URL" },
+        "continueShoppingUrl": {
+          "type": "string",
+          "title": "Continue Shopping URL"
+        },
+        "supportEmail": { "type": "string", "title": "Support Email" },
+        "supportPhone": { "type": "string", "title": "Support Phone" }
+      }
+    },
+    "terms": {
+      "type": "object",
+      "title": "Terms & Services",
+      "properties": {
+        "title": { "type": "string" },
+        "paragraphFirst": { "type": "string" },
+        "paragraphEnd": { "type": "string" },
+        "bullets": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "footerLinks": {
+      "type": "object",
+      "title": "Footer Links",
+      "properties": {
+        "refundPolicy": {
+          "type": "object",
+          "properties": {
+            "text": { "type": "string" },
+            "href": { "type": "string" }
+          }
+        },
+        "shipping": {
+          "type": "object",
+          "properties": {
+            "text": { "type": "string" },
+            "href": { "type": "string" }
+          }
+        },
+        "privacyPolicy": {
+          "type": "object",
+          "properties": {
+            "text": { "type": "string" },
+            "href": { "type": "string" }
+          }
+        },
+        "termsOfService": {
+          "type": "object",
+          "properties": {
+            "text": { "type": "string" },
+            "href": { "type": "string" }
+          }
+        },
+        "cancellations": {
+          "type": "object",
+          "properties": {
+            "text": { "type": "string" },
+            "href": { "type": "string" }
+          }
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "text": { "type": "string" },
+            "href": { "type": "string" }
+          }
+        }
+      }
+    },
+    "customerReviews": {
+      "type": "array",
+      "title": "Customer Reviews",
+      "items": {
+        "type": "object",
+        "required": ["name", "review"],
+        "properties": {
+          "name": { "type": "string" },
+          "review": { "type": "string" }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
