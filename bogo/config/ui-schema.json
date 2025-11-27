@@ -1,0 +1,810 @@
+{
+  "ui:grouping": {
+    "tabs": [
+      { "id": "settings", "title": "Settings" },
+      { "id": "content", "title": "Content" }
+    ],
+    "sections": [
+      { "id": "general", "title": "General Settings", "tabId": "settings" },
+      { "id": "branding", "title": "Branding", "tabId": "settings" },
+      { "id": "products", "title": "Products & Offers", "tabId": "settings" },
+      { "id": "app", "title": "App Content", "tabId": "content" },
+      { "id": "checkout", "title": "Checkout Content", "tabId": "content" },
+      { "id": "thankYou", "title": "Thank You Content", "tabId": "content" },
+      {
+        "id": "postPurchase",
+        "title": "Post Purchase Content",
+        "tabId": "content"
+      },
+      { "id": "reviews", "title": "Reviews", "tabId": "content" },
+      { "id": "testimonials", "title": "Testimonials", "tabId": "content" }
+    ]
+  },
+  "configName": {
+    "ui:tab": "settings",
+    "ui:section": "general"
+  },
+  "defaultCurrency": {
+    "ui:tab": "settings",
+    "ui:section": "general"
+  },
+  "googleApiKey": {
+    "ui:tab": "settings",
+    "ui:section": "general"
+  },
+  "branding": {
+    "ui:tab": "settings",
+    "ui:section": "branding",
+    "logoUrl": {
+      "ui:widget": "uri"
+    },
+    "companyName": {
+      "ui:field": "translation"
+    },
+    "storeName": {
+      "ui:field": "translation"
+    }
+  },
+  "products": {
+    "ui:tab": "settings",
+    "ui:section": "products",
+    "items": {
+      "variantID": {
+        "ui:widget": "variantSelector"
+      },
+      "oneTime": {
+        "ui:widget": "priceSelector"
+      },
+      "recurring": {
+        "ui:widget": "priceSelector"
+      },
+      "quantity": {
+        "ui:widget": "updown"
+      }
+    }
+  },
+  "orderBumpId": {
+    "ui:tab": "settings",
+    "ui:section": "products"
+  },
+  "content": {
+    "ui:tab": "content",
+    "app": {
+      "ui:section": "app",
+      "redirect": {
+        "redirectingMessage": {
+          "ui:field": "translation"
+        },
+        "loadingMessage": {
+          "ui:field": "translation"
+        }
+      },
+      "suspense": {
+        "defaultLoading": {
+          "ui:field": "translation"
+        },
+        "checkoutLoading": {
+          "ui:field": "translation"
+        },
+        "orderLoading": {
+          "ui:field": "translation"
+        }
+      },
+      "errors": {
+        "orderIdRequiredTitle": {
+          "ui:field": "translation"
+        },
+        "orderIdRequiredDescription": {
+          "ui:field": "translation"
+        }
+      }
+    },
+    "checkout": {
+      "ui:section": "checkout",
+      "banner": {
+        "title": {
+          "ui:field": "translation"
+        },
+        "descriptionPrefix": {
+          "ui:field": "translation"
+        },
+        "freeShippingHighlight": {
+          "ui:field": "translation"
+        },
+        "descriptionSuffix": {
+          "ui:field": "translation"
+        },
+        "sellOutRisk": {
+          "ui:field": "translation"
+        }
+      },
+      "navigation": {
+        "secureCheckoutLabel": {
+          "ui:field": "translation"
+        },
+        "supportLabel": {
+          "ui:field": "translation"
+        }
+      },
+      "notices": {
+        "freeShipping": {
+          "ui:field": "translation"
+        },
+        "cartTimer": {
+          "ui:field": "translation"
+        },
+        "limitedStock": {
+          "ui:field": "translation"
+        }
+      },
+      "packages": {
+        "title": {
+          "ui:field": "translation"
+        },
+        "subtitle": {
+          "ui:field": "translation"
+        },
+        "packageDetailsLabel": {
+          "ui:field": "translation"
+        },
+        "pricePerUnitLabel": {
+          "ui:field": "translation"
+        },
+        "loadingMessage": {
+          "ui:field": "translation"
+        },
+        "bestValueBadge": {
+          "ui:field": "translation"
+        },
+        "perUnitLabel": {
+          "ui:field": "translation"
+        },
+        "freeShippingLabel": {
+          "ui:field": "translation"
+        },
+        "subscriptionToggleLabel": {
+          "ui:field": "translation"
+        },
+        "fallbackBundleRegular": {
+          "ui:field": "translation"
+        },
+        "fallbackBundleBogo": {
+          "ui:field": "translation"
+        },
+        "fallbackBundleSpecial": {
+          "ui:field": "translation"
+        },
+        "fallbackProductName": {
+          "ui:field": "translation"
+        },
+        "fallbackVariantRegular": {
+          "ui:field": "translation"
+        },
+        "fallbackVariantBogo": {
+          "ui:field": "translation"
+        },
+        "fallbackVariantSpecial": {
+          "ui:field": "translation"
+        }
+      },
+      "orderBump": {
+        "badgeLabel": {
+          "ui:field": "translation"
+        },
+        "title": {
+          "ui:field": "translation"
+        },
+        "addedBadge": {
+          "ui:field": "translation"
+        },
+        "headline": {
+          "ui:field": "translation"
+        },
+        "description": {
+          "ui:field": "translation"
+        },
+        "priorityProcessing": {
+          "ui:field": "translation"
+        },
+        "fasterDelivery": {
+          "ui:field": "translation"
+        },
+        "trackingIncluded": {
+          "ui:field": "translation"
+        },
+        "dedicatedSupport": {
+          "ui:field": "translation"
+        }
+      },
+      "customerInformation": {
+        "title": {
+          "ui:field": "translation"
+        },
+        "firstNamePlaceholder": {
+          "ui:field": "translation"
+        },
+        "lastNamePlaceholder": {
+          "ui:field": "translation"
+        },
+        "emailPlaceholder": {
+          "ui:field": "translation"
+        },
+        "phonePlaceholder": {
+          "ui:field": "translation"
+        }
+      },
+      "shippingInformation": {
+        "title": {
+          "ui:field": "translation"
+        },
+        "countryLabel": {
+          "ui:field": "translation"
+        },
+        "countryPlaceholder": {
+          "ui:field": "translation"
+        },
+        "countryToast": {
+          "ui:field": "translation"
+        },
+        "helperMessage": {
+          "ui:field": "translation"
+        },
+        "streetLabel": {
+          "ui:field": "translation"
+        },
+        "streetPlaceholder": {
+          "ui:field": "translation"
+        },
+        "streetLockedPlaceholder": {
+          "ui:field": "translation"
+        },
+        "address2Label": {
+          "ui:field": "translation"
+        },
+        "address2Placeholder": {
+          "ui:field": "translation"
+        },
+        "cityLabel": {
+          "ui:field": "translation"
+        },
+        "cityPlaceholder": {
+          "ui:field": "translation"
+        },
+        "stateLabel": {
+          "ui:field": "translation"
+        },
+        "stateSelectPlaceholder": {
+          "ui:field": "translation"
+        },
+        "stateInputPlaceholder": {
+          "ui:field": "translation"
+        },
+        "stateLockedPlaceholder": {
+          "ui:field": "translation"
+        },
+        "stateOptionsSuffix": {
+          "ui:field": "translation"
+        },
+        "stateManualSuffix": {
+          "ui:field": "translation"
+        },
+        "postalLabel": {
+          "ui:field": "translation"
+        },
+        "postalPlaceholder": {
+          "ui:field": "translation"
+        },
+        "requiredFieldsNote": {
+          "ui:field": "translation"
+        }
+      },
+      "payment": {
+        "title": {
+          "ui:field": "translation"
+        },
+        "securityMessage": {
+          "ui:field": "translation"
+        },
+        "cardMethodLabel": {
+          "ui:field": "translation"
+        },
+        "cardNumberPlaceholder": {
+          "ui:field": "translation"
+        },
+        "expiryPlaceholder": {
+          "ui:field": "translation"
+        },
+        "cvcPlaceholder": {
+          "ui:field": "translation"
+        },
+        "processingLabel": {
+          "ui:field": "translation"
+        },
+        "buttonLabel": {
+          "ui:field": "translation"
+        },
+        "buttonProcessingLabel": {
+          "ui:field": "translation"
+        },
+        "guaranteeTitle": {
+          "ui:field": "translation"
+        },
+        "guaranteeSubtitle": {
+          "ui:field": "translation"
+        },
+        "guaranteeBadgeTitle": {
+          "ui:field": "translation"
+        },
+        "guaranteeBadgeDescription": {
+          "ui:field": "translation"
+        },
+        "sslBadge": {
+          "ui:field": "translation"
+        },
+        "encryptionBadge": {
+          "ui:field": "translation"
+        },
+        "nortonBadge": {
+          "ui:field": "translation"
+        },
+        "agreementText": {
+          "ui:field": "translation"
+        },
+        "secureFooter": {
+          "ui:field": "translation"
+        }
+      },
+      "reviews": {
+        "topSectionTitle": {
+          "ui:field": "translation"
+        },
+        "gridSectionTitle": {
+          "ui:field": "translation"
+        },
+        "likeAction": {
+          "ui:field": "translation"
+        },
+        "replyAction": {
+          "ui:field": "translation"
+        },
+        "verifiedAlt": {
+          "ui:field": "translation"
+        },
+        "starsAlt": {
+          "ui:field": "translation"
+        }
+      },
+      "stickyBar": {
+        "freeShipping": {
+          "ui:field": "translation"
+        },
+        "guarantee": {
+          "ui:field": "translation"
+        },
+        "ssl": {
+          "ui:field": "translation"
+        },
+        "buttonLabel": {
+          "ui:field": "translation"
+        },
+        "buttonProcessingLabel": {
+          "ui:field": "translation"
+        }
+      },
+      "footer": {
+        "termsLabel": {
+          "ui:field": "translation"
+        },
+        "privacyLabel": {
+          "ui:field": "translation"
+        },
+        "wirelessLabel": {
+          "ui:field": "translation"
+        },
+        "rightsReserved": {
+          "ui:field": "translation"
+        }
+      },
+      "validation": {
+        "firstNameRequired": {
+          "ui:field": "translation"
+        },
+        "lastNameRequired": {
+          "ui:field": "translation"
+        },
+        "emailRequired": {
+          "ui:field": "translation"
+        },
+        "phoneRequired": {
+          "ui:field": "translation"
+        },
+        "addressRequired": {
+          "ui:field": "translation"
+        },
+        "countryRequired": {
+          "ui:field": "translation"
+        },
+        "cityRequired": {
+          "ui:field": "translation"
+        },
+        "stateRequired": {
+          "ui:field": "translation"
+        },
+        "postalRequired": {
+          "ui:field": "translation"
+        },
+        "cardNumberRequired": {
+          "ui:field": "translation"
+        },
+        "expiryRequired": {
+          "ui:field": "translation"
+        },
+        "cvcRequired": {
+          "ui:field": "translation"
+        }
+      },
+      "fieldLabels": {
+        "firstName": {
+          "ui:field": "translation"
+        },
+        "lastName": {
+          "ui:field": "translation"
+        },
+        "email": {
+          "ui:field": "translation"
+        },
+        "phone": {
+          "ui:field": "translation"
+        },
+        "address1": {
+          "ui:field": "translation"
+        },
+        "country": {
+          "ui:field": "translation"
+        },
+        "city": {
+          "ui:field": "translation"
+        },
+        "state": {
+          "ui:field": "translation"
+        },
+        "postal": {
+          "ui:field": "translation"
+        },
+        "cardNumber": {
+          "ui:field": "translation"
+        },
+        "expiryDate": {
+          "ui:field": "translation"
+        },
+        "cvc": {
+          "ui:field": "translation"
+        }
+      },
+      "toasts": {
+        "orderBumpAdded": {
+          "ui:field": "translation"
+        },
+        "orderBumpRemoved": {
+          "ui:field": "translation"
+        },
+        "orderBumpFailed": {
+          "ui:field": "translation"
+        },
+        "pricingUnavailable": {
+          "ui:field": "translation"
+        },
+        "subscriptionEnabled": {
+          "ui:field": "translation"
+        },
+        "subscriptionDisabled": {
+          "ui:field": "translation"
+        },
+        "subscriptionFailed": {
+          "ui:field": "translation"
+        },
+        "selectionFailed": {
+          "ui:field": "translation"
+        },
+        "validationField": {
+          "ui:field": "translation"
+        },
+        "validationGeneric": {
+          "ui:field": "translation"
+        },
+        "checkoutNotReady": {
+          "ui:field": "translation"
+        },
+        "stateMissing": {
+          "ui:field": "translation"
+        },
+        "paymentSuccess": {
+          "ui:field": "translation"
+        },
+        "paymentSuccessDetailed": {
+          "ui:field": "translation"
+        },
+        "paymentFailed": {
+          "ui:field": "translation"
+        },
+        "paymentFailedWithReason": {
+          "ui:field": "translation"
+        },
+        "paymentVerificationRequired": {
+          "ui:field": "translation"
+        },
+        "addressToast": {
+          "ui:field": "translation"
+        }
+      },
+      "images": {
+        "guaranteeBadge": {
+          "ui:widget": "uri"
+        },
+        "guaranteeLightBadge": {
+          "ui:widget": "uri"
+        },
+        "reviewVerifiedBadge": {
+          "ui:widget": "uri"
+        },
+        "reviewStarsBadge": {
+          "ui:widget": "uri"
+        },
+        "trustBadges": {
+          "ui:widget": "uri"
+        }
+      },
+      "errors": {
+        "genericTitle": {
+          "ui:field": "translation"
+        },
+        "genericDescription": {
+          "ui:field": "translation"
+        }
+      }
+    },
+    "thankYou": {
+      "ui:section": "thankYou",
+      "header": {
+        "badge": {
+          "ui:field": "translation"
+        },
+        "description": {
+          "ui:field": "translation"
+        },
+        "navConfirmation": {
+          "ui:field": "translation"
+        },
+        "navSupportLabel": {
+          "ui:field": "translation"
+        }
+      },
+      "order": {
+        "successAlert": {
+          "ui:field": "translation"
+        },
+        "title": {
+          "ui:field": "translation"
+        },
+        "orderNumberPrefix": {
+          "ui:field": "translation"
+        },
+        "placedOnPrefix": {
+          "ui:field": "translation"
+        },
+        "itemsTitle": {
+          "ui:field": "translation"
+        },
+        "noItemsMessage": {
+          "ui:field": "translation"
+        },
+        "quantityLabel": {
+          "ui:field": "translation"
+        },
+        "productFallbackAlt": {
+          "ui:field": "translation"
+        }
+      },
+      "shipping": {
+        "title": {
+          "ui:field": "translation"
+        },
+        "phoneLabel": {
+          "ui:field": "translation"
+        }
+      },
+      "guarantee": {
+        "imageUrl": {
+          "ui:widget": "uri"
+        },
+        "imageAlt": {
+          "ui:field": "translation"
+        },
+        "title": {
+          "ui:field": "translation"
+        },
+        "description": {
+          "ui:field": "translation"
+        }
+      },
+      "actions": {
+        "continueShopping": {
+          "ui:field": "translation"
+        },
+        "returnToCheckout": {
+          "ui:field": "translation"
+        }
+      },
+      "footer": {
+        "termsLabel": {
+          "ui:field": "translation"
+        },
+        "privacyLabel": {
+          "ui:field": "translation"
+        },
+        "wirelessLabel": {
+          "ui:field": "translation"
+        },
+        "rightsReserved": {
+          "ui:field": "translation"
+        }
+      },
+      "errors": {
+        "loadingMessage": {
+          "ui:field": "translation"
+        },
+        "errorTitle": {
+          "ui:field": "translation"
+        },
+        "errorMessage": {
+          "ui:field": "translation"
+        },
+        "errorButton": {
+          "ui:field": "translation"
+        }
+      }
+    },
+    "postPurchase": {
+      "ui:section": "postPurchase",
+      "bannerImages": {
+        "specialOffer": {
+          "ui:widget": "uri"
+        },
+        "steps": {
+          "ui:widget": "uri"
+        },
+        "product": {
+          "ui:widget": "uri"
+        },
+        "priceBadge": {
+          "ui:widget": "uri"
+        },
+        "trustBadges": {
+          "ui:widget": "uri"
+        }
+      },
+      "banner": {
+        "offerExpires": {
+          "ui:field": "translation"
+        },
+        "headline": {
+          "ui:field": "translation"
+        },
+        "persuasiveMessage": {
+          "ui:field": "translation"
+        }
+      },
+      "product": {
+        "badgeLabel": {
+          "ui:field": "translation"
+        },
+        "priceLabel": {
+          "ui:field": "translation"
+        },
+        "fallbackProductName": {
+          "ui:field": "translation"
+        },
+        "fallbackFormula": {
+          "ui:field": "translation"
+        },
+        "fallbackSupplement": {
+          "ui:field": "translation"
+        },
+        "fallbackCount": {
+          "ui:field": "translation"
+        },
+        "sectionTitle": {
+          "ui:field": "translation"
+        },
+        "supportHeadline": {
+          "ui:field": "translation"
+        },
+        "powerfulHeadline": {
+          "ui:field": "translation"
+        },
+        "bulletOne": {
+          "ui:field": "translation"
+        },
+        "bulletTwo": {
+          "ui:field": "translation"
+        },
+        "bulletThree": {
+          "ui:field": "translation"
+        },
+        "claimToday": {
+          "ui:field": "translation"
+        },
+        "priceSuffix": {
+          "ui:field": "translation"
+        },
+        "scarcityMessage": {
+          "ui:field": "translation"
+        }
+      },
+      "actions": {
+        "confirmLabel": {
+          "ui:field": "translation"
+        },
+        "processingLabel": {
+          "ui:field": "translation"
+        },
+        "declineLabel": {
+          "ui:field": "translation"
+        },
+        "thankYouButton": {
+          "ui:field": "translation"
+        }
+      },
+      "footer": {
+        "copyright": {
+          "ui:field": "translation"
+        }
+      },
+      "loadingMessage": {
+        "ui:field": "translation"
+      },
+      "errorTitle": {
+        "ui:field": "translation"
+      },
+      "errorButton": {
+        "ui:field": "translation"
+      }
+    }
+  },
+  "reviews": {
+    "ui:tab": "content",
+    "ui:section": "reviews",
+    "items": {
+      "name": {
+        "ui:field": "translation"
+      },
+      "text": {
+        "ui:field": "translation"
+      },
+      "image": {
+        "ui:widget": "uri"
+      },
+      "verified": {
+        "ui:widget": "checkbox"
+      }
+    }
+  },
+  "testimonials": {
+    "ui:tab": "content",
+    "ui:section": "testimonials",
+    "items": {
+      "name": {
+        "ui:field": "translation"
+      },
+      "text": {
+        "ui:field": "translation"
+      },
+      "avatar": {
+        "ui:widget": "uri"
+      },
+      "time": {
+        "ui:field": "translation"
+      }
+    }
+  }
+}

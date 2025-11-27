@@ -5,5 +5,5 @@ interface ProvidersProps {
 }
 
 export function Providers({ children }: ProvidersProps) {
-  return <TagadaProvider>{children}</TagadaProvider>;
+  return <TagadaProvider debugMode={true}>{children}</TagadaProvider>;
 }

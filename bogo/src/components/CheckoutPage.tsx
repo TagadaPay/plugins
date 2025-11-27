@@ -32,18 +32,19 @@ import { PluginConfig } from "@/types/plugin-config";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formatMoney } from "@tagadapay/plugin-sdk";
 import {
+  FunnelEventType,
   useCheckout,
   useFunnel,
   useGeoLocation,
   useGoogleAutocomplete,
   useISOData,
-  useOrderBump,
   usePayment,
   usePluginConfig,
   useProducts,
   useTranslation,
   type GooglePrediction,
 } from "@tagadapay/plugin-sdk/v2";
+import OrderBump from "./OrderBump";
 
 interface CheckoutPageProps {
   checkoutToken: string;
@@ -121,18 +122,12 @@ type CheckoutFormData = z.infer<typeof checkoutFormSchema>;
 type CardFormData = z.infer<typeof cardFormSchema>;
 
 export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
-  const [isInitFailed, setIsInitFailed] = useState(false);
-  const {
-    checkout,
-    init,
-    updateCustomerAndSessionInfo,
-    updateLineItems,
-    error,
-  } = useCheckout({
-    checkoutToken,
-  });
+  const { checkout, updateCustomerAndSessionInfo, updateLineItems, error } =
+    useCheckout({
+      checkoutToken,
+    });
   const { t } = useTranslation();
-  const { next, initializeSession } = useFunnel({
+  const { next } = useFunnel({
     enabled: true,
   });
   const { data } = useGeoLocation();
@@ -151,8 +146,6 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   // 📱 Mobile sticky button state
   const [showStickyButton, setShowStickyButton] = useState(false);
   const paymentSectionRef = useRef<HTMLDivElement>(null);
-
-  const hasInitializedRef = useRef(false);
 
   const timerSeconds = 59;
   const timerMinutes = 9;
@@ -212,8 +205,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   }, []);
 
   const { config: pluginConfig, storeId } = usePluginConfig<PluginConfig>();
-  const storeName = t(pluginConfig.branding.storeName);
-  const companyName = t(pluginConfig.branding.companyName);
+  const storeName = t(pluginConfig.branding?.storeName);
+  const companyName = t(pluginConfig.branding?.companyName);
   const currentYear = new Date().getFullYear().toString();
 
   // Card form setup - address form is handled by useAddress hook below
@@ -262,37 +255,50 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     clearError: clearPaymentError,
   } = usePayment();
 
+  // Helper function to get product by variantID
+  const getProductByVariantId = (variantId: string) => {
+    return pluginConfig.products?.find((p) => p.variantID === variantId);
+  };
+
   // Define variant mappings for different deals based on actual product data
+  // Index 0 = regular, index 1 = bogo, index 2 = special
   const createVariantMappings = () => {
-    const baseVariant = getVariant(pluginConfig.variants.regular);
-    const bogoVariant = getVariant(pluginConfig.variants.bogo);
-    const specialVariant = getVariant(pluginConfig.variants.special);
+    const regularProduct = pluginConfig.products?.[0];
+    const bogoProduct = pluginConfig.products?.[1];
+    const specialProduct = pluginConfig.products?.[2];
+
+    const baseVariant = regularProduct?.variantID
+      ? getVariant(regularProduct.variantID)
+      : null;
+    const bogoVariant = bogoProduct?.variantID
+      ? getVariant(bogoProduct.variantID)
+      : null;
+    const specialVariant = specialProduct?.variantID
+      ? getVariant(specialProduct.variantID)
+      : null;
 
     return {
       bundle1: {
-        variantId: pluginConfig.variants.regular,
+        variantId: regularProduct?.variantID || "",
         name:
           baseVariant?.variant.name ||
-          t(pluginConfig.content.checkout.packages.fallbackBundleRegular),
-        dealType: "regular",
+          t(pluginConfig.content?.checkout?.packages?.fallbackBundleRegular),
         variant: baseVariant?.variant,
         product: baseVariant?.product,
       },
       bundle2: {
-        variantId: pluginConfig.variants.bogo,
+        variantId: bogoProduct?.variantID || "",
         name:
           bogoVariant?.variant.name ||
-          t(pluginConfig.content.checkout.packages.fallbackBundleBogo),
-        dealType: "bogo",
+          t(pluginConfig.content?.checkout?.packages?.fallbackBundleBogo),
         variant: bogoVariant?.variant,
         product: bogoVariant?.product,
       },
       bundle3: {
-        variantId: pluginConfig.variants.special,
+        variantId: specialProduct?.variantID || "",
         name:
           specialVariant?.variant.name ||
-          t(pluginConfig.content.checkout.packages.fallbackBundleSpecial),
-        dealType: "special",
+          t(pluginConfig.content?.checkout?.packages?.fallbackBundleSpecial),
         variant: specialVariant?.variant,
         product: specialVariant?.product,
       },
@@ -332,12 +338,6 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   // No need for complex detection logic - the hook calls saveCheckoutInfo
   // automatically when fields change (both manual and Google Places)
 
-  const { isSelected: orderBumpSelected, toggle: toggleOrderBumpOffer } =
-    useOrderBump({
-      checkoutToken: checkoutToken,
-      offerId: pluginConfig.orderBumpId,
-    });
-
   // Get current item data from checkout
   const firstItem = checkout?.summary?.items?.[0];
   const sessionLineItems = checkout?.checkoutSession?.sessionLineItems;
@@ -364,10 +364,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       return;
     }
 
-    const priceMapping =
-      pluginConfig.prices[variantId as keyof typeof pluginConfig.prices];
+    const product = getProductByVariantId(variantId);
 
-    if (!priceMapping) {
+    if (!product) {
       return;
     }
 
@@ -381,9 +380,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     }
 
     const desiredState =
-      priceMapping.recurring && currentPriceId === priceMapping.recurring
+      product.recurring && currentPriceId === product.recurring
         ? true
-        : priceMapping.oneTime && currentPriceId === priceMapping.oneTime
+        : product.oneTime && currentPriceId === product.oneTime
         ? false
         : null;
 
@@ -415,13 +414,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   // Helper function: resolve priceId based on mode (one-time vs subscription)
   // Helper function to get display amount by variant and currency based on current mode
   const getPriceForVariant = (variantId: string, currency: string) => {
-    const priceMapping =
-      pluginConfig.prices[variantId as keyof typeof pluginConfig.prices];
-    if (!priceMapping) return 0;
+    const product = getProductByVariantId(variantId);
+    if (!product) return 0;
 
-    const priceId = subscribeAndSave
-      ? priceMapping.recurring
-      : priceMapping.oneTime;
+    const priceId = subscribeAndSave ? product.recurring : product.oneTime;
 
     // Find the variant data to get price info
     const variantData = Object.values(variantMappings).find(
@@ -432,56 +428,27 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     return price?.currencyOptions?.[currency]?.amount || 0;
   };
 
-  const handleOrderBumpToggle = async (selected: boolean) => {
-    // 🔄 BACKGROUND PROCESSING - Update backend without blocking UI
-    try {
-      const result = await toggleOrderBumpOffer(selected);
-
-      if (result.success) {
-        console.log("✅ Order bump background update completed successfully");
-
-        // SDK automatically handles bidirectional refresh - no manual refresh needed! 🎉
-        const message = selected
-          ? String(t(pluginConfig.content.checkout.toasts.orderBumpAdded, ""))
-          : String(
-              t(pluginConfig.content.checkout.toasts.orderBumpRemoved, "")
-            );
-        toast.success(message, { duration: 2000 });
-      } else {
-        console.error("❌ Order bump update failed:", result);
-        toast.error(
-          String(t(pluginConfig.content.checkout.toasts.orderBumpFailed, ""))
-        );
-      }
-    } catch (error) {
-      console.error("❌ Order bump toggle failed:", error);
-      toast.error(
-        String(t(pluginConfig.content.checkout.toasts.orderBumpFailed, ""))
-      );
-    }
-  };
-
   // Create bundles based on variant mappings and checkout data
   const createBundles = (item: CheckoutItem | undefined): Bundle[] => {
-    const currency = item?.currency || pluginConfig.defaultCurrency;
+    const currency = item?.currency || pluginConfig.defaultCurrency || "USD";
 
     // Get product and variant info from the actual data structure
     const productName =
       item?.name ||
-      t(pluginConfig.content.checkout.packages.fallbackProductName);
+      t(pluginConfig.content?.checkout?.packages?.fallbackProductName);
 
     return [
       {
         id: "bundle1",
-        variantId: variantMappings.bundle1.variantId,
-        name: variantMappings.bundle1.name,
-        quantity: 2,
+        variantId: variantMappings.bundle1.variantId || "",
+        name: variantMappings.bundle1.name || "",
+        quantity: pluginConfig.products?.[0]?.quantity || 2,
         totalPrice: getPriceForVariant(
-          variantMappings.bundle1.variantId,
+          variantMappings.bundle1.variantId || "",
           currency
         ),
         originalPrice: getPriceForVariant(
-          variantMappings.bundle1.variantId,
+          variantMappings.bundle1.variantId || "",
           currency
         ),
         images:
@@ -494,21 +461,24 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         productName: variantMappings.bundle1.product?.name || productName,
         variantName:
           variantMappings.bundle1.variant?.name ||
-          t(pluginConfig.content.checkout.packages.fallbackVariantRegular),
+          t(pluginConfig.content?.checkout?.packages?.fallbackVariantRegular),
         currency,
         dealType: "regular",
       },
       {
         id: "bundle2",
-        variantId: variantMappings.bundle2.variantId,
-        name: variantMappings.bundle2.name,
-        quantity: 3,
+        variantId: variantMappings.bundle2.variantId || "",
+        name: variantMappings.bundle2.name || "",
+        quantity: pluginConfig.products?.[1]?.quantity || 3,
         totalPrice: getPriceForVariant(
-          variantMappings.bundle2.variantId,
+          variantMappings.bundle2.variantId || "",
           currency
         ),
         originalPrice:
-          getPriceForVariant(variantMappings.bundle2.variantId, currency) * 2,
+          getPriceForVariant(
+            variantMappings.bundle2.variantId || "",
+            currency
+          ) * 2,
         images:
           (variantMappings.bundle2.variant?.imageUrl && [
             variantMappings.bundle2.variant?.imageUrl,
@@ -519,21 +489,24 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         productName: variantMappings.bundle2.product?.name || productName,
         variantName:
           variantMappings.bundle2.variant?.name ||
-          t(pluginConfig.content.checkout.packages.fallbackVariantBogo),
+          t(pluginConfig.content?.checkout?.packages?.fallbackVariantBogo),
         currency,
         dealType: "bogo",
       },
       {
         id: "bundle3",
-        variantId: variantMappings.bundle3.variantId,
-        name: variantMappings.bundle3.name,
-        quantity: 5,
+        variantId: variantMappings.bundle3.variantId || "",
+        name: variantMappings.bundle3.name || "",
+        quantity: pluginConfig.products?.[2]?.quantity || 5,
         totalPrice: getPriceForVariant(
-          variantMappings.bundle3.variantId,
+          variantMappings.bundle3.variantId || "",
           currency
         ),
         originalPrice:
-          getPriceForVariant(variantMappings.bundle3.variantId, currency) * 3,
+          getPriceForVariant(
+            variantMappings.bundle3.variantId || "",
+            currency
+          ) * 3,
         images:
           (variantMappings.bundle3.variant?.imageUrl && [
             variantMappings.bundle3.variant?.imageUrl,
@@ -544,7 +517,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         productName: variantMappings.bundle3.product?.name || productName,
         variantName:
           variantMappings.bundle3.variant?.name ||
-          t(pluginConfig.content.checkout.packages.fallbackVariantSpecial),
+          t(pluginConfig.content?.checkout?.packages?.fallbackVariantSpecial),
         currency,
         dealType: "special",
       },
@@ -553,8 +526,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
   const basePrice =
     getPriceForVariant(
-      variantMappings.bundle1.variantId,
-      pluginConfig.defaultCurrency
+      variantMappings.bundle1.variantId || "",
+      pluginConfig.defaultCurrency || "USD"
     ) / 2;
 
   // Recalculate bundles when subscription state changes
@@ -618,9 +591,18 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       if (!selectedBundleData) return;
 
       const variantId = selectedBundleData.variantId;
-      const priceMapping =
-        pluginConfig.prices[variantId as keyof typeof pluginConfig.prices];
-      const priceId = checked ? priceMapping?.recurring : priceMapping?.oneTime;
+      const product = getProductByVariantId(variantId);
+      if (!product) {
+        console.error("Product not found for variant:", variantId);
+        setSubscribeAndSave(previousState);
+        toast.error(
+          String(
+            t(pluginConfig.content?.checkout?.toasts?.pricingUnavailable, "")
+          )
+        );
+        return;
+      }
+      const priceId = checked ? product.recurring : product.oneTime;
 
       if (!priceId) {
         console.error(
@@ -632,7 +614,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         // Revert UI on critical error
         setSubscribeAndSave(previousState);
         toast.error(
-          String(t(pluginConfig.content.checkout.toasts.pricingUnavailable, ""))
+          String(
+            t(pluginConfig.content?.checkout?.toasts?.pricingUnavailable, "")
+          )
         );
         return;
       }
@@ -663,10 +647,13 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         // Show success feedback
         const message = checked
           ? String(
-              t(pluginConfig.content.checkout.toasts.subscriptionEnabled, "")
+              t(pluginConfig.content?.checkout?.toasts?.subscriptionEnabled, "")
             )
           : String(
-              t(pluginConfig.content.checkout.toasts.subscriptionDisabled, "")
+              t(
+                pluginConfig.content?.checkout?.toasts?.subscriptionDisabled,
+                ""
+              )
             );
         toast.success(message, { duration: 2000 });
       } catch (error) {
@@ -678,7 +665,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
         // Show error feedback
         toast.error(
-          String(t(pluginConfig.content.checkout.toasts.subscriptionFailed, ""))
+          String(
+            t(pluginConfig.content?.checkout?.toasts?.subscriptionFailed, "")
+          )
         );
       } finally {
         setIsUpdating(false);
@@ -690,53 +679,6 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       );
     }
   };
-
-  // Initialize checkout programmatically when no token is provided
-  useEffect(() => {
-    // console.log("🔄 Checkout initialization check:", {
-    //   hasCheckoutToken: !!checkoutToken,
-    //   hasCheckoutData: !!checkout,
-    //   hasInitFunction: !!init,
-    //   hasInitialized: hasInitializedRef.current,
-    //   checkoutTokenPreview: checkoutToken
-    //     ? `${checkoutToken.substring(0, 8)}...`
-    //     : "none",
-    // });
-
-    if (
-      !checkoutToken &&
-      !checkout &&
-      init &&
-      !hasInitializedRef.current &&
-      isInitFailed === false
-    ) {
-      // console.log(
-      //   "🚀 Initializing new checkout session (no token provided)..."
-      // );
-      hasInitializedRef.current = true;
-
-      // Initialize with the third bundle variant from mappings (Best Value)
-      const thirdVariant = variantMappings.bundle3;
-      initializeSession();
-      if (thirdVariant?.variantId) {
-        init({
-          storeId: storeId,
-          lineItems: [
-            {
-              variantId: thirdVariant.variantId,
-              quantity: 1,
-            },
-          ],
-        }).catch(() => {
-          setIsInitFailed(true);
-        });
-      }
-    } else if (checkoutToken) {
-      // console.log(
-      //   "✅ CheckoutToken provided - skipping init(), auto-load should handle it"
-      // );
-    }
-  }, [checkoutToken, checkout, init, variantMappings]);
 
   // Clear payment errors when user starts typing in card fields
   useEffect(() => {
@@ -883,32 +825,38 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
         // Show error toast with field name
         const fieldDisplayNames: Record<string, string> = {
-          firstName: t(pluginConfig.content.checkout.fieldLabels.firstName),
-          lastName: t(pluginConfig.content.checkout.fieldLabels.lastName),
-          email: t(pluginConfig.content.checkout.fieldLabels.email),
-          phone: t(pluginConfig.content.checkout.fieldLabels.phone),
-          address1: t(pluginConfig.content.checkout.fieldLabels.address1),
-          country: t(pluginConfig.content.checkout.fieldLabels.country),
-          city: t(pluginConfig.content.checkout.fieldLabels.city),
-          state: t(pluginConfig.content.checkout.fieldLabels.state),
-          postal: t(pluginConfig.content.checkout.fieldLabels.postal),
-          cardNumber: t(pluginConfig.content.checkout.fieldLabels.cardNumber),
-          expiryDate: t(pluginConfig.content.checkout.fieldLabels.expiryDate),
-          cvc: t(pluginConfig.content.checkout.fieldLabels.cvc),
+          firstName: t(pluginConfig.content?.checkout?.fieldLabels?.firstName),
+          lastName: t(pluginConfig.content?.checkout?.fieldLabels?.lastName),
+          email: t(pluginConfig.content?.checkout?.fieldLabels?.email),
+          phone: t(pluginConfig.content?.checkout?.fieldLabels?.phone),
+          address1: t(pluginConfig.content?.checkout?.fieldLabels?.address1),
+          country: t(pluginConfig.content?.checkout?.fieldLabels?.country),
+          city: t(pluginConfig.content?.checkout?.fieldLabels?.city),
+          state: t(pluginConfig.content?.checkout?.fieldLabels?.state),
+          postal: t(pluginConfig.content?.checkout?.fieldLabels?.postal),
+          cardNumber: t(
+            pluginConfig.content?.checkout?.fieldLabels?.cardNumber
+          ),
+          expiryDate: t(
+            pluginConfig.content?.checkout?.fieldLabels?.expiryDate
+          ),
+          cvc: t(pluginConfig.content?.checkout?.fieldLabels?.cvc),
         };
 
         const displayName =
           fieldDisplayNames[firstErrorField] || firstErrorField;
         toast.error(
           String(
-            t(pluginConfig.content.checkout.toasts.validationField, "", {
+            t(pluginConfig.content?.checkout?.toasts?.validationField, "", {
               field: displayName,
             })
           )
         );
       } else {
         toast.error(
-          String(t(pluginConfig.content.checkout.toasts.validationGeneric, ""))
+          String(
+            t(pluginConfig.content?.checkout?.toasts?.validationGeneric, "")
+          )
         );
       }
 
@@ -920,7 +868,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     // Make sure checkout session is ready
     if (!checkout?.checkoutSession?.id || !updateCustomerAndSessionInfo) {
       toast.error(
-        String(t(pluginConfig.content.checkout.toasts.checkoutNotReady, ""))
+        String(t(pluginConfig.content?.checkout?.toasts?.checkoutNotReady, ""))
       );
       return;
     }
@@ -956,7 +904,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     );
     if (isStateRequired && !enhancedPaymentData.state?.trim()) {
       toast.error(
-        String(t(pluginConfig.content.checkout.toasts.stateMissing, ""))
+        String(t(pluginConfig.content?.checkout?.toasts?.stateMissing, ""))
       );
       // Focus state field
       setFocus("state");
@@ -983,7 +931,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
           source: "checkout", // Source is checkout for plugin usage
           onSuccess: () => {
             toast.success(
-              String(t(pluginConfig.content.checkout.toasts.paymentSuccess, ""))
+              String(
+                t(pluginConfig.content?.checkout?.toasts?.paymentSuccess, "")
+              )
             );
 
             // Show success message with payment details
@@ -998,7 +948,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
             toast.success(
               String(
                 t(
-                  pluginConfig.content.checkout.toasts.paymentSuccessDetailed,
+                  pluginConfig.content?.checkout?.toasts
+                    ?.paymentSuccessDetailed,
                   "",
                   { amount: amountValue }
                 )
@@ -1012,7 +963,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
             toast.error(
               String(
                 t(
-                  pluginConfig.content.checkout.toasts.paymentFailedWithReason,
+                  pluginConfig.content?.checkout?.toasts
+                    ?.paymentFailedWithReason,
                   "",
                   { reason: errorMsg }
                 )
@@ -1023,8 +975,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
             toast.loading(
               String(
                 t(
-                  pluginConfig.content.checkout.toasts
-                    .paymentVerificationRequired,
+                  pluginConfig.content?.checkout?.toasts
+                    ?.paymentVerificationRequired,
                   ""
                 )
               )
@@ -1034,7 +986,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       ).then((amountValue) => {
         console.log("paymentSuccess", amountValue);
         next({
-          type: "paymentSuccess",
+          type: FunnelEventType.CUSTOM,
           data: {
             amount: amountValue.payment,
           },
@@ -1046,11 +998,11 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         String(
           errorMsg
             ? t(
-                pluginConfig.content.checkout.toasts.paymentFailedWithReason,
+                pluginConfig.content?.checkout?.toasts?.paymentFailedWithReason,
                 "",
                 { reason: errorMsg }
               )
-            : t(pluginConfig.content.checkout.toasts.paymentFailed, "")
+            : t(pluginConfig.content?.checkout?.toasts?.paymentFailed, "")
         )
       );
     }
@@ -1080,17 +1032,25 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     }
 
     const variantId = selectedBundleData.variantId;
-    const priceMapping =
-      pluginConfig.prices[variantId as keyof typeof pluginConfig.prices];
-    const priceId = subscribeAndSave
-      ? priceMapping?.recurring
-      : priceMapping?.oneTime;
+    const product = getProductByVariantId(variantId);
+    if (!product) {
+      setSelectedBundle(previousSelection);
+      toast.error(
+        String(
+          t(pluginConfig.content?.checkout?.toasts?.pricingUnavailable, "")
+        )
+      );
+      return;
+    }
+    const priceId = subscribeAndSave ? product.recurring : product.oneTime;
 
     if (!priceId) {
       // Revert UI on critical error
       setSelectedBundle(previousSelection);
       toast.error(
-        String(t(pluginConfig.content.checkout.toasts.pricingUnavailable, ""))
+        String(
+          t(pluginConfig.content?.checkout?.toasts?.pricingUnavailable, "")
+        )
       );
       return;
     }
@@ -1130,7 +1090,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
       // Show error feedback
       toast.error(
-        String(t(pluginConfig.content.checkout.toasts.selectionFailed, ""))
+        String(t(pluginConfig.content?.checkout?.toasts?.selectionFailed, ""))
       );
     } finally {
       setIsUpdating(false);
@@ -1146,7 +1106,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     extractAddressComponents,
     clearPredictions,
   } = useGoogleAutocomplete({
-    apiKey: pluginConfig.googleApiKey,
+    apiKey: pluginConfig.googleApiKey || "",
     language: "en",
   });
 
@@ -1283,7 +1243,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         toast.success(
           String(
             t(
-              pluginConfig.content.checkout.shippingInformation.countryToast,
+              pluginConfig.content?.checkout?.shippingInformation?.countryToast,
               ""
             )
           )
@@ -1419,13 +1379,13 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   }
 
   // Only show error state for critical checkout errors (not loading state)
-  if (error || isInitFailed) {
+  if (error) {
     return (
       <div className="min-h-screen bg-gray-50 py-8">
         <div className="mx-auto max-w-md">
           <div className="rounded-lg bg-white p-6 shadow">
             <h1 className="mb-4 text-xl font-semibold text-red-600">
-              {t(pluginConfig.content.checkout.errors.genericTitle)}
+              {t(pluginConfig.content?.checkout?.errors?.genericTitle)}
             </h1>
             {error && (
               <p className="mb-4 text-gray-600">
@@ -1433,9 +1393,13 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
               </p>
             )}
             <p className="text-sm text-gray-500">
-              {t(pluginConfig.content.checkout.errors.genericDescription, "", {
-                supportEmail: pluginConfig.branding.supportEmail,
-              })}
+              {t(
+                pluginConfig.content?.checkout?.errors?.genericDescription,
+                "",
+                {
+                  supportEmail: pluginConfig.branding.supportEmail,
+                }
+              )}
             </p>
           </div>
         </div>
@@ -1453,17 +1417,17 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         <div className="flex items-center justify-center gap-2">
           <Sun className="h-5 w-5 text-amber-400" />
           <p className="font-semibold">
-            {t(pluginConfig.content.checkout.banner.title)}
+            {t(pluginConfig.content?.checkout?.banner?.title)}
           </p>
         </div>
         <p className="text-sm opacity-90">
-          {t(pluginConfig.content.checkout.banner.descriptionPrefix)}{" "}
+          {t(pluginConfig.content?.checkout?.banner?.descriptionPrefix)}{" "}
           <span className="font-semibold">
-            {t(pluginConfig.content.checkout.banner.freeShippingHighlight)}
+            {t(pluginConfig.content?.checkout?.banner?.freeShippingHighlight)}
           </span>{" "}
-          {t(pluginConfig.content.checkout.banner.descriptionSuffix)}{" "}
+          {t(pluginConfig.content?.checkout?.banner?.descriptionSuffix)}{" "}
           <span className="underline">
-            {t(pluginConfig.content.checkout.banner.sellOutRisk)}
+            {t(pluginConfig.content?.checkout?.banner?.sellOutRisk)}
           </span>
         </p>
       </header>
@@ -1481,12 +1445,13 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 <Lock className="h-3 w-3 text-emerald-600" />
                 <p className="text-xs font-medium text-gray-700 sm:text-sm">
                   {t(
-                    pluginConfig.content.checkout.navigation.secureCheckoutLabel
+                    pluginConfig.content?.checkout?.navigation
+                      ?.secureCheckoutLabel
                   )}
                 </p>
               </div>
               <p className="text-xs text-gray-600 sm:text-sm">
-                {t(pluginConfig.content.checkout.navigation.supportLabel)}{" "}
+                {t(pluginConfig.content?.checkout?.navigation?.supportLabel)}{" "}
                 {pluginConfig.branding.supportEmail}
               </p>
             </div>
@@ -1500,11 +1465,11 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
           <div className="space-y-5 sm:space-y-6 lg:col-span-3">
             <div className="flex items-center justify-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center text-sm font-medium text-emerald-800 sm:p-4 sm:text-base">
               <GlobeIcon />
-              {t(pluginConfig.content.checkout.notices.freeShipping)}
+              {t(pluginConfig.content?.checkout?.notices?.freeShipping)}
             </div>
             <div className="flex items-center justify-center gap-2 rounded-lg border border-orange-200 bg-orange-50 p-4 text-center text-sm font-medium text-orange-800 sm:p-4 sm:text-base">
               <TruckIcon />
-              {t(pluginConfig.content.checkout.notices.cartTimer, "", {
+              {t(pluginConfig.content?.checkout?.notices?.cartTimer, "", {
                 time: formatCartTimer(cartTimer),
               })}
             </div>
@@ -1522,11 +1487,11 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       1
                     </div>
                     <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">
-                      {t(pluginConfig.content.checkout.packages.title)}
+                      {t(pluginConfig.content?.checkout?.packages?.title)}
                     </h2>
                   </div>
                   <p className="text-sm text-gray-600 sm:text-base">
-                    {t(pluginConfig.content.checkout.packages.subtitle)}
+                    {t(pluginConfig.content?.checkout?.packages?.subtitle)}
                   </p>
                 </div>
               </div>
@@ -1549,8 +1514,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     >
                       <span className="text-emerald-600">💰</span>
                       {t(
-                        pluginConfig.content.checkout.packages
-                          .subscriptionToggleLabel
+                        pluginConfig.content?.checkout?.packages
+                          ?.subscriptionToggleLabel
                       )}
                     </Label>
                   </div>
@@ -1560,11 +1525,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
               <div className="flex justify-between px-2 text-xs font-medium text-gray-600 sm:px-4 sm:text-sm">
                 <span>
                   {t(
-                    pluginConfig.content.checkout.packages.packageDetailsLabel
+                    pluginConfig.content?.checkout?.packages
+                      ?.packageDetailsLabel
                   )}
                 </span>
                 <span>
-                  {t(pluginConfig.content.checkout.packages.pricePerUnitLabel)}
+                  {t(
+                    pluginConfig.content?.checkout?.packages?.pricePerUnitLabel
+                  )}
                 </span>
               </div>
 
@@ -1573,7 +1541,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 <div className="flex items-center justify-center py-8">
                   <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-blue-600"></div>
                   <p className="ml-2 text-gray-600">
-                    {t(pluginConfig.content.checkout.packages.loadingMessage)}
+                    {t(
+                      pluginConfig.content?.checkout?.packages?.loadingMessage
+                    )}
                   </p>
                 </div>
               ) : (
@@ -1596,8 +1566,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                         <div className="absolute -right-3 -top-3 z-10">
                           <span className="rounded-full border border-emerald-500 bg-gradient-to-r from-emerald-600 to-emerald-700 px-3 py-1.5 text-xs font-semibold text-white shadow-sm">
                             {t(
-                              pluginConfig.content.checkout.packages
-                                .bestValueBadge
+                              pluginConfig.content?.checkout?.packages
+                                ?.bestValueBadge
                             )}
                           </span>
                         </div>
@@ -1654,13 +1624,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                         </p>
                         <p className="text-sm text-gray-500">
                           {t(
-                            pluginConfig.content.checkout.packages.perUnitLabel
+                            pluginConfig.content?.checkout?.packages
+                              ?.perUnitLabel
                           )}
                         </p>
                         <p className="text-sm font-medium text-emerald-600">
                           {t(
-                            pluginConfig.content.checkout.packages
-                              .freeShippingLabel
+                            pluginConfig.content?.checkout?.packages
+                              ?.freeShippingLabel
                           )}
                         </p>
 
@@ -1683,120 +1654,12 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
             </div>
 
             <p className="rounded-lg border border-orange-200 bg-orange-50 py-3 text-center text-sm font-medium text-orange-700 sm:text-base">
-              {t(pluginConfig.content.checkout.notices.limitedStock, "", {
+              {t(pluginConfig.content?.checkout?.notices?.limitedStock, "", {
                 count: limitedStockCount,
               })}
             </p>
 
-            <div
-              className={`relative cursor-pointer touch-manipulation select-none rounded-xl border-2 p-5 shadow-sm transition-all duration-300 sm:p-6 ${
-                orderBumpSelected
-                  ? "border-emerald-500 bg-emerald-50 shadow-sm ring-1 ring-emerald-200"
-                  : "border-slate-300 bg-slate-50 hover:bg-slate-100 hover:shadow-sm active:scale-[0.98]"
-              }`}
-              onClick={() => handleOrderBumpToggle(!orderBumpSelected)}
-            >
-              <div className="absolute -right-2 -top-2 rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white shadow-sm">
-                {t(pluginConfig.content.checkout.orderBump.badgeLabel)}
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div
-                  className="flex h-7 w-7 items-center justify-center"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Checkbox
-                    id="order-bump-expedited-shipping"
-                    checked={orderBumpSelected}
-                    onCheckedChange={(checked) =>
-                      handleOrderBumpToggle(!!checked)
-                    }
-                    className={`h-6 w-6 border-2 transition-all duration-200 ${
-                      orderBumpSelected
-                        ? "border-emerald-500 bg-emerald-500 data-[state=checked]:bg-emerald-500"
-                        : "border-slate-400 hover:border-slate-500 data-[state=checked]:bg-slate-500"
-                    }`}
-                  />
-                </div>
-
-                <div className="flex-1">
-                  <div className="mb-3 flex items-center gap-2">
-                    <div
-                      className={`rounded-full p-1 ${
-                        orderBumpSelected ? "bg-emerald-500" : "bg-slate-500"
-                      }`}
-                    >
-                      <Heart className="h-4 w-4 text-white" />
-                    </div>
-                    <span
-                      className={`text-base font-semibold tracking-wide ${
-                        orderBumpSelected
-                          ? "text-emerald-700"
-                          : "text-slate-700"
-                      }`}
-                    >
-                      {t(pluginConfig.content.checkout.orderBump.title)}
-                    </span>
-                    {orderBumpSelected && (
-                      <span className="ml-auto rounded-full bg-emerald-500 px-2 py-0.5 text-xs font-semibold text-white">
-                        {t(pluginConfig.content.checkout.orderBump.addedBadge)}
-                      </span>
-                    )}
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="text-lg font-semibold text-gray-900 sm:text-xl">
-                      {t(pluginConfig.content.checkout.orderBump.headline)}
-                    </h4>
-                    <p
-                      className="text-base leading-relaxed text-gray-700"
-                      dangerouslySetInnerHTML={{
-                        __html: t(
-                          pluginConfig.content.checkout.orderBump.description
-                        ),
-                      }}
-                    />
-                    <div className="mt-3 grid grid-cols-1 gap-2 text-sm text-gray-600 sm:grid-cols-2">
-                      <div className="flex items-center gap-2">
-                        <span className="text-emerald-600">✓</span>
-                        <span>
-                          {t(
-                            pluginConfig.content.checkout.orderBump
-                              .priorityProcessing
-                          )}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-emerald-600">✓</span>
-                        <span>
-                          {t(
-                            pluginConfig.content.checkout.orderBump
-                              .fasterDelivery
-                          )}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-emerald-600">✓</span>
-                        <span>
-                          {t(
-                            pluginConfig.content.checkout.orderBump
-                              .trackingIncluded
-                          )}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-emerald-600">✓</span>
-                        <span>
-                          {t(
-                            pluginConfig.content.checkout.orderBump
-                              .dedicatedSupport
-                          )}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <OrderBump checkoutToken={checkoutToken} />
 
             {/* Step 2 - Customer Information */}
             <div className="space-y-5 rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:space-y-6 sm:p-6">
@@ -1805,7 +1668,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   2
                 </div>
                 <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">
-                  {t(pluginConfig.content.checkout.customerInformation.title)}
+                  {t(
+                    pluginConfig.content?.checkout?.customerInformation?.title
+                  )}
                 </h2>
               </div>
               {/* 🚀 NEW: Using useAddress hook for cleaner form handling */}
@@ -1814,8 +1679,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   <Input
                     {...form.register("firstName")}
                     placeholder={t(
-                      pluginConfig.content.checkout.customerInformation
-                        .firstNamePlaceholder
+                      pluginConfig.content?.checkout?.customerInformation
+                        ?.firstNamePlaceholder
                     )}
                     data-address-field="firstName"
                     className={cn(
@@ -1829,8 +1694,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   {errors.firstName && (
                     <p className="mt-2 text-sm text-red-600">
                       {t(
-                        pluginConfig.content.checkout.validation
-                          .firstNameRequired
+                        pluginConfig.content?.checkout?.validation
+                          ?.firstNameRequired
                       )}
                     </p>
                   )}
@@ -1839,8 +1704,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   <Input
                     {...form.register("lastName")}
                     placeholder={t(
-                      pluginConfig.content.checkout.customerInformation
-                        .lastNamePlaceholder
+                      pluginConfig.content?.checkout?.customerInformation
+                        ?.lastNamePlaceholder
                     )}
                     data-address-field="lastName"
                     className={cn(
@@ -1854,8 +1719,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   {errors.lastName && (
                     <p className="mt-2 text-sm text-red-600">
                       {t(
-                        pluginConfig.content.checkout.validation
-                          .lastNameRequired
+                        pluginConfig.content?.checkout?.validation
+                          ?.lastNameRequired
                       )}
                     </p>
                   )}
@@ -1865,8 +1730,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     {...form.register("email")}
                     type="email"
                     placeholder={t(
-                      pluginConfig.content.checkout.customerInformation
-                        .emailPlaceholder
+                      pluginConfig.content?.checkout?.customerInformation
+                        ?.emailPlaceholder
                     )}
                     data-address-field="email"
                     className={cn(
@@ -1880,7 +1745,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   {errors.email && (
                     <p className="mt-2 text-sm text-red-600">
                       {t(
-                        pluginConfig.content.checkout.validation.emailRequired
+                        pluginConfig.content?.checkout?.validation
+                          ?.emailRequired
                       )}
                     </p>
                   )}
@@ -1890,8 +1756,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     {...form.register("phone")}
                     type="tel"
                     placeholder={t(
-                      pluginConfig.content.checkout.customerInformation
-                        .phonePlaceholder
+                      pluginConfig.content?.checkout?.customerInformation
+                        ?.phonePlaceholder
                     )}
                     data-address-field="phone"
                     className={cn(
@@ -1905,7 +1771,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   {errors.phone && (
                     <p className="mt-2 text-sm text-red-600">
                       {t(
-                        pluginConfig.content.checkout.validation.phoneRequired
+                        pluginConfig.content?.checkout?.validation
+                          ?.phoneRequired
                       )}
                     </p>
                   )}
@@ -1917,7 +1784,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   3
                 </div>
                 <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">
-                  {t(pluginConfig.content.checkout.shippingInformation.title)}
+                  {t(
+                    pluginConfig.content?.checkout?.shippingInformation?.title
+                  )}
                 </h2>
               </div>
               <div className="space-y-4">
@@ -1925,8 +1794,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="country" className="mb-1">
                     {t(
-                      pluginConfig.content.checkout.shippingInformation
-                        .countryLabel
+                      pluginConfig.content?.checkout?.shippingInformation
+                        ?.countryLabel
                     )}
                   </Label>
                   <Combobox
@@ -1941,8 +1810,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                         toast.success(
                           String(
                             t(
-                              pluginConfig.content.checkout.shippingInformation
-                                .countryToast,
+                              pluginConfig.content?.checkout
+                                ?.shippingInformation?.countryToast,
                               ""
                             )
                           )
@@ -1950,8 +1819,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       }
                     }}
                     placeholder={t(
-                      pluginConfig.content.checkout.shippingInformation
-                        .countryPlaceholder
+                      pluginConfig.content?.checkout?.shippingInformation
+                        ?.countryPlaceholder
                     )}
                     error={!!errors.country}
                     className="h-14"
@@ -1960,7 +1829,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   {errors.country && (
                     <p className="mt-2 text-sm text-red-600">
                       {t(
-                        pluginConfig.content.checkout.validation.countryRequired
+                        pluginConfig.content?.checkout?.validation
+                          ?.countryRequired
                       )}
                     </p>
                   )}
@@ -1986,8 +1856,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       <div className="ml-3">
                         <p className="text-sm leading-relaxed text-blue-800">
                           {t(
-                            pluginConfig.content.checkout.shippingInformation
-                              .helperMessage
+                            pluginConfig.content?.checkout?.shippingInformation
+                              ?.helperMessage
                           )}
                         </p>
                       </div>
@@ -2004,8 +1874,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="address1" className="mb-1">
                       {t(
-                        pluginConfig.content.checkout.shippingInformation
-                          .streetLabel
+                        pluginConfig.content?.checkout?.shippingInformation
+                          ?.streetLabel
                       )}
                     </Label>
                     <div className="relative">
@@ -2017,12 +1887,12 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                         placeholder={
                           isCountrySelected
                             ? t(
-                                pluginConfig.content.checkout
-                                  .shippingInformation.streetPlaceholder
+                                pluginConfig.content?.checkout
+                                  ?.shippingInformation?.streetPlaceholder
                               )
                             : t(
-                                pluginConfig.content.checkout
-                                  .shippingInformation.streetLockedPlaceholder
+                                pluginConfig.content?.checkout
+                                  ?.shippingInformation?.streetLockedPlaceholder
                               )
                         }
                         data-address-field="address1"
@@ -2064,8 +1934,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     {errors.address1 && (
                       <p className="mt-2 text-sm text-red-600">
                         {t(
-                          pluginConfig.content.checkout.validation
-                            .addressRequired
+                          pluginConfig.content?.checkout?.validation
+                            ?.addressRequired
                         )}
                       </p>
                     )}
@@ -2074,8 +1944,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="address2" className="mb-1">
                       {t(
-                        pluginConfig.content.checkout.shippingInformation
-                          .address2Label
+                        pluginConfig.content?.checkout?.shippingInformation
+                          ?.address2Label
                       )}
                     </Label>
                     <Input
@@ -2084,8 +1954,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       onChange={(e) => setValue("address2", e.target.value)}
                       disabled={!isCountrySelected}
                       placeholder={t(
-                        pluginConfig.content.checkout.shippingInformation
-                          .address2Placeholder
+                        pluginConfig.content?.checkout?.shippingInformation
+                          ?.address2Placeholder
                       )}
                       data-address-field="address2"
                       className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-gray-100 ${
@@ -2105,8 +1975,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     <div className="flex w-full flex-col gap-2">
                       <Label htmlFor="city" className="mb-1">
                         {t(
-                          pluginConfig.content.checkout.shippingInformation
-                            .cityLabel
+                          pluginConfig.content?.checkout?.shippingInformation
+                            ?.cityLabel
                         )}
                       </Label>
                       <Input
@@ -2115,8 +1985,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                         onChange={(e) => setValue("city", e.target.value)}
                         disabled={!isCountrySelected}
                         placeholder={t(
-                          pluginConfig.content.checkout.shippingInformation
-                            .cityPlaceholder
+                          pluginConfig.content?.checkout?.shippingInformation
+                            ?.cityPlaceholder
                         )}
                         data-address-field="city"
                         className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-gray-100 ${
@@ -2128,8 +1998,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       {errors.city && (
                         <p className="mt-2 text-sm text-red-600">
                           {t(
-                            pluginConfig.content.checkout.validation
-                              .cityRequired
+                            pluginConfig.content?.checkout?.validation
+                              ?.cityRequired
                           )}
                         </p>
                       )}
@@ -2137,21 +2007,21 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     <div className="flex w-full flex-col gap-2">
                       <Label htmlFor="state" className="mb-1">
                         {t(
-                          pluginConfig.content.checkout.shippingInformation
-                            .stateLabel
+                          pluginConfig.content?.checkout?.shippingInformation
+                            ?.stateLabel
                         )}
                         <span className="ml-2 text-xs text-gray-500">
                           (
                           {availableStates.length > 0
                             ? t(
-                                pluginConfig.content.checkout
-                                  .shippingInformation.stateOptionsSuffix,
+                                pluginConfig.content?.checkout
+                                  ?.shippingInformation?.stateOptionsSuffix,
                                 "",
                                 { count: availableStates.length }
                               )
                             : t(
-                                pluginConfig.content.checkout
-                                  .shippingInformation.stateManualSuffix
+                                pluginConfig.content?.checkout
+                                  ?.shippingInformation?.stateManualSuffix
                               )}
                           )
                         </span>
@@ -2167,8 +2037,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                             setValue("state", stateCode)
                           }
                           placeholder={t(
-                            pluginConfig.content.checkout.shippingInformation
-                              .stateSelectPlaceholder
+                            pluginConfig.content?.checkout?.shippingInformation
+                              ?.stateSelectPlaceholder
                           )}
                           error={!!errors.state}
                           className="h-14"
@@ -2181,12 +2051,13 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                           placeholder={
                             isCountrySelected
                               ? t(
-                                  pluginConfig.content.checkout
-                                    .shippingInformation.stateInputPlaceholder
+                                  pluginConfig.content?.checkout
+                                    ?.shippingInformation?.stateInputPlaceholder
                                 )
                               : t(
-                                  pluginConfig.content.checkout
-                                    .shippingInformation.stateLockedPlaceholder
+                                  pluginConfig.content?.checkout
+                                    ?.shippingInformation
+                                    ?.stateLockedPlaceholder
                                 )
                           }
                           data-address-field="state"
@@ -2200,8 +2071,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       {errors.state && (
                         <p className="mt-2 text-sm text-red-600">
                           {t(
-                            pluginConfig.content.checkout.validation
-                              .stateRequired
+                            pluginConfig.content?.checkout?.validation
+                              ?.stateRequired
                           )}
                         </p>
                       )}
@@ -2212,8 +2083,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     <div className="flex w-full flex-col gap-2">
                       <Label htmlFor="postal" className="mb-1">
                         {t(
-                          pluginConfig.content.checkout.shippingInformation
-                            .postalLabel
+                          pluginConfig.content?.checkout?.shippingInformation
+                            ?.postalLabel
                         )}
                       </Label>
                       <Input
@@ -2221,8 +2092,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                         onChange={(e) => setValue("postal", e.target.value)}
                         disabled={!isCountrySelected}
                         placeholder={t(
-                          pluginConfig.content.checkout.shippingInformation
-                            .postalPlaceholder
+                          pluginConfig.content?.checkout?.shippingInformation
+                            ?.postalPlaceholder
                         )}
                         data-address-field="postal"
                         className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-gray-100 ${
@@ -2234,8 +2105,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       {errors.postal && (
                         <p className="mt-2 text-sm text-red-600">
                           {t(
-                            pluginConfig.content.checkout.validation
-                              .postalRequired
+                            pluginConfig.content?.checkout?.validation
+                              ?.postalRequired
                           )}
                         </p>
                       )}
@@ -2244,8 +2115,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 </div>
                 <p className="mt-2 text-sm text-slate-600">
                   {t(
-                    pluginConfig.content.checkout.shippingInformation
-                      .requiredFieldsNote
+                    pluginConfig.content?.checkout?.shippingInformation
+                      ?.requiredFieldsNote
                   )}
                 </p>
               </div>
@@ -2263,12 +2134,12 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   4
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900">
-                  {t(pluginConfig.content.checkout.payment.title)}
+                  {t(pluginConfig.content?.checkout?.payment?.title)}
                 </h3>
               </div>
               <p className="mb-5 flex items-center gap-2 text-sm text-gray-600">
                 <Lock className="h-4 w-4 text-emerald-600" />
-                {t(pluginConfig.content.checkout.payment.securityMessage)}
+                {t(pluginConfig.content?.checkout?.payment?.securityMessage)}
               </p>
 
               {/* Payment Error Display */}
@@ -2282,7 +2153,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 <div className="flex items-center gap-2">
                   <div className="h-3 w-3 rounded-full bg-blue-600 sm:h-4 sm:w-4" />
                   <span className="text-sm font-medium sm:text-base">
-                    {t(pluginConfig.content.checkout.payment.cardMethodLabel)}
+                    {t(
+                      pluginConfig.content?.checkout?.payment?.cardMethodLabel
+                    )}
                   </span>
                 </div>
                 <div className="flex gap-1">
@@ -2321,8 +2194,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   <Input
                     value={watch("cardNumber")}
                     placeholder={t(
-                      pluginConfig.content.checkout.payment
-                        .cardNumberPlaceholder
+                      pluginConfig.content?.checkout?.payment
+                        ?.cardNumberPlaceholder
                     )}
                     className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 ${
                       errors.cardNumber
@@ -2338,8 +2211,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   {errors.cardNumber && (
                     <p className="mt-2 text-sm text-red-600">
                       {t(
-                        pluginConfig.content.checkout.validation
-                          .cardNumberRequired
+                        pluginConfig.content?.checkout?.validation
+                          ?.cardNumberRequired
                       )}
                     </p>
                   )}
@@ -2349,7 +2222,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     <Input
                       value={watch("expiryDate")}
                       placeholder={t(
-                        pluginConfig.content.checkout.payment.expiryPlaceholder
+                        pluginConfig.content?.checkout?.payment
+                          ?.expiryPlaceholder
                       )}
                       className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 ${
                         errors.expiryDate
@@ -2365,8 +2239,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     {errors.expiryDate && (
                       <p className="mt-2 text-sm text-red-600">
                         {t(
-                          pluginConfig.content.checkout.validation
-                            .expiryRequired
+                          pluginConfig.content?.checkout?.validation
+                            ?.expiryRequired
                         )}
                       </p>
                     )}
@@ -2375,7 +2249,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     <Input
                       value={watch("cvc")}
                       placeholder={t(
-                        pluginConfig.content.checkout.payment.cvcPlaceholder
+                        pluginConfig.content?.checkout?.payment?.cvcPlaceholder
                       )}
                       className={`h-14 rounded-lg border-gray-300 text-base transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-100 ${
                         errors.cvc
@@ -2391,7 +2265,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     {errors.cvc && (
                       <p className="mt-2 text-sm text-red-600">
                         {t(
-                          pluginConfig.content.checkout.validation.cvcRequired
+                          pluginConfig.content?.checkout?.validation
+                            ?.cvcRequired
                         )}
                       </p>
                     )}
@@ -2410,35 +2285,39 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                   <div className="flex items-center justify-center gap-2">
                     <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white sm:h-6 sm:w-6"></div>
                     {t(
-                      pluginConfig.content.checkout.payment
-                        .buttonProcessingLabel
+                      pluginConfig.content?.checkout?.payment
+                        ?.buttonProcessingLabel
                     )}
                   </div>
                 ) : (
-                  t(pluginConfig.content.checkout.payment.buttonLabel)
+                  t(pluginConfig.content?.checkout?.payment?.buttonLabel)
                 )}
               </Button>
               <div className="mt-4 space-y-3 text-center">
                 <p className="text-sm font-medium text-gray-600">
-                  {t(pluginConfig.content.checkout.payment.guaranteeBadgeTitle)}
+                  {t(
+                    pluginConfig.content?.checkout?.payment?.guaranteeBadgeTitle
+                  )}
                 </p>
                 <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
                   <Lock className="h-3 w-3 text-emerald-600" />
                   <span>
-                    {t(pluginConfig.content.checkout.payment.sslBadge)}
+                    {t(pluginConfig.content?.checkout?.payment?.sslBadge)}
                   </span>
                   <span>•</span>
                   <span>
-                    {t(pluginConfig.content.checkout.payment.encryptionBadge)}
+                    {t(
+                      pluginConfig.content?.checkout?.payment?.encryptionBadge
+                    )}
                   </span>
                   <span>•</span>
                   <span>
-                    {t(pluginConfig.content.checkout.payment.nortonBadge)}
+                    {t(pluginConfig.content?.checkout?.payment?.nortonBadge)}
                   </span>
                 </div>
               </div>
               <p className="my-4 text-center text-xs text-gray-500">
-                {t(pluginConfig.content.checkout.payment.agreementText)}
+                {t(pluginConfig.content?.checkout?.payment?.agreementText)}
               </p>
               <div className="flex flex-wrap items-center justify-center gap-2">
                 <img
@@ -2479,26 +2358,26 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
               </div>
               <p className="mt-4 flex items-center justify-center gap-2 text-center text-xs text-gray-500 sm:text-sm">
                 <Lock className="h-3 w-3 text-emerald-600 sm:h-4 sm:w-4" />
-                {t(pluginConfig.content.checkout.payment.secureFooter)}
+                {t(pluginConfig.content?.checkout?.payment?.secureFooter)}
               </p>
             </div>
 
             <div className="flex items-center gap-4 rounded-xl border border-emerald-100 bg-emerald-50 p-4">
               <img
                 src="https://img.funnelish.com/9938/69802/1678959839-op.webp"
-                alt={t(pluginConfig.content.checkout.payment.guaranteeTitle)}
+                alt={t(pluginConfig.content?.checkout?.payment?.guaranteeTitle)}
                 width={80}
                 height={80}
                 className="sm:h-[100px] sm:w-[100px]"
               />
               <div>
                 <h4 className="text-base font-semibold text-emerald-800 sm:text-lg">
-                  {t(pluginConfig.content.checkout.payment.guaranteeTitle)}
+                  {t(pluginConfig.content?.checkout?.payment?.guaranteeTitle)}
                 </h4>
                 <p className="text-sm leading-relaxed text-emerald-700">
                   {t(
-                    pluginConfig.content.checkout.payment
-                      .guaranteeBadgeDescription
+                    pluginConfig.content?.checkout?.payment
+                      ?.guaranteeBadgeDescription
                   )}
                 </p>
               </div>
@@ -2506,10 +2385,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
             <div className="space-y-4">
               <h4 className="text-base font-semibold text-gray-900 sm:text-lg">
-                {t(pluginConfig.content.checkout.reviews.topSectionTitle)}
+                {t(pluginConfig.content?.checkout?.reviews?.topSectionTitle)}
               </h4>
               {pluginConfig.testimonials
-                .slice(0, 3)
+                ?.slice(0, 3)
                 .map((testimonial, index) => (
                   <div
                     key={`testimonial-${testimonial.name}-${index}`}
@@ -2534,10 +2413,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                       </div>
                       <div className="flex items-center gap-4 text-xs text-gray-500">
                         <span className="cursor-pointer font-medium hover:text-blue-600">
-                          {t(pluginConfig.content.checkout.reviews.likeAction)}
+                          {t(
+                            pluginConfig.content?.checkout?.reviews?.likeAction
+                          )}
                         </span>
                         <span className="cursor-pointer font-medium hover:text-blue-600">
-                          {t(pluginConfig.content.checkout.reviews.replyAction)}
+                          {t(
+                            pluginConfig.content?.checkout?.reviews?.replyAction
+                          )}
                         </span>
                         <span>{t(testimonial.time)}</span>
                         <div className="ml-auto flex items-center gap-1 rounded-full border border-gray-100 bg-white px-2 py-1 shadow-sm">
@@ -2562,14 +2445,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
           <div className="p-4">
             <div className="mb-3 flex items-center justify-center gap-2 text-xs text-gray-600">
               <span className="font-medium text-emerald-600">
-                {t(pluginConfig.content.checkout.stickyBar.freeShipping)}
+                {t(pluginConfig.content?.checkout?.stickyBar?.freeShipping)}
               </span>
               <span>•</span>
               <span>
-                {t(pluginConfig.content.checkout.stickyBar.guarantee)}
+                {t(pluginConfig.content?.checkout?.stickyBar?.guarantee)}
               </span>
               <span>•</span>
-              <span>{t(pluginConfig.content.checkout.stickyBar.ssl)}</span>
+              <span>{t(pluginConfig.content?.checkout?.stickyBar?.ssl)}</span>
             </div>
             <Button
               className={`w-full touch-manipulation bg-gradient-to-r from-blue-600 to-blue-700 py-4 text-lg font-semibold text-white shadow-sm transition-all duration-200 hover:from-blue-700 hover:to-blue-800 hover:shadow-md ${
@@ -2583,14 +2466,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 <div className="flex items-center justify-center gap-2">
                   <div className="h-4 w-4 animate-spin rounded-full border-b-2 border-white"></div>
                   {t(
-                    pluginConfig.content.checkout.stickyBar
-                      .buttonProcessingLabel
+                    pluginConfig.content?.checkout?.stickyBar
+                      ?.buttonProcessingLabel
                   )}
                 </div>
               ) : (
                 <>
                   <Lock className="mr-2 h-4 w-4" />
-                  {t(pluginConfig.content.checkout.stickyBar.buttonLabel)}
+                  {t(pluginConfig.content?.checkout?.stickyBar?.buttonLabel)}
                 </>
               )}
             </Button>
@@ -2601,10 +2484,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       <section className="bg-white py-12">
         <div className="container mx-auto px-6 md:px-12">
           <h2 className="mb-8 text-center text-2xl font-semibold text-gray-900 sm:text-3xl">
-            {t(pluginConfig.content.checkout.reviews.gridSectionTitle)}
+            {t(pluginConfig.content?.checkout?.reviews?.gridSectionTitle)}
           </h2>
           <div className="columns-1 gap-6 sm:columns-2 lg:columns-4">
-            {pluginConfig.reviews.slice(0, 8).map((review, index) => {
+            {pluginConfig.reviews?.slice(0, 8).map((review, index) => {
               // Create varying heights for Pinterest-style layout
               const heights = [
                 "h-64",
@@ -2639,7 +2522,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                         <img
                           src="//img.funnelish.com/78897/762729/1742988496-checked.png"
                           alt={t(
-                            pluginConfig.content.checkout.reviews.verifiedAlt
+                            pluginConfig.content?.checkout?.reviews?.verifiedAlt
                           )}
                           width={16}
                           height={16}
@@ -2650,7 +2533,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                     <div className="mb-2 flex">
                       <img
                         src="//img.funnelish.com/3947/36340/1662480996-amazon-5-stars-png-1-.png"
-                        alt={t(pluginConfig.content.checkout.reviews.starsAlt)}
+                        alt={t(
+                          pluginConfig.content?.checkout?.reviews?.starsAlt
+                        )}
                         width={90}
                         height={18}
                         className="h-4"
@@ -2683,24 +2568,24 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                 href="#terms"
                 className="transition-colors hover:text-blue-600"
               >
-                {t(pluginConfig.content.checkout.footer.termsLabel)}
+                {t(pluginConfig.content?.checkout?.footer?.termsLabel)}
               </a>
               <a
                 href="#privacy"
                 className="transition-colors hover:text-blue-600"
               >
-                {t(pluginConfig.content.checkout.footer.privacyLabel)}
+                {t(pluginConfig.content?.checkout?.footer?.privacyLabel)}
               </a>
               <a
                 href="#wireless"
                 className="transition-colors hover:text-blue-600"
               >
-                {t(pluginConfig.content.checkout.footer.wirelessLabel)}
+                {t(pluginConfig.content?.checkout?.footer?.wirelessLabel)}
               </a>
             </div>
             <div className="text-center text-sm leading-relaxed text-gray-600">
               <p className="mb-2">
-                {t(pluginConfig.content.checkout.footer.rightsReserved, "", {
+                {t(pluginConfig.content?.checkout?.footer?.rightsReserved, "", {
                   year: currentYear,
                   company: companyName,
                 })}

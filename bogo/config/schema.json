@@ -1,0 +1,1446 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BOGO Plugin Configuration",
+  "type": "object",
+  "properties": {
+    "configName": {
+      "type": "string",
+      "title": "Config Name",
+      "default": "default"
+    },
+    "branding": {
+      "type": "object",
+      "title": "Branding",
+      "properties": {
+        "logoUrl": {
+          "type": "string",
+          "title": "Logo URL",
+          "format": "uri",
+          "default": "https://tagadapay.com/logo-landing.png"
+        },
+        "companyName": {
+          "type": "object",
+          "title": "Company Name",
+          "format": "translation",
+          "default": {
+            "en": "Tagada",
+            "fr": "Tagada",
+            "es": "Tagada"
+          }
+        },
+        "supportEmail": {
+          "type": "string",
+          "title": "Support Email",
+          "format": "email",
+          "default": "tagada@customer.online"
+        },
+        "storeName": {
+          "type": "object",
+          "title": "Store Name",
+          "format": "translation",
+          "default": {
+            "en": "Tagada",
+            "fr": "Tagada",
+            "es": "Tagada"
+          }
+        }
+      }
+    },
+    "products": {
+      "type": "array",
+      "title": "Products",
+      "items": {
+        "type": "object",
+        "properties": {
+          "variantID": {
+            "type": "string",
+            "title": "Variant ID",
+            "format": "variantSelector"
+          },
+          "oneTime": {
+            "type": "string",
+            "title": "One Time Price ID",
+            "format": "priceSelector"
+          },
+          "recurring": {
+            "type": "string",
+            "title": "Recurring Price ID",
+            "format": "priceSelector"
+          },
+          "quantity": {
+            "type": "number",
+            "title": "Quantity",
+            "minimum": 1
+          }
+        }
+      },
+      "default": [
+        {
+          "variantID": "variant_4dc634640bff",
+          "oneTime": "price_4b5a84e7ef05",
+          "recurring": "price_c99c5e92de03",
+          "quantity": 1
+        },
+        {
+          "variantID": "variant_02e3520f9c78",
+          "oneTime": "price_08f674175c63",
+          "recurring": "price_e56c98d5faa2",
+          "quantity": 2
+        },
+        {
+          "variantID": "variant_ae4642c60ede",
+          "oneTime": "price_17d240738a17",
+          "recurring": "price_23d3abc03bca",
+          "quantity": 3
+        }
+      ]
+    },
+    "orderBumpId": {
+      "type": "string",
+      "title": "Order Bump ID",
+      "default": "up_sell_ob_offer_6fbaec5b49a4"
+    },
+    "defaultCurrency": {
+      "type": "string",
+      "title": "Default Currency",
+      "default": "USD"
+    },
+    "googleApiKey": {
+      "type": "string",
+      "title": "Google API Key",
+      "default": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow"
+    },
+    "content": {
+      "type": "object",
+      "title": "Content",
+      "properties": {
+        "app": {
+          "type": "object",
+          "title": "App Content",
+          "properties": {
+            "redirect": {
+              "type": "object",
+              "title": "Redirect",
+              "properties": {
+                "redirectingMessage": {
+                  "type": "object",
+                  "title": "Redirecting Message",
+                  "format": "translation"
+                },
+                "loadingMessage": {
+                  "type": "object",
+                  "title": "Loading Message",
+                  "format": "translation"
+                }
+              }
+            },
+            "suspense": {
+              "type": "object",
+              "title": "Suspense",
+              "properties": {
+                "defaultLoading": {
+                  "type": "object",
+                  "title": "Default Loading",
+                  "format": "translation"
+                },
+                "checkoutLoading": {
+                  "type": "object",
+                  "title": "Checkout Loading",
+                  "format": "translation"
+                },
+                "orderLoading": {
+                  "type": "object",
+                  "title": "Order Loading",
+                  "format": "translation"
+                }
+              }
+            },
+            "errors": {
+              "type": "object",
+              "title": "Errors",
+              "properties": {
+                "orderIdRequiredTitle": {
+                  "type": "object",
+                  "title": "Order ID Required Title",
+                  "format": "translation"
+                },
+                "orderIdRequiredDescription": {
+                  "type": "object",
+                  "title": "Order ID Required Description",
+                  "format": "translation"
+                }
+              }
+            }
+          }
+        },
+        "checkout": {
+          "type": "object",
+          "title": "Checkout Content",
+          "properties": {
+            "banner": {
+              "type": "object",
+              "title": "Banner",
+              "properties": {
+                "title": {
+                  "type": "object",
+                  "title": "Title",
+                  "format": "translation"
+                },
+                "descriptionPrefix": {
+                  "type": "object",
+                  "title": "Description Prefix",
+                  "format": "translation"
+                },
+                "freeShippingHighlight": {
+                  "type": "object",
+                  "title": "Free Shipping Highlight",
+                  "format": "translation"
+                },
+                "descriptionSuffix": {
+                  "type": "object",
+                  "title": "Description Suffix",
+                  "format": "translation"
+                },
+                "sellOutRisk": {
+                  "type": "object",
+                  "title": "Sell Out Risk",
+                  "format": "translation"
+                }
+              }
+            },
+            "navigation": {
+              "type": "object",
+              "title": "Navigation",
+              "properties": {
+                "secureCheckoutLabel": {
+                  "type": "object",
+                  "title": "Secure Checkout Label",
+                  "format": "translation"
+                },
+                "supportLabel": {
+                  "type": "object",
+                  "title": "Support Label",
+                  "format": "translation"
+                }
+              }
+            },
+            "notices": {
+              "type": "object",
+              "title": "Notices",
+              "properties": {
+                "freeShipping": {
+                  "type": "object",
+                  "title": "Free Shipping",
+                  "format": "translation"
+                },
+                "cartTimer": {
+                  "type": "object",
+                  "title": "Cart Timer",
+                  "format": "translation"
+                },
+                "limitedStock": {
+                  "type": "object",
+                  "title": "Limited Stock",
+                  "format": "translation"
+                }
+              }
+            },
+            "packages": {
+              "type": "object",
+              "title": "Packages",
+              "properties": {
+                "title": {
+                  "type": "object",
+                  "title": "Title",
+                  "format": "translation"
+                },
+                "subtitle": {
+                  "type": "object",
+                  "title": "Subtitle",
+                  "format": "translation"
+                },
+                "packageDetailsLabel": {
+                  "type": "object",
+                  "title": "Package Details Label",
+                  "format": "translation"
+                },
+                "pricePerUnitLabel": {
+                  "type": "object",
+                  "title": "Price Per Unit Label",
+                  "format": "translation"
+                },
+                "loadingMessage": {
+                  "type": "object",
+                  "title": "Loading Message",
+                  "format": "translation"
+                },
+                "bestValueBadge": {
+                  "type": "object",
+                  "title": "Best Value Badge",
+                  "format": "translation"
+                },
+                "perUnitLabel": {
+                  "type": "object",
+                  "title": "Per Unit Label",
+                  "format": "translation"
+                },
+                "freeShippingLabel": {
+                  "type": "object",
+                  "title": "Free Shipping Label",
+                  "format": "translation"
+                },
+                "subscriptionToggleLabel": {
+                  "type": "object",
+                  "title": "Subscription Toggle Label",
+                  "format": "translation"
+                },
+                "fallbackBundleRegular": {
+                  "type": "object",
+                  "title": "Fallback Bundle Regular",
+                  "format": "translation"
+                },
+                "fallbackBundleBogo": {
+                  "type": "object",
+                  "title": "Fallback Bundle BOGO",
+                  "format": "translation"
+                },
+                "fallbackBundleSpecial": {
+                  "type": "object",
+                  "title": "Fallback Bundle Special",
+                  "format": "translation"
+                },
+                "fallbackProductName": {
+                  "type": "object",
+                  "title": "Fallback Product Name",
+                  "format": "translation"
+                },
+                "fallbackVariantRegular": {
+                  "type": "object",
+                  "title": "Fallback Variant Regular",
+                  "format": "translation"
+                },
+                "fallbackVariantBogo": {
+                  "type": "object",
+                  "title": "Fallback Variant BOGO",
+                  "format": "translation"
+                },
+                "fallbackVariantSpecial": {
+                  "type": "object",
+                  "title": "Fallback Variant Special",
+                  "format": "translation"
+                }
+              }
+            },
+            "orderBump": {
+              "type": "object",
+              "title": "Order Bump",
+              "properties": {
+                "badgeLabel": {
+                  "type": "object",
+                  "title": "Badge Label",
+                  "format": "translation"
+                },
+                "title": {
+                  "type": "object",
+                  "title": "Title",
+                  "format": "translation"
+                },
+                "addedBadge": {
+                  "type": "object",
+                  "title": "Added Badge",
+                  "format": "translation"
+                },
+                "headline": {
+                  "type": "object",
+                  "title": "Headline",
+                  "format": "translation"
+                },
+                "description": {
+                  "type": "object",
+                  "title": "Description",
+                  "format": "translation"
+                },
+                "priorityProcessing": {
+                  "type": "object",
+                  "title": "Priority Processing",
+                  "format": "translation"
+                },
+                "fasterDelivery": {
+                  "type": "object",
+                  "title": "Faster Delivery",
+                  "format": "translation"
+                },
+                "trackingIncluded": {
+                  "type": "object",
+                  "title": "Tracking Included",
+                  "format": "translation"
+                },
+                "dedicatedSupport": {
+                  "type": "object",
+                  "title": "Dedicated Support",
+                  "format": "translation"
+                }
+              }
+            },
+            "customerInformation": {
+              "type": "object",
+              "title": "Customer Information",
+              "properties": {
+                "title": {
+                  "type": "object",
+                  "title": "Title",
+                  "format": "translation"
+                },
+                "firstNamePlaceholder": {
+                  "type": "object",
+                  "title": "First Name Placeholder",
+                  "format": "translation"
+                },
+                "lastNamePlaceholder": {
+                  "type": "object",
+                  "title": "Last Name Placeholder",
+                  "format": "translation"
+                },
+                "emailPlaceholder": {
+                  "type": "object",
+                  "title": "Email Placeholder",
+                  "format": "translation"
+                },
+                "phonePlaceholder": {
+                  "type": "object",
+                  "title": "Phone Placeholder",
+                  "format": "translation"
+                }
+              }
+            },
+            "shippingInformation": {
+              "type": "object",
+              "title": "Shipping Information",
+              "properties": {
+                "title": {
+                  "type": "object",
+                  "title": "Title",
+                  "format": "translation"
+                },
+                "countryLabel": {
+                  "type": "object",
+                  "title": "Country Label",
+                  "format": "translation"
+                },
+                "countryPlaceholder": {
+                  "type": "object",
+                  "title": "Country Placeholder",
+                  "format": "translation"
+                },
+                "countryToast": {
+                  "type": "object",
+                  "title": "Country Toast",
+                  "format": "translation"
+                },
+                "helperMessage": {
+                  "type": "object",
+                  "title": "Helper Message",
+                  "format": "translation"
+                },
+                "streetLabel": {
+                  "type": "object",
+                  "title": "Street Label",
+                  "format": "translation"
+                },
+                "streetPlaceholder": {
+                  "type": "object",
+                  "title": "Street Placeholder",
+                  "format": "translation"
+                },
+                "streetLockedPlaceholder": {
+                  "type": "object",
+                  "title": "Street Locked Placeholder",
+                  "format": "translation"
+                },
+                "address2Label": {
+                  "type": "object",
+                  "title": "Address 2 Label",
+                  "format": "translation"
+                },
+                "address2Placeholder": {
+                  "type": "object",
+                  "title": "Address 2 Placeholder",
+                  "format": "translation"
+                },
+                "cityLabel": {
+                  "type": "object",
+                  "title": "City Label",
+                  "format": "translation"
+                },
+                "cityPlaceholder": {
+                  "type": "object",
+                  "title": "City Placeholder",
+                  "format": "translation"
+                },
+                "stateLabel": {
+                  "type": "object",
+                  "title": "State Label",
+                  "format": "translation"
+                },
+                "stateSelectPlaceholder": {
+                  "type": "object",
+                  "title": "State Select Placeholder",
+                  "format": "translation"
+                },
+                "stateInputPlaceholder": {
+                  "type": "object",
+                  "title": "State Input Placeholder",
+                  "format": "translation"
+                },
+                "stateLockedPlaceholder": {
+                  "type": "object",
+                  "title": "State Locked Placeholder",
+                  "format": "translation"
+                },
+                "stateOptionsSuffix": {
+                  "type": "object",
+                  "title": "State Options Suffix",
+                  "format": "translation"
+                },
+                "stateManualSuffix": {
+                  "type": "object",
+                  "title": "State Manual Suffix",
+                  "format": "translation"
+                },
+                "postalLabel": {
+                  "type": "object",
+                  "title": "Postal Label",
+                  "format": "translation"
+                },
+                "postalPlaceholder": {
+                  "type": "object",
+                  "title": "Postal Placeholder",
+                  "format": "translation"
+                },
+                "requiredFieldsNote": {
+                  "type": "object",
+                  "title": "Required Fields Note",
+                  "format": "translation"
+                }
+              }
+            },
+            "payment": {
+              "type": "object",
+              "title": "Payment",
+              "properties": {
+                "title": {
+                  "type": "object",
+                  "title": "Title",
+                  "format": "translation"
+                },
+                "securityMessage": {
+                  "type": "object",
+                  "title": "Security Message",
+                  "format": "translation"
+                },
+                "cardMethodLabel": {
+                  "type": "object",
+                  "title": "Card Method Label",
+                  "format": "translation"
+                },
+                "cardNumberPlaceholder": {
+                  "type": "object",
+                  "title": "Card Number Placeholder",
+                  "format": "translation"
+                },
+                "expiryPlaceholder": {
+                  "type": "object",
+                  "title": "Expiry Placeholder",
+                  "format": "translation"
+                },
+                "cvcPlaceholder": {
+                  "type": "object",
+                  "title": "CVC Placeholder",
+                  "format": "translation"
+                },
+                "processingLabel": {
+                  "type": "object",
+                  "title": "Processing Label",
+                  "format": "translation"
+                },
+                "buttonLabel": {
+                  "type": "object",
+                  "title": "Button Label",
+                  "format": "translation"
+                },
+                "buttonProcessingLabel": {
+                  "type": "object",
+                  "title": "Button Processing Label",
+                  "format": "translation"
+                },
+                "guaranteeTitle": {
+                  "type": "object",
+                  "title": "Guarantee Title",
+                  "format": "translation"
+                },
+                "guaranteeSubtitle": {
+                  "type": "object",
+                  "title": "Guarantee Subtitle",
+                  "format": "translation"
+                },
+                "guaranteeBadgeTitle": {
+                  "type": "object",
+                  "title": "Guarantee Badge Title",
+                  "format": "translation"
+                },
+                "guaranteeBadgeDescription": {
+                  "type": "object",
+                  "title": "Guarantee Badge Description",
+                  "format": "translation"
+                },
+                "sslBadge": {
+                  "type": "object",
+                  "title": "SSL Badge",
+                  "format": "translation"
+                },
+                "encryptionBadge": {
+                  "type": "object",
+                  "title": "Encryption Badge",
+                  "format": "translation"
+                },
+                "nortonBadge": {
+                  "type": "object",
+                  "title": "Norton Badge",
+                  "format": "translation"
+                },
+                "agreementText": {
+                  "type": "object",
+                  "title": "Agreement Text",
+                  "format": "translation"
+                },
+                "secureFooter": {
+                  "type": "object",
+                  "title": "Secure Footer",
+                  "format": "translation"
+                }
+              }
+            },
+            "reviews": {
+              "type": "object",
+              "title": "Reviews",
+              "properties": {
+                "topSectionTitle": {
+                  "type": "object",
+                  "title": "Top Section Title",
+                  "format": "translation"
+                },
+                "gridSectionTitle": {
+                  "type": "object",
+                  "title": "Grid Section Title",
+                  "format": "translation"
+                },
+                "likeAction": {
+                  "type": "object",
+                  "title": "Like Action",
+                  "format": "translation"
+                },
+                "replyAction": {
+                  "type": "object",
+                  "title": "Reply Action",
+                  "format": "translation"
+                },
+                "verifiedAlt": {
+                  "type": "object",
+                  "title": "Verified Alt",
+                  "format": "translation"
+                },
+                "starsAlt": {
+                  "type": "object",
+                  "title": "Stars Alt",
+                  "format": "translation"
+                }
+              }
+            },
+            "stickyBar": {
+              "type": "object",
+              "title": "Sticky Bar",
+              "properties": {
+                "freeShipping": {
+                  "type": "object",
+                  "title": "Free Shipping",
+                  "format": "translation"
+                },
+                "guarantee": {
+                  "type": "object",
+                  "title": "Guarantee",
+                  "format": "translation"
+                },
+                "ssl": {
+                  "type": "object",
+                  "title": "SSL",
+                  "format": "translation"
+                },
+                "buttonLabel": {
+                  "type": "object",
+                  "title": "Button Label",
+                  "format": "translation"
+                },
+                "buttonProcessingLabel": {
+                  "type": "object",
+                  "title": "Button Processing Label",
+                  "format": "translation"
+                }
+              }
+            },
+            "footer": {
+              "type": "object",
+              "title": "Footer",
+              "properties": {
+                "termsLabel": {
+                  "type": "object",
+                  "title": "Terms Label",
+                  "format": "translation"
+                },
+                "privacyLabel": {
+                  "type": "object",
+                  "title": "Privacy Label",
+                  "format": "translation"
+                },
+                "wirelessLabel": {
+                  "type": "object",
+                  "title": "Wireless Label",
+                  "format": "translation"
+                },
+                "rightsReserved": {
+                  "type": "object",
+                  "title": "Rights Reserved",
+                  "format": "translation"
+                }
+              }
+            },
+            "validation": {
+              "type": "object",
+              "title": "Validation",
+              "properties": {
+                "firstNameRequired": {
+                  "type": "object",
+                  "title": "First Name Required",
+                  "format": "translation"
+                },
+                "lastNameRequired": {
+                  "type": "object",
+                  "title": "Last Name Required",
+                  "format": "translation"
+                },
+                "emailRequired": {
+                  "type": "object",
+                  "title": "Email Required",
+                  "format": "translation"
+                },
+                "phoneRequired": {
+                  "type": "object",
+                  "title": "Phone Required",
+                  "format": "translation"
+                },
+                "addressRequired": {
+                  "type": "object",
+                  "title": "Address Required",
+                  "format": "translation"
+                },
+                "countryRequired": {
+                  "type": "object",
+                  "title": "Country Required",
+                  "format": "translation"
+                },
+                "cityRequired": {
+                  "type": "object",
+                  "title": "City Required",
+                  "format": "translation"
+                },
+                "stateRequired": {
+                  "type": "object",
+                  "title": "State Required",
+                  "format": "translation"
+                },
+                "postalRequired": {
+                  "type": "object",
+                  "title": "Postal Required",
+                  "format": "translation"
+                },
+                "cardNumberRequired": {
+                  "type": "object",
+                  "title": "Card Number Required",
+                  "format": "translation"
+                },
+                "expiryRequired": {
+                  "type": "object",
+                  "title": "Expiry Required",
+                  "format": "translation"
+                },
+                "cvcRequired": {
+                  "type": "object",
+                  "title": "CVC Required",
+                  "format": "translation"
+                }
+              }
+            },
+            "fieldLabels": {
+              "type": "object",
+              "title": "Field Labels",
+              "properties": {
+                "firstName": {
+                  "type": "object",
+                  "title": "First Name",
+                  "format": "translation"
+                },
+                "lastName": {
+                  "type": "object",
+                  "title": "Last Name",
+                  "format": "translation"
+                },
+                "email": {
+                  "type": "object",
+                  "title": "Email",
+                  "format": "translation"
+                },
+                "phone": {
+                  "type": "object",
+                  "title": "Phone",
+                  "format": "translation"
+                },
+                "address1": {
+                  "type": "object",
+                  "title": "Address 1",
+                  "format": "translation"
+                },
+                "country": {
+                  "type": "object",
+                  "title": "Country",
+                  "format": "translation"
+                },
+                "city": {
+                  "type": "object",
+                  "title": "City",
+                  "format": "translation"
+                },
+                "state": {
+                  "type": "object",
+                  "title": "State",
+                  "format": "translation"
+                },
+                "postal": {
+                  "type": "object",
+                  "title": "Postal",
+                  "format": "translation"
+                },
+                "cardNumber": {
+                  "type": "object",
+                  "title": "Card Number",
+                  "format": "translation"
+                },
+                "expiryDate": {
+                  "type": "object",
+                  "title": "Expiry Date",
+                  "format": "translation"
+                },
+                "cvc": {
+                  "type": "object",
+                  "title": "CVC",
+                  "format": "translation"
+                }
+              }
+            },
+            "toasts": {
+              "type": "object",
+              "title": "Toasts",
+              "properties": {
+                "orderBumpAdded": {
+                  "type": "object",
+                  "title": "Order Bump Added",
+                  "format": "translation"
+                },
+                "orderBumpRemoved": {
+                  "type": "object",
+                  "title": "Order Bump Removed",
+                  "format": "translation"
+                },
+                "orderBumpFailed": {
+                  "type": "object",
+                  "title": "Order Bump Failed",
+                  "format": "translation"
+                },
+                "pricingUnavailable": {
+                  "type": "object",
+                  "title": "Pricing Unavailable",
+                  "format": "translation"
+                },
+                "subscriptionEnabled": {
+                  "type": "object",
+                  "title": "Subscription Enabled",
+                  "format": "translation"
+                },
+                "subscriptionDisabled": {
+                  "type": "object",
+                  "title": "Subscription Disabled",
+                  "format": "translation"
+                },
+                "subscriptionFailed": {
+                  "type": "object",
+                  "title": "Subscription Failed",
+                  "format": "translation"
+                },
+                "selectionFailed": {
+                  "type": "object",
+                  "title": "Selection Failed",
+                  "format": "translation"
+                },
+                "validationField": {
+                  "type": "object",
+                  "title": "Validation Field",
+                  "format": "translation"
+                },
+                "validationGeneric": {
+                  "type": "object",
+                  "title": "Validation Generic",
+                  "format": "translation"
+                },
+                "checkoutNotReady": {
+                  "type": "object",
+                  "title": "Checkout Not Ready",
+                  "format": "translation"
+                },
+                "stateMissing": {
+                  "type": "object",
+                  "title": "State Missing",
+                  "format": "translation"
+                },
+                "paymentSuccess": {
+                  "type": "object",
+                  "title": "Payment Success",
+                  "format": "translation"
+                },
+                "paymentSuccessDetailed": {
+                  "type": "object",
+                  "title": "Payment Success Detailed",
+                  "format": "translation"
+                },
+                "paymentFailed": {
+                  "type": "object",
+                  "title": "Payment Failed",
+                  "format": "translation"
+                },
+                "paymentFailedWithReason": {
+                  "type": "object",
+                  "title": "Payment Failed With Reason",
+                  "format": "translation"
+                },
+                "paymentVerificationRequired": {
+                  "type": "object",
+                  "title": "Payment Verification Required",
+                  "format": "translation"
+                },
+                "addressToast": {
+                  "type": "object",
+                  "title": "Address Toast",
+                  "format": "translation"
+                }
+              }
+            },
+            "images": {
+              "type": "object",
+              "title": "Images",
+              "properties": {
+                "guaranteeBadge": {
+                  "type": "string",
+                  "title": "Guarantee Badge",
+                  "format": "uri"
+                },
+                "guaranteeLightBadge": {
+                  "type": "string",
+                  "title": "Guarantee Light Badge",
+                  "format": "uri"
+                },
+                "reviewVerifiedBadge": {
+                  "type": "string",
+                  "title": "Review Verified Badge",
+                  "format": "uri"
+                },
+                "reviewStarsBadge": {
+                  "type": "string",
+                  "title": "Review Stars Badge",
+                  "format": "uri"
+                },
+                "trustBadges": {
+                  "type": "string",
+                  "title": "Trust Badges",
+                  "format": "uri"
+                }
+              }
+            },
+            "errors": {
+              "type": "object",
+              "title": "Errors",
+              "properties": {
+                "genericTitle": {
+                  "type": "object",
+                  "title": "Generic Title",
+                  "format": "translation"
+                },
+                "genericDescription": {
+                  "type": "object",
+                  "title": "Generic Description",
+                  "format": "translation"
+                }
+              }
+            }
+          }
+        },
+        "thankYou": {
+          "type": "object",
+          "title": "Thank You Content",
+          "properties": {
+            "header": {
+              "type": "object",
+              "title": "Header",
+              "properties": {
+                "badge": {
+                  "type": "object",
+                  "title": "Badge",
+                  "format": "translation"
+                },
+                "description": {
+                  "type": "object",
+                  "title": "Description",
+                  "format": "translation"
+                },
+                "navConfirmation": {
+                  "type": "object",
+                  "title": "Nav Confirmation",
+                  "format": "translation"
+                },
+                "navSupportLabel": {
+                  "type": "object",
+                  "title": "Nav Support Label",
+                  "format": "translation"
+                }
+              }
+            },
+            "order": {
+              "type": "object",
+              "title": "Order",
+              "properties": {
+                "successAlert": {
+                  "type": "object",
+                  "title": "Success Alert",
+                  "format": "translation"
+                },
+                "title": {
+                  "type": "object",
+                  "title": "Title",
+                  "format": "translation"
+                },
+                "orderNumberPrefix": {
+                  "type": "object",
+                  "title": "Order Number Prefix",
+                  "format": "translation"
+                },
+                "placedOnPrefix": {
+                  "type": "object",
+                  "title": "Placed On Prefix",
+                  "format": "translation"
+                },
+                "itemsTitle": {
+                  "type": "object",
+                  "title": "Items Title",
+                  "format": "translation"
+                },
+                "noItemsMessage": {
+                  "type": "object",
+                  "title": "No Items Message",
+                  "format": "translation"
+                },
+                "quantityLabel": {
+                  "type": "object",
+                  "title": "Quantity Label",
+                  "format": "translation"
+                },
+                "productFallbackAlt": {
+                  "type": "object",
+                  "title": "Product Fallback Alt",
+                  "format": "translation"
+                }
+              }
+            },
+            "shipping": {
+              "type": "object",
+              "title": "Shipping",
+              "properties": {
+                "title": {
+                  "type": "object",
+                  "title": "Title",
+                  "format": "translation"
+                },
+                "phoneLabel": {
+                  "type": "object",
+                  "title": "Phone Label",
+                  "format": "translation"
+                }
+              }
+            },
+            "guarantee": {
+              "type": "object",
+              "title": "Guarantee",
+              "properties": {
+                "imageUrl": {
+                  "type": "string",
+                  "title": "Image URL",
+                  "format": "uri"
+                },
+                "imageAlt": {
+                  "type": "object",
+                  "title": "Image Alt",
+                  "format": "translation"
+                },
+                "title": {
+                  "type": "object",
+                  "title": "Title",
+                  "format": "translation"
+                },
+                "description": {
+                  "type": "object",
+                  "title": "Description",
+                  "format": "translation"
+                }
+              }
+            },
+            "actions": {
+              "type": "object",
+              "title": "Actions",
+              "properties": {
+                "continueShopping": {
+                  "type": "object",
+                  "title": "Continue Shopping",
+                  "format": "translation"
+                },
+                "returnToCheckout": {
+                  "type": "object",
+                  "title": "Return To Checkout",
+                  "format": "translation"
+                }
+              }
+            },
+            "footer": {
+              "type": "object",
+              "title": "Footer",
+              "properties": {
+                "termsLabel": {
+                  "type": "object",
+                  "title": "Terms Label",
+                  "format": "translation"
+                },
+                "privacyLabel": {
+                  "type": "object",
+                  "title": "Privacy Label",
+                  "format": "translation"
+                },
+                "wirelessLabel": {
+                  "type": "object",
+                  "title": "Wireless Label",
+                  "format": "translation"
+                },
+                "rightsReserved": {
+                  "type": "object",
+                  "title": "Rights Reserved",
+                  "format": "translation"
+                }
+              }
+            },
+            "errors": {
+              "type": "object",
+              "title": "Errors",
+              "properties": {
+                "loadingMessage": {
+                  "type": "object",
+                  "title": "Loading Message",
+                  "format": "translation"
+                },
+                "errorTitle": {
+                  "type": "object",
+                  "title": "Error Title",
+                  "format": "translation"
+                },
+                "errorMessage": {
+                  "type": "object",
+                  "title": "Error Message",
+                  "format": "translation"
+                },
+                "errorButton": {
+                  "type": "object",
+                  "title": "Error Button",
+                  "format": "translation"
+                }
+              }
+            }
+          }
+        },
+        "postPurchase": {
+          "type": "object",
+          "title": "Post Purchase Content",
+          "properties": {
+            "bannerImages": {
+              "type": "object",
+              "title": "Banner Images",
+              "properties": {
+                "specialOffer": {
+                  "type": "string",
+                  "title": "Special Offer",
+                  "format": "uri"
+                },
+                "steps": {
+                  "type": "string",
+                  "title": "Steps",
+                  "format": "uri"
+                },
+                "product": {
+                  "type": "string",
+                  "title": "Product",
+                  "format": "uri"
+                },
+                "priceBadge": {
+                  "type": "string",
+                  "title": "Price Badge",
+                  "format": "uri"
+                },
+                "trustBadges": {
+                  "type": "string",
+                  "title": "Trust Badges",
+                  "format": "uri"
+                }
+              }
+            },
+            "banner": {
+              "type": "object",
+              "title": "Banner",
+              "properties": {
+                "offerExpires": {
+                  "type": "object",
+                  "title": "Offer Expires",
+                  "format": "translation"
+                },
+                "headline": {
+                  "type": "object",
+                  "title": "Headline",
+                  "format": "translation"
+                },
+                "persuasiveMessage": {
+                  "type": "object",
+                  "title": "Persuasive Message",
+                  "format": "translation"
+                }
+              }
+            },
+            "product": {
+              "type": "object",
+              "title": "Product",
+              "properties": {
+                "badgeLabel": {
+                  "type": "object",
+                  "title": "Badge Label",
+                  "format": "translation"
+                },
+                "priceLabel": {
+                  "type": "object",
+                  "title": "Price Label",
+                  "format": "translation"
+                },
+                "fallbackProductName": {
+                  "type": "object",
+                  "title": "Fallback Product Name",
+                  "format": "translation"
+                },
+                "fallbackFormula": {
+                  "type": "object",
+                  "title": "Fallback Formula",
+                  "format": "translation"
+                },
+                "fallbackSupplement": {
+                  "type": "object",
+                  "title": "Fallback Supplement",
+                  "format": "translation"
+                },
+                "fallbackCount": {
+                  "type": "object",
+                  "title": "Fallback Count",
+                  "format": "translation"
+                },
+                "sectionTitle": {
+                  "type": "object",
+                  "title": "Section Title",
+                  "format": "translation"
+                },
+                "supportHeadline": {
+                  "type": "object",
+                  "title": "Support Headline",
+                  "format": "translation"
+                },
+                "powerfulHeadline": {
+                  "type": "object",
+                  "title": "Powerful Headline",
+                  "format": "translation"
+                },
+                "bulletOne": {
+                  "type": "object",
+                  "title": "Bullet One",
+                  "format": "translation"
+                },
+                "bulletTwo": {
+                  "type": "object",
+                  "title": "Bullet Two",
+                  "format": "translation"
+                },
+                "bulletThree": {
+                  "type": "object",
+                  "title": "Bullet Three",
+                  "format": "translation"
+                },
+                "claimToday": {
+                  "type": "object",
+                  "title": "Claim Today",
+                  "format": "translation"
+                },
+                "priceSuffix": {
+                  "type": "object",
+                  "title": "Price Suffix",
+                  "format": "translation"
+                },
+                "scarcityMessage": {
+                  "type": "object",
+                  "title": "Scarcity Message",
+                  "format": "translation"
+                }
+              }
+            },
+            "actions": {
+              "type": "object",
+              "title": "Actions",
+              "properties": {
+                "confirmLabel": {
+                  "type": "object",
+                  "title": "Confirm Label",
+                  "format": "translation"
+                },
+                "processingLabel": {
+                  "type": "object",
+                  "title": "Processing Label",
+                  "format": "translation"
+                },
+                "declineLabel": {
+                  "type": "object",
+                  "title": "Decline Label",
+                  "format": "translation"
+                },
+                "thankYouButton": {
+                  "type": "object",
+                  "title": "Thank You Button",
+                  "format": "translation"
+                }
+              }
+            },
+            "footer": {
+              "type": "object",
+              "title": "Footer",
+              "properties": {
+                "copyright": {
+                  "type": "object",
+                  "title": "Copyright",
+                  "format": "translation"
+                }
+              }
+            },
+            "loadingMessage": {
+              "type": "object",
+              "title": "Loading Message",
+              "format": "translation"
+            },
+            "errorTitle": {
+              "type": "object",
+              "title": "Error Title",
+              "format": "translation"
+            },
+            "errorButton": {
+              "type": "object",
+              "title": "Error Button",
+              "format": "translation"
+            }
+          }
+        }
+      }
+    },
+    "reviews": {
+      "type": "array",
+      "title": "Reviews",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "object",
+            "title": "Name",
+            "format": "translation"
+          },
+          "rating": {
+            "type": "number",
+            "title": "Rating",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "text": {
+            "type": "object",
+            "title": "Text",
+            "format": "translation"
+          },
+          "image": {
+            "type": "string",
+            "title": "Image",
+            "format": "uri"
+          },
+          "verified": {
+            "type": "boolean",
+            "title": "Verified",
+            "default": false
+          }
+        }
+      },
+      "default": []
+    },
+    "testimonials": {
+      "type": "array",
+      "title": "Testimonials",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "object",
+            "title": "Name",
+            "format": "translation"
+          },
+          "avatar": {
+            "type": "string",
+            "title": "Avatar",
+            "format": "uri"
+          },
+          "text": {
+            "type": "object",
+            "title": "Text",
+            "format": "translation"
+          },
+          "likes": {
+            "type": "number",
+            "title": "Likes",
+            "minimum": 0
+          },
+          "time": {
+            "type": "object",
+            "title": "Time",
+            "format": "translation"
+          }
+        }
+      },
+      "default": []
+    }
+  }
+}

@@ -14,36 +14,29 @@
       "es": "Tagada"
     }
   },
-  "variants": {
-    "regular": "variant_ad4832325aff",
-    "bogo": "variant_7b496b7db19e",
-    "special": "variant_4bff9b488878"
-  },
-  "prices": {
-    "variant_ad4832325aff": {
-      "oneTime": "price_515cab8a41a1",
-      "recurring": "price_c8ae4a9a9487"
+  "products": [
+    {
+      "variantID": "variant_4dc634640bff",
+      "oneTime": "price_4b5a84e7ef05",
+      "recurring": "price_c99c5e92de03",
+      "quantity": 1
     },
-    "variant_7b496b7db19e": {
-      "oneTime": "price_097f4ec7660b",
-      "recurring": "price_300482c62b86"
+    {
+      "variantID": "variant_02e3520f9c78",
+      "oneTime": "price_08f674175c63",
+      "recurring": "price_e56c98d5faa2",
+      "quantity": 2
     },
-    "variant_4bff9b488878": {
-      "oneTime": "price_1e334b833fb7",
-      "recurring": "price_b73eee73edeb"
+    {
+      "variantID": "variant_ae4642c60ede",
+      "oneTime": "price_17d240738a17",
+      "recurring": "price_23d3abc03bca",
+      "quantity": 3
     }
-  },
-  "orderBumpId": "up_sell_ob_offer_5a786ece2e7e",
+  ],
+  "orderBumpId": "up_sell_ob_offer_6fbaec5b49a4",
   "defaultCurrency": "USD",
-  "features": {
-    "enableAdvancedRouting": true,
-    "showConfigViewer": true,
-    "demoMode": true
-  },
   "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow",
-  "routes": {
-    "basePath": "/"
-  },
   "content": {
     "app": {
       "redirect": {
@@ -1221,36 +1214,6 @@
         "es": "Tagada Pills ha sido genial para la salud de mis articulaciones. Ha mejorado mi comodidad y mi tiempo de recuperación tras actividades exigentes."
       },
       "image": "//img.funnelish.com/44844/789857/1745501114-7.png",
-      "verified": true
-    },
-    {
-      "name": {
-        "en": "David",
-        "fr": "David",
-        "es": "David"
-      },
-      "rating": 5,
-      "text": {
-        "en": "Tagada Pills has been a lifesaver! I'm experiencing less joint pain and more range of motion, and I'm finally able to get back to my favorite activities.",
-        "fr": "Tagada Pills m'a sauvé la mise ! J'ai moins de douleurs articulaires, plus d'amplitude, et je peux enfin reprendre mes activités préférées.",
-        "es": "¡Tagada Pills ha sido un salvavidas! Tengo menos dolor articular, más movilidad y por fin puedo volver a mis actividades favoritas."
-      },
-      "image": "//img.funnelish.com/44844/837622/1751808363-10.jpeg",
-      "verified": true
-    },
-    {
-      "name": {
-        "en": "Ravi",
-        "fr": "Ravi",
-        "es": "Ravi"
-      },
-      "rating": 5,
-      "text": {
-        "en": "Tagada Pills has helped my mobility tremendously. I feel more active and less restricted by joint pain, especially during my physical activities.",
-        "fr": "Tagada Pills a vraiment amélioré ma mobilité. Je me sens plus actif et moins limité par la douleur, surtout pendant mes activités physiques.",
-        "es": "Tagada Pills ha mejorado muchísimo mi movilidad. Me siento más activo y menos limitado por el dolor, especialmente cuando hago actividad física."
-      },
-      "image": "//img.funnelish.com/44844/837622/1751808369-11.jpeg",
       "verified": true
     },
     {

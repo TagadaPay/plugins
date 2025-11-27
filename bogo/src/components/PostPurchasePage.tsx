@@ -92,12 +92,12 @@ function PostPurchasePage({
 
   const { config: pluginConfig } = usePluginConfig<PluginConfig>();
   const { t } = useTranslation();
-  const postPurchaseContent = pluginConfig.content.postPurchase;
-  const bannerImages = postPurchaseContent.bannerImages;
-  const productContent = postPurchaseContent.product;
-  const actionsContent = postPurchaseContent.actions;
-  const footerContent = postPurchaseContent.footer;
-  const companyName = t(pluginConfig.branding.companyName);
+  const postPurchaseContent = pluginConfig.content?.postPurchase;
+  const bannerImages = postPurchaseContent?.bannerImages;
+  const productContent = postPurchaseContent?.product;
+  const actionsContent = postPurchaseContent?.actions;
+  const footerContent = postPurchaseContent?.footer;
+  const companyName = t(pluginConfig.branding?.companyName);
   const currentYear = new Date().getFullYear().toString();
 
   const getDiscountPercentage = useCallback((offer: any) => {
@@ -250,7 +250,7 @@ function PostPurchasePage({
           <div className="mx-auto w-full max-w-3xl text-center">
             <div className="mx-auto h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900"></div>
             <p className="mt-2 text-gray-600">
-              {t(postPurchaseContent.loadingMessage)}
+              {t(postPurchaseContent?.loadingMessage)}
             </p>
           </div>
         </div>
@@ -265,13 +265,13 @@ function PostPurchasePage({
         <div className="flex flex-grow flex-col items-center justify-center px-4 py-6 sm:px-6 lg:px-8">
           <div className="mx-auto w-full max-w-3xl text-center">
             <h1 className="mb-2 text-2xl font-bold text-gray-900">
-              {t(postPurchaseContent.errorTitle)}
+              {t(postPurchaseContent?.errorTitle)}
             </h1>
             <p className="mt-2 text-gray-600">
-              {error?.message || t(postPurchaseContent.errorTitle)}
+              {error?.message || t(postPurchaseContent?.errorTitle)}
             </p>
             <Button onClick={goToThankYouPage} className="mt-4">
-              {t(postPurchaseContent.errorButton)}
+              {t(postPurchaseContent?.errorButton)}
             </Button>
           </div>
         </div>
@@ -303,13 +303,13 @@ function PostPurchasePage({
       <div className="flex flex-col items-center">
         <div className="relative h-[104px] w-full border-b-[2.4px] border-[rgb(183,183,183)] pb-6 pt-2.5">
           <img
-            src={bannerImages.specialOffer}
-            alt={t(postPurchaseContent.banner.offerExpires)}
+            src={bannerImages?.specialOffer}
+            alt={t(postPurchaseContent?.banner?.offerExpires)}
             className="absolute top-0 bottom-0 left-0 h-full w-auto"
           />
           <img
-            src={bannerImages.steps}
-            alt={t(postPurchaseContent.banner.headline)}
+            src={bannerImages?.steps}
+            alt={t(postPurchaseContent?.banner?.headline)}
             className="mx-auto h-full w-auto"
           />
         </div>
@@ -317,44 +317,44 @@ function PostPurchasePage({
         <div className="w-full max-w-[1170px] text-center">
           {/* Expiration Message */}
           <p className="mb-4 text-lg font-semibold text-red-600">
-            {t(postPurchaseContent.banner.offerExpires)}
+            {t(postPurchaseContent?.banner?.offerExpires)}
           </p>
 
           {/* Main Headline */}
           <h1 className="mb-5 text-2xl font-bold text-black sm:text-5xl">
-            {t(postPurchaseContent.banner.headline)}
+            {t(postPurchaseContent?.banner?.headline)}
           </h1>
 
           {/* Persuasive Message */}
           <p
             className="mb-8 text-lg text-black sm:text-2xl"
             dangerouslySetInnerHTML={{
-              __html: t(postPurchaseContent.banner.persuasiveMessage),
+              __html: t(postPurchaseContent?.banner?.persuasiveMessage),
             }}
           />
 
           {/* Product Section with Dashed Border */}
           <div className="relative mx-2.5 mb-8 border-2 border-dashed border-black py-1.25 px-2.5 sm:py-2.5 sm:px-5">
             <img
-              src={bannerImages.product}
-              alt={t(productContent.fallbackProductName)}
+              src={bannerImages?.product}
+              alt={t(productContent?.fallbackProductName)}
               className="absolute -bottom-6 left-2 block h-auto w-[80px] ratio-130/119 object-cover sm:hidden"
             />
             <div
               className="size-[93px] text-[27px] leading-[28px] text-white absolute -top-10 right-2 sm:top-4 sm:right-5 pt-3.5"
               style={{
                 fontFamily: "'Oswald', sans-serif",
-                backgroundImage: `url(${bannerImages.priceBadge})`,
+                backgroundImage: `url(${bannerImages?.priceBadge})`,
                 backgroundOrigin: "padding-box",
                 backgroundPosition: "100% 100%",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "100%",
               }}
             >
-              {t(productContent.badgeLabel)}
+              {t(productContent?.badgeLabel)}
               <br />
               <span className="text-[19px]">
-                {t(productContent.priceLabel)} {formatMoney(14399)}
+                {t(productContent?.priceLabel)} {formatMoney(14399)}
               </span>
             </div>
             <div className="flex flex-row items-center">
@@ -372,30 +372,30 @@ function PostPurchasePage({
                         <>
                           <div className="bg-white border-2 border-gray-200 rounded-lg p-4 w-32 h-40 flex flex-col items-center justify-center">
                             <div className="bg-blue-600 text-white px-3 py-1 rounded text-xs font-bold mb-2">
-                              {t(productContent.fallbackProductName)}
+                              {t(productContent?.fallbackProductName)}
                             </div>
                             <div className="text-xs text-center text-gray-600">
-                              {t(productContent.fallbackFormula)}
+                              {t(productContent?.fallbackFormula)}
                             </div>
                             <div className="text-xs text-center text-gray-500 mt-2">
-                              {t(productContent.fallbackSupplement)}
+                              {t(productContent?.fallbackSupplement)}
                             </div>
                             <div className="text-xs text-center text-gray-500">
-                              {t(productContent.fallbackCount)}
+                              {t(productContent?.fallbackCount)}
                             </div>
                           </div>
                           <div className="bg-white border-2 border-gray-200 rounded-lg p-4 w-32 h-40 flex flex-col items-center justify-center">
                             <div className="bg-blue-600 text-white px-3 py-1 rounded text-xs font-bold mb-2">
-                              {t(productContent.fallbackProductName)}
+                              {t(productContent?.fallbackProductName)}
                             </div>
                             <div className="text-xs text-center text-gray-600">
-                              {t(productContent.fallbackFormula)}
+                              {t(productContent?.fallbackFormula)}
                             </div>
                             <div className="text-xs text-center text-gray-500 mt-2">
-                              {t(productContent.fallbackSupplement)}
+                              {t(productContent?.fallbackSupplement)}
                             </div>
                             <div className="text-xs text-center text-gray-500">
-                              {t(productContent.fallbackCount)}
+                              {t(productContent?.fallbackCount)}
                             </div>
                           </div>
                         </>
@@ -408,8 +408,8 @@ function PostPurchasePage({
                         className="bg-white w-full flex flex-col justify-center"
                       >
                         <img
-                          src={bannerImages.product}
-                          alt={t(productContent.fallbackProductName)}
+                          src={bannerImages?.product}
+                          alt={t(productContent?.fallbackProductName)}
                           className="hidden h-auto w-[130px] ratio-130/119 object-cover sm:block"
                         />
                         {item.variant.imageUrl ? (
@@ -421,16 +421,16 @@ function PostPurchasePage({
                         ) : (
                           <>
                             <div className="bg-blue-600 text-white px-3 py-1 rounded text-xs font-bold mb-2">
-                              {t(productContent.fallbackProductName)}
+                              {t(productContent?.fallbackProductName)}
                             </div>
                             <div className="text-xs text-center text-gray-600">
-                              {t(productContent.fallbackFormula)}
+                              {t(productContent?.fallbackFormula)}
                             </div>
                             <div className="text-xs text-center text-gray-500 mt-2">
-                              {t(productContent.fallbackSupplement)}
+                              {t(productContent?.fallbackSupplement)}
                             </div>
                             <div className="text-xs text-center text-gray-500">
-                              {t(productContent.fallbackCount)}
+                              {t(productContent?.fallbackCount)}
                             </div>
                           </>
                         )}
@@ -449,7 +449,7 @@ function PostPurchasePage({
                       fontFamily: "'Fjalla One', sans-serif",
                     }}
                   >
-                    <strong>{t(productContent.sectionTitle)}</strong>
+                    <strong>{t(productContent?.sectionTitle)}</strong>
                   </p>
                   <h2
                     style={{
@@ -461,7 +461,7 @@ function PostPurchasePage({
                     className="mt-2 font-bold text-[rgb(117,88,221)] sm:my-2"
                   >
                     <span className="text-xl leading-[20px] sm:text-[63px] sm:leading-[63px]">
-                      <em>{t(productContent.supportHeadline)}</em>
+                      <em>{t(productContent?.supportHeadline)}</em>
                     </span>
                   </h2>
                   <p
@@ -471,21 +471,21 @@ function PostPurchasePage({
                     }}
                   >
                     <em>
-                      <strong>{t(productContent.powerfulHeadline)}</strong>
+                      <strong>{t(productContent?.powerfulHeadline)}</strong>
                     </em>
                   </p>
 
                   {/* Product Features */}
                   <ul className="list-disc sm:ml-[30px] p-2.5">
-                    <li>{t(productContent.bulletOne)}</li>
-                    <li>{t(productContent.bulletTwo)}</li>
-                    <li>{t(productContent.bulletThree)}</li>
+                    <li>{t(productContent?.bulletOne)}</li>
+                    <li>{t(productContent?.bulletTwo)}</li>
+                    <li>{t(productContent?.bulletThree)}</li>
                   </ul>
 
                   <div className="sm:ml-[30px] mt-2.5">
                     {/* Pricing */}
                     <p className="mt-2.5 py-2.5 text-base text-black sm:ml-[30px] sm:p-2.5 sm:text-2xl">
-                      {t(productContent.claimToday)}
+                      {t(productContent?.claimToday)}
                     </p>
                     <p
                       className="mb-2.5 text-xl font-bold text-black leading-[20px] sm:text-[62px] sm:leading-[62px]"
@@ -494,9 +494,11 @@ function PostPurchasePage({
                       }}
                     >
                       {formatMoney(
-                        currentOffer.summaries[0].totalAdjustedAmount / 2
+                        currentOffer.summaries?.[0]?.totalAdjustedAmount
+                          ? currentOffer.summaries[0].totalAdjustedAmount / 2
+                          : 0
                       )}
-                      {t(productContent.priceSuffix)}
+                      {t(productContent?.priceSuffix)}
                     </p>
                   </div>
                 </div>
@@ -511,7 +513,7 @@ function PostPurchasePage({
               fontFamily: "'Oswald', sans-serif",
             }}
           >
-            {t(productContent.scarcityMessage)}
+            {t(productContent?.scarcityMessage)}
           </p>
 
           {/* CTA Buttons */}
@@ -522,8 +524,8 @@ function PostPurchasePage({
               className="bg-gradient-to-r h-auto from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold md:px-[200px] px-5 py-2.5 md:py-5 rounded-lg shadow-lg text-lg sm:text-3xl"
             >
               {isProcessingPayment
-                ? t(actionsContent.processingLabel)
-                : t(actionsContent.confirmLabel)}
+                ? t(actionsContent?.processingLabel)
+                : t(actionsContent?.confirmLabel)}
             </Button>
           </div>
 
@@ -533,21 +535,21 @@ function PostPurchasePage({
             disabled={isProcessingPayment}
             className="text-gray-400 text-sm underline mb-8 hover:text-gray-600"
           >
-            {t(actionsContent.declineLabel)}
+            {t(actionsContent?.declineLabel)}
           </button>
 
           {/* Trust Badges */}
           <div className="flex flex-wrap items-center justify-center gap-6 mb-8">
             <img
-              src={bannerImages.trustBadges}
-              alt={t(productContent.sectionTitle)}
+              src={bannerImages?.trustBadges}
+              alt={t(productContent?.sectionTitle)}
               className="w-[289px] h-auto"
             />
           </div>
 
           {/* Footer */}
           <p className="text-sm text-gray-600">
-            {t(footerContent.copyright, "", {
+            {t(footerContent?.copyright, "", {
               year: currentYear,
               company: companyName,
             })}

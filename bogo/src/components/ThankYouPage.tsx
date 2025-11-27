@@ -21,8 +21,8 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
     enabled: Boolean(orderId),
   });
   const { t, locale } = useTranslation();
-  const thankYouContent = pluginConfig.content.thankYou;
-  const companyName = t(pluginConfig.branding.companyName);
+  const thankYouContent = pluginConfig.content?.thankYou;
+  const companyName = t(pluginConfig.branding?.companyName);
   const currentYear = new Date().getFullYear().toString();
 
   const currentCurrency = useCurrency();
@@ -36,7 +36,7 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
             <div className="flex items-center justify-center">
               <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900"></div>
               <p className="ml-2 text-gray-600">
-                {t(thankYouContent.errors.loadingMessage)}
+                {t(thankYouContent?.errors?.loadingMessage)}
               </p>
             </div>
           </div>
@@ -52,14 +52,14 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
         <div className="mx-auto max-w-md">
           <div className="rounded-lg bg-white p-6 shadow">
             <h1 className="mb-4 text-xl font-semibold text-red-600">
-              {t(thankYouContent.errors.errorTitle)}
+              {t(thankYouContent?.errors?.errorTitle)}
             </h1>
             <p className="mb-4 text-gray-600">
-              {error?.message || t(thankYouContent.errors.errorMessage)}
+              {error?.message || t(thankYouContent?.errors?.errorMessage)}
             </p>
             <Link to="/checkout">
               <Button className="w-full">
-                {t(thankYouContent.errors.errorButton)}
+                {t(thankYouContent?.errors?.errorButton)}
               </Button>
             </Link>
           </div>
@@ -117,17 +117,17 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
       <header className="bg-brand-green-dark p-2 text-center text-white">
         <div className="flex items-center justify-center gap-2">
           <CheckCircle2 className="h-6 w-6 text-green-400" />
-          <p className="font-bold">{t(thankYouContent.header.badge)}</p>
+          <p className="font-bold">{t(thankYouContent?.header?.badge)}</p>
         </div>
-        <p className="text-sm">{t(thankYouContent.header.description)}</p>
+        <p className="text-sm">{t(thankYouContent?.header?.description)}</p>
       </header>
 
       {/* Navigation */}
       <div className="bg-white py-4">
         <div className="container mx-auto flex items-center justify-between px-2 sm:px-4">
           <img
-            src={pluginConfig.branding.logoUrl}
-            alt={t(pluginConfig.branding.storeName)}
+            src={pluginConfig.branding?.logoUrl}
+            alt={t(pluginConfig.branding?.storeName)}
             className="h-12 sm:h-16"
             style={{ maxWidth: "250px" }}
           />
@@ -136,12 +136,12 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
               <div className="mb-1 flex items-center justify-end gap-1">
                 <CheckCircle2 className="h-3 w-3 text-green-600" />
                 <p className="text-xs font-medium text-gray-700 sm:text-sm">
-                  {t(thankYouContent.header.navConfirmation)}
+                  {t(thankYouContent?.header?.navConfirmation)}
                 </p>
               </div>
               <p className="text-xs text-gray-600 sm:text-sm">
-                {t(thankYouContent.header.navSupportLabel)}{" "}
-                {pluginConfig.branding.supportEmail}
+                {t(thankYouContent?.header?.navSupportLabel)}{" "}
+                {pluginConfig.branding?.supportEmail}
               </p>
             </div>
           </div>
@@ -155,7 +155,7 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
             {/* Success Message */}
             <div className="flex items-center justify-center gap-2 rounded-lg border border-green-300 bg-green-100 p-3 text-center text-sm font-semibold text-green-700 sm:p-4 sm:text-base">
               <CheckCircle2 className="h-6 w-6 text-green-600" />
-              {t(thankYouContent.order.successAlert)}
+              {t(thankYouContent?.order?.successAlert)}
             </div>
 
             {/* Order Information */}
@@ -163,14 +163,14 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
               <div className="flex items-center justify-between border-b border-gray-100 pb-3">
                 <div>
                   <h2 className="text-lg font-bold sm:text-xl">
-                    {t(thankYouContent.order.title)}
+                    {t(thankYouContent?.order?.title)}
                   </h2>
                   <p className="text-sm text-gray-600">
-                    {t(thankYouContent.order.orderNumberPrefix)}
+                    {t(thankYouContent?.order?.orderNumberPrefix)}
                     {order.id}
                   </p>
                   <p className="text-sm text-gray-600">
-                    {t(thankYouContent.order.placedOnPrefix)}{" "}
+                    {t(thankYouContent?.order?.placedOnPrefix)}{" "}
                     {formatOrderDate(order.createdAt)}
                   </p>
                 </div>
@@ -184,7 +184,7 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
               {/* Order Items */}
               <div className="space-y-3">
                 <h3 className="text-base font-semibold">
-                  {t(thankYouContent.order.itemsTitle, "", { currency })}
+                  {t(thankYouContent?.order?.itemsTitle, "", { currency })}
                 </h3>
                 {currentCurrencyItems.length > 0 ? (
                   currentCurrencyItems.map((item) => (
@@ -200,7 +200,7 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
                           }
                           alt={
                             item.orderLineItemProduct?.name ||
-                            t(thankYouContent.order.productFallbackAlt)
+                            t(thankYouContent?.order?.productFallbackAlt)
                           }
                           width={60}
                           height={60}
@@ -217,7 +217,7 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
                           </p>
                         )}
                         <p className="text-sm text-gray-500">
-                          {t(thankYouContent.order.quantityLabel, "", {
+                          {t(thankYouContent?.order?.quantityLabel, "", {
                             count: item.quantity,
                           })}
                         </p>
@@ -227,7 +227,7 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
                 ) : (
                   <div className="py-4 text-center text-gray-500">
                     <p>
-                      {t(thankYouContent.order.noItemsMessage, "", {
+                      {t(thankYouContent?.order?.noItemsMessage, "", {
                         currency,
                       })}
                     </p>
@@ -242,7 +242,7 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
                 <div className="flex items-center gap-2">
                   <Truck className="h-5 w-5 text-gray-600" />
                   <h2 className="text-lg font-bold sm:text-xl">
-                    {t(thankYouContent.shipping.title)}
+                    {t(thankYouContent?.shipping?.title)}
                   </h2>
                 </div>
                 <div className="text-sm">
@@ -261,7 +261,7 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
                   <p>{order.shippingAddress.country}</p>
                   {order.shippingAddress.phone && (
                     <p>
-                      {t(thankYouContent.shipping.phoneLabel)}{" "}
+                      {t(thankYouContent?.shipping?.phoneLabel)}{" "}
                       {order.shippingAddress.phone}
                     </p>
                   )}
@@ -270,18 +270,18 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
             )}
             <div className="flex items-center gap-3 sm:gap-4">
               <img
-                src={thankYouContent.guarantee.imageUrl}
-                alt={t(thankYouContent.guarantee.imageAlt)}
+                src={thankYouContent?.guarantee?.imageUrl}
+                alt={t(thankYouContent?.guarantee?.imageAlt)}
                 width={80}
                 height={80}
                 className="sm:h-[100px] sm:w-[100px]"
               />
               <div>
                 <h4 className="text-base font-bold sm:text-lg">
-                  {t(thankYouContent.guarantee.title)}
+                  {t(thankYouContent?.guarantee?.title)}
                 </h4>
                 <p className="text-pretty text-xs text-gray-600 sm:text-sm">
-                  {t(thankYouContent.guarantee.description)}
+                  {t(thankYouContent?.guarantee?.description)}
                 </p>
               </div>
             </div>
@@ -293,7 +293,7 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
                   className="inline-flex items-center gap-2 rounded-lg bg-gray-100 px-6 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200"
                 >
                   <ArrowLeft className="h-4 w-4" />
-                  {t(thankYouContent.actions.continueShopping)}
+                  {t(thankYouContent?.actions?.continueShopping)}
                 </a>
               ) : (
                 <Link
@@ -301,7 +301,7 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
                   className="inline-flex items-center gap-2 rounded-lg bg-gray-100 px-6 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200"
                 >
                   <ArrowLeft className="h-4 w-4" />
-                  {t(thankYouContent.actions.returnToCheckout)}
+                  {t(thankYouContent?.actions?.returnToCheckout)}
                 </Link>
               )}
             </div>
@@ -315,32 +315,32 @@ export function ThankYouPage({ orderId }: ThankYouPageProps) {
           <div className="text-center">
             <div className="mb-4 sm:mb-6">
               <img
-                src={pluginConfig.branding.logoUrl}
-                alt={t(pluginConfig.branding.storeName)}
+                src={pluginConfig.branding?.logoUrl}
+                alt={t(pluginConfig.branding?.storeName)}
                 className="mx-auto h-10 sm:h-12"
                 style={{ maxWidth: "240px" }}
               />
             </div>
             <div className="mb-4 flex flex-wrap justify-center gap-4 text-xs sm:mb-6 sm:gap-6 sm:text-sm">
               <a href="#terms" className="text-[#23527c] hover:underline">
-                {t(thankYouContent.footer.termsLabel)}
+                {t(thankYouContent?.footer?.termsLabel)}
               </a>
               <a href="#privacy" className="text-[#23527c] hover:underline">
-                {t(thankYouContent.footer.privacyLabel)}
+                {t(thankYouContent?.footer?.privacyLabel)}
               </a>
               <a href="#wireless" className="text-[#23527c] hover:underline">
-                {t(thankYouContent.footer.wirelessLabel)}
+                {t(thankYouContent?.footer?.wirelessLabel)}
               </a>
             </div>
             <div className="text-center text-xs leading-relaxed text-gray-700 sm:text-sm">
               <p className="mb-2">
-                {t(thankYouContent.footer.rightsReserved, "", {
+                {t(thankYouContent?.footer?.rightsReserved, "", {
                   year: currentYear,
                   company: companyName,
                 })}
               </p>
               <p className="text-sm font-semibold sm:text-base">
-                {pluginConfig.branding.supportEmail}
+                {pluginConfig.branding?.supportEmail}
               </p>
             </div>
           </div>

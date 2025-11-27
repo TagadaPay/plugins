@@ -1,6 +1,12 @@
 import PostPurchasePage from "@/components/PostPurchasePage";
-import { usePluginConfig, useTranslation } from "@tagadapay/plugin-sdk/v2";
-import { Suspense, useEffect } from "react";
+import {
+  useCheckout,
+  useCheckoutToken,
+  useFunnel,
+  usePluginConfig,
+  useTranslation,
+} from "@tagadapay/plugin-sdk/v2";
+import { Suspense, useEffect, useRef, useState } from "react";
 import {
   Navigate,
   Route,
@@ -19,7 +25,7 @@ function RedirectComponent() {
   const navigate = useNavigate();
   const { config: pluginConfig } = usePluginConfig<PluginConfig>();
   const { t } = useTranslation();
-  const appContent = pluginConfig.content.app;
+  const appContent = pluginConfig.content?.app;
 
   useEffect(() => {
     // Preserve query parameters during redirect
@@ -36,7 +42,7 @@ function RedirectComponent() {
       <div className="text-center">
         <div className="mx-auto h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900"></div>
         <p className="mt-2 text-gray-600">
-          {t(appContent.redirect.redirectingMessage)}
+          {t(appContent?.redirect?.redirectingMessage)}
         </p>
       </div>
     </div>
@@ -46,7 +52,7 @@ function RedirectComponent() {
 function HomePage() {
   const { config: pluginConfig } = usePluginConfig<PluginConfig>();
   const { t } = useTranslation();
-  const appContent = pluginConfig.content.app;
+  const appContent = pluginConfig.content?.app;
 
   return (
     <Suspense
@@ -55,7 +61,7 @@ function HomePage() {
           <div className="text-center">
             <div className="mx-auto h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900"></div>
             <p className="mt-2 text-gray-600">
-              {t(appContent.suspense.defaultLoading)}
+              {t(appContent?.suspense?.defaultLoading)}
             </p>
           </div>
         </div>
@@ -67,19 +73,91 @@ function HomePage() {
 }
 
 function CheckoutContent() {
-  const location = useLocation();
-  const urlParams = new URLSearchParams(location.search);
-  const checkoutToken = urlParams.get("checkoutToken");
+  const { checkoutToken } = useCheckoutToken();
+  const [isInitFailed, setIsInitFailed] = useState(false);
+  const hasInitializedRef = useRef(false);
 
-  // Pass the checkout token to the component
-  // The component will handle initialization via the init() function
+  const { checkout, init } = useCheckout({
+    checkoutToken: checkoutToken || "",
+  });
+
+  const { initializeSession } = useFunnel({
+    enabled: true,
+  });
+
+  const { config: pluginConfig, storeId } = usePluginConfig<PluginConfig>();
+  const { t } = useTranslation();
+
+  // Initialize checkout programmatically when no token is provided
+  useEffect(() => {
+    if (
+      !checkoutToken &&
+      !checkout &&
+      init &&
+      !hasInitializedRef.current &&
+      isInitFailed === false
+    ) {
+      hasInitializedRef.current = true;
+
+      // Get the third bundle variant (Best Value) from config
+      const specialProduct = pluginConfig.products?.[2];
+      const thirdVariantId = specialProduct?.variantID;
+
+      if (thirdVariantId) {
+        initializeSession();
+        init({
+          storeId: storeId,
+          lineItems: [
+            {
+              variantId: thirdVariantId,
+              quantity: 1,
+            },
+          ],
+        }).catch(() => {
+          setIsInitFailed(true);
+        });
+      }
+    }
+  }, [
+    checkoutToken,
+    checkout,
+    init,
+    initializeSession,
+    pluginConfig.products,
+    storeId,
+  ]);
+
+  // Show error state if initialization failed
+  if (isInitFailed) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-8">
+        <div className="mx-auto max-w-md">
+          <div className="rounded-lg bg-white p-6 shadow">
+            <h1 className="mb-4 text-xl font-semibold text-red-600">
+              {t(pluginConfig.content?.checkout?.errors?.genericTitle)}
+            </h1>
+            <p className="mb-4 text-gray-600">
+              {t(
+                pluginConfig.content?.checkout?.errors?.genericDescription,
+                "",
+                {
+                  supportEmail: pluginConfig.branding?.supportEmail,
+                }
+              )}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return <CheckoutPage checkoutToken={checkoutToken || ""} />;
 }
 
 function CheckoutRoute() {
   const { config: pluginConfig } = usePluginConfig<PluginConfig>();
   const { t } = useTranslation();
-  const appContent = pluginConfig.content.app;
+  const appContent = pluginConfig.content?.app;
 
   return (
     <Suspense
@@ -89,7 +167,7 @@ function CheckoutRoute() {
             <div className="rounded-lg bg-white p-6 shadow">
               <div className="mx-auto h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900"></div>
               <p className="mt-2 text-center text-sm text-gray-600">
-                {t(appContent.suspense.checkoutLoading)}
+                {t(appContent?.suspense?.checkoutLoading)}
               </p>
             </div>
           </div>
@@ -105,17 +183,17 @@ function ThankYouContent() {
   const { orderId } = useParams<{ orderId: string }>();
   const { config: pluginConfig } = usePluginConfig<PluginConfig>();
   const { t } = useTranslation();
-  const appContent = pluginConfig.content.app;
+  const appContent = pluginConfig.content?.app;
 
   if (!orderId) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
           <h1 className="text-xl font-semibold text-red-600">
-            {t(appContent.errors.orderIdRequiredTitle)}
+            {t(appContent?.errors?.orderIdRequiredTitle)}
           </h1>
           <p className="mt-2 text-gray-600">
-            {t(appContent.errors.orderIdRequiredDescription)}
+            {t(appContent?.errors?.orderIdRequiredDescription)}
           </p>
         </div>
       </div>
@@ -128,7 +206,7 @@ function ThankYouContent() {
 function ThankYouRoute() {
   const { config: pluginConfig } = usePluginConfig<PluginConfig>();
   const { t } = useTranslation();
-  const thankYouContent = pluginConfig.content.thankYou;
+  const thankYouContent = pluginConfig.content?.thankYou;
 
   return (
     <Suspense
@@ -138,7 +216,7 @@ function ThankYouRoute() {
             <div className="rounded-lg bg-white p-6 shadow">
               <div className="mx-auto h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900"></div>
               <p className="mt-2 text-center text-sm text-gray-600">
-                {t(thankYouContent.errors.loadingMessage)}
+                {t(thankYouContent?.errors?.loadingMessage)}
               </p>
             </div>
           </div>
@@ -153,10 +231,10 @@ function ThankYouRoute() {
 function PostPurchaseRoute() {
   const { config: pluginConfig } = usePluginConfig<PluginConfig>();
   const { t } = useTranslation();
-  const thankYouContent = pluginConfig.content.thankYou;
+  const thankYouContent = pluginConfig.content?.thankYou;
 
   return (
-    <Suspense fallback={t(thankYouContent.errors.loadingMessage)}>
+    <Suspense fallback={t(thankYouContent?.errors?.loadingMessage)}>
       <PostPurchaseContent />
     </Suspense>
   );
@@ -166,17 +244,17 @@ function PostPurchaseContent() {
   const { orderId } = useParams<{ orderId: string }>();
   const { config: pluginConfig } = usePluginConfig<PluginConfig>();
   const { t } = useTranslation();
-  const appContent = pluginConfig.content.app;
+  const appContent = pluginConfig.content?.app;
 
   if (!orderId) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
           <h1 className="text-xl font-semibold text-red-600">
-            {t(appContent.errors.orderIdRequiredTitle)}
+            {t(appContent?.errors?.orderIdRequiredTitle)}
           </h1>
           <p className="mt-2 text-gray-600">
-            {t(appContent.errors.orderIdRequiredDescription)}
+            {t(appContent?.errors?.orderIdRequiredDescription)}
           </p>
         </div>
       </div>
