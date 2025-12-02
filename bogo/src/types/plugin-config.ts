@@ -316,6 +316,7 @@ export interface PostPurchaseProductContent {
   fallbackCount?: TranslationText;
   sectionTitle?: TranslationText;
   supportHeadline?: TranslationText;
+  supportHeadlineColor?: string;
   powerfulHeadline?: TranslationText;
   bulletOne?: TranslationText;
   bulletTwo?: TranslationText;

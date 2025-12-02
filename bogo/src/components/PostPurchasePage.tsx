@@ -1,13 +1,14 @@
-import { Button } from "@/components/ui/button";
+import PostPurchasePayButton from "@/components/PostPurchasePayButton";
 import { PluginConfig } from "@/types/plugin-config";
 import {
   formatMoney,
+  FunnelActionType,
+  useFunnel,
   usePluginConfig,
   usePostPurchases,
   useTranslation,
 } from "@tagadapay/plugin-sdk/v2";
 import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 // Type to track offer responses in localStorage
 interface OfferResponse {
@@ -29,7 +30,8 @@ function PostPurchasePage({
   const [currentOfferIndex, setCurrentOfferIndex] = useState(0);
   const [offerResponses, setOfferResponses] = useState<OfferResponse[]>([]);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
-  const navigate = useNavigate();
+
+  const { next, updateContext, context } = useFunnel();
 
   // Construct localStorage key with orderId for this specific order's offers
   const localStorageKey = `${LS_KEY_PREFIX}${orderId}`;
@@ -42,6 +44,7 @@ function PostPurchasePage({
     payWithCheckoutSession,
   } = usePostPurchases({
     orderId,
+    autoInitializeCheckout: true,
   });
 
   // Load offer responses from localStorage on component mount
@@ -86,9 +89,32 @@ function PostPurchasePage({
     }
   }, [localStorageKey, offerResponses]);
 
-  const goToThankYouPage = useCallback(() => {
-    navigate(`/thankyou/${orderId}`);
-  }, [navigate, orderId]);
+  const goToNextStep = useCallback(async () => {
+    try {
+      await next({
+        type: FunnelActionType.CUSTOM,
+        data: {},
+      });
+    } catch (error: any) {
+      // If funnel session not initialized, try to initialize and retry
+      if (error?.message?.includes("not initialized")) {
+        try {
+          await next({
+            type: FunnelActionType.CUSTOM,
+            data: {},
+          });
+        } catch (retryError) {
+          console.error("Failed to initialize funnel session:", retryError);
+          // Fallback to direct navigation if funnel fails
+          window.location.href = `/thankyou/${orderId}`;
+        }
+      } else {
+        console.error("Funnel navigation error:", error);
+        // Fallback to direct navigation on other errors
+        window.location.href = `/thankyou/${orderId}`;
+      }
+    }
+  }, [next, orderId]);
 
   const { config: pluginConfig } = usePluginConfig<PluginConfig>();
   const { t } = useTranslation();
@@ -99,6 +125,17 @@ function PostPurchasePage({
   const footerContent = postPurchaseContent?.footer;
   const companyName = t(pluginConfig.branding?.companyName);
   const currentYear = new Date().getFullYear().toString();
+
+  // Auto-redirect effect for errors - must be before any conditional returns
+  React.useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        // Redirect to thank you page or main site
+        goToNextStep();
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error, goToNextStep]);
 
   const getDiscountPercentage = useCallback((offer: any) => {
     if (!offer?.summaries?.[0]) return 0;
@@ -139,7 +176,7 @@ function PostPurchasePage({
   }, [currentOfferIndex, offers, offerResponses]);
 
   // Skip current offer - handles next functionality
-  const handleSkipOffer = useCallback(() => {
+  const handleSkipOffer = useCallback(async () => {
     if (!offers || currentOfferIndex >= offers.length) return;
 
     const currentOffer = offers[currentOfferIndex];
@@ -157,9 +194,41 @@ function PostPurchasePage({
     if (currentOfferIndex < offers.length - 1) {
       setCurrentOfferIndex(currentOfferIndex + 1);
     } else {
-      goToThankYouPage();
+      // Last offer skipped - navigate with OFFER_DECLINED event
+      try {
+        await next({
+          type: FunnelActionType.OFFER_DECLINED,
+          data: {
+            offer: {
+              declined: true,
+            },
+          },
+        });
+      } catch (error: any) {
+        // If funnel session not initialized, try to initialize and retry
+        if (error?.message?.includes("not initialized")) {
+          try {
+            await next({
+              type: FunnelActionType.OFFER_DECLINED,
+              data: {
+                offer: {
+                  declined: true,
+                },
+              },
+            });
+          } catch (retryError) {
+            console.error("Failed to initialize funnel session:", retryError);
+            // Fallback to direct navigation if funnel fails
+            window.location.href = `/thankyou/${orderId}`;
+          }
+        } else {
+          console.error("Funnel navigation error:", error);
+          // Fallback to direct navigation on other errors
+          window.location.href = `/thankyou/${orderId}`;
+        }
+      }
     }
-  }, [currentOfferIndex, offers, goToThankYouPage]);
+  }, [currentOfferIndex, offers, next, orderId]);
 
   // Handles accepting and paying for the current offer with selected variants
   const handlePay = useCallback(async () => {
@@ -193,53 +262,84 @@ function PostPurchasePage({
       // Pay for the offer using the checkout session
       await payWithCheckoutSession(checkoutSessionId, orderId);
 
-      // Move to next offer or thank you page if this was the last one
-      goToThankYouPage();
+      await updateContext({
+        metadata: {
+          ...context?.metadata,
+          accepted: true,
+        },
+      });
+
+      // Move to next offer or redirect to thank you page
+      if (currentOfferIndex < offers.length - 1) {
+        setCurrentOfferIndex(currentOfferIndex + 1);
+      } else {
+        // Last offer accepted - navigate with OFFER_ACCEPTED event
+        try {
+          await next({
+            type: FunnelActionType.OFFER_ACCEPTED,
+            data: {
+              offer: {
+                offerId: currentOffer.id,
+                accepted: true,
+              },
+            },
+          });
+        } catch (error: any) {
+          // If funnel session not initialized, try to initialize and retry
+          if (error?.message?.includes("not initialized")) {
+            try {
+              await next({
+                type: FunnelActionType.OFFER_ACCEPTED,
+                data: {
+                  offer: {
+                    offerId: currentOffer.id,
+                    accepted: true,
+                  },
+                },
+              });
+            } catch (retryError) {
+              console.error("Failed to initialize funnel session:", retryError);
+              // Fallback to direct navigation if funnel fails
+              window.location.href = `/thankyou/${orderId}`;
+            }
+          } else {
+            console.error("Funnel navigation error:", error);
+            // Fallback to direct navigation on other errors
+            window.location.href = `/thankyou/${orderId}`;
+          }
+        }
+      }
     } catch (err) {
       console.error("Error processing payment:", err);
       // Remove the response if payment failed
       setOfferResponses((prev) =>
         prev.filter((r) => r.offerId !== currentOffer.id)
       );
+      // Auto-skip to next offer instead of stopping the flow
+      if (currentOfferIndex < offers.length - 1) {
+        setCurrentOfferIndex(currentOfferIndex + 1);
+      } else {
+        // Redirect to thank you page even on error
+        goToNextStep();
+      }
     } finally {
       setIsProcessingPayment(false);
     }
   }, [
     offers,
     currentOfferIndex,
-    orderId,
-    goToThankYouPage,
-    initCheckoutSession,
     payWithCheckoutSession,
+    orderId,
+    context?.metadata,
+    next,
+    updateContext,
+    goToNextStep,
+    initCheckoutSession,
   ]);
 
-  // If there are no offers, go to thank you page
-  if (!isLoading && (!offers || offers.length === 0)) {
-    goToThankYouPage();
-    return null;
-  }
-
   // If all offers have been answered, go to thank you page
-  if (!isLoading && offers && offers.length > 0 && offerResponses.length > 0) {
-    const allOffersAnswered = offers.every((offer) =>
-      offerResponses.some((response) => response.offerId === offer.id)
-    );
-    if (allOffersAnswered) {
-      goToThankYouPage();
-      return null;
-    }
-  }
-
-  // If there are no unanswered offers, go to thank you page
-  if (!isLoading && offers && offers.length > 0) {
-    const hasUnansweredOffers = offers.some(
-      (offer) =>
-        !offerResponses.some((response) => response.offerId === offer.id)
-    );
-    if (!hasUnansweredOffers) {
-      goToThankYouPage();
-      return null;
-    }
+  if (offers !== undefined && offers?.length === 0) {
+    goToNextStep();
   }
 
   // Show loading state while fetching offers
@@ -270,9 +370,9 @@ function PostPurchasePage({
             <p className="mt-2 text-gray-600">
               {error?.message || t(postPurchaseContent?.errorTitle)}
             </p>
-            <Button onClick={goToThankYouPage} className="mt-4">
-              {t(postPurchaseContent?.errorButton)}
-            </Button>
+            <p className="text-muted-foreground mt-2 text-sm">
+              Redirecting you shortly...
+            </p>
           </div>
         </div>
       </div>
@@ -282,8 +382,8 @@ function PostPurchasePage({
   // Get the current offer to display
   const currentOffer = offers?.[currentOfferIndex];
 
-  if (!currentOffer) {
-    goToThankYouPage();
+  if (offers !== undefined && !currentOffer) {
+    goToNextStep();
     return null;
   }
 
@@ -333,6 +433,11 @@ function PostPurchasePage({
             }}
           />
 
+          <PostPurchasePayButton
+            handlePay={handlePay}
+            isProcessingPayment={isProcessingPayment}
+          />
+
           {/* Product Section with Dashed Border */}
           <div className="relative mx-2.5 mb-8 border-2 border-dashed border-black py-1.25 px-2.5 sm:py-2.5 sm:px-5">
             <img
@@ -357,8 +462,8 @@ function PostPurchasePage({
                 {t(productContent?.priceLabel)} {formatMoney(14399)}
               </span>
             </div>
-            <div className="flex flex-row items-center">
-              <div className="flex gap-4 max-w-[30%] min-w-[30%] w-[30%] flex-grow">
+            <div className="flex max-md:flex-col flex-row items-center">
+              <div className="flex gap-4 max-md:max-w-[400px] max-md:w-full max-w-[30%] min-w-[30%] w-[30%] flex-grow">
                 {offers &&
                   offers.length > 0 &&
                   currentOffer &&
@@ -457,8 +562,9 @@ function PostPurchasePage({
                         "matrix(0.996195, -0.0871557, 0.0871557, 0.996195, 0, 0)",
                       textShadow: "rgba(33, 6, 52, 0.5) 0px 2px 2px",
                       fontFamily: "'Fjalla One', sans-serif",
+                      color: productContent?.supportHeadlineColor || "#7558DD",
                     }}
-                    className="mt-2 font-bold text-[rgb(117,88,221)] sm:my-2"
+                    className="mt-2 font-bold sm:my-2"
                   >
                     <span className="text-xl leading-[20px] sm:text-[63px] sm:leading-[63px]">
                       <em>{t(productContent?.supportHeadline)}</em>
@@ -494,8 +600,8 @@ function PostPurchasePage({
                       }}
                     >
                       {formatMoney(
-                        currentOffer.summaries?.[0]?.totalAdjustedAmount
-                          ? currentOffer.summaries[0].totalAdjustedAmount / 2
+                        currentOffer?.summaries?.[0]?.totalAdjustedAmount
+                          ? currentOffer?.summaries[0].totalAdjustedAmount / 2
                           : 0
                       )}
                       {t(productContent?.priceSuffix)}
@@ -508,7 +614,7 @@ function PostPurchasePage({
 
           {/* Scarcity Message */}
           <p
-            className="mb-8 text-5xl text-[rgb(203,19,19)] text-red-600"
+            className="mb-8 max-md:text-3xl text-5xl text-[rgb(203,19,19)] text-red-600"
             style={{
               fontFamily: "'Oswald', sans-serif",
             }}
@@ -517,17 +623,10 @@ function PostPurchasePage({
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <Button
-              onClick={handlePay}
-              disabled={isProcessingPayment}
-              className="bg-gradient-to-r h-auto from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold md:px-[200px] px-5 py-2.5 md:py-5 rounded-lg shadow-lg text-lg sm:text-3xl"
-            >
-              {isProcessingPayment
-                ? t(actionsContent?.processingLabel)
-                : t(actionsContent?.confirmLabel)}
-            </Button>
-          </div>
+          <PostPurchasePayButton
+            handlePay={handlePay}
+            isProcessingPayment={isProcessingPayment}
+          />
 
           {/* Opt-out Link */}
           <button

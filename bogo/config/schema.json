@@ -15,7 +15,7 @@
         "logoUrl": {
           "type": "string",
           "title": "Logo URL",
-          "format": "uri",
+          "format": "storeConfigImage",
           "default": "https://tagadapay.com/logo-landing.png"
         },
         "companyName": {
@@ -948,27 +948,27 @@
                 "guaranteeBadge": {
                   "type": "string",
                   "title": "Guarantee Badge",
-                  "format": "uri"
+                  "format": "storeConfigImage"
                 },
                 "guaranteeLightBadge": {
                   "type": "string",
                   "title": "Guarantee Light Badge",
-                  "format": "uri"
+                  "format": "storeConfigImage"
                 },
                 "reviewVerifiedBadge": {
                   "type": "string",
                   "title": "Review Verified Badge",
-                  "format": "uri"
+                  "format": "storeConfigImage"
                 },
                 "reviewStarsBadge": {
                   "type": "string",
                   "title": "Review Stars Badge",
-                  "format": "uri"
+                  "format": "storeConfigImage"
                 },
                 "trustBadges": {
                   "type": "string",
                   "title": "Trust Badges",
-                  "format": "uri"
+                  "format": "storeConfigImage"
                 }
               }
             },
@@ -1089,7 +1089,7 @@
                 "imageUrl": {
                   "type": "string",
                   "title": "Image URL",
-                  "format": "uri"
+                  "format": "storeConfigImage"
                 },
                 "imageAlt": {
                   "type": "object",
@@ -1189,27 +1189,27 @@
                 "specialOffer": {
                   "type": "string",
                   "title": "Special Offer",
-                  "format": "uri"
+                  "format": "storeConfigImage"
                 },
                 "steps": {
                   "type": "string",
                   "title": "Steps",
-                  "format": "uri"
+                  "format": "storeConfigImage"
                 },
                 "product": {
                   "type": "string",
                   "title": "Product",
-                  "format": "uri"
+                  "format": "storeConfigImage"
                 },
                 "priceBadge": {
                   "type": "string",
                   "title": "Price Badge",
-                  "format": "uri"
+                  "format": "storeConfigImage"
                 },
                 "trustBadges": {
                   "type": "string",
                   "title": "Trust Badges",
-                  "format": "uri"
+                  "format": "storeConfigImage"
                 }
               }
             },
@@ -1277,6 +1277,11 @@
                   "type": "object",
                   "title": "Support Headline",
                   "format": "translation"
+                },
+                "supportHeadlineColor": {
+                  "type": "string",
+                  "title": "Support Headline Color",
+                  "default": "#7558DD"
                 },
                 "powerfulHeadline": {
                   "type": "object",
@@ -1396,7 +1401,7 @@
           "image": {
             "type": "string",
             "title": "Image",
-            "format": "uri"
+            "format": "storeConfigImage"
           },
           "verified": {
             "type": "boolean",
@@ -1421,7 +1426,7 @@
           "avatar": {
             "type": "string",
             "title": "Avatar",
-            "format": "uri"
+            "format": "storeConfigImage"
           },
           "text": {
             "type": "object",

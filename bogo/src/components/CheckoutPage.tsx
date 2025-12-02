@@ -32,7 +32,7 @@ import { PluginConfig } from "@/types/plugin-config";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formatMoney } from "@tagadapay/plugin-sdk";
 import {
-  FunnelEventType,
+  FunnelActionType,
   useCheckout,
   useFunnel,
   useGeoLocation,
@@ -127,8 +127,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       checkoutToken,
     });
   const { t } = useTranslation();
-  const { next } = useFunnel({
-    enabled: true,
+  const { next, updateContext, context } = useFunnel({
+    autoInitialize: true,
   });
   const { data } = useGeoLocation();
 
@@ -918,8 +918,10 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
       // Process payment using validated card data (address data handled by useAddress hook)
       const cardData = form.getValues();
+      const checkoutSessionId = checkout.checkoutSession.id;
+
       await processCardPayment(
-        checkout.checkoutSession.id,
+        checkoutSessionId,
         {
           cardNumber: cardData.cardNumber.replace(/\s+/g, ""), // Remove spaces
           expiryDate: cardData.expiryDate,
@@ -959,7 +961,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
               }
             );
           },
-          onFailure: (errorMsg) => {
+          onFailure: (errorMsg: string) => {
             toast.error(
               String(
                 t(
@@ -983,15 +985,76 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
             );
           },
         }
-      ).then((amountValue) => {
-        console.log("paymentSuccess", amountValue);
-        next({
-          type: FunnelEventType.CUSTOM,
-          data: {
-            amount: amountValue.payment,
-          },
+      )
+        .then(async (result) => {
+          console.log("paymentSuccess", result);
+          // Trigger funnel navigation - orchestrator will handle redirect to /post or /thankyou
+          await next({
+            type: FunnelActionType.PAYMENT_SUCCESS,
+            data: {
+              paymentId: result.payment?.id,
+              payment: result.payment
+                ? {
+                    id: result.payment.id,
+                    status: result.payment.status,
+                  }
+                : undefined,
+              order: result.order
+                ? {
+                    id: result.order.id,
+                    amount: result.order.amount,
+                    currency: result.order.currency,
+                  }
+                : undefined,
+              resources: {
+                order: result.order
+                  ? {
+                      id: result.order.id,
+                      amount: result.order.amount,
+                      currency: result.order.currency,
+                    }
+                  : undefined,
+                // Emitting 'mainOrder' to allow specific reference in receipt pages
+                mainOrder: result.order
+                  ? {
+                      id: result.order.id,
+                      amount: result.order.amount,
+                      currency: result.order.currency,
+                    }
+                  : undefined,
+                payment: result.payment
+                  ? {
+                      id: result.payment.id,
+                      status: result.payment.status,
+                    }
+                  : undefined,
+                checkout: {
+                  id: checkoutSessionId,
+                  token: checkoutToken,
+                },
+              },
+            },
+          });
+        })
+        .catch(async (error: any) => {
+          console.error("❌ Payment failed:", error);
+          // Trigger funnel failure flow - orchestrator will handle retry or error page
+          await next({
+            type: FunnelActionType.PAYMENT_FAILED,
+            data: {
+              error: {
+                code: error.code || "PAYMENT_FAILED",
+                message: error.message || "Payment failed",
+              },
+              payment: error.payment
+                ? {
+                    id: error.payment.id,
+                    status: error.payment.status,
+                  }
+                : undefined,
+            },
+          });
         });
-      });
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : null;
       toast.error(
@@ -1005,6 +1068,17 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
             : t(pluginConfig.content?.checkout?.toasts?.paymentFailed, "")
         )
       );
+      console.error("Checkout error:", error);
+      // Trigger funnel failure flow on unexpected errors
+      await next({
+        type: FunnelActionType.PAYMENT_FAILED,
+        data: {
+          error: {
+            code: "UNEXPECTED_ERROR",
+            message: errorMsg || "An unexpected error occurred during checkout",
+          },
+        },
+      });
     }
   };
   // Instant bundle change with background update - now switches variants instead of quantities

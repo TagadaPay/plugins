@@ -2,7 +2,7 @@
   "name": "BOGO Checkout",
   "pluginId": "bogo-checkout",
   "description": "High-converting checkout with BOGO bundles, post-purchase offers, and TagadaPay V2 SDK integration",
-  "version": "2.0.16",
+  "version": "2.0.18",
   "author": "TagadaPay Team",
   "mode": "direct-mode",
   "category": "checkout",
@@ -15,7 +15,7 @@
           "type": "checkout"
         }
       ],
-      "remappable": false
+      "remappable": true
     },
     {
       "path": "/post/:orderId",
@@ -36,7 +36,7 @@
           ]
         }
       ],
-      "remappable": false
+      "remappable": true
     },
     {
       "path": "/thankyou/:orderId",
@@ -57,7 +57,7 @@
           ]
         }
       ],
-      "remappable": false
+      "remappable": true
     }
   ],
   "router": {

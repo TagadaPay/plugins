@@ -36,7 +36,7 @@
     "ui:tab": "settings",
     "ui:section": "branding",
     "logoUrl": {
-      "ui:widget": "uri"
+      "ui:widget": "storeConfigImage"
     },
     "companyName": {
       "ui:field": "translation"
@@ -539,19 +539,19 @@
       },
       "images": {
         "guaranteeBadge": {
-          "ui:widget": "uri"
+          "ui:widget": "storeConfigImage"
         },
         "guaranteeLightBadge": {
-          "ui:widget": "uri"
+          "ui:widget": "storeConfigImage"
         },
         "reviewVerifiedBadge": {
-          "ui:widget": "uri"
+          "ui:widget": "storeConfigImage"
         },
         "reviewStarsBadge": {
-          "ui:widget": "uri"
+          "ui:widget": "storeConfigImage"
         },
         "trustBadges": {
-          "ui:widget": "uri"
+          "ui:widget": "storeConfigImage"
         }
       },
       "errors": {
@@ -615,7 +615,7 @@
       },
       "guarantee": {
         "imageUrl": {
-          "ui:widget": "uri"
+          "ui:widget": "storeConfigImage"
         },
         "imageAlt": {
           "ui:field": "translation"
@@ -668,19 +668,19 @@
       "ui:section": "postPurchase",
       "bannerImages": {
         "specialOffer": {
-          "ui:widget": "uri"
+          "ui:widget": "storeConfigImage"
         },
         "steps": {
-          "ui:widget": "uri"
+          "ui:widget": "storeConfigImage"
         },
         "product": {
-          "ui:widget": "uri"
+          "ui:widget": "storeConfigImage"
         },
         "priceBadge": {
-          "ui:widget": "uri"
+          "ui:widget": "storeConfigImage"
         },
         "trustBadges": {
-          "ui:widget": "uri"
+          "ui:widget": "storeConfigImage"
         }
       },
       "banner": {
@@ -718,6 +718,9 @@
         },
         "supportHeadline": {
           "ui:field": "translation"
+        },
+        "supportHeadlineColor": {
+          "ui:widget": "color"
         },
         "powerfulHeadline": {
           "ui:field": "translation"
@@ -782,7 +785,7 @@
         "ui:field": "translation"
       },
       "image": {
-        "ui:widget": "uri"
+        "ui:widget": "storeConfigImage"
       },
       "verified": {
         "ui:widget": "checkbox"
@@ -800,7 +803,7 @@
         "ui:field": "translation"
       },
       "avatar": {
-        "ui:widget": "uri"
+        "ui:widget": "storeConfigImage"
       },
       "time": {
         "ui:field": "translation"
