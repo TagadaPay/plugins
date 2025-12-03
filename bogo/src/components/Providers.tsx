@@ -6,10 +6,7 @@ interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <TagadaProvider 
-      debugMode={true} 
-      autoInitializeFunnel={true}
-    >
+    <TagadaProvider>
       {children}
     </TagadaProvider>
   );
