@@ -2,8 +2,9 @@ import { Button } from "@/components/ui/button";
 import { PluginConfig } from "@/types/plugin-config";
 import {
   formatMoney,
+  useFunnel,
+  useOffers,
   usePluginConfig,
-  usePostPurchases,
   useTranslation,
 } from "@tagadapay/plugin-sdk/v2";
 import React, { useCallback, useEffect, useState } from "react";
@@ -19,30 +20,121 @@ interface OfferResponse {
 // Key for localStorage
 const LS_KEY_PREFIX = "post-purchase-offers-";
 
-type PostPurchasePageProps = {
-  orderId: string;
-};
-
-function PostPurchasePage({
-  orderId,
-}: PostPurchasePageProps): React.JSX.Element | null {
+function PostPurchasePage(): React.JSX.Element | null {
   const [currentOfferIndex, setCurrentOfferIndex] = useState(0);
   const [offerResponses, setOfferResponses] = useState<OfferResponse[]>([]);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const navigate = useNavigate();
 
+  // Get offerId from STATIC resource and orderId from context (defined in manifest requirements)
+  // Static resources are always objects with {id: string} format
+  const { context, isLoading: isFunnelLoading } = useFunnel();
+
+  interface ExtendedContext {
+    static?: Record<string, { id: string }>;
+  }
+  const staticContext = context as typeof context & ExtendedContext;
+
+  const offerResource = staticContext?.static?.offer;
+
+  // Extract offerId from object format
+  const offerId = offerResource?.id || '';
+
+  // Get orderId from funnel context (can be from mainOrder or resources.order)
+  const orderId = context?.metadata?.mainOrder?.id ?? context?.resources?.order?.id ?? '';
+
   // Construct localStorage key with orderId for this specific order's offers
   const localStorageKey = `${LS_KEY_PREFIX}${orderId}`;
 
+  // Use the new useOffers hook from SDK v2
+  // It handles offer fetching and payment processing
   const {
     offers,
     isLoading,
     error,
-    initCheckoutSession,
-    payWithCheckoutSession,
-  } = usePostPurchases({
+    payOffer,
+  } = useOffers({
+    offerIds: offerId ? [offerId] : [],
     orderId,
+    activeOfferId: offerId,
   });
+
+  const goToThankYouPage = useCallback(() => {
+    navigate(`/thankyou/${orderId}`);
+  }, [navigate, orderId]);
+
+  const { config: pluginConfig } = usePluginConfig<PluginConfig>();
+  const { t } = useTranslation();
+  const postPurchaseContent = pluginConfig.content?.postPurchase;
+  const bannerImages = postPurchaseContent?.bannerImages;
+  const productContent = postPurchaseContent?.product;
+  const actionsContent = postPurchaseContent?.actions;
+  const footerContent = postPurchaseContent?.footer;
+  const companyName = t(pluginConfig.branding?.companyName);
+  const currentYear = new Date().getFullYear().toString();
+
+  // Skip current offer - handles next functionality
+  const handleSkipOffer = useCallback(() => {
+    if (!offers || currentOfferIndex >= offers.length) return;
+
+    const currentOffer = offers[currentOfferIndex];
+
+    // Record the rejection
+    const newResponse: OfferResponse = {
+      offerId: currentOffer.id,
+      accepted: false,
+      date: new Date().toISOString(),
+    };
+
+    setOfferResponses((prev) => [...prev, newResponse]);
+
+    // Move to next offer or thank you page if this was the last one
+    if (currentOfferIndex < offers.length - 1) {
+      setCurrentOfferIndex(currentOfferIndex + 1);
+    } else {
+      goToThankYouPage();
+    }
+  }, [currentOfferIndex, offers, goToThankYouPage]);
+
+  // Handles accepting and paying for the current offer with selected variants
+  const handlePay = useCallback(async () => {
+    if (!offers || !offers[currentOfferIndex]) return;
+
+    const currentOffer = offers[currentOfferIndex];
+    setIsProcessingPayment(true);
+
+    try {
+      // Record the acceptance
+      const newResponse: OfferResponse = {
+        offerId: currentOffer.id,
+        accepted: true,
+        date: new Date().toISOString(),
+      };
+
+      setOfferResponses((prev) => [...prev, newResponse]);
+
+      // Use the new SDK method to pay for the offer
+      // This handles checkout session creation and payment processing
+      await payOffer(currentOffer.id, orderId);
+
+      // Move to next offer or thank you page if this was the last one
+      goToThankYouPage();
+    } catch (err) {
+      console.error("Error processing payment:", err);
+      // Remove the response if payment failed
+      setOfferResponses((prev) =>
+        prev.filter((r) => r.offerId !== currentOffer.id)
+      );
+    } finally {
+      setIsProcessingPayment(false);
+    }
+  }, [
+    offers,
+    currentOfferIndex,
+    orderId,
+    goToThankYouPage,
+    payOffer,
+  ]);
 
   // Load offer responses from localStorage on component mount
   useEffect(() => {
@@ -86,132 +178,39 @@ function PostPurchasePage({
     }
   }, [localStorageKey, offerResponses]);
 
-  const goToThankYouPage = useCallback(() => {
-    navigate(`/thankyou/${orderId}`);
-  }, [navigate, orderId]);
-
-  const { config: pluginConfig } = usePluginConfig<PluginConfig>();
-  const { t } = useTranslation();
-  const postPurchaseContent = pluginConfig.content?.postPurchase;
-  const bannerImages = postPurchaseContent?.bannerImages;
-  const productContent = postPurchaseContent?.product;
-  const actionsContent = postPurchaseContent?.actions;
-  const footerContent = postPurchaseContent?.footer;
-  const companyName = t(pluginConfig.branding?.companyName);
-  const currentYear = new Date().getFullYear().toString();
-
-  const getDiscountPercentage = useCallback((offer: any) => {
-    if (!offer?.summaries?.[0]) return 0;
-
-    const summary = offer.summaries[0];
-    if (summary.totalAmount === 0) return 0;
-
-    return Math.round(
-      (1 - summary.totalAdjustedAmount / summary.totalAmount) * 100
+  // Show loading while funnel context is loading
+  if (isFunnelLoading || !context) {
+    return (
+      <div className="flex min-h-screen flex-col bg-[#f5f3f0] font-sans">
+        <div className="flex flex-grow flex-col items-center justify-center px-4 py-6 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-3xl text-center">
+            <div className="mx-auto h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900"></div>
+            <p className="mt-2 text-gray-600">
+              {t(postPurchaseContent?.loadingMessage)}
+            </p>
+          </div>
+        </div>
+      </div>
     );
-  }, []);
+  }
 
-  // Go to previous offer if allowed
-  const handlePreviousOffer = useCallback(() => {
-    if (currentOfferIndex > 0) {
-      // Only allow going back if the previous offer wasn't accepted
-      const previousOfferIndex = currentOfferIndex - 1;
-      const previousOffer = offers?.[previousOfferIndex];
-
-      if (previousOffer) {
-        const previousResponse = offerResponses.find(
-          (r) => r.offerId === previousOffer.id
-        );
-
-        // Only allow going back if the previous offer wasn't accepted
-        if (!previousResponse?.accepted) {
-          setCurrentOfferIndex(previousOfferIndex);
-
-          // Remove the previous response from our tracking if it exists
-          if (previousResponse) {
-            setOfferResponses((prev) =>
-              prev.filter((r) => r.offerId !== previousOffer.id)
-            );
-          }
-        }
-      }
-    }
-  }, [currentOfferIndex, offers, offerResponses]);
-
-  // Skip current offer - handles next functionality
-  const handleSkipOffer = useCallback(() => {
-    if (!offers || currentOfferIndex >= offers.length) return;
-
-    const currentOffer = offers[currentOfferIndex];
-
-    // Record the rejection
-    const newResponse: OfferResponse = {
-      offerId: currentOffer.id,
-      accepted: false,
-      date: new Date().toISOString(),
-    };
-
-    setOfferResponses((prev) => [...prev, newResponse]);
-
-    // Move to next offer or thank you page if this was the last one
-    if (currentOfferIndex < offers.length - 1) {
-      setCurrentOfferIndex(currentOfferIndex + 1);
-    } else {
-      goToThankYouPage();
-    }
-  }, [currentOfferIndex, offers, goToThankYouPage]);
-
-  // Handles accepting and paying for the current offer with selected variants
-  const handlePay = useCallback(async () => {
-    if (!offers || !offers[currentOfferIndex]) return;
-
-    const currentOffer = offers[currentOfferIndex];
-    setIsProcessingPayment(true);
-
-    try {
-      // Record the acceptance
-      const newResponse: OfferResponse = {
-        offerId: currentOffer.id,
-        accepted: true,
-        date: new Date().toISOString(),
-      };
-
-      setOfferResponses((prev) => [...prev, newResponse]);
-
-      // TODO: Use initCheckoutSessionWithVariants when SDK is updated
-      // For now, using the default initCheckoutSession
-      // const session = await initCheckoutSessionWithVariants(
-      //   currentOffer.id,
-      //   orderId,
-      //   selectedVariants
-      // );
-      const session = await initCheckoutSession(currentOffer.id, orderId);
-      const checkoutSessionId = session.checkoutSessionId;
-      if (!checkoutSessionId)
-        throw new Error("Failed to create checkout session");
-
-      // Pay for the offer using the checkout session
-      await payWithCheckoutSession(checkoutSessionId, orderId);
-
-      // Move to next offer or thank you page if this was the last one
-      goToThankYouPage();
-    } catch (err) {
-      console.error("Error processing payment:", err);
-      // Remove the response if payment failed
-      setOfferResponses((prev) =>
-        prev.filter((r) => r.offerId !== currentOffer.id)
-      );
-    } finally {
-      setIsProcessingPayment(false);
-    }
-  }, [
-    offers,
-    currentOfferIndex,
-    orderId,
-    goToThankYouPage,
-    initCheckoutSession,
-    payWithCheckoutSession,
-  ]);
+  // Show loading while offerId or orderId are not yet available from context/static resources
+  // During navigation transitions, context might update to next step before URL changes.
+  // We prefer showing a spinner over an error message during this transient state.
+  if (!offerId || !orderId) {
+    return (
+      <div className="flex min-h-screen flex-col bg-[#f5f3f0] font-sans">
+        <div className="flex flex-grow flex-col items-center justify-center px-4 py-6 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-3xl text-center">
+            <div className="mx-auto h-8 w-8 animate-spin rounded-full border-b-2 border-gray-900"></div>
+            <p className="mt-2 text-gray-600">
+              {t(postPurchaseContent?.loadingMessage)}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // If there are no offers, go to thank you page
   if (!isLoading && (!offers || offers.length === 0)) {
@@ -286,15 +285,6 @@ function PostPurchasePage({
     goToThankYouPage();
     return null;
   }
-
-  // Check if we can show previous button (can't go back to accepted offers)
-  const canGoPrevious =
-    currentOfferIndex > 0 &&
-    offers?.[currentOfferIndex - 1] &&
-    !offerResponses.some((r) => {
-      const previousOfferId = offers[currentOfferIndex - 1].id;
-      return r.offerId === previousOfferId && r.accepted;
-    });
 
   return (
     <div className="min-h-screen bg-white font-sans">

@@ -1,42 +1,129 @@
 {
   "name": "BOGO Checkout",
-  "pluginId": "bogo-checkout",
+  "pluginId": "bogo-checkout-lolo",
   "description": "High-converting checkout with BOGO bundles, post-purchase offers, and TagadaPay V2 SDK integration",
-  "version": "2.0.16",
+  "version": "2.0.19",
   "author": "TagadaPay Team",
   "mode": "direct-mode",
   "category": "checkout",
   "tags": ["checkout", "bogo", "payment"],
+  "configuration": {
+    "schema": "./config/schema.json",
+    "uiSchema": "./config/ui-schema.json",
+    "presets": [
+      {
+        "id": "default",
+        "name": "Default",
+        "description": "Default BOGO checkout configuration",
+        "config": "./config/default.config.json"
+      }
+    ]
+  },
   "pages": [
     {
       "path": "/checkout",
       "features": [
         {
-          "type": "checkout"
+          "type": "checkout",
+          "requirements": [
+            {
+              "resource": "checkoutSession",
+              "from": [
+                {
+                  "name": "checkoutToken",
+                  "type": "query"
+                }
+              ]
+            },
+            {
+              "resource": "variant1",
+              "resourceType": "variant",
+              "label": "Regular Bundle (1 Bottle)",
+              "description": "The base product variant for the single purchase option",
+              "from": [
+                {
+                  "name": "id",
+                  "type": "static"
+                }
+              ],
+              "optional": true
+            },
+            {
+              "resource": "variant2",
+              "resourceType": "variant",
+              "label": "BOGO Bundle (2 Bottles)",
+              "description": "The 'Buy One Get One' product variant",
+              "from": [
+                {
+                  "name": "id",
+                  "type": "static"
+                }
+              ],
+              "optional": true
+            },
+            {
+              "resource": "variant3",
+              "resourceType": "variant",
+              "label": "Family Bundle (3 Bottles)",
+              "description": "The large volume product variant",
+              "from": [
+                {
+                  "name": "id",
+                  "type": "static"
+                }
+              ],
+              "optional": true
+            },
+            {
+              "resource": "orderBump",
+              "resourceType": "orderBump",
+              "label": "Checkout Order Bump",
+              "description": "Upsell offer displayed on the checkout page",
+              "from": [
+                {
+                  "name": "id",
+                  "type": "static"
+                }
+              ],
+              "optional": true
+            }
+          ]
         }
       ],
-      "remappable": false
+      "remappable": true
     },
     {
-      "path": "/post/:orderId",
+      "path": "/offer",
       "features": [
         {
           "type": "offer",
           "requirements": [
             {
               "resource": "order",
-              "params": [
+              "resourceType": "order",
+              "from": [
                 {
-                  "name": "orderId",
-                  "type": "path",
-                  "required": true
+                  "name": "id",
+                  "type": "context"
+                }
+              ]
+            },
+            {
+              "resource": "offer",
+              "resourceType": "offer",
+              "label": "Post-Purchase Offer",
+              "description": "The offer to display after purchase",
+              "from": [
+                {
+                  "name": "id",
+                  "type": "static"
                 }
               ]
             }
           ]
         }
       ],
-      "remappable": false
+      "remappable": true
     },
     {
       "path": "/thankyou/:orderId",
@@ -46,18 +133,17 @@
           "requirements": [
             {
               "resource": "order",
-              "params": [
+              "from": [
                 {
-                  "name": "orderId",
-                  "type": "path",
-                  "required": true
+                  "name": "id",
+                  "type": "path"
                 }
               ]
             }
           ]
         }
       ],
-      "remappable": false
+      "remappable": true
     }
   ],
   "router": {
@@ -66,10 +152,7 @@
     "excluder": null
   },
   "requirements": {
-    "sdk": "^2.7.0",
-    "sdkVersion": "v2",
-    "environment": {
-      "VITE_GOOGLE_MAPS_API_KEY": "required"
-    }
+    "sdk": "^2.2.0",
+    "sdkVersion": "v2"
   }
 }

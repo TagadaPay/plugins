@@ -14,29 +14,7 @@
       "es": "Tagada"
     }
   },
-  "products": [
-    {
-      "variantID": "variant_4dc634640bff",
-      "oneTime": "price_4b5a84e7ef05",
-      "recurring": "price_c99c5e92de03",
-      "quantity": 1
-    },
-    {
-      "variantID": "variant_02e3520f9c78",
-      "oneTime": "price_08f674175c63",
-      "recurring": "price_e56c98d5faa2",
-      "quantity": 2
-    },
-    {
-      "variantID": "variant_ae4642c60ede",
-      "oneTime": "price_17d240738a17",
-      "recurring": "price_23d3abc03bca",
-      "quantity": 3
-    }
-  ],
-  "orderBumpId": "up_sell_ob_offer_6fbaec5b49a4",
   "defaultCurrency": "USD",
-  "googleApiKey": "AIzaSyDFokrk2tb_QKFdODaW_33oFLk7aO6HOow",
   "content": {
     "app": {
       "redirect": {

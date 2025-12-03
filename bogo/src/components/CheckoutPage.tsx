@@ -30,9 +30,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
 import { PluginConfig } from "@/types/plugin-config";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { formatMoney } from "@tagadapay/plugin-sdk";
 import {
-  FunnelEventType,
+  formatMoney,
+  FunnelActionType,
   useCheckout,
   useFunnel,
   useGeoLocation,
@@ -47,7 +47,7 @@ import {
 import OrderBump from "./OrderBump";
 
 interface CheckoutPageProps {
-  checkoutToken: string;
+  checkoutToken?: string;
 }
 
 // Define interface for checkout item data
@@ -122,15 +122,93 @@ type CheckoutFormData = z.infer<typeof checkoutFormSchema>;
 type CardFormData = z.infer<typeof cardFormSchema>;
 
 export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
-  const { checkout, updateCustomerAndSessionInfo, updateLineItems, error } =
+  const { config: pluginConfig, storeId } = usePluginConfig<PluginConfig>();
+  const { checkout, updateCustomerAndSessionInfo, updateLineItems, error, init } =
     useCheckout({
-      checkoutToken,
+      checkoutToken: checkoutToken || "",
     });
   const { t } = useTranslation();
-  const { next } = useFunnel({
-    enabled: true,
-  });
+  const { next, context, isLoading: isFunnelLoading, isInitialized: isFunnelInitialized } = useFunnel();
   const { data } = useGeoLocation();
+
+  // Initialize checkout when no token is provided
+  const [isInitFailed, setIsInitFailed] = useState(false);
+  const hasInitializedRef = useRef(false);
+
+  useEffect(() => {
+    if (
+      !checkoutToken &&
+      !checkout &&
+      init &&
+      !hasInitializedRef.current &&
+      !isInitFailed
+    ) {
+      hasInitializedRef.current = true;
+
+      // Get the third bundle variant (Best Value) from config
+      const specialProduct = pluginConfig.products?.[2];
+      const thirdVariantId = specialProduct?.variantID;
+
+      if (thirdVariantId) {
+        init({
+          storeId: storeId,
+          lineItems: [
+            {
+              variantId: thirdVariantId,
+              quantity: 1,
+            },
+          ],
+        }).catch(() => {
+          setIsInitFailed(true);
+        });
+      }
+    }
+  }, [checkoutToken, checkout, init, pluginConfig.products, storeId, isInitFailed]);
+
+  // Get bundle variant IDs from static context (optional - configured in CRM)
+  // These define which 3 variants to show as bundle options
+  // Wait for context to be initialized before accessing static resources
+  interface ExtendedContext {
+    static?: Record<string, { id: string }>;
+  }
+  const staticContext = context as typeof context & ExtendedContext;
+  const variant1Id = staticContext?.static?.variant1?.id;
+  const variant2Id = staticContext?.static?.variant2?.id;
+  const variant3Id = staticContext?.static?.variant3?.id;
+
+  // Debug: Log static context to diagnose missing variant IDs (only when context is ready)
+  useEffect(() => {
+    if (!context) {
+      console.log('📦 [BOGO] Waiting for funnel context to initialize...');
+      return;
+    }
+
+    console.log('📦 [BOGO] Static Context Debug:', {
+      isFunnelInitialized,
+      hasContext: !!context,
+      hasStaticContext: !!staticContext?.static,
+      staticKeys: staticContext?.static ? Object.keys(staticContext.static) : [],
+      variant1Id,
+      variant2Id,
+      variant3Id,
+      fullStatic: staticContext?.static,
+      environment: context?.environment,
+    });
+
+    // Show success message when variant IDs are loaded
+    if (variant1Id && variant2Id && variant3Id) {
+      console.log('✅ [BOGO] All variant IDs loaded successfully!');
+    } else if (!variant1Id && !variant2Id && !variant3Id) {
+      console.warn('⚠️  [BOGO] No variant IDs configured in funnel static resources!');
+      console.warn('📝 [BOGO] Please configure variant1, variant2, and variant3 in the Funnel Builder');
+    } else {
+      console.warn('⚠️  [BOGO] Some variant IDs are missing:', {
+        variant1Id: variant1Id || 'MISSING',
+        variant2Id: variant2Id || 'MISSING',
+        variant3Id: variant3Id || 'MISSING',
+      });
+    }
+  }, [context, isFunnelInitialized, staticContext, variant1Id, variant2Id, variant3Id]);
 
   // Prefill country in form based on geolocation data
 
@@ -204,7 +282,6 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     };
   }, []);
 
-  const { config: pluginConfig, storeId } = usePluginConfig<PluginConfig>();
   const storeName = t(pluginConfig.branding?.storeName);
   const companyName = t(pluginConfig.branding?.companyName);
   const currentYear = new Date().getFullYear().toString();
@@ -238,12 +315,23 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   } = form;
 
   // Fetch products data - SDK now handles all complexity internally!
+  // IMPORTANT: Wait for funnel to be initialized and have static resources before fetching products
+  // Only fetch the 3 specific variants we need (not all products!)
+  const variantIdsToFetch = useMemo(() => {
+    const ids = [];
+    if (variant1Id) ids.push(variant1Id);
+    if (variant2Id) ids.push(variant2Id);
+    if (variant3Id) ids.push(variant3Id);
+    return ids;
+  }, [variant1Id, variant2Id, variant3Id]);
+
   const {
     error: productsError,
     getVariant,
     isLoading: isProductsLoading,
   } = useProducts({
-    enabled: true,
+    variantIds: variantIdsToFetch,
+    enabled: isFunnelInitialized && !!staticContext?.static && variantIdsToFetch.length > 0,
     includeVariants: true,
     includePrices: true,
   });
@@ -255,52 +343,71 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     clearError: clearPaymentError,
   } = usePayment();
 
-  // Helper function to get product by variantID
-  const getProductByVariantId = (variantId: string) => {
-    return pluginConfig.products?.find((p) => p.variantID === variantId);
-  };
-
-  // Define variant mappings for different deals based on actual product data
-  // Index 0 = regular, index 1 = bogo, index 2 = special
+  // Define variant mappings for different deals
+  // Priority: 1) Static resources (CRM-configured), 2) Checkout session line items (fallback)
   const createVariantMappings = () => {
-    const regularProduct = pluginConfig.products?.[0];
-    const bogoProduct = pluginConfig.products?.[1];
-    const specialProduct = pluginConfig.products?.[2];
-
-    const baseVariant = regularProduct?.variantID
-      ? getVariant(regularProduct.variantID)
-      : null;
-    const bogoVariant = bogoProduct?.variantID
-      ? getVariant(bogoProduct.variantID)
-      : null;
-    const specialVariant = specialProduct?.variantID
-      ? getVariant(specialProduct.variantID)
-      : null;
+    // If variants are configured via static resources, use those
+    if (variant1Id || variant2Id || variant3Id) {
+      const baseVariantData = variant1Id ? getVariant(variant1Id) : null;
+      const bogoVariantData = variant2Id ? getVariant(variant2Id) : null;
+      const specialVariantData = variant3Id ? getVariant(variant3Id) : null;
+      
+      return {
+        bundle1: {
+          variantId: baseVariantData?.variant?.id || variant1Id || '',
+          name: baseVariantData?.variant?.name || 'Bundle 1',
+          variant: baseVariantData?.variant,
+          product: baseVariantData?.product,
+        },
+        bundle2: {
+          variantId: bogoVariantData?.variant?.id || variant2Id || '',
+          name: bogoVariantData?.variant?.name || 'Bundle 2',
+          variant: bogoVariantData?.variant,
+          product: bogoVariantData?.product,
+        },
+        bundle3: {
+          variantId: specialVariantData?.variant?.id || variant3Id || '',
+          name: specialVariantData?.variant?.name || 'Bundle 3',
+          variant: specialVariantData?.variant,
+          product: specialVariantData?.product,
+        },
+      };
+    }
+    
+    // Fallback: Auto-detect from checkout session line items
+    const checkoutVariants = checkout?.checkoutSession?.sessionLineItems
+      ?.map((item: any) => item.variantId)
+      .filter((v: any, i: number, arr: any[]) => arr.indexOf(v) === i) // unique
+      .slice(0, 3) || [];
+    
+    const baseVariantData = checkoutVariants[0] ? getVariant(checkoutVariants[0]) : null;
+    const bogoVariantData = checkoutVariants[1] ? getVariant(checkoutVariants[1]) : null;
+    const specialVariantData = checkoutVariants[2] ? getVariant(checkoutVariants[2]) : null;
 
     return {
       bundle1: {
-        variantId: regularProduct?.variantID || "",
+        variantId: baseVariantData?.variant?.id || "",
         name:
-          baseVariant?.variant.name ||
+          baseVariantData?.variant?.name ||
           t(pluginConfig.content?.checkout?.packages?.fallbackBundleRegular),
-        variant: baseVariant?.variant,
-        product: baseVariant?.product,
+        variant: baseVariantData?.variant,
+        product: baseVariantData?.product,
       },
       bundle2: {
-        variantId: bogoProduct?.variantID || "",
+        variantId: bogoVariantData?.variant?.id || "",
         name:
-          bogoVariant?.variant.name ||
+          bogoVariantData?.variant?.name ||
           t(pluginConfig.content?.checkout?.packages?.fallbackBundleBogo),
-        variant: bogoVariant?.variant,
-        product: bogoVariant?.product,
+        variant: bogoVariantData?.variant,
+        product: bogoVariantData?.product,
       },
       bundle3: {
-        variantId: specialProduct?.variantID || "",
+        variantId: specialVariantData?.variant?.id || "",
         name:
-          specialVariant?.variant.name ||
+          specialVariantData?.variant?.name ||
           t(pluginConfig.content?.checkout?.packages?.fallbackBundleSpecial),
-        variant: specialVariant?.variant,
-        product: specialVariant?.product,
+        variant: specialVariantData?.variant,
+        product: specialVariantData?.product,
       },
     };
   };
@@ -364,11 +471,12 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       return;
     }
 
-    const product = getProductByVariantId(variantId);
+    const variantData = getVariant(variantId);
 
-    if (!product) {
+    if (!variantData) {
       return;
     }
+    const { variant } = variantData;
 
     const currentPriceId =
       (primaryLineItem as any)?.priceId ??
@@ -379,10 +487,13 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       return;
     }
 
+    const recurringPriceId = variant.prices?.find((p: any) => p.recurring === true)?.id;
+    const oneTimePriceId = variant.prices?.find((p: any) => p.recurring === false)?.id;
+
     const desiredState =
-      product.recurring && currentPriceId === product.recurring
+      recurringPriceId && currentPriceId === recurringPriceId
         ? true
-        : product.oneTime && currentPriceId === product.oneTime
+        : oneTimePriceId && currentPriceId === oneTimePriceId
         ? false
         : null;
 
@@ -414,16 +525,15 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   // Helper function: resolve priceId based on mode (one-time vs subscription)
   // Helper function to get display amount by variant and currency based on current mode
   const getPriceForVariant = (variantId: string, currency: string) => {
-    const product = getProductByVariantId(variantId);
-    if (!product) return 0;
+    const variantData = getVariant(variantId);
+    if (!variantData) return 0;
+    const { product, variant } = variantData;
 
-    const priceId = subscribeAndSave ? product.recurring : product.oneTime;
-
-    // Find the variant data to get price info
-    const variantData = Object.values(variantMappings).find(
-      (v) => v.variantId === variantId
-    );
-    const price = variantData?.variant?.prices?.find((p) => p.id === priceId);
+    // Find the appropriate price based on subscription state
+    // recurring: true for subscription prices, false for one-time
+    const price = subscribeAndSave 
+      ? variant.prices?.find((p: any) => p.recurring === true)
+      : variant.prices?.find((p: any) => p.recurring === false);
 
     return price?.currencyOptions?.[currency]?.amount || 0;
   };
@@ -442,7 +552,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         id: "bundle1",
         variantId: variantMappings.bundle1.variantId || "",
         name: variantMappings.bundle1.name || "",
-        quantity: pluginConfig.products?.[0]?.quantity || 2,
+        quantity: 1,
         totalPrice: getPriceForVariant(
           variantMappings.bundle1.variantId || "",
           currency
@@ -469,7 +579,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         id: "bundle2",
         variantId: variantMappings.bundle2.variantId || "",
         name: variantMappings.bundle2.name || "",
-        quantity: pluginConfig.products?.[1]?.quantity || 3,
+        quantity: 2,
         totalPrice: getPriceForVariant(
           variantMappings.bundle2.variantId || "",
           currency
@@ -497,7 +607,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         id: "bundle3",
         variantId: variantMappings.bundle3.variantId || "",
         name: variantMappings.bundle3.name || "",
-        quantity: pluginConfig.products?.[2]?.quantity || 5,
+        quantity: 3,
         totalPrice: getPriceForVariant(
           variantMappings.bundle3.variantId || "",
           currency
@@ -591,9 +701,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       if (!selectedBundleData) return;
 
       const variantId = selectedBundleData.variantId;
-      const product = getProductByVariantId(variantId);
-      if (!product) {
-        console.error("Product not found for variant:", variantId);
+      const variantData = getVariant(variantId);
+      if (!variantData) {
+        console.error("Variant data not found for variant:", variantId);
         setSubscribeAndSave(previousState);
         toast.error(
           String(
@@ -602,7 +712,11 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         );
         return;
       }
-      const priceId = checked ? product.recurring : product.oneTime;
+      const { variant } = variantData;
+      
+      const priceId = checked 
+        ? variant.prices?.find((p: any) => p.recurring === true)?.id
+        : variant.prices?.find((p: any) => p.recurring === false)?.id;
 
       if (!priceId) {
         console.error(
@@ -986,7 +1100,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       ).then((amountValue) => {
         console.log("paymentSuccess", amountValue);
         next({
-          type: FunnelEventType.CUSTOM,
+          type: FunnelActionType.CUSTOM,
           data: {
             amount: amountValue.payment,
           },
@@ -1032,8 +1146,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     }
 
     const variantId = selectedBundleData.variantId;
-    const product = getProductByVariantId(variantId);
-    if (!product) {
+    const variantData = getVariant(variantId);
+    if (!variantData) {
       setSelectedBundle(previousSelection);
       toast.error(
         String(
@@ -1042,7 +1156,11 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       );
       return;
     }
-    const priceId = subscribeAndSave ? product.recurring : product.oneTime;
+    const { variant } = variantData;
+    
+    const priceId = subscribeAndSave 
+      ? variant.prices?.find((p: any) => p.recurring === true)?.id
+      : variant.prices?.find((p: any) => p.recurring === false)?.id;
 
     if (!priceId) {
       // Revert UI on critical error
@@ -1407,9 +1525,33 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     );
   }
 
-  // Show loading indicator for payment processing
+  // Show error state if checkout initialization failed
+  if (isInitFailed) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-8">
+        <div className="mx-auto max-w-md">
+          <div className="rounded-lg bg-white p-6 shadow">
+            <h1 className="mb-4 text-xl font-semibold text-red-600">
+              {t(pluginConfig.content?.checkout?.errors?.genericTitle)}
+            </h1>
+            <p className="mb-4 text-gray-600">
+              {t(
+                pluginConfig.content?.checkout?.errors?.genericDescription,
+                "",
+                {
+                  supportEmail: pluginConfig.branding?.supportEmail,
+                }
+              )}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show loading indicator for payment processing and funnel initialization
   const isLoading =
-    isPaymentLoading || isUpdating || !checkout?.checkoutSession?.id;
+    isPaymentLoading || isUpdating || !checkout?.checkoutSession?.id || isFunnelLoading || !context;
 
   return (
     <div className="bg-gray-50 pb-20 font-sans lg:pb-0">
@@ -1610,6 +1752,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                             className="text-xs text-gray-500 sm:text-sm"
                           />
                         )}
+                        <p className="text-xs font-medium text-gray-700 mt-1 sm:text-sm">
+                          Quantity: {bundle.quantity}
+                        </p>
                       </div>
                       <div className="text-right">
                         <p className="text-xl font-semibold text-emerald-700 sm:text-2xl">
@@ -1626,6 +1771,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
                           {t(
                             pluginConfig.content?.checkout?.packages
                               ?.perUnitLabel
+                          )}
+                        </p>
+                        <p className="text-xs text-gray-600 mt-0.5">
+                          Total: {formatMoney(
+                            Number(bundle.totalPrice) || 0,
+                            String(
+                              bundle.currency || pluginConfig.defaultCurrency
+                            )
                           )}
                         </p>
                         <p className="text-sm font-medium text-emerald-600">
@@ -1659,6 +1812,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
               })}
             </p>
 
+            {/* Order bump is optional - will be fetched automatically if configured */}
             <OrderBump checkoutToken={checkoutToken} />
 
             {/* Step 2 - Customer Information */}

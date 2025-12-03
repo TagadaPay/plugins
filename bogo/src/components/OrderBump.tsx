@@ -9,17 +9,22 @@ import { Heart } from "lucide-react";
 import { toast } from "react-hot-toast";
 
 interface OrderBumpProps {
-  checkoutToken: string;
+  checkoutToken?: string;
+  orderBumpId?: string; // Order bump ID from static resources
 }
 
-function OrderBump({ checkoutToken }: OrderBumpProps) {
+function OrderBump({ checkoutToken, orderBumpId }: OrderBumpProps) {
+  // Early return if no checkout token
+  if (!checkoutToken) {
+    return null;
+  }
   const { config: pluginConfig } = usePluginConfig<PluginConfig>();
   const { t } = useTranslation();
 
   const { isSelected: orderBumpSelected, toggle: toggleOrderBumpOffer } =
     useOrderBump({
       checkoutToken: checkoutToken,
-      offerId: pluginConfig.orderBumpId || "",
+      offerId: orderBumpId || "",
     });
 
   const handleOrderBumpToggle = async (selected: boolean) => {

@@ -1,0 +1,18 @@
+{
+  "offer": {
+    "id": "offer_ad2e64728dd8"
+  },
+  "variant1": {
+    "id": "variant_79d799783df1"
+  },
+  "variant2": {
+    "id": "variant_dfc884f7912f"
+  },
+  "variant3": {
+    "id": "variant_6535d90a93d2"
+  },
+  "orderBump": {
+    "id": "up_sell_ob_offer_6fbaec5b49a4"
+  }
+}
+
