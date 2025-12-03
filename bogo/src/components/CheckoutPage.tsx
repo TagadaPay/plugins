@@ -131,6 +131,9 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   const { next, context, isLoading: isFunnelLoading, isInitialized: isFunnelInitialized } = useFunnel();
   const { data } = useGeoLocation();
 
+  // Development mode check for debug logging
+  const isDev = import.meta.env.DEV;
+
   // Get bundle variant IDs from static context (optional - configured in CRM)
   // These define which 3 variants to show as bundle options
   // Wait for context to be initialized before accessing static resources
@@ -157,7 +160,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       isFunnelInitialized
     ) {
       hasInitializedRef.current = true;
-      console.log('🚀 [BOGO] Initializing checkout with variant3 (Best Value):', variant3Id);
+      if (isDev) console.log('🚀 [BOGO] Initializing checkout with variant3 (Best Value):', variant3Id);
 
       init({
         storeId: storeId,
@@ -176,6 +179,8 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
   // Debug: Log static context to diagnose missing variant IDs (only when context is ready)
   useEffect(() => {
+    if (!isDev) return; // Skip debug logging in production
+
     if (!context) {
       console.log('📦 [BOGO] Waiting for funnel context to initialize...');
       return;
@@ -206,7 +211,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         variant3Id: variant3Id || 'MISSING',
       });
     }
-  }, [context, isFunnelInitialized, staticContext, variant1Id, variant2Id, variant3Id]);
+  }, [context, isFunnelInitialized, staticContext, variant1Id, variant2Id, variant3Id, isDev]);
 
   // Prefill country in form based on geolocation data
 
@@ -434,10 +439,12 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       
       if (!isValidVariant && variant3Id) {
         hasValidatedExistingCheckout.current = true;
-        console.log('🔄 [BOGO] Existing checkout has invalid variant, updating to variant3:', {
-          currentVariantId,
-          newVariantId: variant3Id,
-        });
+        if (isDev) {
+          console.log('🔄 [BOGO] Existing checkout has invalid variant, updating to variant3:', {
+            currentVariantId,
+            newVariantId: variant3Id,
+          });
+        }
 
         // Update to variant3 (Best Value) by default
         const variantData = getVariant(variant3Id);
@@ -459,7 +466,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         }
       } else if (isValidVariant) {
         hasValidatedExistingCheckout.current = true;
-        console.log('✅ [BOGO] Existing checkout has valid variant:', currentVariantId);
+        if (isDev) console.log('✅ [BOGO] Existing checkout has valid variant:', currentVariantId);
       }
     }
   }, [
@@ -747,11 +754,13 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
     // 🚀 INSTANT UI UPDATE - Update immediately for responsive feel
     setSubscribeAndSave(checked);
-    console.log(
-      `🎯 Instantly switched subscription to: ${
-        checked ? "enabled" : "disabled"
-      }`
-    );
+    if (isDev) {
+      console.log(
+        `🎯 Instantly switched subscription to: ${
+          checked ? "enabled" : "disabled"
+        }`
+      );
+    }
 
     // If we have a selected bundle, update it with the new pricing in background
     if (selectedBundle && checkout?.checkoutSession?.id && updateLineItems) {
@@ -808,15 +817,17 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
           },
         ];
 
-        console.log("🔄 Background subscription update started:", {
-          checked,
-          priceId,
-        });
+        if (isDev) {
+          console.log("🔄 Background subscription update started:", {
+            checked,
+            priceId,
+          });
+        }
 
         // Perform the background update
         await updateLineItems(lineItems);
 
-        console.log("✅ Background subscription update completed successfully");
+        if (isDev) console.log("✅ Background subscription update completed successfully");
 
         // Show success feedback
         const message = checked
@@ -845,12 +856,14 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         );
       } finally {
         setIsUpdating(false);
-        console.log("🏁 Background subscription update process completed");
+        if (isDev) console.log("🏁 Background subscription update process completed");
       }
     } else {
-      console.log(
-        "🔄 Subscription state updated, no background sync needed yet"
-      );
+      if (isDev) {
+        console.log(
+          "🔄 Subscription state updated, no background sync needed yet"
+        );
+      }
     }
   };
 
@@ -872,7 +885,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
   // Payment handler with comprehensive validation and error focus
   const handlePayment = async () => {
-    console.log("💳 Payment button clicked - starting validation...");
+    if (isDev) console.log("💳 Payment button clicked - starting validation...");
 
     // Step 1: Validate address form first (using React Hook Form)
     const addressValid = await form.trigger([
@@ -900,7 +913,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
     // Step 3: Focus on first error field if validation fails
     if (!addressValid || !cardValid) {
-      console.log("❌ Validation failed, focusing first error...");
+      if (isDev) console.log("❌ Validation failed, focusing first error...");
 
       // Enhanced error focusing logic
       // Priority order: firstName, lastName, email, phone, address1, country, city, state, postal, cardNumber, expiryDate, cvc
@@ -1037,7 +1050,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       return;
     }
 
-    console.log("✅ All validation passed, proceeding with payment...");
+    if (isDev) console.log("✅ All validation passed, proceeding with payment...");
 
     // Make sure checkout session is ready
     if (!checkout?.checkoutSession?.id || !updateCustomerAndSessionInfo) {
@@ -1051,13 +1064,15 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     const formData = form.getValues();
 
     // 🐛 DEBUG: Check actual field values
-    console.log("🔍 DEBUG PAYMENT: Field values:", {
-      country: formData.country,
-      state: formData.state,
-      stateIsEmpty: !formData.state,
-      stateLength: formData.state?.length,
-      fullFormData: formData,
-    });
+    if (isDev) {
+      console.log("🔍 DEBUG PAYMENT: Field values:", {
+        country: formData.country,
+        state: formData.state,
+        stateIsEmpty: !formData.state,
+        stateLength: formData.state?.length,
+        fullFormData: formData,
+      });
+    }
 
     // Enhanced validation for state field
     const enhancedPaymentData = {
@@ -1066,11 +1081,13 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         formData.state && formData.state.trim() ? formData.state.trim() : "N/A",
     };
 
-    console.log("✅ PAYMENT Using form data:", {
-      originalState: formData.state,
-      enhancedState: enhancedPaymentData.state,
-      country: enhancedPaymentData.country,
-    });
+    if (isDev) {
+      console.log("✅ PAYMENT Using form data:", {
+        originalState: formData.state,
+        enhancedState: enhancedPaymentData.state,
+        country: enhancedPaymentData.country,
+      });
+    }
 
     // Handle state requirement validation for specific countries
     const isStateRequired = ["US", "CA", "GB"].includes(
@@ -1088,7 +1105,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
     try {
       // ✅ NO REDUNDANT SAVE: Auto-save keeps data up-to-date
       // Data is already saved via saveCheckoutInfo (triggered by useAddress hook)
-      console.log("✅ Proceeding with payment (auto-save keeps data current)");
+      if (isDev) console.log("✅ Proceeding with payment (auto-save keeps data current)");
 
       // Process payment using validated card data (address data handled by useAddress hook)
       const cardData = form.getValues();
@@ -1117,7 +1134,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
               (checkout?.summary?.totalAdjustedAmount || 0) / 100
             ).toFixed(2)}`;
 
-            console.log("paymentSuccess", amountValue);
+            if (isDev) console.log("paymentSuccess", amountValue);
 
             toast.success(
               String(
@@ -1158,7 +1175,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
           },
         }
       ).then((amountValue) => {
-        console.log("paymentSuccess", amountValue);
+        if (isDev) console.log("paymentSuccess", amountValue);
         next({
           type: FunnelActionType.CUSTOM,
           data: {
@@ -1194,7 +1211,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
     // 🚀 INSTANT UI UPDATE - Update immediately for responsive feel
     setSelectedBundle(bundleId);
-    console.log(`🎯 Instantly switched UI to: ${bundleId}`);
+    if (isDev) console.log(`🎯 Instantly switched UI to: ${bundleId}`);
 
     // Check if checkout session is available
     if (!checkout?.checkoutSession?.id || !updateLineItems) {
@@ -1249,12 +1266,12 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
         },
       ];
 
-      console.log("🔄 Background update started for:", bundleId, lineItems);
+      if (isDev) console.log("🔄 Background update started for:", bundleId, lineItems);
 
       // Perform the background update
       await updateLineItems(lineItems);
 
-      console.log("✅ Background update completed successfully for:", bundleId);
+      if (isDev) console.log("✅ Background update completed successfully for:", bundleId);
 
       // Optional: Show subtle success feedback (not intrusive)
       // toast.success("Selection updated", { duration: 1500 });
@@ -1272,7 +1289,7 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
       );
     } finally {
       setIsUpdating(false);
-      console.log("🏁 Background update process completed for:", bundleId);
+      if (isDev) console.log("🏁 Background update process completed for:", bundleId);
     }
   };
 
