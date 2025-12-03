@@ -131,40 +131,6 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   const { next, context, isLoading: isFunnelLoading, isInitialized: isFunnelInitialized } = useFunnel();
   const { data } = useGeoLocation();
 
-  // Initialize checkout when no token is provided
-  const [isInitFailed, setIsInitFailed] = useState(false);
-  const hasInitializedRef = useRef(false);
-
-  useEffect(() => {
-    if (
-      !checkoutToken &&
-      !checkout &&
-      init &&
-      !hasInitializedRef.current &&
-      !isInitFailed
-    ) {
-      hasInitializedRef.current = true;
-
-      // Get the third bundle variant (Best Value) from config
-      const specialProduct = pluginConfig.products?.[2];
-      const thirdVariantId = specialProduct?.variantID;
-
-      if (thirdVariantId) {
-        init({
-          storeId: storeId,
-          lineItems: [
-            {
-              variantId: thirdVariantId,
-              quantity: 1,
-            },
-          ],
-        }).catch(() => {
-          setIsInitFailed(true);
-        });
-      }
-    }
-  }, [checkoutToken, checkout, init, pluginConfig.products, storeId, isInitFailed]);
-
   // Get bundle variant IDs from static context (optional - configured in CRM)
   // These define which 3 variants to show as bundle options
   // Wait for context to be initialized before accessing static resources
@@ -175,6 +141,38 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
   const variant1Id = staticContext?.static?.variant1?.id;
   const variant2Id = staticContext?.static?.variant2?.id;
   const variant3Id = staticContext?.static?.variant3?.id;
+
+  // Initialize checkout when no token is provided - use variant3 (Best Value) as default
+  const [isInitFailed, setIsInitFailed] = useState(false);
+  const hasInitializedRef = useRef(false);
+
+  useEffect(() => {
+    if (
+      !checkoutToken &&
+      !checkout &&
+      init &&
+      !hasInitializedRef.current &&
+      !isInitFailed &&
+      variant3Id && // Wait for static context to load
+      isFunnelInitialized
+    ) {
+      hasInitializedRef.current = true;
+      console.log('🚀 [BOGO] Initializing checkout with variant3 (Best Value):', variant3Id);
+
+      init({
+        storeId: storeId,
+        lineItems: [
+          {
+            variantId: variant3Id, // Use variant3 from static resources
+            quantity: 1,
+          },
+        ],
+      }).catch((err) => {
+        console.error('❌ [BOGO] Failed to initialize checkout:', err);
+        setIsInitFailed(true);
+      });
+    }
+  }, [checkoutToken, checkout, init, variant3Id, storeId, isInitFailed, isFunnelInitialized]);
 
   // Debug: Log static context to diagnose missing variant IDs (only when context is ready)
   useEffect(() => {
