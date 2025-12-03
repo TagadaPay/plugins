@@ -412,6 +412,68 @@ export function CheckoutPage({ checkoutToken }: CheckoutPageProps) {
 
   const variantMappings = createVariantMappings();
 
+  // Handle existing checkout token - ensure it uses a valid variant (default to variant3)
+  const hasValidatedExistingCheckout = useRef(false);
+  useEffect(() => {
+    if (
+      checkoutToken &&
+      checkout?.checkoutSession?.id &&
+      updateLineItems &&
+      !hasValidatedExistingCheckout.current &&
+      variant1Id &&
+      variant2Id &&
+      variant3Id &&
+      isFunnelInitialized &&
+      getVariant
+    ) {
+      const firstItem = checkout?.checkoutSession?.lineItems?.[0];
+      const currentVariantId = firstItem?.variantId;
+      
+      // Check if current variant is one of our valid bundle variants
+      const isValidVariant = [variant1Id, variant2Id, variant3Id].includes(currentVariantId || '');
+      
+      if (!isValidVariant && variant3Id) {
+        hasValidatedExistingCheckout.current = true;
+        console.log('🔄 [BOGO] Existing checkout has invalid variant, updating to variant3:', {
+          currentVariantId,
+          newVariantId: variant3Id,
+        });
+
+        // Update to variant3 (Best Value) by default
+        const variantData = getVariant(variant3Id);
+        if (variantData) {
+          const { variant } = variantData;
+          const priceId = variant.prices?.find((p: any) => p.recurring === false)?.id;
+
+          if (priceId) {
+            updateLineItems([
+              {
+                variantId: variant3Id,
+                priceId,
+                quantity: 1,
+              },
+            ]).catch((err) => {
+              console.error('❌ [BOGO] Failed to update checkout variant:', err);
+            });
+          }
+        }
+      } else if (isValidVariant) {
+        hasValidatedExistingCheckout.current = true;
+        console.log('✅ [BOGO] Existing checkout has valid variant:', currentVariantId);
+      }
+    }
+  }, [
+    checkoutToken,
+    checkout?.checkoutSession?.id,
+    checkout?.checkoutSession?.lineItems,
+    updateLineItems,
+    variant1Id,
+    variant2Id,
+    variant3Id,
+    isFunnelInitialized,
+    getVariant,
+  ]);
+
   // Track if we've initialized the form to prevent overwriting user input
   const hasInitializedForm = useRef(false);
 
