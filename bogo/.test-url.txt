@@ -1,0 +1,4 @@
+Test URL (no checkout token - will create new session with variant3):
+http://localhost:5173/checkout
+
+This will initialize a fresh checkout with variant3 (Best Value) selected by default.
