@@ -1,0 +1,98 @@
+simple-checkout-style-arcade/src/index.css
+  9508d57f6d2bd06f 7-276
+simple-checkout-style-arcade/index.html
+  9508d57f6d2bd06f 13-27
+simple-checkout-style-luxe/index.html
+  9508d57f6d2bd06f 14-21
+simple-checkout-style-arcade/.impeccable.md
+  9508d57f6d2bd06f 6-32
+simple-checkout-style-arcade/plugin.manifest.json
+  9508d57f6d2bd06f 2-17
+simple-checkout-style-arcade/STYLE.md
+  9508d57f6d2bd06f 1-130
+simple-checkout-style-arcade/package.json
+  9508d57f6d2bd06f 2-8
+simple-checkout-style-luxe/config/default.config.json
+  9508d57f6d2bd06f 30-36
+simple-checkout-style-arcade/src/components/ui/button.tsx
+  9508d57f6d2bd06f 7-74
+simple-checkout-style-luxe/package.json
+  9508d57f6d2bd06f 2-8
+simple-checkout-style-solar/src/components/ThemeSetter.tsx
+  9508d57f6d2bd06f 7-134
+simple-checkout-style-arcade/config/default.config.json
+  9508d57f6d2bd06f 30-36
+simple-checkout-style-arcade/src/components/TopBar.tsx
+  9508d57f6d2bd06f 13-124
+simple-checkout-style-solar/src/components/ui/section-header.tsx
+  9508d57f6d2bd06f 14-100
+simple-checkout-style-luxe/src/components/TopBar.tsx
+  9508d57f6d2bd06f 14-109
+simple-checkout-style-solar/src/components/TopBar.tsx
+  9508d57f6d2bd06f 13-110
+simple-checkout-style-solar/STYLE.md
+  9508d57f6d2bd06f 1-125
+simple-checkout-style-luxe/README.md
+  9508d57f6d2bd06f 1-170
+simple-checkout-style-arcade/src/components/ui/section-header.tsx
+  9508d57f6d2bd06f 14-100
+simple-checkout-style-luxe/src/components/ui/section-header.tsx
+  9508d57f6d2bd06f 14-99
+simple-checkout-style-arcade/src/components/ThemeSetter.tsx
+  9508d57f6d2bd06f 7-138
+simple-checkout-style-solar/src/components/ui/button.tsx
+  9508d57f6d2bd06f 7-74
+simple-checkout-style-arcade/README.md
+  9508d57f6d2bd06f 1-147
+simple-checkout-style-luxe/src/index.css
+  9508d57f6d2bd06f 7-224
+simple-checkout-style-solar/.impeccable.md
+  9508d57f6d2bd06f 6-32
+simple-checkout-style-solar/src/index.css
+  9508d57f6d2bd06f 7-278
+simple-checkout-style-luxe/.impeccable.md
+  9508d57f6d2bd06f 6-32
+simple-checkout-style-luxe/src/components/ui/button.tsx
+  9508d57f6d2bd06f 7-70
+simple-checkout-style-luxe/plugin.manifest.json
+  9508d57f6d2bd06f 2-17
+simple-checkout-style-luxe/STYLE.md
+  9508d57f6d2bd06f 1-130
+simple-checkout-style-solar/index.html
+  9508d57f6d2bd06f 13-28
+simple-checkout-style-luxe/src/components/ThemeSetter.tsx
+  9508d57f6d2bd06f 7-131
+simple-checkout-style-solar/package.json
+  9508d57f6d2bd06f 2-8
+simple-checkout-style-solar/config/default.config.json
+  9508d57f6d2bd06f 30-36
+simple-checkout-style-solar/plugin.manifest.json
+  9508d57f6d2bd06f 2-17
+simple-checkout-style-solar/README.md
+  9508d57f6d2bd06f 1-137
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "602594cf98b8df77b609a91cd922366aa8916126",
+  "prompts": {
+    "9508d57f6d2bd06f": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "d49f4a02-56e6-4826-bc42-bfd3f0f11a21",
+        "model": "claude-opus-4-7-thinking-high"
+      },
+      "human_author": "Loïc DELOBEL",
+      "messages": [],
+      "total_additions": 1817,
+      "total_deletions": 1067,
+      "accepted_lines": 1838,
+      "overriden_lines": 0
+    }
+  },
+  "humans": {
+    "h_0ad2e944e9f205": {
+      "author": "Loïc DELOBEL"
+    }
+  }
+}
