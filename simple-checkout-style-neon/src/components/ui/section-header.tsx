@@ -18,7 +18,7 @@ export interface SectionHeaderProps {
 }
 
 /**
- * TEALER STYLE SectionHeader — chunky streetwear masthead.
+ * NEON STYLE SectionHeader — chunky streetwear masthead.
  * The step marker is a filled black pill with neon-lime number (mono font).
  * The title is all-caps Archivo Black, tight & heavy.
  */

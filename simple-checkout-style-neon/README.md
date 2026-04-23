@@ -1,4 +1,4 @@
-# Simple Checkout — Tealer / Streetwear Style
+# Simple Checkout — Neon / Streetwear Style
 
 A minimal, production-ready TagadaPay checkout plugin with a **loud
 streetwear / neobrutalist** aesthetic. Built for CBD shops, streetwear
@@ -7,7 +7,7 @@ identity is confident, chromatic, and tactile.
 
 > **Companion to** [`simple-checkout-style-editorial`](../simple-checkout-style-editorial).
 > Same SDK hooks, same behavior, deliberately opposite vibe.
-> Where editorial whispers, Tealer shouts.
+> Where editorial whispers, Neon shouts.
 
 Both plugins share the exact same `@tagadapay/plugin-sdk` v2 hook surface
 (`useCheckout`, `usePayment`, `useShippingRates`, `useFunnel`,
@@ -20,10 +20,10 @@ differs — which is the entire point: **one codebase, two brand worlds**.
 
 Neobrutalist streetwear. Inspired by:
 
-- **TealerLab** (CBD, France) — the original reference ([tealerlab.com](https://www.tealerlab.com/))
 - **Palace, Supreme, Aimé Leon Dore** (streetwear energy)
 - **Liquid Death** (loud CPG confidence)
 - **Glossier early web** (tactile cosmetics)
+- CBD / urban drop culture (acid colors, sticker-stack packaging)
 
 The system in one line: **pure black ink on white surface, one acid-lime
 neon scream, 2px borders everywhere, hard 3×3 drop shadows, pilled CTAs,
@@ -68,11 +68,11 @@ the Archivo Black letterforms do all the work.
 ## Project layout
 
 ```
-simple-checkout-style-tealer/
+simple-checkout-style-neon/
 ├── plugin.manifest.json       # Plugin metadata + routing
 ├── STYLE.md                   # Full design manifesto + anti-references
 ├── config/
-│   └── default.config.json    # TealerLab-flavored defaults (acid-lime / black)
+│   └── default.config.json    # Neon-flavored defaults (acid-lime / black)
 ├── src/
 │   ├── App.tsx                # Router: /checkout + /thankyou
 │   ├── main.tsx
@@ -173,7 +173,7 @@ matches their brand. Same backend behavior, zero retraining.
 
 ```
 simple-checkout-style-editorial/   # Swiss-modern, olive-bronze, magazine
-simple-checkout-style-tealer/      # streetwear, acid lime, neobrutalist
+simple-checkout-style-neon/        # streetwear, acid lime, neobrutalist
 ```
 
 ---

@@ -1,4 +1,4 @@
-# STYLE.md — Tealer / CBD streetwear
+# STYLE.md — Neon / Streetwear
 
 > A deliberately loud, neobrutalist checkout for urban/streetwear-coded
 > commerce (CBD, sneakers, streetwear, gaming, music drops).
@@ -93,7 +93,7 @@ bar. Below it, the new price is mono, black, heavy.
 
 ### Step markers
 
-Where editorial uses a hairline dash + mono number, Tealer uses a
+Where editorial uses a hairline dash + mono number, Neon uses a
 **filled black pill with a neon-lime number**. Rectangular, not round.
 
 ### Top-bar ticker
@@ -113,7 +113,6 @@ before any product renders.
 
 ## Reference shops
 
-- TealerLab (CBD, France)
 - Palace, Supreme, Aimé Leon Dore (streetwear)
 - Glossier (early) (tactile cosmetics)
 - Liquid Death (loud CPG)

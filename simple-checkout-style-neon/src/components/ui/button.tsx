@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 
 /**
- * TEALER STYLE buttons — neobrutalist streetwear.
+ * NEON STYLE buttons — neobrutalist streetwear.
  *
  * Every button is a fully-pilled chunky chip with a 2px black border and a
  * hard 3×3 black drop-shadow. On hover the button nudges up-left (−1px) to

@@ -11,7 +11,7 @@ interface TopBarProps {
 }
 
 /**
- * TEALER STYLE TopBar — solid black masthead, neon-lime wordmark.
+ * NEON STYLE TopBar — solid black masthead, neon-lime wordmark.
  * Streetwear energy: black bar, uppercase heavy wordmark, lime accent dot,
  * free-shipping ticker, ENCRYPTED trust tag, pilled "Cancel" button.
  */

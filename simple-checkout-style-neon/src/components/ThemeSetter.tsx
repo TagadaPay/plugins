@@ -4,7 +4,7 @@ import { PluginConfigData } from '@/types/plugin-config';
 import { usePluginConfig } from '@tagadapay/plugin-sdk/v2';
 
 /**
- * TEALER STYLE — chunky/neobrutalist form controls.
+ * NEON STYLE — chunky/neobrutalist form controls.
  * 2px pure-black borders, bigger radius (10px), hard shadow on focus.
  * Merchant-configurable colors still pass through (primaryColor, etc.),
  * but the defaults fall back to the acid-lime / pure-black palette

@@ -1,19 +1,19 @@
 {
-  "name": "Simple Checkout — Tealer / Streetwear",
-  "pluginId": "simple-checkout-style-tealer",
+  "name": "Simple Checkout — Neon / Streetwear",
+  "pluginId": "simple-checkout-style-neon",
   "description": "A minimal single-page TagadaPay checkout plugin with a loud streetwear / neobrutalist aesthetic (acid-lime neon, pure black ink, 2px borders, hard drop shadows, pilled CTAs, Archivo Black + Space Grotesk + JetBrains Mono). Built for CBD, streetwear and urban commerce brands. Uses the same @tagadapay/plugin-sdk v2 hooks as the production native-checkout.",
   "version": "1.0.0",
   "author": "TagadaPay Team",
   "mode": "direct-mode",
   "category": "checkout",
-  "tags": ["checkout", "example", "v2", "payment", "single-step", "streetwear", "brutalist", "cbd", "tealer"],
+  "tags": ["checkout", "example", "v2", "payment", "single-step", "streetwear", "brutalist", "cbd", "neon"],
   "configuration": {
     "schema": "./config/schema.json",
     "uiSchema": "./config/ui-schema.json",
     "presets": [
       {
         "id": "default",
-        "name": "TealerLab Default",
+        "name": "Neon Default",
         "description": "Acid-lime neon on black — streetwear/CBD checkout.",
         "config": "./config/default.config.json"
       }
