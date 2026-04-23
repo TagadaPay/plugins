@@ -19,16 +19,34 @@ differs — which is the entire point: **one codebase, two brand worlds**.
 ## Showcase
 
 <table>
-  <tr>
-    <td align="center" valign="top">
-      <img src="./screenshots/neon-desktop.png" alt="Neon / Streetwear checkout — desktop view" width="760" />
-      <br/><sub>Desktop · 1440 × 900</sub>
-    </td>
-    <td align="center" valign="top">
-      <img src="./screenshots/neon-mobile.png" alt="Neon / Streetwear checkout — mobile view" width="200" />
-      <br/><sub>Mobile · 390 × 844</sub>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th align="center">Desktop · 1440 × 900</th>
+      <th align="center">Mobile · 390 × 844</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" valign="top">
+        <img src="./screenshots/neon-desktop.png" alt="neon checkout — desktop" width="760" />
+        <br/><sub>Checkout</sub>
+      </td>
+      <td align="center" valign="top">
+        <img src="./screenshots/neon-mobile.png" alt="neon checkout — mobile" width="200" />
+        <br/><sub>Checkout</sub>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" valign="top">
+        <img src="./screenshots/neon-thankyou-desktop.png" alt="neon thank-you — desktop" width="760" />
+        <br/><sub>Thank-you · full page</sub>
+      </td>
+      <td align="center" valign="top">
+        <img src="./screenshots/neon-thankyou-mobile.png" alt="neon thank-you — mobile" width="200" />
+        <br/><sub>Thank-you · full page</sub>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 > Clean empty-state render with the default configuration — no theming applied.

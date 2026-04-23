@@ -21,16 +21,34 @@ Only the visual system differs — that's the entire point:
 ## Showcase
 
 <table>
-  <tr>
-    <td align="center" valign="top">
-      <img src="./screenshots/luxe-desktop.png" alt="Luxe / Boutique checkout — desktop view" width="760" />
-      <br/><sub>Desktop · 1440 × 900</sub>
-    </td>
-    <td align="center" valign="top">
-      <img src="./screenshots/luxe-mobile.png" alt="Luxe / Boutique checkout — mobile view" width="200" />
-      <br/><sub>Mobile · 390 × 844</sub>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th align="center">Desktop · 1440 × 900</th>
+      <th align="center">Mobile · 390 × 844</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" valign="top">
+        <img src="./screenshots/luxe-desktop.png" alt="luxe checkout — desktop" width="760" />
+        <br/><sub>Checkout</sub>
+      </td>
+      <td align="center" valign="top">
+        <img src="./screenshots/luxe-mobile.png" alt="luxe checkout — mobile" width="200" />
+        <br/><sub>Checkout</sub>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" valign="top">
+        <img src="./screenshots/luxe-thankyou-desktop.png" alt="luxe thank-you — desktop" width="760" />
+        <br/><sub>Thank-you · full page</sub>
+      </td>
+      <td align="center" valign="top">
+        <img src="./screenshots/luxe-thankyou-mobile.png" alt="luxe thank-you — mobile" width="200" />
+        <br/><sub>Thank-you · full page</sub>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 > Clean empty-state render with the default configuration — no theming applied.

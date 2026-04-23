@@ -19,16 +19,34 @@ surface. Only the visual system differs — that's the entire point:
 ## Showcase
 
 <table>
-  <tr>
-    <td align="center" valign="top">
-      <img src="./screenshots/solar-desktop.png" alt="Solar / Zine checkout — desktop view" width="760" />
-      <br/><sub>Desktop · 1440 × 900</sub>
-    </td>
-    <td align="center" valign="top">
-      <img src="./screenshots/solar-mobile.png" alt="Solar / Zine checkout — mobile view" width="200" />
-      <br/><sub>Mobile · 390 × 844</sub>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th align="center">Desktop · 1440 × 900</th>
+      <th align="center">Mobile · 390 × 844</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" valign="top">
+        <img src="./screenshots/solar-desktop.png" alt="solar checkout — desktop" width="760" />
+        <br/><sub>Checkout</sub>
+      </td>
+      <td align="center" valign="top">
+        <img src="./screenshots/solar-mobile.png" alt="solar checkout — mobile" width="200" />
+        <br/><sub>Checkout</sub>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" valign="top">
+        <img src="./screenshots/solar-thankyou-desktop.png" alt="solar thank-you — desktop" width="760" />
+        <br/><sub>Thank-you · full page</sub>
+      </td>
+      <td align="center" valign="top">
+        <img src="./screenshots/solar-thankyou-mobile.png" alt="solar thank-you — mobile" width="200" />
+        <br/><sub>Thank-you · full page</sub>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 > Clean empty-state render with the default configuration — no theming applied.

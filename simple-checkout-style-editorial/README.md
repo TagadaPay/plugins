@@ -14,16 +14,34 @@ integrators.
 ## Showcase
 
 <table>
-  <tr>
-    <td align="center" valign="top">
-      <img src="./screenshots/editorial-desktop.png" alt="Editorial checkout — desktop view" width="760" />
-      <br/><sub>Desktop · 1440 × 900</sub>
-    </td>
-    <td align="center" valign="top">
-      <img src="./screenshots/editorial-mobile.png" alt="Editorial checkout — mobile view" width="200" />
-      <br/><sub>Mobile · 390 × 844</sub>
-    </td>
-  </tr>
+  <thead>
+    <tr>
+      <th align="center">Desktop · 1440 × 900</th>
+      <th align="center">Mobile · 390 × 844</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center" valign="top">
+        <img src="./screenshots/editorial-desktop.png" alt="editorial checkout — desktop" width="760" />
+        <br/><sub>Checkout</sub>
+      </td>
+      <td align="center" valign="top">
+        <img src="./screenshots/editorial-mobile.png" alt="editorial checkout — mobile" width="200" />
+        <br/><sub>Checkout</sub>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" valign="top">
+        <img src="./screenshots/editorial-thankyou-desktop.png" alt="editorial thank-you — desktop" width="760" />
+        <br/><sub>Thank-you · full page</sub>
+      </td>
+      <td align="center" valign="top">
+        <img src="./screenshots/editorial-thankyou-mobile.png" alt="editorial thank-you — mobile" width="200" />
+        <br/><sub>Thank-you · full page</sub>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 > Clean empty-state render with the default configuration — no theming applied.
