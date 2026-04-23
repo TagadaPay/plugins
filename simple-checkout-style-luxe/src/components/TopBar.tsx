@@ -46,13 +46,13 @@ export function TopBar({ onGoToShop, className = '', hideGoToShop = false }: Top
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid h-[72px] grid-cols-[1fr_auto_1fr] items-center">
-          {/* Left: Atelier date/volume line */}
+          {/* Left: Atelier date/volume line (shortened on mobile) */}
           <div className="flex items-center gap-2">
             <span
-              className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-500)]"
+              className="whitespace-nowrap text-[10.5px] font-semibold uppercase tracking-[0.22em] text-[var(--ink-500)]"
               style={{ fontFamily: 'var(--font-body)' }}
             >
-              Maison · Vol.{' '}
+              <span className="hidden sm:inline">Maison · </span>Vol.{' '}
               <span className="money">{new Date().getFullYear()}</span>
             </span>
           </div>

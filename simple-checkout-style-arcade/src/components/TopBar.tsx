@@ -45,15 +45,18 @@ export function TopBar({ onGoToShop, className = '', hideGoToShop = false }: Top
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid h-[68px] grid-cols-[1fr_auto_1fr] items-center gap-4">
-          {/* Left: LIVE chip with a pulsing dot */}
+          {/* Left: LIVE chip with a pulsing dot (full label on sm+, dot only on mobile) */}
           <div className="flex items-center">
             <span className="candy-chip">
               <span
                 aria-hidden
-                className="mr-2 inline-block h-2 w-2 animate-pulse rounded-full"
+                className="inline-block h-2 w-2 animate-pulse rounded-full sm:mr-2"
                 style={{ backgroundColor: 'var(--peach-500)' }}
               />
-              <span style={{ fontFamily: 'var(--font-mono)' }}>
+              <span
+                className="hidden sm:inline"
+                style={{ fontFamily: 'var(--font-mono)' }}
+              >
                 LIVE · {new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit' }).toUpperCase()}
               </span>
             </span>

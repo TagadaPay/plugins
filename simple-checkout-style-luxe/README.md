@@ -18,6 +18,26 @@ Only the visual system differs — that's the entire point:
 
 ---
 
+## Showcase
+
+<table>
+  <tr>
+    <td align="center" valign="top">
+      <img src="./screenshots/luxe-desktop.png" alt="Luxe / Boutique checkout — desktop view" width="760" />
+      <br/><sub>Desktop · 1440 × 900</sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="./screenshots/luxe-mobile.png" alt="Luxe / Boutique checkout — mobile view" width="200" />
+      <br/><sub>Mobile · 390 × 844</sub>
+    </td>
+  </tr>
+</table>
+
+> Clean empty-state render with the default configuration — no theming applied.
+> Run `pnpm dev` locally to see the full interactive experience.
+
+---
+
 ## Aesthetic direction
 
 Boutique / atelier. Inspired by:
