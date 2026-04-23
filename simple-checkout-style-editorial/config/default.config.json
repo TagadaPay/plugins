@@ -1,0 +1,3643 @@
+{
+  "meta": {
+    "id": "default",
+    "name": "Default",
+    "description": "Default TagadaPay checkout configuration"
+  },
+  "checkoutScarcity": {
+    "color": "#000000",
+    "enabled": true,
+    "seconds": 7199,
+    "messageTrans": {
+      "en": "We are keeping this offer for a limited time.",
+      "fr": "Nous gardons cette offre pour une durée limitée.",
+      "de": "Wir behalten dieses Angebot für begrenzte Zeit.",
+      "da": "Vi beholder dette tilbud i begrænset tid."
+    }
+  },
+  "offerScarcity": {
+    "color": "#000000",
+    "enabled": true,
+    "seconds": 7199,
+    "messageTrans": {
+      "en": "We are keeping this offer for a limited time.",
+      "fr": "Nous gardons cette offre pour une durée limitée.",
+      "de": "Wir behalten dieses Angebot für begrenzte Zeit.",
+      "da": "Vi beholder dette tilbud i begrænset tid."
+    }
+  },
+  "branding": {
+    "primaryColor": "#3b3d1e",
+    "textColorOnPrimary": "#f3f2e8",
+    "textColor": "#24251a",
+    "textSecondaryColor": "#60614f",
+    "backgroundColor": "#fefefc",
+    "borderColor": "#e2e2dc",
+    "fontFamily": "Manrope"
+  },
+  "header": {
+    "companyName": "Acme, Inc.",
+    "showLogo": false,
+    "logoUrl": "",
+    "logoHeight": 28,
+    "goToShopText": {
+      "en": "Go to Shop",
+      "fr": "Aller à la boutique",
+      "de": "Zum Shop gehen",
+      "da": "Gå til butik"
+    },
+    "goToShopTextColor": "#425466",
+    "borderColor": "#e3e8ee"
+  },
+  "layout": {
+    "desktopMargin": "large",
+    "stickyOrderSummary": false,
+    "stickyPaymentButtons": true
+  },
+  "checkout": {
+    "expressCheckout": {
+      "title": {
+        "en": "Express checkout",
+        "fr": "Commande express",
+        "de": "Express-Checkout",
+        "da": "Hurtigkassen"
+      },
+      "description": {
+        "en": "Skip the form and checkout faster with one of these options.",
+        "fr": "Passez le formulaire et finalisez plus rapidement avec l'une de ces options.",
+        "de": "Überspringen Sie das Formular und kassieren Sie schneller mit einer dieser Optionen.",
+        "da": "Spring formularen over og gå til betaling hurtigere med en af disse muligheder."
+      },
+      "dividerText": {
+        "en": "Or",
+        "fr": "Ou",
+        "de": "Oder",
+        "da": "Eller"
+      }
+    },
+    "contact": {
+      "title": {
+        "en": "Contact",
+        "fr": "Contact",
+        "de": "Kontakt",
+        "da": "Kontakt"
+      },
+      "description": {
+        "en": "We'll use this information to send you updates about your order.",
+        "fr": "Nous utiliserons ces informations pour vous envoyer des mises à jour sur votre commande.",
+        "de": "Wir verwenden diese Informationen, um Ihnen Updates zu Ihrer Bestellung zu senden.",
+        "da": "Vi bruger disse oplysninger til at sende dig opdateringer om din ordre."
+      },
+      "emailPlaceholder": {
+        "en": "Email",
+        "fr": "E-mail",
+        "de": "E-Mail",
+        "da": "E-mail"
+      },
+      "emailOffersLabel": {
+        "en": "Email me with news and offers",
+        "fr": "M'envoyer des nouvelles et des offres par e-mail",
+        "de": "Per E-Mail über Neuigkeiten und Angebote informieren",
+        "da": "E-mail mig med nyheder og tilbud"
+      }
+    },
+    "delivery": {
+      "title": {
+        "en": "Delivery",
+        "fr": "Livraison",
+        "de": "Lieferung",
+        "da": "Levering"
+      },
+      "description": {
+        "en": "Enter the address where you'd like your order delivered.",
+        "fr": "Entrez l'adresse où vous souhaitez recevoir votre commande.",
+        "de": "Geben Sie die Adresse ein, an die Ihre Bestellung geliefert werden soll.",
+        "da": "Indtast den adresse, hvor du gerne vil have din ordre leveret."
+      },
+      "countryPlaceholder": {
+        "en": "Country/Region",
+        "fr": "Pays/Région",
+        "de": "Land/Region",
+        "da": "Land/Region"
+      },
+      "countrySearchPlaceholder": {
+        "en": "Search country...",
+        "fr": "Rechercher un pays...",
+        "de": "Land suchen...",
+        "da": "Søg land..."
+      },
+      "firstNamePlaceholder": {
+        "en": "First name",
+        "fr": "Prénom",
+        "de": "Vorname",
+        "da": "Fornavn"
+      },
+      "lastNamePlaceholder": {
+        "en": "Last name",
+        "fr": "Nom de famille",
+        "de": "Nachname",
+        "da": "Efternavn"
+      },
+      "addressPlaceholder": {
+        "en": "Address",
+        "fr": "Adresse",
+        "de": "Adresse",
+        "da": "Adresse"
+      },
+      "cityPlaceholder": {
+        "en": "City",
+        "fr": "Ville",
+        "de": "Stadt",
+        "da": "By"
+      },
+      "statePlaceholder": {
+        "en": "State",
+        "fr": "État/Province",
+        "de": "Bundesland/Provinz",
+        "da": "Stat/Provins"
+      },
+      "zipPlaceholder": {
+        "en": "ZIP code",
+        "fr": "Code postal",
+        "de": "Postleitzahl",
+        "da": "Postnummer"
+      },
+      "phonePlaceholder": {
+        "en": "Phone",
+        "fr": "Téléphone",
+        "de": "Telefon",
+        "da": "Telefon"
+      },
+      "billingTitle": {
+        "en": "Billing address",
+        "fr": "Adresse de facturation",
+        "de": "Rechnungsadresse",
+        "da": "Faktureringsadresse"
+      },
+      "billingDifferentLabel": {
+        "en": "My billing address is different from my shipping address",
+        "fr": "Mon adresse de facturation est différente de mon adresse de livraison",
+        "de": "Meine Rechnungsadresse unterscheidet sich von meiner Lieferadresse",
+        "da": "Min faktureringsadresse er forskellig fra min leveringsadresse"
+      }
+    },
+    "shipping": {
+      "title": {
+        "en": "Shipping method",
+        "fr": "Méthode de livraison",
+        "de": "Versandmethode",
+        "da": "Forsendelsesmetode"
+      },
+      "description": {
+        "en": "Choose how you'd like to receive your order.",
+        "fr": "Choisissez comment vous souhaitez recevoir votre commande.",
+        "de": "Wählen Sie, wie Sie Ihre Bestellung erhalten möchten.",
+        "da": "Vælg, hvordan du gerne vil modtage din ordre."
+      },
+      "freeText": {
+        "en": "Free",
+        "fr": "Gratuit",
+        "de": "Kostenlos",
+        "da": "Gratis"
+      },
+      "noRatesText": {
+        "en": "No shipping methods are available for your country.",
+        "fr": "Aucune méthode d'expédition n'est disponible pour votre pays.",
+        "de": "Keine Versandmethoden für Ihr Land verfügbar.",
+        "da": "Ingen forsendelsesmetoder er tilgængelige for dit land."
+      }
+    },
+    "payment": {
+      "title": {
+        "en": "Payment",
+        "fr": "Paiement",
+        "de": "Zahlung",
+        "da": "Betaling"
+      },
+      "description": {
+        "en": "All transactions are secure and encrypted.",
+        "fr": "Toutes les transactions sont sécurisées et cryptées.",
+        "de": "Alle Transaktionen sind sicher und verschlüsselt.",
+        "da": "Alle transaktioner er sikre og krypterede."
+      },
+      "cardNumberPlaceholder": {
+        "en": "Card number",
+        "fr": "Numéro de carte",
+        "de": "Kartennummer",
+        "da": "Kortnummer"
+      },
+      "expiryPlaceholder": {
+        "en": "MM/YY",
+        "fr": "MM/AA",
+        "de": "MM/JJ",
+        "da": "MM/ÅÅ"
+      },
+      "securityCodePlaceholder": {
+        "en": "Security code",
+        "fr": "Code de sécurité",
+        "de": "Sicherheitscode",
+        "da": "Sikkerhedskode"
+      },
+      "creditCard": {
+        "en": "Credit Card",
+        "fr": "Carte de crédit",
+        "de": "Kreditkarte",
+        "da": "Kreditkort"
+      },
+      "creditCardSecureText": {
+        "en": "Pay securely",
+        "fr": "Payer en toute sécurité",
+        "de": "Sicher bezahlen",
+        "da": "Betal sikkert"
+      },
+      "completePaymentText": {
+        "en": "Complete your payment",
+        "fr": "Finaliser votre paiement",
+        "de": "Zahlung abschließen",
+        "da": "Fuldfør din betaling"
+      },
+      "paypalRedirectText": {
+        "en": "You will be redirected to PayPal to complete your payment.",
+        "fr": "Vous serez redirigé vers PayPal pour finaliser votre paiement.",
+        "de": "Sie werden zu PayPal weitergeleitet, um Ihre Zahlung abzuschließen.",
+        "da": "Du vil blive omdirigeret til PayPal for at gennemføre din betaling."
+      },
+      "applePayRedirectText": {
+        "en": "Apple Pay will be prompted on your device to complete your payment.",
+        "fr": "Apple Pay sera lancé sur votre appareil pour finaliser votre paiement.",
+        "de": "Apple Pay wird auf Ihrem Gerät gestartet, um Ihre Zahlung abzuschließen.",
+        "da": "Apple Pay vil blive vist på din enhed for at gennemføre din betaling."
+      },
+      "cryptoRedirectText": {
+        "en": "You will be redirected to a secure payment page to complete your purchase.",
+        "fr": "Vous serez redirigé vers une page de paiement sécurisée pour finaliser votre achat.",
+        "de": "Sie werden zu einer sicheren Zahlungsseite weitergeleitet, um Ihren Kauf abzuschließen.",
+        "da": "Du vil blive omdirigeret til en sikker betalingsside for at gennemføre dit køb."
+      },
+      "cryptoInfoTitle": {
+        "en": "How your payment works",
+        "fr": "Comment fonctionne votre paiement",
+        "de": "So funktioniert Ihre Zahlung",
+        "da": "Sådan fungerer din betaling"
+      },
+      "cryptoSteps": [
+        {
+          "text": {
+            "en": "Click \"Complete Order\" — you'll be redirected to a secure payment page.",
+            "fr": "Cliquez sur \"Finaliser la commande\" — vous serez redirigé vers une page de paiement sécurisée.",
+            "de": "Klicken Sie auf \"Bestellung abschließen\" — Sie werden zu einer sicheren Zahlungsseite weitergeleitet.",
+            "da": "Klik på \"Gennemfør ordre\" — du vil blive omdirigeret til en sikker betalingsside."
+          }
+        },
+        {
+          "text": {
+            "en": "Enter your <strong>credit or debit card</strong> as usual — Visa, Mastercard and Amex accepted. You may be asked to complete a quick <strong>1-minute ID verification</strong> — standard for this type of transaction.",
+            "fr": "Entrez votre <strong>carte de crédit ou de débit</strong> comme d'habitude — Visa, Mastercard et Amex acceptées. Il peut vous être demandé de compléter une <strong>vérification d'identité rapide d'1 minute</strong> — standard pour ce type de transaction.",
+            "de": "Geben Sie Ihre <strong>Kredit- oder Debitkarte</strong> wie gewohnt ein — Visa, Mastercard und Amex akzeptiert. Möglicherweise werden Sie gebeten, eine schnelle <strong>1-minütige ID-Verifizierung</strong> durchzuführen — Standard für diese Art von Transaktion.",
+            "da": "Indtast dit <strong>kredit- eller debetkort</strong> som normalt — Visa, Mastercard og Amex accepteret. Du kan blive bedt om at gennemføre en hurtig <strong>1-minuts ID-verifikation</strong> — standard for denne type transaktion."
+          }
+        },
+        {
+          "text": {
+            "en": "Your payment is processed through a <strong>crypto gateway</strong> — automatically converted and settled behind the scenes. <strong>No wallet or crypto knowledge needed.</strong>",
+            "fr": "Votre paiement est traité via une <strong>passerelle crypto</strong> — automatiquement converti et réglé en arrière-plan. <strong>Aucun portefeuille ni connaissance crypto nécessaire.</strong>",
+            "de": "Ihre Zahlung wird über ein <strong>Krypto-Gateway</strong> verarbeitet — automatisch umgerechnet und im Hintergrund abgewickelt. <strong>Keine Wallet oder Krypto-Kenntnisse erforderlich.</strong>",
+            "da": "Din betaling behandles gennem en <strong>krypto-gateway</strong> — automatisk konverteret og afregnet bag kulisserne. <strong>Ingen wallet eller kryptoviden nødvendig.</strong>"
+          }
+        }
+      ],
+      "cryptoBadges": [
+        {
+          "text": {
+            "en": "You pay in USD",
+            "fr": "Vous payez en USD",
+            "de": "Sie zahlen in USD",
+            "da": "Du betaler i USD"
+          },
+          "icon": "Check"
+        },
+        {
+          "text": {
+            "en": "No extra fees",
+            "fr": "Pas de frais supplémentaires",
+            "de": "Keine zusätzlichen Gebühren",
+            "da": "Ingen ekstra gebyrer"
+          },
+          "icon": "Check"
+        },
+        {
+          "text": {
+            "en": "SSL Secured",
+            "fr": "Sécurisé SSL",
+            "de": "SSL-gesichert",
+            "da": "SSL-sikret"
+          },
+          "icon": "Check"
+        },
+        {
+          "text": {
+            "en": "Under 2 min",
+            "fr": "Moins de 2 min",
+            "de": "Unter 2 Min.",
+            "da": "Under 2 min"
+          },
+          "icon": "Check"
+        }
+      ],
+      "cryptoProviderLabel": {
+        "en": "Choose your payment provider",
+        "fr": "Choisissez votre fournisseur de paiement",
+        "de": "Wählen Sie Ihren Zahlungsanbieter",
+        "da": "Vælg din betalingsudbyder"
+      },
+      "cryptoSelectProvider": {
+        "en": "Select a provider",
+        "fr": "Sélectionner un fournisseur",
+        "de": "Anbieter auswählen",
+        "da": "Vælg en udbyder"
+      },
+      "cryptoSearchProvider": {
+        "en": "Search provider...",
+        "fr": "Rechercher un fournisseur...",
+        "de": "Anbieter suchen...",
+        "da": "Søg udbyder..."
+      },
+      "cryptoNoProvider": {
+        "en": "No provider found",
+        "fr": "Aucun fournisseur trouvé",
+        "de": "Kein Anbieter gefunden",
+        "da": "Ingen udbyder fundet"
+      },
+      "cardNetworksTooltipText": {
+        "en": "{cardNetwork} accepted",
+        "fr": "{cardNetwork} accepté",
+        "de": "{cardNetwork} akzeptiert",
+        "da": "{cardNetwork} accepteret"
+      },
+      "airwallexApm": {
+        "klarna": {
+          "description": {
+            "en": "Pay in 4 interest-free payments",
+            "fr": "Payez en 4 fois sans frais",
+            "de": "In 4 zinsfreien Raten zahlen",
+            "da": "Betal i 4 rentefrie rater"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to Klarna to complete your payment securely.",
+            "fr": "Vous serez redirigé vers Klarna pour finaliser votre paiement en toute sécurité.",
+            "de": "Sie werden zu Klarna weitergeleitet, um Ihre Zahlung sicher abzuschließen.",
+            "da": "Du vil blive omdirigeret til Klarna for at gennemføre din betaling sikkert."
+          }
+        },
+        "afterpay": {
+          "description": {
+            "en": "Buy now, pay later in 4 installments",
+            "fr": "Achetez maintenant, payez plus tard en 4 fois",
+            "de": "Jetzt kaufen, in 4 Raten zahlen",
+            "da": "Køb nu, betal senere i 4 rater"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to Afterpay to complete your payment securely.",
+            "fr": "Vous serez redirigé vers Afterpay pour finaliser votre paiement en toute sécurité.",
+            "de": "Sie werden zu Afterpay weitergeleitet, um Ihre Zahlung sicher abzuschließen.",
+            "da": "Du vil blive omdirigeret til Afterpay for at gennemføre din betaling sikkert."
+          }
+        },
+        "paypal": {
+          "description": {
+            "en": "Pay securely with PayPal",
+            "fr": "Payez en toute sécurité avec PayPal",
+            "de": "Sicher bezahlen mit PayPal",
+            "da": "Betal sikkert med PayPal"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to PayPal to complete your payment.",
+            "fr": "Vous serez redirigé vers PayPal pour finaliser votre paiement.",
+            "de": "Sie werden zu PayPal weitergeleitet, um Ihre Zahlung abzuschließen.",
+            "da": "Du vil blive omdirigeret til PayPal for at gennemføre din betaling."
+          }
+        },
+        "skrill": {
+          "description": {
+            "en": "Pay securely with Skrill",
+            "fr": "Payez en toute sécurité avec Skrill",
+            "de": "Sicher bezahlen mit Skrill",
+            "da": "Betal sikkert med Skrill"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to Skrill to complete your payment.",
+            "fr": "Vous serez redirigé vers Skrill pour finaliser votre paiement.",
+            "de": "Sie werden zu Skrill weitergeleitet, um Ihre Zahlung abzuschließen.",
+            "da": "Du vil blive omdirigeret til Skrill for at gennemføre din betaling."
+          }
+        },
+        "bancontact": {
+          "description": {
+            "en": "Pay with your Bancontact card",
+            "fr": "Payez avec votre carte Bancontact",
+            "de": "Mit Bancontact-Karte bezahlen",
+            "da": "Betal med dit Bancontact-kort"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to Bancontact to complete your payment.",
+            "fr": "Vous serez redirigé vers Bancontact pour finaliser votre paiement.",
+            "de": "Sie werden zu Bancontact weitergeleitet, um Ihre Zahlung abzuschließen.",
+            "da": "Du vil blive omdirigeret til Bancontact for at gennemføre din betaling."
+          }
+        },
+        "ideal": {
+          "description": {
+            "en": "Pay with iDEAL bank transfer",
+            "fr": "Payez par virement iDEAL",
+            "de": "Mit iDEAL-Überweisung bezahlen",
+            "da": "Betal med iDEAL-bankoverførsel"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to iDEAL to complete your payment.",
+            "fr": "Vous serez redirigé vers iDEAL pour finaliser votre paiement.",
+            "de": "Sie werden zu iDEAL weitergeleitet, um Ihre Zahlung abzuschließen.",
+            "da": "Du vil blive omdirigeret til iDEAL for at gennemføre din betaling."
+          }
+        },
+        "twint": {
+          "description": {
+            "en": "Pay with TWINT mobile payment",
+            "fr": "Payez avec TWINT",
+            "de": "Mit TWINT bezahlen",
+            "da": "Betal med TWINT mobilbetaling"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to TWINT to complete your payment.",
+            "fr": "Vous serez redirigé vers TWINT pour finaliser votre paiement.",
+            "de": "Sie werden zu TWINT weitergeleitet, um Ihre Zahlung abzuschließen.",
+            "da": "Du vil blive omdirigeret til TWINT for at gennemføre din betaling."
+          }
+        }
+      },
+      "stripeApm": {
+        "klarna": {
+          "description": {
+            "en": "Pay in 4 interest-free payments",
+            "fr": "Payez en 4 fois sans frais",
+            "de": "In 4 zinsfreien Raten zahlen",
+            "da": "Betal i 4 rentefrie rater"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to Klarna to complete your payment securely.",
+            "fr": "Vous serez redirigé vers Klarna pour finaliser votre paiement en toute sécurité.",
+            "de": "Sie werden zu Klarna weitergeleitet, um Ihre Zahlung sicher abzuschließen.",
+            "da": "Du vil blive omdirigeret til Klarna for at gennemføre din betaling sikkert."
+          }
+        },
+        "afterpay": {
+          "description": {
+            "en": "Buy now, pay later in 4 installments",
+            "fr": "Achetez maintenant, payez plus tard en 4 fois",
+            "de": "Jetzt kaufen, in 4 Raten zahlen",
+            "da": "Køb nu, betal senere i 4 rater"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to Afterpay to complete your payment securely.",
+            "fr": "Vous serez redirigé vers Afterpay pour finaliser votre paiement en toute sécurité.",
+            "de": "Sie werden zu Afterpay weitergeleitet, um Ihre Zahlung sicher abzuschließen.",
+            "da": "Du vil blive omdirigeret til Afterpay for at gennemføre din betaling sikkert."
+          }
+        },
+        "paypal": {
+          "description": {
+            "en": "Pay securely with PayPal",
+            "fr": "Payez en toute sécurité avec PayPal",
+            "de": "Sicher bezahlen mit PayPal",
+            "da": "Betal sikkert med PayPal"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to PayPal to complete your payment.",
+            "fr": "Vous serez redirigé vers PayPal pour finaliser votre paiement.",
+            "de": "Sie werden zu PayPal weitergeleitet, um Ihre Zahlung abzuschließen.",
+            "da": "Du vil blive omdirigeret til PayPal for at gennemføre din betaling."
+          }
+        },
+        "ideal": {
+          "description": {
+            "en": "Pay with iDEAL bank transfer",
+            "fr": "Payez par virement iDEAL",
+            "de": "Mit iDEAL-Überweisung bezahlen",
+            "da": "Betal med iDEAL-bankoverførsel"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to iDEAL to complete your payment.",
+            "fr": "Vous serez redirigé vers iDEAL pour finaliser votre paiement.",
+            "de": "Sie werden zu iDEAL weitergeleitet, um Ihre Zahlung abzuschließen.",
+            "da": "Du vil blive omdirigeret til iDEAL for at gennemføre din betaling."
+          }
+        },
+        "bancontact": {
+          "description": {
+            "en": "Pay with your Bancontact card",
+            "fr": "Payez avec votre carte Bancontact",
+            "de": "Mit Bancontact-Karte bezahlen",
+            "da": "Betal med dit Bancontact-kort"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to Bancontact to complete your payment.",
+            "fr": "Vous serez redirigé vers Bancontact pour finaliser votre paiement.",
+            "de": "Sie werden zu Bancontact weitergeleitet, um Ihre Zahlung abzuschließen.",
+            "da": "Du vil blive omdirigeret til Bancontact for at gennemføre din betaling."
+          }
+        },
+        "twint": {
+          "description": {
+            "en": "Pay with TWINT mobile payment",
+            "fr": "Payez avec TWINT",
+            "de": "Mit TWINT bezahlen",
+            "da": "Betal med TWINT mobilbetaling"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to TWINT to complete your payment.",
+            "fr": "Vous serez redirigé vers TWINT pour finaliser votre paiement.",
+            "de": "Sie werden zu TWINT weitergeleitet, um Ihre Zahlung abzuschließen.",
+            "da": "Du vil blive omdirigeret til TWINT for at gennemføre din betaling."
+          }
+        },
+        "revolut_pay": {
+          "description": {
+            "en": "Pay with Revolut",
+            "fr": "Payez avec Revolut",
+            "de": "Mit Revolut bezahlen",
+            "da": "Betal med Revolut"
+          },
+          "redirectLabel": {
+            "en": "You will be redirected to Revolut to complete your payment.",
+            "fr": "Vous serez redirigé vers Revolut pour finaliser votre paiement.",
+            "de": "Sie werden zu Revolut weitergeleitet, um Ihre Zahlung abzuschließen.",
+            "da": "Du vil blive omdirigeret til Revolut for at gennemføre din betaling."
+          }
+        },
+        "blik": {
+          "description": {
+            "en": "Pay with your BLIK code",
+            "fr": "Payez avec votre code BLIK",
+            "de": "Mit BLIK-Code bezahlen",
+            "da": "Betal med din BLIK-kode"
+          }
+        }
+      }
+    },
+    "orderCompletion": {
+      "processingText": {
+        "en": "Processing...",
+        "fr": "Traitement en cours...",
+        "de": "Wird verarbeitet...",
+        "da": "Behandler..."
+      },
+      "completeOrderText": {
+        "en": "Complete order",
+        "fr": "Finaliser la commande",
+        "de": "Bestellung abschließen",
+        "da": "Fuldfør ordre"
+      },
+      "secureCheckoutText": {
+        "en": "Secure checkout powered by TagadaPay",
+        "fr": "Paiement sécurisé propulsé par TagadaPay",
+        "de": "Sicherer Checkout von TagadaPay",
+        "da": "Sikker betaling drevet af TagadaPay"
+      },
+      "loadingText": {
+        "en": "Loading...",
+        "fr": "Chargement...",
+        "de": "Lädt...",
+        "da": "Indlæser..."
+      },
+      "payWithVipText": {
+        "en": "Pay",
+        "fr": "Payer",
+        "de": "Bezahlen",
+        "da": "Betal"
+      },
+      "selectVipOffer": {
+        "en": "Pay as VIP",
+        "fr": "Payer en VIP",
+        "de": "Als VIP bezahlen",
+        "da": "Betal som VIP"
+      },
+      "cancelVipOffer": {
+        "en": "Cancel VIP offer",
+        "fr": "Annuler l'offre VIP",
+        "de": "VIP-Angebot stornieren",
+        "da": "Annuller VIP-tilbud"
+      },
+      "payWithoutVipText": {
+        "en": "Pay without VIP",
+        "fr": "Payer sans VIP",
+        "de": "Ohne VIP bezahlen",
+        "da": "Betal uden VIP"
+      },
+      "applePayText": {
+        "en": "Pay with Apple Pay",
+        "fr": "Payer avec Apple Pay",
+        "de": "Mit Apple Pay bezahlen",
+        "da": "Betal med Apple Pay"
+      },
+      "termsLabel": {
+        "en": "I accept the <terms>terms and conditions</terms><general> and general conditions</general>",
+        "fr": "J'accepte les <terms>conditions générales</terms><general> et les conditions générales de vente</general>",
+        "de": "Ich akzeptiere die <terms>Allgemeinen Geschäftsbedingungen</terms><general> und die Allgemeinen Geschäftsbedingungen</general>",
+        "da": "Jeg accepterer <terms>vilkårene og betingelserne</terms><general> og de generelle betingelser</general>"
+      },
+      "navigatingText": {
+        "en": "Redirecting...",
+        "fr": "Redirection...",
+        "de": "Weiterleitung...",
+        "da": "Omdirigerer..."
+      },
+      "verifyingIdentityText": {
+        "en": "Verifying your identity...",
+        "fr": "Vérification de votre identité...",
+        "de": "Ihre Identität wird überprüft...",
+        "da": "Bekræfter din identitet..."
+      },
+      "securePaymentText": {
+        "en": "Secure payment",
+        "fr": "Paiement sécurisé",
+        "de": "Sichere Zahlung",
+        "da": "Sikker betaling"
+      }
+    },
+    "orderBumps": {
+      "title": {
+        "en": "Add to your order",
+        "fr": "Ajouter à votre commande",
+        "de": "Zu Ihrer Bestellung hinzufügen",
+        "da": "Tilføj til din ordre"
+      },
+      "description": {
+        "en": "Enhance your purchase with these popular add-ons.",
+        "fr": "Améliorez votre achat avec ces ajouts populaires.",
+        "de": "Verbessern Sie Ihren Kauf mit diesen beliebten Add-ons.",
+        "da": "Forbedre dit køb med disse populære tilføjelser."
+      },
+      "secondaryTitle": {
+        "en": "Recommended add-ons",
+        "fr": "Ajouts recommandés",
+        "de": "Empfohlene Add-ons",
+        "da": "Anbefalede tilføjelser"
+      },
+      "secondaryDescription": {
+        "en": "Complete your order with these popular additions.",
+        "fr": "Complétez votre commande avec ces ajouts populaires.",
+        "de": "Vervollständigen Sie Ihre Bestellung mit diesen beliebten Ergänzungen.",
+        "da": "Fuldfør din ordre med disse populære tilføjelser."
+      },
+      "vipTitle": {
+        "en": "Club offer",
+        "fr": "Offre club",
+        "de": "Club-Angebot",
+        "da": "Klubtilbud"
+      },
+      "vipDescription": {
+        "en": "Join our club and save money on your order.",
+        "fr": "Rejoignez notre club et économisez sur votre commande.",
+        "de": "Werden Sie Mitglied in unserem Club und sparen Sie bei Ihrer Bestellung.",
+        "da": "Bliv medlem af vores klub og spar penge på din ordre."
+      },
+      "vipType": "default",
+      "appliedText": {
+        "en": "Applied",
+        "fr": "Appliqué",
+        "de": "Angewendet",
+        "da": "Anvendt"
+      },
+      "congratulationsText": {
+        "en": "Congratulations",
+        "fr": "Félicitations",
+        "de": "Glückwunsch",
+        "da": "Tillykke"
+      }
+    },
+    "orderSummary": {
+      "title": {
+        "en": "Order summary",
+        "fr": "Résumé de la commande",
+        "de": "Bestellübersicht",
+        "da": "Ordreoversigt"
+      },
+      "description": {
+        "en": "Review your items and total before completing your purchase.",
+        "fr": "Vérifiez vos articles et le total avant de finaliser votre commande.",
+        "de": "Überprüfen Sie Ihre Artikel und den Gesamtbetrag, bevor Sie Ihren Kauf abschließen.",
+        "da": "Gennemgå dine varer og total før du fuldfører dit køb."
+      },
+      "subtotalText": {
+        "en": "Subtotal",
+        "fr": "Sous-total",
+        "de": "Zwischensumme",
+        "da": "Subtotal"
+      },
+      "itemText": {
+        "en": "item",
+        "fr": "article",
+        "de": "Artikel",
+        "da": "vare"
+      },
+      "itemsText": {
+        "en": "items",
+        "fr": "articles",
+        "de": "Artikel",
+        "da": "varer"
+      },
+      "totalSavingsText": {
+        "en": "Total Savings",
+        "fr": "Économies totales",
+        "de": "Gesamtersparnis",
+        "da": "Samlet besparelse"
+      },
+      "shippingText": {
+        "en": "Shipping",
+        "fr": "Livraison",
+        "de": "Versand",
+        "da": "Forsendelse"
+      },
+      "taxText": {
+        "en": "Estimated taxes",
+        "fr": "Taxes estimées",
+        "de": "Geschätzte Steuern",
+        "da": "Anslåede skatter"
+      },
+      "totalText": {
+        "en": "Total",
+        "fr": "Total",
+        "de": "Gesamt",
+        "da": "Total"
+      },
+      "recurringTotalText": {
+        "en": "Recurring total",
+        "fr": "Total récurrent",
+        "de": "Wiederkehrender Gesamtbetrag",
+        "da": "Tilbagevendende total"
+      },
+      "everyText": {
+        "en": "every",
+        "fr": "chaque",
+        "de": "jeden",
+        "da": "hver"
+      },
+      "mobileToggleShowText": {
+        "en": "Show order summary",
+        "fr": "Afficher le récapitulatif de commande",
+        "de": "Bestellübersicht anzeigen",
+        "da": "Vis ordreoversigt"
+      },
+      "mobileToggleHideText": {
+        "en": "Hide order summary",
+        "fr": "Masquer le récapitulatif de commande",
+        "de": "Bestellübersicht ausblenden",
+        "da": "Skjul ordreoversigt"
+      },
+      "recurringEveryText": {
+        "en": "Recurring every",
+        "fr": "Récurrent tous les",
+        "de": "Wiederkehrend alle",
+        "da": "Tilbagevendende hver"
+      },
+      "membershipText": {
+        "en": "Membership",
+        "fr": "Adhésion",
+        "de": "Mitgliedschaft",
+        "da": "Medlemskab"
+      },
+      "trialThenEveryText": {
+        "en": "Trial then {price} every {count} {interval}",
+        "fr": "Essai gratuit puis {price} tous les {count} {interval}",
+        "de": "Testversion dann {price} alle {count} {interval}",
+        "da": "Prøveperiode derefter {price} hver {count} {interval}"
+      },
+      "renewsEveryText": {
+        "en": "Renews {count} {interval}",
+        "fr": "Renouvelle tous les {count} {interval}",
+        "de": "Verlängert sich alle {count} {interval}",
+        "da": "Fornyes hver {count} {interval}"
+      }
+    },
+    "validation": {
+      "termsRequired": {
+        "en": "You must accept the terms and conditions",
+        "fr": "Vous devez accepter les conditions générales",
+        "de": "Sie müssen den Allgemeinen Geschäftsbedingungen zustimmen",
+        "da": "Du skal acceptere vilkårene og betingelserne"
+      },
+      "emailRequired": {
+        "en": "Valid email is required",
+        "fr": "Un e-mail valide est requis",
+        "de": "Eine gültige E-Mail-Adresse ist erforderlich",
+        "da": "Gyldig e-mail er påkrævet"
+      },
+      "firstNameRequired": {
+        "en": "First name is required",
+        "fr": "Le prénom est requis",
+        "de": "Vorname ist erforderlich",
+        "da": "Fornavn er påkrævet"
+      },
+      "lastNameRequired": {
+        "en": "Last name is required",
+        "fr": "Le nom de famille est requis",
+        "de": "Nachname ist erforderlich",
+        "da": "Efternavn er påkrævet"
+      },
+      "addressRequired": {
+        "en": "Address is required",
+        "fr": "L'adresse est requise",
+        "de": "Adresse ist erforderlich",
+        "da": "Adresse er påkrævet"
+      },
+      "cityRequired": {
+        "en": "City is required",
+        "fr": "La ville est requise",
+        "de": "Stadt ist erforderlich",
+        "da": "By er påkrævet"
+      },
+      "countryRequired": {
+        "en": "Country is required",
+        "fr": "Le pays est requis",
+        "de": "Land ist erforderlich",
+        "da": "Land er påkrævet"
+      },
+      "stateRequired": {
+        "en": "State is required",
+        "fr": "L'état/province est requis",
+        "de": "Bundesland/Provinz ist erforderlich",
+        "da": "Stat/Provins er påkrævet"
+      },
+      "zipRequired": {
+        "en": "ZIP code is required",
+        "fr": "Le code postal est requis",
+        "de": "Postleitzahl ist erforderlich",
+        "da": "Postnummer er påkrævet"
+      },
+      "phoneRequired": {
+        "en": "Phone is required",
+        "fr": "Le téléphone est requis",
+        "de": "Telefon ist erforderlich",
+        "da": "Telefon er påkrævet"
+      },
+      "validPhoneNumberRequired": {
+        "en": "Valid phone number is required",
+        "fr": "Un numéro de téléphone valide est requis",
+        "de": "Eine gültige Telefonnummer ist erforderlich",
+        "da": "Gyldigt telefonnummer er påkrævet"
+      },
+      "cardNumberRequired": {
+        "en": "Valid card number is required",
+        "fr": "Un numéro de carte valide est requis",
+        "de": "Eine gültige Kartennummer ist erforderlich",
+        "da": "Gyldigt kortnummer er påkrævet"
+      },
+      "expiryRequired": {
+        "en": "Valid expiry date (MM/YY) is required",
+        "fr": "Une date d'expiration valide (MM/AA) est requise",
+        "de": "Ein gültiges Ablaufdatum (MM/JJ) ist erforderlich",
+        "da": "Gyldig udløbsdato (MM/ÅÅ) er påkrævet"
+      },
+      "securityCodeRequired": {
+        "en": "Valid security code is required",
+        "fr": "Un code de sécurité valide est requis",
+        "de": "Ein gültiger Sicherheitscode ist erforderlich",
+        "da": "Gyldig sikkerhedskode er påkrævet"
+      },
+      "shippingMethodRequired": {
+        "en": "Shipping method is required",
+        "fr": "La méthode de livraison est requise",
+        "de": "Versandmethode ist erforderlich",
+        "da": "Forsendelsesmetode er påkrævet"
+      },
+      "paymentMethodRequired": {
+        "en": "Payment method is required",
+        "fr": "La méthode de paiement est requise",
+        "de": "Zahlungsmethode ist erforderlich",
+        "da": "Betalingsmetode er påkrævet"
+      }
+    },
+    "errors": {
+      "checkoutSessionNotInitialized": {
+        "en": "Checkout session not initialized",
+        "fr": "Session de commande non initialisée",
+        "de": "Checkout-Sitzung nicht initialisiert",
+        "da": "Checkout-session ikke initialiseret"
+      },
+      "checkoutSessionNotReady": {
+        "en": "Checkout session not ready",
+        "fr": "Session de commande pas prête",
+        "de": "Checkout-Sitzung nicht bereit",
+        "da": "Checkout-session ikke klar"
+      },
+      "sessionTimeout": {
+        "en": "Session initialization timeout. Please refresh the page and try again.",
+        "fr": "Délai d'initialisation de la session dépassé. Veuillez rafraîchir la page et réessayer.",
+        "de": "Zeitüberschreitung bei der Sitzungsinitialisierung. Bitte aktualisieren Sie die Seite und versuchen Sie es erneut.",
+        "da": "Sessioninitialisering timeout. Opdater venligst siden og prøv igen."
+      },
+      "initFailed": {
+        "en": "Failed to initialize checkout resource",
+        "fr": "Échec de l'initialisation de la commande",
+        "de": "Checkout-Ressource konnte nicht initialisiert werden",
+        "da": "Kunne ikke initialisere checkout-ressource"
+      },
+      "noCheckoutSession": {
+        "en": "No checkout session available",
+        "fr": "Aucune session de commande disponible",
+        "de": "Keine Checkout-Sitzung verfügbar",
+        "da": "Ingen checkout-session tilgængelig"
+      },
+      "paymentFailed": {
+        "en": "Payment failed",
+        "fr": "Le paiement a échoué",
+        "de": "Zahlung fehlgeschlagen",
+        "da": "Betaling mislykkedes"
+      },
+      "paymentFailedSuggestion": {
+        "en": "Payment could not be processed. Please try with another card or payment method.",
+        "fr": "Le paiement n'a pas pu être traité. Veuillez essayer avec une autre carte ou méthode de paiement.",
+        "de": "Die Zahlung konnte nicht verarbeitet werden. Bitte versuchen Sie es mit einer anderen Karte oder Zahlungsmethode.",
+        "da": "Betalingen kunne ikke behandles. Prøv venligst med et andet kort eller betalingsmetode."
+      },
+      "checkoutError": {
+        "en": "An error occurred during checkout",
+        "fr": "Une erreur s'est produite lors de la commande",
+        "de": "Während des Checkouts ist ein Fehler aufgetreten",
+        "da": "Der opstod en fejl under checkout"
+      },
+      "failedToLoadAddressDetails": {
+        "en": "Failed to load address details",
+        "fr": "Échec du chargement des détails d'adresse",
+        "de": "Adressdetails konnten nicht geladen werden",
+        "da": "Kunne ikke indlæse adresseoplysninger"
+      },
+      "errorLoadingOrderSummary": {
+        "en": "Error loading order summary",
+        "fr": "Erreur lors du chargement du résumé de commande",
+        "de": "Fehler beim Laden der Bestellübersicht",
+        "da": "Fejl ved indlæsning af ordreoversigt"
+      },
+      "unableToLoadOrderInfo": {
+        "en": "Unable to load order information. Please try again.",
+        "fr": "Impossible de charger les informations de commande. Veuillez réessayer.",
+        "de": "Bestellinformationen konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
+        "da": "Kunne ikke indlæse ordreinformationer. Prøv venligst igen."
+      },
+      "applePayNotImplemented": {
+        "en": "Apple Pay support needs to be implemented",
+        "fr": "Le support Apple Pay doit être implémenté",
+        "de": "Apple Pay-Unterstützung muss implementiert werden",
+        "da": "Apple Pay-support skal implementeres"
+      },
+      "checkoutCompletedTitle": {
+        "en": "Checkout Completed",
+        "fr": "Commande terminée",
+        "de": "Checkout abgeschlossen",
+        "da": "Checkout gennemført"
+      },
+      "checkoutAlreadyCompleted": {
+        "en": "This order has already been paid for",
+        "fr": "Cette commande a déjà été payée",
+        "de": "Diese Bestellung wurde bereits bezahlt",
+        "da": "Denne ordre er allerede betalt"
+      }
+    },
+    "loading": {
+      "checkoutLoading": {
+        "en": "Loading checkout...",
+        "fr": "Chargement de la commande...",
+        "de": "Checkout wird geladen...",
+        "da": "Indlæser checkout..."
+      },
+      "defaultText": {
+        "en": "Loading...",
+        "fr": "Chargement...",
+        "de": "Lädt...",
+        "da": "Indlæser..."
+      }
+    },
+    "discountCodes": {
+      "placeholder": {
+        "en": "Discount code",
+        "fr": "Code de réduction",
+        "de": "Rabattcode",
+        "da": "Rabatkode"
+      },
+      "applyingText": {
+        "en": "Applying...",
+        "fr": "Application...",
+        "de": "Wird angewendet...",
+        "da": "Anvender..."
+      },
+      "applyText": {
+        "en": "Apply",
+        "fr": "Appliquer",
+        "de": "Anwenden",
+        "da": "Anvend"
+      }
+    }
+  },
+  "links": {
+    "termsOfServiceUrl": "https://example.com/terms-of-service",
+    "generalConditionsUrl": "https://example.com/general-conditions",
+    "bottomLinks": [
+      {
+        "label": {
+          "en": "Privacy Policy",
+          "fr": "Politique de confidentialité",
+          "de": "Datenschutzrichtlinie",
+          "da": "Fortrolighedspolitik"
+        },
+        "url": "https://www.google.com"
+      },
+      {
+        "label": {
+          "en": "Terms of Service",
+          "fr": "Conditions d'utilisation",
+          "de": "Nutzungsbedingungen",
+          "da": "Servicevilkår"
+        },
+        "url": "https://www.google.com"
+      },
+      {
+        "label": {
+          "en": "Refund Policy",
+          "fr": "Politique de remboursement",
+          "de": "Rückerstattungsrichtlinie",
+          "da": "Refusionspolitik"
+        },
+        "url": "https://www.google.com"
+      },
+      {
+        "label": {
+          "en": "Shipping Policy",
+          "fr": "Politique de livraison",
+          "de": "Versandrichtlinie",
+          "da": "Forsendelsespolitik"
+        },
+        "url": "https://www.google.com"
+      },
+      {
+        "label": {
+          "en": "Payment Methods",
+          "fr": "Méthodes de paiement",
+          "de": "Zahlungsmethoden",
+          "da": "Betalingsmetoder"
+        },
+        "url": "https://www.google.com"
+      }
+    ]
+  },
+  "sections": {
+    "title": {
+      "en": "Why choose us?",
+      "fr": "Pourquoi nous choisir ?",
+      "de": "Warum uns wählen?",
+      "da": "Hvorfor vælge os?"
+    },
+    "items": [
+      {
+        "useIconUrl": false,
+        "icon": "Headphones",
+        "titleTrans": {
+          "en": "Customer Service",
+          "fr": "Service Client",
+          "de": "Kundenservice",
+          "da": "Kundeservice"
+        },
+        "descriptionTrans": {
+          "en": "We answer your questions Monday to Friday from 9am to 6pm.",
+          "fr": "Nous répondons à vos questions du lundi au vendredi de 9h à 18h.",
+          "de": "Wir beantworten Ihre Fragen montags bis freitags von 9 bis 18 Uhr.",
+          "da": "Vi besvarer dine spørgsmål mandag til fredag fra kl. 9 til 18."
+        }
+      },
+      {
+        "useIconUrl": false,
+        "icon": "ShieldCheck",
+        "titleTrans": {
+          "en": "30-Day Money Back Guarantee",
+          "fr": "Garantie Satisfait ou Remboursé 30 jours",
+          "de": "30-Tage-Geld-zurück-Garantie",
+          "da": "30 dages pengene-tilbage-garanti"
+        },
+        "descriptionTrans": {
+          "en": "Not satisfied? Easy refund with no conditions. Your satisfaction is our priority.",
+          "fr": "Pas satisfait ? Remboursement facile et sans conditions. Votre satisfaction est notre priorité.",
+          "de": "Nicht zufrieden? Einfache Rückerstattung ohne Bedingungen. Ihre Zufriedenheit ist unsere Priorität.",
+          "da": "Ikke tilfreds? Nem refusion uden betingelser. Din tilfredshed er vores prioritet."
+        }
+      },
+      {
+        "id": "shippingMethod",
+        "useIconUrl": false,
+        "icon": "Truck",
+        "titleTrans": {
+          "en": "48h Shipping",
+          "fr": "Livraison en 48h",
+          "de": "Versand in 48 Stunden",
+          "da": "Levering inden for 48 timer"
+        },
+        "descriptionTrans": {
+          "en": "Get ultra-fast shipping with tracking in just 48 hours.",
+          "fr": "Profitez d'une livraison ultra-rapide avec suivi en seulement 48 heures.",
+          "de": "Erhalten Sie ultraschnellen Versand mit Sendungsverfolgung in nur 48 Stunden.",
+          "da": "Få ultrahurtig levering med sporing på kun 48 timer."
+        }
+      }
+    ]
+  },
+  "club": {
+    "branding": {
+      "companyName": "Tagadapay Club",
+      "colors": {
+        "primary": "#f59e0b",
+        "secondary": "#fbbf24"
+      }
+    },
+    "products": {
+      "variantId": "variant_592e5ab3aeff"
+    },
+    "isCreditEnabled": false,
+    "texts": {
+      "common": {
+        "loading": {
+          "en": "Loading...",
+          "fr": "Chargement...",
+          "de": "Lädt...",
+          "da": "Indlæser..."
+        }
+      },
+      "enter": {
+        "title": {
+          "en": "Enter the Club",
+          "fr": "Entrer dans le Club",
+          "de": "Club betreten",
+          "da": "Gå ind i klubben"
+        },
+        "subtitle": {
+          "en": "VIP deals for Tagada Customers",
+          "fr": "Offres VIP pour les clients Tagada",
+          "de": "VIP-Angebote für Tagada-Kunden",
+          "da": "VIP-tilbud for Tagada-kunder"
+        },
+        "poweredBy": {
+          "en": "Powered By Tagada",
+          "fr": "Propulsé par Tagada",
+          "de": "Bereitgestellt von Tagada",
+          "da": "Leveret af Tagada"
+        },
+        "enterButton": {
+          "en": "Enter the Club",
+          "fr": "Entrer dans le Club",
+          "de": "Club betreten",
+          "da": "Gå ind i klubben"
+        },
+        "loginEmailPlaceholder": {
+          "en": "Enter your email",
+          "fr": "Entrez votre e-mail",
+          "de": "Geben Sie Ihre E-Mail ein",
+          "da": "Indtast din e-mail"
+        },
+        "loginCodePlaceholder": {
+          "en": "00000",
+          "fr": "00000",
+          "de": "00000",
+          "da": "00000"
+        },
+        "sendCode": {
+          "en": "Send Code",
+          "fr": "Envoyer le code",
+          "de": "Code senden",
+          "da": "Send kode"
+        },
+        "sendingCode": {
+          "en": "Sending...",
+          "fr": "Envoi en cours...",
+          "de": "Wird gesendet...",
+          "da": "Sender..."
+        },
+        "verifyCode": {
+          "en": "Verify Code",
+          "fr": "Vérifier le code",
+          "de": "Code verifizieren",
+          "da": "Bekræft kode"
+        },
+        "verifyingCode": {
+          "en": "Verifying...",
+          "fr": "Vérification en cours...",
+          "de": "Wird verifiziert...",
+          "da": "Bekræfter..."
+        },
+        "backButton": {
+          "en": "Back",
+          "fr": "Retour",
+          "de": "Zurück",
+          "da": "Tilbage"
+        },
+        "errors": {
+          "invalidCode": {
+            "en": "Invalid verification code. Please try again.",
+            "fr": "Code de vérification invalide. Veuillez réessayer.",
+            "de": "Ungültiger Verifizierungscode. Bitte versuchen Sie es erneut.",
+            "da": "Ugyldig bekræftelseskode. Prøv venligst igen."
+          },
+          "verifyFailed": {
+            "en": "Failed to verify code. Please try again.",
+            "fr": "Échec de la vérification du code. Veuillez réessayer.",
+            "de": "Code konnte nicht verifiziert werden. Bitte versuchen Sie es erneut.",
+            "da": "Kunne ikke bekræfte koden. Prøv venligst igen."
+          },
+          "sendFailed": {
+            "en": "Failed to send verification code. Please check your email and try again.",
+            "fr": "Échec de l'envoi du code de vérification. Veuillez vérifier votre e-mail et réessayer.",
+            "de": "Der Verifizierungscode konnte nicht gesendet werden. Bitte prüfen Sie Ihre E-Mail und versuchen Sie es erneut.",
+            "da": "Kunne ikke sende bekræftelseskode. Kontrollér din e-mail og prøv igen."
+          },
+          "unknown": {
+            "en": "Failed to send verification code. Please try again.",
+            "fr": "Échec de l'envoi du code de vérification. Veuillez réessayer.",
+            "de": "Der Verifizierungscode konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+            "da": "Kunne ikke sende bekræftelseskode. Prøv venligst igen."
+          }
+        }
+      },
+      "credit": {
+        "navigation": {
+          "backLink": {
+            "en": "Back to Club",
+            "fr": "Retour au Club",
+            "de": "Zurück zum Club",
+            "da": "Tilbage til klubben"
+          },
+          "title": {
+            "en": "Credit Center",
+            "fr": "Centre de crédits",
+            "de": "Kreditzentrum",
+            "da": "Kreditcenter"
+          },
+          "buttonLabel": {
+            "en": "Credits",
+            "fr": "Crédits",
+            "de": "Credits",
+            "da": "Kreditter"
+          }
+        },
+        "hero": {
+          "title": {
+            "en": "Your Credit Balance",
+            "fr": "Votre solde de crédits",
+            "de": "Ihr Guthaben",
+            "da": "Dit kreditsaldo"
+          },
+          "subtitle": {
+            "en": "Earn credits with every purchase and redeem them for exclusive rewards and benefits",
+            "fr": "Gagnez des crédits à chaque achat et échangez-les contre des récompenses et des avantages exclusifs",
+            "de": "Verdienen Sie Credits bei jedem Kauf und lösen Sie sie gegen exklusive Belohnungen und Vorteile ein",
+            "da": "Optjen kreditter ved hvert køb og indløs dem til eksklusive belønninger og fordele"
+          }
+        },
+        "balance": {
+          "availableCreditsLabel": {
+            "en": "Available Credits",
+            "fr": "Crédits disponibles",
+            "de": "Verfügbare Credits",
+            "da": "Tilgængelige kreditter"
+          },
+          "nextCreditsLabel": {
+            "en": "Next credits on {date}",
+            "fr": "Prochains crédits le {date}",
+            "de": "Nächste Credits am {date}",
+            "da": "Næste kreditter den {date}"
+          }
+        },
+        "rewards": {
+          "title": {
+            "en": "Available Rewards",
+            "fr": "Récompenses disponibles",
+            "de": "Verfügbare Belohnungen",
+            "da": "Tilgængelige belønninger"
+          },
+          "subtitle": {
+            "en": "Choose from our selection of exclusive rewards",
+            "fr": "Choisissez parmi notre sélection de récompenses exclusives",
+            "de": "Wählen Sie aus unserer Auswahl an exklusiven Belohnungen",
+            "da": "Vælg fra vores udvalg af eksklusive belønninger"
+          }
+        },
+        "howItWorks": {
+          "title": {
+            "en": "How Credits Work",
+            "fr": "Comment fonctionnent les crédits",
+            "de": "Wie Credits funktionieren",
+            "da": "Sådan fungerer kreditter"
+          },
+          "items": [
+            {
+              "icon": "🛒",
+              "title": {
+                "en": "Earn Credits",
+                "fr": "Gagnez des crédits",
+                "de": "Credits verdienen",
+                "da": "Optjen kreditter"
+              },
+              "description": {
+                "en": "Get 1 credit for every month of subscription",
+                "fr": "Obtenez 1 crédit pour chaque mois d'abonnement",
+                "de": "Erhalten Sie 1 Credit für jeden Monat des Abonnements",
+                "da": "Få 1 kredit for hver måned af abonnementet"
+              }
+            },
+            {
+              "icon": "💳",
+              "title": {
+                "en": "Accumulate",
+                "fr": "Accumulez",
+                "de": "Ansammeln",
+                "da": "Akkumuler"
+              },
+              "description": {
+                "en": "Credits never expire and stack up over time",
+                "fr": "Les crédits n'expirent jamais et s'accumulent au fil du temps",
+                "de": "Credits laufen nie ab und häufen sich mit der Zeit an",
+                "da": "Kreditter udløber aldrig og akkumuleres over tid"
+              }
+            },
+            {
+              "icon": "🎁",
+              "title": {
+                "en": "Redeem",
+                "fr": "Échangez",
+                "de": "Einlösen",
+                "da": "Indløs"
+              },
+              "description": {
+                "en": "Use credits for exclusive rewards and discounts",
+                "fr": "Utilisez vos crédits pour des récompenses et des remises exclusives",
+                "de": "Nutzen Sie Credits für exklusive Belohnungen und Rabatte",
+                "da": "Brug kreditter til eksklusive belønninger og rabatter"
+              }
+            }
+          ]
+        },
+        "grid": {
+          "noImageFallback": {
+            "en": "No image available",
+            "fr": "Aucune image disponible",
+            "de": "Kein Bild verfügbar",
+            "da": "Intet billede tilgængeligt"
+          },
+          "creditsRequiredLabel": {
+            "en": "Credits Required",
+            "fr": "Crédits requis",
+            "de": "Benötigte Credits",
+            "da": "Påkrævede kreditter"
+          },
+          "redeemNowButton": {
+            "en": "Redeem Now",
+            "fr": "Échanger maintenant",
+            "de": "Jetzt einlösen",
+            "da": "Indløs nu"
+          },
+          "needMoreLabel": {
+            "en": "Need {amount} More",
+            "fr": "Besoin de {amount} crédits supplémentaires",
+            "de": "Noch {amount} benötigt",
+            "da": "Mangler {amount} mere"
+          },
+          "dialog": {
+            "creditsBadgeLabel": {
+              "en": "{credits} Credits",
+              "fr": "{credits} crédits",
+              "de": "{credits} Credits",
+              "da": "{credits} kreditter"
+            },
+            "readyTitle": {
+              "en": "Ready to Redeem",
+              "fr": "Prêt à échanger",
+              "de": "Bereit zum Einlösen",
+              "da": "Klar til indløsning"
+            },
+            "readyDescription": {
+              "en": "You have enough credits to redeem this item. Once confirmed, {credits} credits will be deducted from your account.",
+              "fr": "Vous avez suffisamment de crédits pour échanger cet article. Une fois confirmé, {credits} crédits seront déduits de votre compte.",
+              "de": "Sie haben genug Credits, um diesen Artikel einzulösen. Nach Bestätigung werden {credits} Credits von Ihrem Konto abgezogen.",
+              "da": "Du har nok kreditter til at indløse denne vare. Når det er bekræftet, trækkes {credits} kreditter fra din konto."
+            },
+            "creditsAfterLabel": {
+              "en": "Your credits after redemption",
+              "fr": "Vos crédits après l'échange",
+              "de": "Ihre Credits nach Einlösung",
+              "da": "Dine kreditter efter indløsning"
+            },
+            "deliveryInformationTitle": {
+              "en": "Delivery Information",
+              "fr": "Informations de livraison",
+              "de": "Lieferinformationen",
+              "da": "Leveringsoplysninger"
+            },
+            "fullNameLabel": {
+              "en": "Full Name",
+              "fr": "Nom complet",
+              "de": "Vollständiger Name",
+              "da": "Fulde navn"
+            },
+            "emailLabel": {
+              "en": "Email",
+              "fr": "E-mail",
+              "de": "E-Mail",
+              "da": "E-mail"
+            },
+            "shippingAddressLabel": {
+              "en": "Shipping Address",
+              "fr": "Adresse de livraison",
+              "de": "Lieferadresse",
+              "da": "Leveringsadresse"
+            },
+            "missingAddressWarning": {
+              "en": "No shipping address on file. Please update your account information.",
+              "fr": "Aucune adresse de livraison enregistrée. Veuillez mettre à jour les informations de votre compte.",
+              "de": "Keine Lieferadresse hinterlegt. Bitte aktualisieren Sie Ihre Kontoinformationen.",
+              "da": "Ingen leveringsadresse på filen. Opdater venligst dine kontooplysninger."
+            },
+            "unableToLoadCustomer": {
+              "en": "Unable to load customer information. Please try again.",
+              "fr": "Impossible de charger les informations client. Veuillez réessayer.",
+              "de": "Kundeninformationen konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
+              "da": "Kunne ikke indlæse kundeoplysninger. Prøv venligst igen."
+            },
+            "processingLabel": {
+              "en": "Processing redemption...",
+              "fr": "Traitement de l'échange...",
+              "de": "Einlösung wird bearbeitet...",
+              "da": "Behandler indløsning..."
+            },
+            "confirmButton": {
+              "en": "Confirm redemption • {credits} Credits",
+              "fr": "Confirmer l'échange • {credits} crédits",
+              "de": "Einlösung bestätigen • {credits} Credits",
+              "da": "Bekræft indløsning • {credits} kreditter"
+            }
+          }
+        },
+        "toasts": {
+          "redemptionProcessing": {
+            "en": "Processing redemption...",
+            "fr": "Traitement de l'échange...",
+            "de": "Einlösung wird bearbeitet...",
+            "da": "Behandler indløsning..."
+          },
+          "redemptionSuccess": {
+            "en": "Successfully redeemed item!",
+            "fr": "Article échangé avec succès !",
+            "de": "Artikel erfolgreich eingelöst!",
+            "da": "Vare indløst med succes!"
+          },
+          "redemptionFailure": {
+            "en": "Failed to redeem item. Please try again.",
+            "fr": "Échec de l'échange de l'article. Veuillez réessayer.",
+            "de": "Einlösung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+            "da": "Indløsning mislykkedes. Prøv venligst igen."
+          }
+        }
+      },
+      "status": {
+        "memberLabel": {
+          "en": "Member",
+          "fr": "Membre",
+          "de": "Mitglied",
+          "da": "Medlem"
+        },
+        "pointsLabel": {
+          "en": "points",
+          "fr": "points",
+          "de": "Punkte",
+          "da": "point"
+        },
+        "progressLabel": {
+          "en": "{pointsToNextTier} more points until {nextTier} status",
+          "fr": "Plus que {pointsToNextTier} points avant le statut {nextTier}",
+          "de": "Noch {pointsToNextTier} Punkte bis zum Status {nextTier}",
+          "da": "{pointsToNextTier} point mere til {nextTier}-status"
+        }
+      },
+      "subscriptions": {
+        "mySubscriptions": {
+          "en": "My Subscriptions",
+          "fr": "Mes abonnements",
+          "de": "Meine Abonnements",
+          "da": "Mine abonnementer"
+        },
+        "subscriptionsLabel": {
+          "en": "subscriptions",
+          "fr": "abonnements",
+          "de": "Abonnements",
+          "da": "abonnementer"
+        },
+        "noActiveSubscriptions": {
+          "en": "You have no active subscriptions",
+          "fr": "Vous n'avez pas d'abonnements actifs",
+          "de": "Sie haben keine aktiven Abonnements",
+          "da": "Du har ingen aktive abonnementer"
+        },
+        "loadingSubscriptions": {
+          "en": "Loading your subscriptions...",
+          "fr": "Chargement de vos abonnements...",
+          "de": "Ihre Abonnements werden geladen...",
+          "da": "Indlæser dine abonnementer..."
+        },
+        "qty": {
+          "en": "Qty",
+          "fr": "Qté",
+          "de": "Menge",
+          "da": "Antal"
+        },
+        "id": {
+          "en": "ID",
+          "fr": "ID",
+          "de": "ID",
+          "da": "ID"
+        },
+        "billingPlan": {
+          "en": "Billing Plan",
+          "fr": "Plan de facturation",
+          "de": "Abrechnungsplan",
+          "da": "Faktureringsplan"
+        },
+        "customer": {
+          "en": "Customer",
+          "fr": "Client",
+          "de": "Kunde",
+          "da": "Kunde"
+        },
+        "currentPeriod": {
+          "en": "Current Period",
+          "fr": "Période actuelle",
+          "de": "Aktuelle Periode",
+          "da": "Nuværende periode"
+        },
+        "trialPeriod": {
+          "en": "Trial Period",
+          "fr": "Période d'essai",
+          "de": "Testphase",
+          "da": "Prøveperiode"
+        },
+        "cancellationNotice": {
+          "en": "Cancellation Notice",
+          "fr": "Avis d'annulation",
+          "de": "Kündigungsmitteilung",
+          "da": "Annulleringsmeddelelse"
+        },
+        "subscriptionCancellationEndPeriod": {
+          "en": "Your subscription will be canceled at the end of the current period.",
+          "fr": "Votre abonnement sera annulé à la fin de la période actuelle.",
+          "de": "Ihr Abonnement wird am Ende der aktuellen Periode gekündigt.",
+          "da": "Dit abonnement annulleres ved udgangen af den nuværende periode."
+        },
+        "created": {
+          "en": "Created",
+          "fr": "Créé",
+          "de": "Erstellt",
+          "da": "Oprettet"
+        },
+        "productId": {
+          "en": "Product ID",
+          "fr": "ID du produit",
+          "de": "Produkt-ID",
+          "da": "Produkt-ID"
+        },
+        "resumeSubscription": {
+          "en": "Resume Subscription",
+          "fr": "Reprendre l'abonnement",
+          "de": "Abonnement fortsetzen",
+          "da": "Genoptag abonnement"
+        },
+        "resuming": {
+          "en": "Resuming...",
+          "fr": "Reprise en cours...",
+          "de": "Wird fortgesetzt...",
+          "da": "Genoptager..."
+        },
+        "cancelSubscription": {
+          "en": "Cancel Subscription",
+          "fr": "Annuler l'abonnement",
+          "de": "Abonnement kündigen",
+          "da": "Annuller abonnement"
+        },
+        "canceling": {
+          "en": "Canceling...",
+          "fr": "Annulation en cours...",
+          "de": "Wird gekündigt...",
+          "da": "Annullerer..."
+        },
+        "cancelSubscriptionTitle": {
+          "en": "Cancel Subscription",
+          "fr": "Annuler l'abonnement",
+          "de": "Abonnement kündigen",
+          "da": "Annuller abonnement"
+        },
+        "cancelSubscriptionNotice": {
+          "en": "Are you sure you want to cancel this subscription?",
+          "fr": "Êtes-vous sûr de vouloir annuler cet abonnement ?",
+          "de": "Möchten Sie dieses Abonnement wirklich kündigen?",
+          "da": "Er du sikker på, at du vil annullere dette abonnement?"
+        },
+        "confirmProceed": {
+          "en": "Please confirm to proceed.",
+          "fr": "Veuillez confirmer pour continuer.",
+          "de": "Bitte bestätigen Sie, um fortzufahren.",
+          "da": "Bekræft venligst for at fortsætte."
+        },
+        "yesCancel": {
+          "en": "Yes, cancel",
+          "fr": "Oui, annuler",
+          "de": "Ja, kündigen",
+          "da": "Ja, annuller"
+        },
+        "yesLoseBenefits": {
+          "en": "Yes, lose benefits",
+          "fr": "Oui, perdre les avantages",
+          "de": "Ja, Vorteile verlieren",
+          "da": "Ja, mist fordele"
+        },
+        "keepSubscription": {
+          "en": "Keep Subscription",
+          "fr": "Conserver l'abonnement",
+          "de": "Abonnement behalten",
+          "da": "Behold abonnement"
+        },
+        "cancelClubMembership": {
+          "en": "Cancel your Club membership",
+          "fr": "Annuler votre adhésion au Club",
+          "de": "Club-Mitgliedschaft kündigen",
+          "da": "Annuller dit klubmedlemskab"
+        },
+        "byCanceling": {
+          "en": "By canceling, you will:",
+          "fr": "En annulant, vous allez :",
+          "de": "Durch Kündigung werden Sie:",
+          "da": "Ved at annullere vil du:"
+        },
+        "loseClubAdvantages": {
+          "en": "Lose access to club advantages",
+          "fr": "Perdre l'accès aux avantages du club",
+          "de": "Zugang zu Club-Vorteilen verlieren",
+          "da": "Miste adgang til klubfordele"
+        },
+        "loseAccumulatedCredits": {
+          "en": "Lose accumulated credits",
+          "fr": "Perdre les crédits accumulés",
+          "de": "Angesammelte Credits verlieren",
+          "da": "Mist akkumulerede kreditter"
+        },
+        "losePromotionCode": {
+          "en": "Lose your promotion code",
+          "fr": "Perdre votre code promotionnel",
+          "de": "Ihr Werbecode geht verloren",
+          "da": "Mist din promotionskode"
+        },
+        "status": {
+          "active": {
+            "en": "active",
+            "fr": "actif",
+            "de": "aktiv",
+            "da": "aktiv"
+          },
+          "trial": {
+            "en": "trial",
+            "fr": "essai",
+            "de": "Testphase",
+            "da": "prøveperiode"
+          },
+          "canceling": {
+            "en": "canceling",
+            "fr": "en cours d'annulation",
+            "de": "wird gekündigt",
+            "da": "under annullering"
+          }
+        }
+      },
+      "orders": {
+        "myOrders": {
+          "en": "My Orders",
+          "fr": "Mes commandes",
+          "de": "Meine Bestellungen",
+          "da": "Mine ordrer"
+        },
+        "ordersLabel": {
+          "en": "orders",
+          "fr": "commandes",
+          "de": "Bestellungen",
+          "da": "ordrer"
+        },
+        "noOrders": {
+          "en": "You haven't placed any orders yet.",
+          "fr": "Vous n'avez pas encore passé de commande.",
+          "de": "Sie haben noch keine Bestellungen aufgegeben.",
+          "da": "Du har endnu ikke afgivet nogen ordrer."
+        },
+        "loadingOrders": {
+          "en": "Loading orders...",
+          "fr": "Chargement des commandes...",
+          "de": "Bestellungen werden geladen...",
+          "da": "Indlæser ordrer..."
+        },
+        "item": {
+          "en": "item",
+          "fr": "article",
+          "de": "Artikel",
+          "da": "vare"
+        },
+        "items": {
+          "en": "items",
+          "fr": "articles",
+          "de": "Artikel",
+          "da": "varer"
+        },
+        "customerId": {
+          "en": "Customer ID",
+          "fr": "ID client",
+          "de": "Kunden-ID",
+          "da": "Kunde-ID"
+        },
+        "dateNotAvailable": {
+          "en": "Date not available",
+          "fr": "Date non disponible",
+          "de": "Datum nicht verfügbar",
+          "da": "Dato ikke tilgængelig"
+        },
+        "moreItems": {
+          "en": "+ {count} more",
+          "fr": "+ {count} de plus",
+          "de": "+ {count} weitere",
+          "da": "+ {count} mere"
+        },
+        "ordered": {
+          "en": "Ordered",
+          "fr": "Commandé",
+          "de": "Bestellt",
+          "da": "Bestilt"
+        },
+        "status": {
+          "order": {
+            "open": {
+              "en": "Open",
+              "fr": "Ouverte",
+              "de": "Offen",
+              "da": "Åben"
+            },
+            "paid": {
+              "en": "Paid",
+              "fr": "Payée",
+              "de": "Bezahlt",
+              "da": "Betalt"
+            },
+            "abandoned": {
+              "en": "Abandoned",
+              "fr": "Abandonnée",
+              "de": "Verlassen",
+              "da": "Forladt"
+            },
+            "cancelled": {
+              "en": "Cancelled",
+              "fr": "Annulée",
+              "de": "Storniert",
+              "da": "Annulleret"
+            },
+            "unknown": {
+              "en": "Unknown",
+              "fr": "Inconnu",
+              "de": "Unbekannt",
+              "da": "Ukendt"
+            }
+          },
+          "payment": {
+            "succeeded": {
+              "en": "Payment completed",
+              "fr": "Paiement terminé",
+              "de": "Zahlung abgeschlossen",
+              "da": "Betaling gennemført"
+            },
+            "pending": {
+              "en": "Payment pending",
+              "fr": "Paiement en attente",
+              "de": "Zahlung ausstehend",
+              "da": "Betaling afventer"
+            },
+            "failed": {
+              "en": "Payment failed",
+              "fr": "Paiement échoué",
+              "de": "Zahlung fehlgeschlagen",
+              "da": "Betaling mislykkedes"
+            },
+            "error": {
+              "en": "Payment error",
+              "fr": "Erreur de paiement",
+              "de": "Zahlungsfehler",
+              "da": "Betalingsfejl"
+            },
+            "refunded": {
+              "en": "Payment refunded",
+              "fr": "Paiement remboursé",
+              "de": "Zahlung zurückerstattet",
+              "da": "Betaling refunderet"
+            },
+            "declined": {
+              "en": "Payment declined",
+              "fr": "Paiement refusé",
+              "de": "Zahlung abgelehnt",
+              "da": "Betaling afvist"
+            },
+            "expired": {
+              "en": "Payment expired",
+              "fr": "Paiement expiré",
+              "de": "Zahlung abgelaufen",
+              "da": "Betaling udløbet"
+            },
+            "rejected": {
+              "en": "Payment rejected",
+              "fr": "Paiement rejeté",
+              "de": "Zahlung zurückgewiesen",
+              "da": "Betaling afvist"
+            },
+            "unknown": {
+              "en": "Payment {status}",
+              "fr": "Paiement {status}",
+              "de": "Zahlung {status}",
+              "da": "Betaling {status}"
+            }
+          }
+        }
+      },
+      "account": {
+        "myAccount": {
+          "en": "My Account",
+          "fr": "Mon compte",
+          "de": "Mein Konto",
+          "da": "Min konto"
+        },
+        "loadingAccount": {
+          "en": "Loading your account information...",
+          "fr": "Chargement de vos informations de compte...",
+          "de": "Kontoinformationen werden geladen...",
+          "da": "Indlæser dine kontooplysninger..."
+        },
+        "editProfile": {
+          "en": "Edit Profile",
+          "fr": "Modifier le profil",
+          "de": "Profil bearbeiten",
+          "da": "Rediger profil"
+        },
+        "lastOrder": {
+          "en": "Last Order",
+          "fr": "Dernière commande",
+          "de": "Letzte Bestellung",
+          "da": "Sidste ordre"
+        },
+        "personalInformation": {
+          "en": "Personal Information",
+          "fr": "Informations personnelles",
+          "de": "Persönliche Informationen",
+          "da": "Personlige oplysninger"
+        },
+        "customerId": {
+          "en": "Customer ID",
+          "fr": "ID client",
+          "de": "Kunden-ID",
+          "da": "Kunde-ID"
+        },
+        "accountStatistics": {
+          "en": "Account Statistics",
+          "fr": "Statistiques du compte",
+          "de": "Kontostatistiken",
+          "da": "Kontostatistik"
+        },
+        "addresses": {
+          "en": "Addresses",
+          "fr": "Adresses",
+          "de": "Adressen",
+          "da": "Adresser"
+        },
+        "systemInformation": {
+          "en": "System Information",
+          "fr": "Informations système",
+          "de": "Systeminformationen",
+          "da": "Systemoplysninger"
+        },
+        "email": {
+          "en": "Email",
+          "fr": "E-mail",
+          "de": "E-Mail",
+          "da": "E-mail"
+        },
+        "name": {
+          "en": "Name",
+          "fr": "Nom",
+          "de": "Name",
+          "da": "Navn"
+        },
+        "firstName": {
+          "en": "First Name",
+          "fr": "Prénom",
+          "de": "Vorname",
+          "da": "Fornavn"
+        },
+        "lastName": {
+          "en": "Last Name",
+          "fr": "Nom de famille",
+          "de": "Nachname",
+          "da": "Efternavn"
+        },
+        "totalOrders": {
+          "en": "Total Orders",
+          "fr": "Total des commandes",
+          "de": "Gesamtbestellungen",
+          "da": "Samlede ordrer"
+        },
+        "ordersLabel": {
+          "en": "orders",
+          "fr": "commandes",
+          "de": "Bestellungen",
+          "da": "ordrer"
+        },
+        "activeSubscriptions": {
+          "en": "Active Subscriptions",
+          "fr": "Abonnements actifs",
+          "de": "Aktive Abonnements",
+          "da": "Aktive abonnementer"
+        },
+        "activeLabel": {
+          "en": "active",
+          "fr": "actif",
+          "de": "aktiv",
+          "da": "aktiv"
+        },
+        "marketingPreferences": {
+          "en": "Marketing Preferences",
+          "fr": "Préférences marketing",
+          "de": "Marketing-Präferenzen",
+          "da": "Marketingpræferencer"
+        },
+        "subscribedToNewsletters": {
+          "en": "Subscribed to newsletters",
+          "fr": "Abonné aux newsletters",
+          "de": "Newsletter abonniert",
+          "da": "Abonneret på nyhedsbreve"
+        },
+        "notSubscribedToNewsletters": {
+          "en": "Not subscribed to newsletters",
+          "fr": "Non abonné aux newsletters",
+          "de": "Nicht für Newsletter angemeldet",
+          "da": "Ikke abonneret på nyhedsbreve"
+        },
+        "billingAddress": {
+          "en": "Billing Address",
+          "fr": "Adresse de facturation",
+          "de": "Rechnungsadresse",
+          "da": "Faktureringsadresse"
+        },
+        "shippingAddress": {
+          "en": "Shipping Address",
+          "fr": "Adresse de livraison",
+          "de": "Lieferadresse",
+          "da": "Leveringsadresse"
+        },
+        "browser": {
+          "en": "Browser",
+          "fr": "Navigateur",
+          "de": "Browser",
+          "da": "Browser"
+        },
+        "operatingSystem": {
+          "en": "Operating System",
+          "fr": "Système d'exploitation",
+          "de": "Betriebssystem",
+          "da": "Operativsystem"
+        },
+        "location": {
+          "en": "Location",
+          "fr": "Localisation",
+          "de": "Standort",
+          "da": "Placering"
+        },
+        "cancel": {
+          "en": "Cancel",
+          "fr": "Annuler",
+          "de": "Abbrechen",
+          "da": "Annuller"
+        },
+        "saveChanges": {
+          "en": "Save Changes",
+          "fr": "Enregistrer les modifications",
+          "de": "Änderungen speichern",
+          "da": "Gem ændringer"
+        }
+      },
+      "portal": {
+        "title": {
+          "en": "Customer Portal",
+          "fr": "Portail Client",
+          "de": "Kundenportal",
+          "da": "Kundeportal"
+        },
+        "menu": {
+          "en": "Menu",
+          "fr": "Menu",
+          "de": "Menü",
+          "da": "Menu"
+        },
+        "logout": {
+          "en": "Logout",
+          "fr": "Déconnexion",
+          "de": "Abmelden",
+          "da": "Log ud"
+        },
+        "externalBadge": {
+          "en": "external",
+          "fr": "externe",
+          "de": "extern",
+          "da": "ekstern"
+        },
+        "tabs": {
+          "orders": {
+            "label": {
+              "en": "My Orders",
+              "fr": "Mes commandes",
+              "de": "Meine Bestellungen",
+              "da": "Mine ordrer"
+            },
+            "description": {
+              "en": "View and track your order history",
+              "fr": "Consultez et suivez l'historique de vos commandes",
+              "de": "Bestellverlauf anzeigen und verfolgen",
+              "da": "Se og følg din ordrehistorik"
+            }
+          },
+          "account": {
+            "label": {
+              "en": "My Account",
+              "fr": "Mon compte",
+              "de": "Mein Konto",
+              "da": "Min konto"
+            },
+            "description": {
+              "en": "Manage your personal information and preferences",
+              "fr": "Gérez vos informations personnelles et préférences",
+              "de": "Verwalten Sie Ihre persönlichen Informationen und Präferenzen",
+              "da": "Administrer dine personlige oplysninger og præferencer"
+            }
+          },
+          "subscriptions": {
+            "label": {
+              "en": "My Subscriptions",
+              "fr": "Mes abonnements",
+              "de": "Meine Abonnements",
+              "da": "Mine abonnementer"
+            },
+            "description": {
+              "en": "Manage your active subscriptions",
+              "fr": "Gérez vos abonnements actifs",
+              "de": "Verwalten Sie Ihre aktiven Abonnements",
+              "da": "Administrer dine aktive abonnementer"
+            }
+          }
+        }
+      }
+    },
+    "meta": {
+      "title": {
+        "en": "Tagadapay Club",
+        "fr": "Club Tagadapay",
+        "de": "Tagadapay Club",
+        "da": "Tagadapay Club"
+      },
+      "description": {
+        "en": "A brief description of what Tagada Club offers",
+        "fr": "Une brève description de ce qu'offre le Club Tagada",
+        "de": "Eine kurze Beschreibung dessen, was der Tagada Club bietet",
+        "da": "En kort beskrivelse af, hvad Tagada Club tilbyder"
+      },
+      "tagline": {
+        "en": "Join the VIP Club",
+        "fr": "Rejoignez le Club VIP",
+        "de": "Werden Sie Mitglied im VIP-Club",
+        "da": "Bliv medlem af VIP-klubben"
+      }
+    },
+    "footer": {
+      "social": {
+        "title": {
+          "en": "Follow Us",
+          "fr": "Suivez-nous",
+          "de": "Folgen Sie uns",
+          "da": "Følg os"
+        },
+        "items": [
+          {
+            "icon": "Twitter",
+            "url": "https://twitter.com/tagadapay",
+            "title": "Follow us on Twitter"
+          },
+          {
+            "icon": "Facebook",
+            "url": "https://facebook.com/tagadapay",
+            "title": "Follow us on Facebook"
+          },
+          {
+            "icon": "Instagram",
+            "url": "https://instagram.com/tagadapay",
+            "title": "Follow us on Instagram"
+          }
+        ]
+      },
+      "sections": [
+        {
+          "title": {
+            "en": "About",
+            "fr": "À propos",
+            "de": "Über uns",
+            "da": "Om os"
+          },
+          "items": [
+            {
+              "title": {
+                "en": "Our Store",
+                "fr": "Notre boutique",
+                "de": "Unser Shop",
+                "da": "Vores butik"
+              },
+              "url": "/our-store"
+            },
+            {
+              "title": {
+                "en": "Careers",
+                "fr": "Carrières",
+                "de": "Karriere",
+                "da": "Karriere"
+              },
+              "url": "/careers"
+            },
+            {
+              "title": {
+                "en": "Press",
+                "fr": "Presse",
+                "de": "Presse",
+                "da": "Presse"
+              },
+              "url": "/press"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Support",
+            "fr": "Support",
+            "de": "Support",
+            "da": "Support"
+          },
+          "items": [
+            {
+              "title": {
+                "en": "Help Center",
+                "fr": "Centre d'aide",
+                "de": "Hilfe-Center",
+                "da": "Hjælpecenter"
+              },
+              "url": "/help"
+            },
+            {
+              "title": {
+                "en": "Contact Us",
+                "fr": "Nous contacter",
+                "de": "Kontaktieren Sie uns",
+                "da": "Kontakt os"
+              },
+              "url": "/contact-us"
+            },
+            {
+              "title": {
+                "en": "FAQs",
+                "fr": "FAQ",
+                "de": "FAQ",
+                "da": "FAQ"
+              },
+              "url": "/faqs"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Tagada Club",
+            "fr": "Club Tagada",
+            "de": "Tagada Club",
+            "da": "Tagada Club"
+          },
+          "items": [
+            {
+              "title": {
+                "en": "Powered by TagadaPay",
+                "fr": "Propulsé par TagadaPay",
+                "de": "Bereitgestellt von TagadaPay",
+                "da": "Leveret af TagadaPay"
+              },
+              "url": "/powered-by-tagadapay"
+            }
+          ]
+        }
+      ],
+      "poweredBy": {
+        "en": "Powered by Tagadapay",
+        "fr": "Propulsé par Tagadapay",
+        "de": "Bereitgestellt von Tagadapay",
+        "da": "Leveret af Tagadapay"
+      },
+      "copyright": {
+        "en": "© {year} {title}. All rights reserved.",
+        "fr": "© {year} {title}. Tous droits réservés.",
+        "de": "© {year} {title}. Alle Rechte vorbehalten.",
+        "da": "© {year} {title}. Alle rettigheder forbeholdes."
+      }
+    },
+    "header": {
+      "navigation": {
+        "benefits": {
+          "en": "Benefits",
+          "fr": "Avantages",
+          "de": "Vorteile",
+          "da": "Fordele"
+        },
+        "deals": {
+          "en": "Deals",
+          "fr": "Offres",
+          "de": "Angebote",
+          "da": "Tilbud"
+        },
+        "faq": {
+          "en": "FAQ",
+          "fr": "FAQ",
+          "de": "FAQ",
+          "da": "FAQ"
+        },
+        "account": {
+          "en": "My Account",
+          "fr": "Mon compte",
+          "de": "Mein Konto",
+          "da": "Min konto"
+        }
+      },
+      "hero": {
+        "background": "",
+        "badge": {
+          "en": "VIP Exclusive",
+          "fr": "Exclusivité VIP",
+          "de": "VIP-Exklusiv",
+          "da": "VIP-eksklusivt"
+        },
+        "title": {
+          "en": "Welcome to Tagadapay Club",
+          "fr": "Bienvenue au Club Tagadapay",
+          "de": "Willkommen im Tagadapay Club",
+          "da": "Velkommen til Tagadapay Club"
+        },
+        "logo": "",
+        "subtitle": {
+          "en": "Unlock exclusive deals, premium offers, and VIP benefits reserved for our most valued customers.",
+          "fr": "Débloquez des offres exclusives, des promotions premium et des avantages VIP réservés à nos clients les plus précieux.",
+          "de": "Schalten Sie exklusive Angebote, Premium-Angebote und VIP-Vorteile frei, die unseren wertvollsten Kunden vorbehalten sind.",
+          "da": "Lås eksklusive tilbud, premium-tilbud og VIP-fordele op, der er forbeholdt vores mest værdsatte kunder."
+        },
+        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+        "cta": {
+          "primary": {
+            "en": "Explore Benefits",
+            "fr": "Découvrir les avantages",
+            "de": "Vorteile erkunden",
+            "da": "Udforsk fordele"
+          },
+          "secondary": {
+            "en": "View Deals",
+            "fr": "Voir les offres",
+            "de": "Angebote ansehen",
+            "da": "Se tilbud"
+          }
+        }
+      },
+      "userStatus": {
+        "tier": "Gold",
+        "points": 2450,
+        "nextTier": "Platinum",
+        "pointsToNextTier": 550
+      }
+    },
+    "benefits": {
+      "badge": {
+        "en": "Exclusive Benefits",
+        "fr": "Avantages exclusifs",
+        "de": "Exklusive Vorteile",
+        "da": "Eksklusive fordele"
+      },
+      "title": {
+        "en": "Why Join Tagadapay Club?",
+        "fr": "Pourquoi rejoindre le Club Tagadapay ?",
+        "de": "Warum dem Tagadapay Club beitreten?",
+        "da": "Hvorfor blive medlem af Tagadapay Club?"
+      },
+      "subtitle": {
+        "en": "Unlock a world of exclusive perks, premium services, and VIP treatment designed specifically for our most valued customers.",
+        "fr": "Débloquez un monde d'avantages exclusifs, de services premium et de traitement VIP conçu spécialement pour nos clients les plus précieux.",
+        "de": "Erschließen Sie eine Welt exklusiver Vorteile, Premium-Services und VIP-Behandlung, die speziell für unsere wertvollsten Kunden entwickelt wurden.",
+        "da": "Lås op for en verden af eksklusive fordele, premium-services og VIP-behandling designet specifikt til vores mest værdifulde kunder."
+      },
+      "items": [
+        {
+          "icon": "Zap",
+          "title": {
+            "en": "Lightning Fast Checkout",
+            "fr": "Paiement ultra-rapide",
+            "de": "Blitzschneller Checkout",
+            "da": "Lynhurtig betaling"
+          },
+          "description": {
+            "en": "Skip the queue with our express checkout process. Complete your purchases in seconds, not minutes.",
+            "fr": "Évitez la file d'attente avec notre processus de paiement express. Finalisez vos achats en secondes, pas en minutes.",
+            "de": "Überspringen Sie die Warteschlange mit unserem Express-Checkout. Schließen Sie Ihre Käufe in Sekunden, nicht in Minuten, ab.",
+            "da": "Spring køen over med vores ekspres-betalingsproces. Fuldfør dine køb på sekunder, ikke minutter."
+          }
+        },
+        {
+          "icon": "Gift",
+          "title": {
+            "en": "Exclusive Deals & Offers",
+            "fr": "Offres et promotions exclusives",
+            "de": "Exklusive Angebote & Aktionen",
+            "da": "Eksklusive tilbud og forslag"
+          },
+          "description": {
+            "en": "Access to member-only discounts, early bird sales, and special promotions not available to regular customers.",
+            "fr": "Accès à des réductions réservées aux membres, des ventes anticipées et des promotions spéciales non disponibles pour les clients réguliers.",
+            "de": "Zugang zu nur für Mitglieder geltenden Rabatten, Frühbucher-Angeboten und Sonderaktionen, die für normale Kunden nicht verfügbar sind.",
+            "da": "Adgang til medlemsrabatter, tidlige tilbud og særlige kampagner, der ikke er tilgængelige for almindelige kunder."
+          }
+        },
+        {
+          "icon": "Shield",
+          "title": {
+            "en": "Priority Support",
+            "fr": "Support prioritaire",
+            "de": "Prioritäts-Support",
+            "da": "Prioriteret support"
+          },
+          "description": {
+            "en": "Get dedicated customer support with faster response times and priority handling for all your inquiries.",
+            "fr": "Bénéficiez d'un support client dédié avec des temps de réponse plus rapides et un traitement prioritaire pour toutes vos demandes.",
+            "de": "Erhalten Sie dedizierten Kundensupport mit schnelleren Antwortzeiten und Prioritätsbearbeitung für all Ihre Anfragen.",
+            "da": "Få dedikeret kundesupport med hurtigere responstider og prioriteret behandling af alle dine henvendelser."
+          }
+        }
+      ]
+    },
+    "offers": {
+      "badge": {
+        "en": "Exclusive Deals",
+        "fr": "Offres exclusives",
+        "de": "Exklusive Angebote",
+        "da": "Eksklusive tilbud"
+      },
+      "title": {
+        "en": "Member-Only Offers",
+        "fr": "Offres réservées aux membres",
+        "de": "Nur für Mitglieder",
+        "da": "Kun for medlemmer"
+      },
+      "subtitle": {
+        "en": "Discover incredible deals and discounts available exclusively to Tagadapay Club members. Save more on your favorite products.",
+        "fr": "Découvrez des offres et des réductions incroyables disponibles exclusivement pour les membres du Club Tagadapay. Économisez plus sur vos produits préférés.",
+        "de": "Entdecken Sie unglaubliche Angebote und Rabatte, die ausschließlich für Tagadapay Club-Mitglieder verfügbar sind. Sparen Sie mehr bei Ihren Lieblingsprodukten.",
+        "da": "Opdag utrolige tilbud og rabatter, der kun er tilgængelige for Tagadapay Club-medlemmer. Spar mere på dine yndlingsprodukter."
+      },
+      "errorMessages": {
+        "loading": {
+          "en": "Error loading offers",
+          "fr": "Erreur lors du chargement des offres",
+          "de": "Fehler beim Laden der Angebote",
+          "da": "Fejl ved indlæsning af tilbud"
+        },
+        "noOffers": {
+          "en": "No offers available",
+          "fr": "Aucune offre disponible",
+          "de": "Keine Angebote verfügbar",
+          "da": "Ingen tilbud tilgængelige"
+        },
+        "checkBack": {
+          "en": "Check back later for new offers",
+          "fr": "Revenez plus tard pour de nouvelles offres",
+          "de": "Kommen Sie später zurück für neue Angebote",
+          "da": "Tjek tilbage senere for nye tilbud"
+        }
+      },
+      "labels": {
+        "vipOnly": {
+          "en": "VIP Only",
+          "fr": "Réservé VIP",
+          "de": "Nur VIP",
+          "da": "Kun VIP"
+        },
+        "products": {
+          "en": "products",
+          "fr": "produits",
+          "de": "Produkte",
+          "da": "produkter"
+        },
+        "productsCount": {
+          "en": "{count} Products",
+          "fr": "{count} produits",
+          "de": "{count} Produkte",
+          "da": "{count} produkter"
+        },
+        "bundleContents": {
+          "en": "Bundle contents",
+          "fr": "Contenu du pack",
+          "de": "Bundle-Inhalt",
+          "da": "Pakkeindhold"
+        },
+        "itemsCount": {
+          "en": "({count} items)",
+          "fr": "({count} articles)",
+          "de": "({count} Artikel)",
+          "da": "({count} varer)"
+        },
+        "addingToCart": {
+          "en": "Adding to cart...",
+          "fr": "Ajout au panier...",
+          "de": "Wird zum Warenkorb hinzugefügt...",
+          "da": "Tilføjer til kurv..."
+        },
+        "getDealNow": {
+          "en": "Get deal now",
+          "fr": "Obtenir l'offre maintenant",
+          "de": "Angebot jetzt erhalten",
+          "da": "Få tilbud nu"
+        },
+        "chooseVariant": {
+          "en": "Choose a variant",
+          "fr": "Choisissez une variante",
+          "de": "Variante auswählen",
+          "da": "Vælg en variant"
+        }
+      },
+      "cta": {
+        "viewDeal": {
+          "en": "View Deal",
+          "fr": "Voir l'offre",
+          "de": "Angebot ansehen",
+          "da": "Se tilbud"
+        }
+      },
+      "toasts": {
+        "processing": {
+          "en": "Processing...",
+          "fr": "Traitement...",
+          "de": "Wird verarbeitet...",
+          "da": "Behandler..."
+        },
+        "success": {
+          "en": "Purchase successful!",
+          "fr": "Achat réussi !",
+          "de": "Kauf erfolgreich!",
+          "da": "Køb gennemført!"
+        },
+        "failure": {
+          "en": "Failed to process payment. Please try again.",
+          "fr": "Échec du traitement du paiement. Veuillez réessayer.",
+          "de": "Die Zahlung konnte nicht verarbeitet werden. Bitte versuchen Sie es erneut.",
+          "da": "Kunne ikke behandle betalingen. Prøv venligst igen."
+        }
+      }
+    },
+    "faq": {
+      "badge": {
+        "en": "FAQs",
+        "fr": "FAQ",
+        "de": "FAQ",
+        "da": "FAQ"
+      },
+      "title": {
+        "en": "Frequently Asked Questions",
+        "fr": "Questions fréquemment posées",
+        "de": "Häufig gestellte Fragen",
+        "da": "Ofte stillede spørgsmål"
+      },
+      "subtitle": {
+        "en": "Everything you need to know about Tagadapay Club.",
+        "fr": "Tout ce que vous devez savoir sur le Club Tagadapay.",
+        "de": "Alles, was Sie über den Tagadapay Club wissen müssen.",
+        "da": "Alt, hvad du skal vide om Tagadapay Club."
+      },
+      "items": [
+        {
+          "question": {
+            "en": "What is Tagadapay Club?",
+            "fr": "Qu'est-ce que le Club Tagadapay ?",
+            "de": "Was ist der Tagadapay Club?",
+            "da": "Hvad er Tagadapay Club?"
+          },
+          "answer": {
+            "en": "Tagadapay Club is a VIP membership with exclusive deals and benefits for our valued customers.",
+            "fr": "Le Club Tagadapay est un programme d'adhésion VIP avec des offres exclusives et des avantages pour nos clients précieux.",
+            "de": "Der Tagadapay Club ist eine VIP-Mitgliedschaft mit exklusiven Angeboten und Vorteilen für unsere geschätzten Kunden.",
+            "da": "Tagadapay Club er et VIP-medlemskab med eksklusive tilbud og fordele til vores værdifulde kunder."
+          }
+        },
+        {
+          "question": {
+            "en": "How do I redeem a deal?",
+            "fr": "Comment puis-je profiter d'une offre ?",
+            "de": "Wie löse ich ein Angebot ein?",
+            "da": "Hvordan indløser jeg et tilbud?"
+          },
+          "answer": {
+            "en": "Click on a deal, review the bundle, and proceed to checkout to redeem it.",
+            "fr": "Cliquez sur une offre, examinez le pack et procédez au paiement pour en profiter.",
+            "de": "Klicken Sie auf ein Angebot, überprüfen Sie das Paket und fahren Sie mit dem Checkout fort, um es einzulösen.",
+            "da": "Klik på et tilbud, gennemgå pakken og fortsæt til betaling for at indløse det."
+          }
+        },
+        {
+          "question": {
+            "en": "Can I cancel my membership?",
+            "fr": "Puis-je annuler mon adhésion ?",
+            "de": "Kann ich meine Mitgliedschaft kündigen?",
+            "da": "Kan jeg opsige mit medlemskab?"
+          },
+          "answer": {
+            "en": "Yes, you can cancel anytime from your account portal.",
+            "fr": "Oui, vous pouvez annuler à tout moment depuis votre portail de compte.",
+            "de": "Ja, Sie können jederzeit über Ihr Kontoportal kündigen.",
+            "da": "Ja, du kan opsige når som helst fra din kontoportal."
+          }
+        }
+      ]
+    },
+    "testimonials": {
+      "badge": {
+        "en": "Testimonials",
+        "fr": "Témoignages",
+        "de": "Testimonials",
+        "da": "Udtalelser"
+      },
+      "title": {
+        "en": "What our members say",
+        "fr": "Ce que disent nos membres",
+        "de": "Was unsere Mitglieder sagen",
+        "da": "Hvad vores medlemmer siger"
+      },
+      "subtitle": {
+        "en": "Real stories from Tagadapay Club members.",
+        "fr": "Histoires réelles de membres du Club Tagadapay.",
+        "de": "Echte Geschichten von Tagadapay Club-Mitgliedern.",
+        "da": "Rigtige historier fra Tagadapay Club-medlemmer."
+      },
+      "items": [
+        {
+          "image": "https://ui-avatars.com/api/?name=Sophie+M&background=amber-500&color=fff",
+          "name": "Sophie M.",
+          "title": "Member",
+          "quote": {
+            "en": "I've saved over €1,200 in just 6 months with Tagada Club. The weekly deals on electronics and fashion are incredible. Best investment ever!",
+            "fr": "J'ai économisé plus de 1 200 € en seulement 6 mois avec le Club Tagada. Les offres hebdomadaires sur l'électronique et la mode sont incroyables. Meilleur investissement de tous les temps !",
+            "de": "Ich habe in nur 6 Monaten mit Tagada Club über 1.200 € gespart. Die wöchentlichen Angebote für Elektronik und Mode sind unglaublich. Beste Investition aller Zeiten!",
+            "da": "Jeg har sparet over 1.200 € på kun 6 måneder med Tagada Club. De ugentlige tilbud på elektronik og mode er utrolige. Bedste investering nogensinde!"
+          }
+        },
+        {
+          "image": "https://ui-avatars.com/api/?name=Thomas+L&background=amber-500&color=fff",
+          "name": "Thomas L.",
+          "title": "Member",
+          "quote": {
+            "en": "As a small business owner, Tagada Club has been a game-changer. I get early access to bulk deals and save 30-40% on my regular purchases. The membership pays for itself!",
+            "fr": "En tant que propriétaire de petite entreprise, le Club Tagada a tout changé. J'ai un accès anticipé aux offres en gros et j'économise 30 à 40 % sur mes achats réguliers. L'adhésion se rentabilise d'elle-même !",
+            "de": "Als Kleinunternehmer war Tagada Club ein Wendepunkt. Ich erhalte frühen Zugang zu Großhandelsangeboten und spare 30-40% bei meinen regelmäßigen Käufen. Die Mitgliedschaft zahlt sich von selbst aus!",
+            "da": "Som småvirksomhedsejer har Tagada Club været en gamechanger. Jeg får tidlig adgang til bulk-tilbud og sparer 30-40% på mine regelmæssige køb. Medlemskabet betaler sig selv!"
+          }
+        },
+        {
+          "image": "https://ui-avatars.com/api/?name=Emma+R&background=amber-500&color=fff",
+          "name": "Emma R.",
+          "title": "Member",
+          "quote": {
+            "en": "I was skeptical at first, but the exclusive flash sales and member-only discounts have saved me hundreds. The app notifications for new deals are super helpful!",
+            "fr": "J'étais sceptique au début, mais les ventes flash exclusives et les réductions réservées aux membres m'ont fait économiser des centaines d'euros. Les notifications de l'application pour les nouvelles offres sont super utiles !",
+            "de": "Ich war zunächst skeptisch, aber die exklusiven Flash-Sales und nur für Mitglieder geltenden Rabatte haben mir Hunderte gespart. Die App-Benachrichtigungen für neue Angebote sind super hilfreich!",
+            "da": "Jeg var skeptisk i starten, men de eksklusive flash-salg og medlemsrabatter har sparet mig hundredvis. App-beskedene om nye tilbud er super nyttige!"
+          }
+        }
+      ]
+    }
+  },
+  "offers": {
+    "loadingText": {
+      "en": "Loading your exclusive offers...",
+      "fr": "Chargement de vos offres exclusives...",
+      "de": "Ihre exklusiven Angebote werden geladen...",
+      "da": "Indlæser dine eksklusive tilbud..."
+    },
+    "errorTitle": {
+      "en": "Unable to Load Offers",
+      "fr": "Impossible de charger les offres",
+      "de": "Angebote konnten nicht geladen werden",
+      "da": "Kunne ikke indlæse tilbud"
+    },
+    "errorMessage": {
+      "en": "We're having trouble loading your special offers right now.",
+      "fr": "Nous rencontrons des problèmes pour charger vos offres spéciales en ce moment.",
+      "de": "Wir haben derzeit Probleme beim Laden Ihrer Sonderangebote.",
+      "da": "Vi har problemer med at indlæse dine særlige tilbud lige nu."
+    },
+    "redirectingText": {
+      "en": "Redirecting you shortly...",
+      "fr": "Redirection imminente...",
+      "de": "Sie werden gleich weitergeleitet...",
+      "da": "Omdirigerer dig om et øjeblik..."
+    },
+    "preparingOfferText": {
+      "en": "Preparing your offer...",
+      "fr": "Préparation de votre offre...",
+      "de": "Ihr Angebot wird vorbereitet...",
+      "da": "Forbereder dit tilbud..."
+    },
+    "specialOfferText": {
+      "en": "Special Offer #{number}",
+      "fr": "Offre Spéciale #{number}",
+      "de": "Sonderangebot #{number}",
+      "da": "Særtilbud #{number}"
+    },
+    "offerCountText": {
+      "en": "Offer {current} of {total}",
+      "fr": "Offre {current} sur {total}",
+      "de": "Angebot {current} von {total}",
+      "da": "Tilbud {current} af {total}"
+    },
+    "saveText": {
+      "en": "Save {percent}%",
+      "fr": "Économisez {percent}%",
+      "de": "Sparen Sie {percent}%",
+      "da": "Spar {percent}%"
+    },
+    "chooseVariantText": {
+      "en": "Choose variant:",
+      "fr": "Choisissez une variante :",
+      "de": "Variante auswählen:",
+      "da": "Vælg variant:"
+    },
+    "updatingText": {
+      "en": "Updating...",
+      "fr": "Mise à jour...",
+      "de": "Wird aktualisiert...",
+      "da": "Opdaterer..."
+    },
+    "processingText": {
+      "en": "Processing...",
+      "fr": "Traitement...",
+      "de": "Wird verarbeitet...",
+      "da": "Behandler..."
+    },
+    "updatingPricesText": {
+      "en": "Updating prices...",
+      "fr": "Mise à jour des prix...",
+      "de": "Preise werden aktualisiert...",
+      "da": "Opdaterer priser..."
+    },
+    "addToCartText": {
+      "en": "Add to Cart - {price}",
+      "fr": "Ajouter au panier - {price}",
+      "de": "In den Warenkorb - {price}",
+      "da": "Tilføj til kurv - {price}"
+    },
+    "previousText": {
+      "en": "Previous",
+      "fr": "Précédent",
+      "de": "Vorherige",
+      "da": "Forrige"
+    },
+    "skipOfferText": {
+      "en": "Skip this offer",
+      "fr": "Passer cette offre",
+      "de": "Dieses Angebot überspringen",
+      "da": "Spring dette tilbud over"
+    },
+    "offerFailedText": {
+      "en": "Offer failed to process. Moving to next offer...",
+      "fr": "L'offre n'a pas pu être traitée. Passage à l'offre suivante...",
+      "de": "Angebot konnte nicht verarbeitet werden. Weiter zum nächsten Angebot...",
+      "da": "Tilbud kunne ikke behandles. Går videre til næste tilbud..."
+    },
+    "offerFailedRedirectText": {
+      "en": "Offer failed to process. Redirecting...",
+      "fr": "L'offre n'a pas pu être traitée. Redirection...",
+      "de": "Angebot konnte nicht verarbeitet werden. Weiterleitung...",
+      "da": "Tilbud kunne ikke behandles. Omdirigerer..."
+    },
+    "offerAcceptedText": {
+      "en": "Offer accepted successfully!",
+      "fr": "Offre acceptée avec succès !",
+      "de": "Angebot erfolgreich angenommen!",
+      "da": "Tilbud accepteret med succes!"
+    },
+    "variantUpdateErrorText": {
+      "en": "Failed to update variant selection",
+      "fr": "Échec de la mise à jour de la sélection de variante",
+      "de": "Fehler beim Aktualisieren der Variantenauswahl",
+      "da": "Kunne ikke opdatere variantvalg"
+    },
+    "itemsInOfferText": {
+      "en": "Items in this offer ({count})",
+      "fr": "Articles dans cette offre ({count})",
+      "de": "Artikel in diesem Angebot ({count})",
+      "da": "Varer i dette tilbud ({count})"
+    }
+  },
+  "thankYou": {
+    "title": {
+      "en": "Thank you for your order!",
+      "fr": "Merci pour votre commande !",
+      "de": "Vielen Dank für Ihre Bestellung!",
+      "da": "Tak for din ordre!"
+    },
+    "membership": {
+      "en": "Membership",
+      "fr": "Adhésion",
+      "de": "Mitgliedschaft",
+      "da": "Medlemskab"
+    },
+    "renews": {
+      "en": "Renews",
+      "fr": "Renouvelle",
+      "de": "Verlängert sich",
+      "da": "Fornyelses"
+    },
+    "free": {
+      "en": "Free",
+      "fr": "Gratuit",
+      "de": "Kostenlos",
+      "da": "Gratis"
+    },
+    "relatedOrders": {
+      "en": "Related Orders",
+      "fr": "Commandes associées",
+      "de": "Verwandte Bestellungen",
+      "da": "Relaterede ordrer"
+    },
+    "continueShopping": {
+      "en": "Continue Shopping",
+      "fr": "Continuer vos achats",
+      "de": "Einkauf fortsetzen",
+      "da": "Fortsæt med at shoppe"
+    },
+    "orderNumber": {
+      "en": "Order",
+      "fr": "Commande",
+      "de": "Bestellung",
+      "da": "Ordre"
+    },
+    "orderSummary": {
+      "en": "Order Summary",
+      "fr": "Résumé de la commande",
+      "de": "Bestellübersicht",
+      "da": "Ordreoversigt"
+    },
+    "subtitle": {
+      "en": "Your order has been received and is being processed.",
+      "fr": "Votre commande a été reçue et est en cours de traitement.",
+      "de": "Ihre Bestellung wurde erhalten und wird bearbeitet.",
+      "da": "Din ordre er modtaget og behandles."
+    },
+    "address": {
+      "en": "Address",
+      "fr": "Adresse",
+      "de": "Adresse",
+      "da": "Adresse"
+    },
+    "confirmed": {
+      "en": "Confirmed",
+      "fr": "Confirmé",
+      "de": "Bestätigt",
+      "da": "Bekræftet"
+    },
+    "shippingAddress": {
+      "en": "Shipping Address",
+      "fr": "Adresse de livraison",
+      "de": "Lieferadresse",
+      "da": "Leveringsadresse"
+    },
+    "billingAddress": {
+      "en": "Billing Address",
+      "fr": "Adresse de facturation",
+      "de": "Rechnungsadresse",
+      "da": "Faktureringsadresse"
+    },
+    "customerDetails": {
+      "en": "Customer Details",
+      "fr": "Détails du client",
+      "de": "Kundendaten",
+      "da": "Kundedetaljer"
+    },
+    "email": {
+      "en": "Email",
+      "fr": "E-mail",
+      "de": "E-Mail",
+      "da": "E-mail"
+    },
+    "firstName": {
+      "en": "First Name",
+      "fr": "Prénom",
+      "de": "Vorname",
+      "da": "Fornavn"
+    },
+    "lastName": {
+      "en": "Last Name",
+      "fr": "Nom de famille",
+      "de": "Nachname",
+      "da": "Efternavn"
+    },
+    "orderDetails": {
+      "en": "Order Details",
+      "fr": "Détails de la commande",
+      "de": "Bestelldetails",
+      "da": "Ordredetaljer"
+    },
+    "subtotal": {
+      "en": "Subtotal",
+      "fr": "Sous-total",
+      "de": "Zwischensumme",
+      "da": "Subtotal"
+    },
+    "shipping": {
+      "en": "Shipping",
+      "fr": "Livraison",
+      "de": "Versand",
+      "da": "Forsendelse"
+    },
+    "tax": {
+      "en": "Tax",
+      "fr": "Taxe",
+      "de": "Steuer",
+      "da": "Skat"
+    },
+    "total": {
+      "en": "Total",
+      "fr": "Total",
+      "de": "Gesamt",
+      "da": "Total"
+    },
+    "loadingText": {
+      "en": "Loading order details...",
+      "fr": "Chargement des détails de la commande...",
+      "de": "Bestelldetails werden geladen...",
+      "da": "Indlæser ordredetaljer..."
+    },
+    "trialThenText": {
+      "en": "Trial then {price} every {count} {interval}",
+      "fr": "Essai gratuit puis {price} tous les {count} {interval}",
+      "de": "Testphase, danach {price} alle {count} {interval}",
+      "da": "Prøveperiode, derefter {price} hver {count} {interval}"
+    },
+    "everyText": {
+      "en": "Every {count} {interval}",
+      "fr": "Tous les {count} {interval}",
+      "de": "Alle {count} {interval}",
+      "da": "Hver {count} {interval}"
+    },
+    "itemText": {
+      "en": "item",
+      "fr": "article",
+      "de": "Artikel",
+      "da": "vare"
+    },
+    "itemsText": {
+      "en": "items",
+      "fr": "articles",
+      "de": "Artikel",
+      "da": "varer"
+    },
+    "naText": {
+      "en": "N/A",
+      "fr": "N/A",
+      "de": "N/A",
+      "da": "N/A"
+    },
+    "productText": {
+      "en": "Product",
+      "fr": "Produit",
+      "de": "Produkt",
+      "da": "Produkt"
+    }
+  },
+  "zelleThankYou": {
+    "title": {
+      "en": "Thank you for your order!",
+      "fr": "Merci pour votre commande !",
+      "de": "Vielen Dank für Ihre Bestellung!",
+      "da": "Tak for din ordre!"
+    },
+    "subtitle": {
+      "en": "Your order has been received and is awaiting Zelle payment.",
+      "fr": "Votre commande a été reçue et est en attente de paiement Zelle.",
+      "de": "Ihre Bestellung wurde erhalten und wartet auf Zelle-Zahlung.",
+      "da": "Din ordre er modtaget og afventer Zelle-betaling."
+    },
+    "pendingPayment": {
+      "en": "Pending Payment",
+      "fr": "Paiement en attente",
+      "de": "Zahlung ausstehend",
+      "da": "Afventende betaling"
+    },
+    "importantTitle": {
+      "en": "Important",
+      "fr": "Important",
+      "de": "Wichtig",
+      "da": "Vigtigt"
+    },
+    "importantMessage": {
+      "en": "Please use only your Order Number <b>#{orderNumber}</b> as the payment memo/reference when sending your Zelle payment. This ensures your payment is matched to your order quickly.",
+      "fr": "Veuillez utiliser uniquement votre numéro de commande <b>#{orderNumber}</b> comme mémo/référence de paiement lors de l'envoi de votre paiement Zelle. Cela garantit que votre paiement est associé rapidement à votre commande.",
+      "de": "Bitte verwenden Sie nur Ihre Bestellnummer <b>#{orderNumber}</b> als Zahlungsmemo/-referenz beim Senden Ihrer Zelle-Zahlung. Dies stellt sicher, dass Ihre Zahlung schnell Ihrer Bestellung zugeordnet wird.",
+      "da": "Brug venligst kun dit ordrenummer <b>#{orderNumber}</b> som betalingsmemo/reference når du sender din Zelle-betaling. Dette sikrer, at din betaling hurtigt matches med din ordre."
+    },
+    "howToPayTitle": {
+      "en": "How to Complete Your Payment",
+      "fr": "Comment effectuer votre paiement",
+      "de": "So schließen Sie Ihre Zahlung ab",
+      "da": "Sådan gennemfører du din betaling"
+    },
+    "step1Title": {
+      "en": "Open your Zelle app or banking app",
+      "fr": "Ouvrez votre application Zelle ou bancaire",
+      "de": "Öffnen Sie Ihre Zelle-App oder Banking-App",
+      "da": "Åbn din Zelle-app eller bankapp"
+    },
+    "step1Description": {
+      "en": "Log in to your bank's mobile app or the Zelle app.",
+      "fr": "Connectez-vous à l'application mobile de votre banque ou à l'application Zelle.",
+      "de": "Melden Sie sich in der mobilen App Ihrer Bank oder der Zelle-App an.",
+      "da": "Log ind på din banks mobilapp eller Zelle-appen."
+    },
+    "step2Title": {
+      "en": "Send payment",
+      "fr": "Envoyer le paiement",
+      "de": "Zahlung senden",
+      "da": "Send betaling"
+    },
+    "step2Description": {
+      "en": "Send the exact amount shown in your order summary to the Zelle account provided in your confirmation email.",
+      "fr": "Envoyez le montant exact indiqué dans le résumé de votre commande au compte Zelle fourni dans votre e-mail de confirmation.",
+      "de": "Senden Sie den genauen Betrag aus Ihrer Bestellübersicht an das in Ihrer Bestätigungs-E-Mail angegebene Zelle-Konto.",
+      "da": "Send det nøjagtige beløb vist i din ordreoversigt til Zelle-kontoen angivet i din bekræftelses-e-mail."
+    },
+    "step3Title": {
+      "en": "Use your Order Number as memo",
+      "fr": "Utilisez votre numéro de commande comme mémo",
+      "de": "Verwenden Sie Ihre Bestellnummer als Memo",
+      "da": "Brug dit ordrenummer som memo"
+    },
+    "step3Description": {
+      "en": "Enter <b>#{orderNumber}</b> as the memo or reference for your payment.",
+      "fr": "Entrez <b>#{orderNumber}</b> comme mémo ou référence pour votre paiement.",
+      "de": "Geben Sie <b>#{orderNumber}</b> als Memo oder Referenz für Ihre Zahlung ein.",
+      "da": "Indtast <b>#{orderNumber}</b> som memo eller reference for din betaling."
+    },
+    "step4Title": {
+      "en": "Wait for confirmation",
+      "fr": "Attendre la confirmation",
+      "de": "Auf Bestätigung warten",
+      "da": "Vent på bekræftelse"
+    },
+    "step4Description": {
+      "en": "Once your payment is verified, you will receive a confirmation email and your order will be processed.",
+      "fr": "Une fois votre paiement vérifié, vous recevrez un e-mail de confirmation et votre commande sera traitée.",
+      "de": "Sobald Ihre Zahlung verifiziert ist, erhalten Sie eine Bestätigungs-E-Mail und Ihre Bestellung wird bearbeitet.",
+      "da": "Når din betaling er verificeret, modtager du en bekræftelses-e-mail, og din ordre vil blive behandlet."
+    },
+    "securityNoteTitle": {
+      "en": "Security Note",
+      "fr": "Note de sécurité",
+      "de": "Sicherheitshinweis",
+      "da": "Sikkerhedsnote"
+    },
+    "securityNoteDescription": {
+      "en": "Your bank may ask security questions when sending to a new business account. This is a standard security measure to protect you from fraud. Please answer the verification questions and proceed with the payment.",
+      "fr": "Votre banque peut poser des questions de sécurité lors d'un envoi vers un nouveau compte professionnel. Il s'agit d'une mesure de sécurité standard pour vous protéger contre la fraude. Veuillez répondre aux questions de vérification et procéder au paiement.",
+      "de": "Ihre Bank stellt möglicherweise Sicherheitsfragen beim Senden an ein neues Geschäftskonto. Dies ist eine Standard-Sicherheitsmaßnahme zum Schutz vor Betrug. Bitte beantworten Sie die Verifizierungsfragen und fahren Sie mit der Zahlung fort.",
+      "da": "Din bank kan stille sikkerhedsspørgsmål ved afsendelse til en ny erhvervskonto. Dette er en standard sikkerhedsforanstaltning for at beskytte dig mod svindel. Besvar venligst verifikationsspørgsmålene og fortsæt med betalingen."
+    },
+    "emailSentTitle": {
+      "en": "Confirmation Email Sent",
+      "fr": "E-mail de confirmation envoyé",
+      "de": "Bestätigungs-E-Mail gesendet",
+      "da": "Bekræftelses-e-mail sendt"
+    },
+    "emailSentDescription": {
+      "en": "A confirmation email with your order details and Zelle payment instructions has been sent to <b>{email}</b>.",
+      "fr": "Un e-mail de confirmation avec les détails de votre commande et les instructions de paiement Zelle a été envoyé à <b>{email}</b>.",
+      "de": "Eine Bestätigungs-E-Mail mit Ihren Bestelldetails und Zelle-Zahlungsanweisungen wurde an <b>{email}</b> gesendet.",
+      "da": "En bekræftelses-e-mail med dine ordredetaljer og Zelle-betalingsinstruktioner er sendt til <b>{email}</b>."
+    },
+    "awaitingPayment": {
+      "en": "Awaiting Zelle Payment",
+      "fr": "En attente de paiement Zelle",
+      "de": "Warte auf Zelle-Zahlung",
+      "da": "Afventer Zelle-betaling"
+    }
+  },
+  "cardNetworks": [
+    {
+      "id": "visa"
+    },
+    {
+      "id": "mastercard"
+    },
+    {
+      "id": "amex"
+    },
+    {
+      "id": "discover"
+    },
+    {
+      "id": "jcb"
+    }
+  ],
+  "checkoutSettings": {
+    "showExpressCheckout": true,
+    "hideRecurringPrices": false,
+    "requireTerms": true,
+    "requirePhone": true,
+    "requireValidPhoneNumber": false,
+    "requireAddressNumber": true,
+    "precheckMarketing": false,
+    "showMarketingCheckbox": true,
+    "mergeContactAndDelivery": false,
+    "displaySecureCheckoutText": true,
+    "orderSummaryOpenByDefault": true,
+    "showCartCustomAttributes": false,
+    "showLineItemProperties": false
+  },
+  "addressSettings": {
+    "digitalProduct": false,
+    "hideStateSelector": false
+  },
+  "orderSummarySettings": {
+    "backgroundColor": "#f4f3ed",
+    "opacity": 100
+  },
+  "offerSettings": {
+    "cardBackgroundColor": "#f1f5f9",
+    "cardOpacity": 30
+  },
+  "shippingRateSettings": {
+    "displayShippingRate": true,
+    "countryRestrictionsFromShippingRates": false,
+    "availableShippingCountries": [
+      "US",
+      "GB",
+      "CA",
+      "AU",
+      "DE",
+      "FR",
+      "IT",
+      "ES",
+      "NL",
+      "BE",
+      "CH",
+      "AT",
+      "SE",
+      "DK",
+      "NO"
+    ],
+    "requireShippingRate": true
+  },
+  "pageMetadata": {
+    "favicon": "https://3aprnlbs42ib9rv3.public.blob.vercel-storage.com/orgs/acc_578e4f63ae50/images/442607c3-6828-4e09-bf74-67417519799d",
+    "checkout": {
+      "title": {
+        "en": "Checkout",
+        "fr": "Commande",
+        "de": "Kasse",
+        "da": "Kassen"
+      },
+      "favicon": "https://3aprnlbs42ib9rv3.public.blob.vercel-storage.com/orgs/acc_578e4f63ae50/images/442607c3-6828-4e09-bf74-67417519799d"
+    },
+    "offer": {
+      "title": {
+        "en": "Special Offer",
+        "fr": "Offre spéciale",
+        "de": "Sonderangebot",
+        "da": "Særtilbud"
+      },
+      "favicon": "https://3aprnlbs42ib9rv3.public.blob.vercel-storage.com/orgs/acc_578e4f63ae50/images/442607c3-6828-4e09-bf74-67417519799d"
+    },
+    "thankyou": {
+      "title": {
+        "en": "Thank You",
+        "fr": "Merci",
+        "de": "Vielen Dank",
+        "da": "Tak"
+      },
+      "favicon": "https://3aprnlbs42ib9rv3.public.blob.vercel-storage.com/orgs/acc_578e4f63ae50/images/442607c3-6828-4e09-bf74-67417519799d"
+    },
+    "club": {
+      "title": {
+        "en": "Club",
+        "fr": "Club",
+        "de": "Club",
+        "da": "Klub"
+      },
+      "favicon": "https://3aprnlbs42ib9rv3.public.blob.vercel-storage.com/orgs/acc_578e4f63ae50/images/442607c3-6828-4e09-bf74-67417519799d"
+    },
+    "notfound": {
+      "title": {
+        "en": "404 - Page Not Found",
+        "fr": "404 - Page non trouvée",
+        "de": "404 - Seite nicht gefunden",
+        "da": "404 - Side ikke fundet"
+      },
+      "favicon": "https://3aprnlbs42ib9rv3.public.blob.vercel-storage.com/orgs/acc_578e4f63ae50/images/442607c3-6828-4e09-bf74-67417519799d"
+    },
+    "portal": {
+      "title": {
+        "en": "Customer Portal",
+        "fr": "Portail Client"
+      }
+    }
+  },
+  "portal": {
+    "branding": {
+      "colors": {
+        "primary": "#10b981",
+        "secondary": "#34d399"
+      }
+    },
+    "texts": {
+      "common": {
+        "loading": {
+          "en": "Loading...",
+          "fr": "Chargement..."
+        }
+      },
+      "login": {
+        "title": {
+          "en": "Customer Portal",
+          "fr": "Espace Client"
+        },
+        "subtitle": {
+          "en": "Sign in to manage your orders and account",
+          "fr": "Connectez-vous pour gérer vos commandes et votre compte"
+        },
+        "emailPlaceholder": {
+          "en": "Enter your email",
+          "fr": "Entrez votre e-mail"
+        },
+        "codePlaceholder": {
+          "en": "00000",
+          "fr": "00000"
+        },
+        "sendCode": {
+          "en": "Send Code",
+          "fr": "Envoyer le code"
+        },
+        "sendingCode": {
+          "en": "Sending...",
+          "fr": "Envoi..."
+        },
+        "verifyCode": {
+          "en": "Verify Code",
+          "fr": "Vérifier le code"
+        },
+        "verifyingCode": {
+          "en": "Verifying...",
+          "fr": "Vérification..."
+        },
+        "backButton": {
+          "en": "Back",
+          "fr": "Retour"
+        },
+        "errors": {
+          "invalidCode": {
+            "en": "Invalid verification code. Please try again.",
+            "fr": "Code de vérification invalide. Veuillez réessayer."
+          },
+          "verifyFailed": {
+            "en": "Failed to verify code. Please try again.",
+            "fr": "Échec de la vérification. Veuillez réessayer."
+          },
+          "sendFailed": {
+            "en": "Failed to send verification code. Please check your email and try again.",
+            "fr": "Échec de l'envoi du code. Vérifiez votre e-mail et réessayez."
+          },
+          "unknown": {
+            "en": "Failed to send verification code. Please try again.",
+            "fr": "Échec de l'envoi du code. Veuillez réessayer."
+          }
+        }
+      },
+      "portal": {
+        "title": {
+          "en": "Customer Portal",
+          "fr": "Espace Client"
+        },
+        "menu": {
+          "en": "Menu",
+          "fr": "Menu"
+        },
+        "logout": {
+          "en": "Logout",
+          "fr": "Déconnexion"
+        },
+        "externalBadge": {
+          "en": "external",
+          "fr": "externe"
+        },
+        "tabs": {
+          "orders": {
+            "label": {
+              "en": "My Orders",
+              "fr": "Mes Commandes"
+            },
+            "description": {
+              "en": "View and track your order history",
+              "fr": "Consultez et suivez vos commandes"
+            }
+          },
+          "account": {
+            "label": {
+              "en": "My Account",
+              "fr": "Mon Compte"
+            },
+            "description": {
+              "en": "Manage your personal information and preferences",
+              "fr": "Gérez vos informations personnelles et préférences"
+            }
+          },
+          "subscriptions": {
+            "label": {
+              "en": "My Subscriptions",
+              "fr": "Mes Abonnements"
+            },
+            "description": {
+              "en": "Manage your active subscriptions",
+              "fr": "Gérez vos abonnements actifs"
+            }
+          }
+        }
+      },
+      "orders": {
+        "myOrders": {
+          "en": "My Orders",
+          "fr": "Mes Commandes"
+        },
+        "ordersLabel": {
+          "en": "orders",
+          "fr": "commandes"
+        },
+        "noOrders": {
+          "en": "You haven't placed any orders yet.",
+          "fr": "Vous n'avez encore passé aucune commande."
+        },
+        "item": {
+          "en": "item",
+          "fr": "article"
+        },
+        "items": {
+          "en": "items",
+          "fr": "articles"
+        },
+        "customerId": {
+          "en": "Customer ID",
+          "fr": "ID Client"
+        },
+        "dateNotAvailable": {
+          "en": "Date not available",
+          "fr": "Date non disponible"
+        },
+        "moreItems": {
+          "en": "+ {count} more",
+          "fr": "+ {count} de plus"
+        },
+        "ordered": {
+          "en": "Ordered",
+          "fr": "Commandé"
+        },
+        "loadingOrders": {
+          "en": "Loading orders...",
+          "fr": "Chargement des commandes..."
+        },
+        "status": {
+          "order": {
+            "open": {
+              "en": "Open",
+              "fr": "Ouverte"
+            },
+            "paid": {
+              "en": "Paid",
+              "fr": "Payée"
+            },
+            "abandoned": {
+              "en": "Abandoned",
+              "fr": "Abandonnée"
+            },
+            "cancelled": {
+              "en": "Cancelled",
+              "fr": "Annulée"
+            },
+            "unknown": {
+              "en": "Unknown",
+              "fr": "Inconnu"
+            }
+          },
+          "payment": {
+            "succeeded": {
+              "en": "Payment completed",
+              "fr": "Paiement effectué"
+            },
+            "pending": {
+              "en": "Payment pending",
+              "fr": "Paiement en attente"
+            },
+            "failed": {
+              "en": "Payment failed",
+              "fr": "Paiement échoué"
+            },
+            "error": {
+              "en": "Payment error",
+              "fr": "Erreur de paiement"
+            },
+            "refunded": {
+              "en": "Payment refunded",
+              "fr": "Paiement remboursé"
+            },
+            "declined": {
+              "en": "Payment declined",
+              "fr": "Paiement refusé"
+            },
+            "expired": {
+              "en": "Payment expired",
+              "fr": "Paiement expiré"
+            },
+            "rejected": {
+              "en": "Payment rejected",
+              "fr": "Paiement rejeté"
+            },
+            "unknown": {
+              "en": "Payment {status}",
+              "fr": "Paiement {status}"
+            }
+          }
+        }
+      },
+      "account": {
+        "myAccount": {
+          "en": "My Account",
+          "fr": "Mon Compte"
+        },
+        "loadingAccount": {
+          "en": "Loading your account information...",
+          "fr": "Chargement de vos informations..."
+        },
+        "editProfile": {
+          "en": "Edit Profile",
+          "fr": "Modifier le profil"
+        },
+        "personalInformation": {
+          "en": "Personal Information",
+          "fr": "Informations Personnelles"
+        },
+        "accountStatistics": {
+          "en": "Account Statistics",
+          "fr": "Statistiques du Compte"
+        },
+        "addresses": {
+          "en": "Addresses",
+          "fr": "Adresses"
+        },
+        "systemInformation": {
+          "en": "System Information",
+          "fr": "Informations Système"
+        },
+        "email": {
+          "en": "Email",
+          "fr": "E-mail"
+        },
+        "name": {
+          "en": "Name",
+          "fr": "Nom"
+        },
+        "customerId": {
+          "en": "Customer ID",
+          "fr": "ID Client"
+        },
+        "totalOrders": {
+          "en": "Total Orders",
+          "fr": "Total des Commandes"
+        },
+        "ordersLabel": {
+          "en": "orders",
+          "fr": "commandes"
+        },
+        "activeSubscriptions": {
+          "en": "Active Subscriptions",
+          "fr": "Abonnements Actifs"
+        },
+        "activeLabel": {
+          "en": "active",
+          "fr": "actifs"
+        },
+        "marketingPreferences": {
+          "en": "Marketing Preferences",
+          "fr": "Préférences Marketing"
+        },
+        "subscribedToNewsletters": {
+          "en": "Subscribed to newsletters",
+          "fr": "Abonné aux newsletters"
+        },
+        "notSubscribedToNewsletters": {
+          "en": "Not subscribed to newsletters",
+          "fr": "Non abonné aux newsletters"
+        },
+        "billingAddress": {
+          "en": "Billing Address",
+          "fr": "Adresse de Facturation"
+        },
+        "shippingAddress": {
+          "en": "Shipping Address",
+          "fr": "Adresse de Livraison"
+        },
+        "browser": {
+          "en": "Browser",
+          "fr": "Navigateur"
+        },
+        "operatingSystem": {
+          "en": "Operating System",
+          "fr": "Système d'exploitation"
+        },
+        "location": {
+          "en": "Location",
+          "fr": "Localisation"
+        },
+        "firstName": {
+          "en": "First Name",
+          "fr": "Prénom"
+        },
+        "lastName": {
+          "en": "Last Name",
+          "fr": "Nom"
+        },
+        "cancel": {
+          "en": "Cancel",
+          "fr": "Annuler"
+        },
+        "saveChanges": {
+          "en": "Save Changes",
+          "fr": "Enregistrer"
+        },
+        "lastOrder": {
+          "en": "Last Order",
+          "fr": "Dernière Commande"
+        }
+      },
+      "subscriptions": {
+        "mySubscriptions": {
+          "en": "My Subscriptions",
+          "fr": "Mes Abonnements"
+        },
+        "subscriptionsLabel": {
+          "en": "subscriptions",
+          "fr": "abonnements"
+        },
+        "noActiveSubscriptions": {
+          "en": "You have no active subscriptions.",
+          "fr": "Vous n'avez aucun abonnement actif."
+        },
+        "loadingSubscriptions": {
+          "en": "Loading your subscriptions...",
+          "fr": "Chargement de vos abonnements..."
+        },
+        "qty": {
+          "en": "Qty",
+          "fr": "Qté"
+        },
+        "id": {
+          "en": "ID",
+          "fr": "ID"
+        },
+        "customerId": {
+          "en": "Customer ID",
+          "fr": "ID Client"
+        },
+        "billingPlan": {
+          "en": "Billing Plan",
+          "fr": "Plan de Facturation"
+        },
+        "customer": {
+          "en": "Customer",
+          "fr": "Client"
+        },
+        "currentPeriod": {
+          "en": "Current Period",
+          "fr": "Période en Cours"
+        },
+        "trialPeriod": {
+          "en": "Trial Period",
+          "fr": "Période d'Essai"
+        },
+        "cancellationNotice": {
+          "en": "Cancellation Notice",
+          "fr": "Avis d'Annulation"
+        },
+        "subscriptionCancellationEndPeriod": {
+          "en": "Your subscription will be canceled at the end of the current period.",
+          "fr": "Votre abonnement sera annulé à la fin de la période en cours."
+        },
+        "created": {
+          "en": "Created",
+          "fr": "Créé"
+        },
+        "productId": {
+          "en": "Product ID",
+          "fr": "ID Produit"
+        },
+        "resumeSubscription": {
+          "en": "Resume Subscription",
+          "fr": "Reprendre l'Abonnement"
+        },
+        "resuming": {
+          "en": "Resuming...",
+          "fr": "Reprise..."
+        },
+        "cancelSubscription": {
+          "en": "Cancel Subscription",
+          "fr": "Annuler l'Abonnement"
+        },
+        "canceling": {
+          "en": "Canceling...",
+          "fr": "Annulation..."
+        },
+        "cancelSubscriptionTitle": {
+          "en": "Cancel Subscription",
+          "fr": "Annuler l'Abonnement"
+        },
+        "cancelSubscriptionNotice": {
+          "en": "Are you sure you want to cancel this subscription?",
+          "fr": "Êtes-vous sûr de vouloir annuler cet abonnement ?"
+        },
+        "confirmProceed": {
+          "en": "Please confirm to proceed.",
+          "fr": "Veuillez confirmer pour continuer."
+        },
+        "yesCancel": {
+          "en": "Yes, cancel",
+          "fr": "Oui, annuler"
+        },
+        "yesLoseBenefits": {
+          "en": "Yes, lose benefits",
+          "fr": "Oui, perdre les avantages"
+        },
+        "keepSubscription": {
+          "en": "Keep Subscription",
+          "fr": "Garder l'Abonnement"
+        },
+        "cancelClubMembership": {
+          "en": "Cancel your Club membership",
+          "fr": "Annuler votre adhésion au Club"
+        },
+        "byCanceling": {
+          "en": "By canceling, you will:",
+          "fr": "En annulant, vous allez :"
+        },
+        "loseClubAdvantages": {
+          "en": "Lose access to club advantages",
+          "fr": "Perdre l'accès aux avantages du club"
+        },
+        "loseAccumulatedCredits": {
+          "en": "Lose accumulated credits",
+          "fr": "Perdre les crédits accumulés"
+        },
+        "losePromotionCode": {
+          "en": "Lose your promotion code",
+          "fr": "Perdre votre code promotionnel"
+        },
+        "status": {
+          "active": {
+            "en": "active",
+            "fr": "actif"
+          },
+          "trial": {
+            "en": "trial",
+            "fr": "essai"
+          },
+          "canceling": {
+            "en": "canceling",
+            "fr": "annulation"
+          }
+        }
+      }
+    }
+  }
+}

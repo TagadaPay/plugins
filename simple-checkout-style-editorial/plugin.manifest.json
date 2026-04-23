@@ -1,0 +1,79 @@
+{
+  "name": "Simple Checkout — Editorial",
+  "pluginId": "simple-checkout-style-editorial",
+  "description": "A minimal single-page TagadaPay checkout plugin with an editorial / Swiss-modern aesthetic (olive-bronze palette, hairline dividers, tabular numerics, Bricolage Grotesque + Manrope + Geist Mono). Uses the exact hook-level behavior of the production native-checkout — ideal as a reference implementation of @tagadapay/plugin-sdk v2.",
+  "version": "1.0.0",
+  "author": "TagadaPay Team",
+  "mode": "direct-mode",
+  "category": "checkout",
+  "tags": ["checkout", "example", "v2", "payment", "single-step", "editorial", "swiss"],
+  "configuration": {
+    "schema": "./config/schema.json",
+    "uiSchema": "./config/ui-schema.json",
+    "presets": [
+      {
+        "id": "default",
+        "name": "Default",
+        "description": "Editorial TagadaPay checkout — olive-bronze palette, hairline borders, tabular numerics.",
+        "config": "./config/default.config.json"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "path": "/checkout",
+      "features": [
+        {
+          "type": "checkout",
+          "requirements": [
+            {
+              "resource": "checkoutSession",
+              "from": [
+                {
+                  "name": "checkoutToken",
+                  "type": "query",
+                  "required": false
+                },
+                {
+                  "name": "checkoutToken",
+                  "type": "context",
+                  "required": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "remappable": true
+    },
+    {
+      "path": "/thankyou/:orderId",
+      "features": [
+        {
+          "type": "thankyou",
+          "requirements": [
+            {
+              "resource": "order",
+              "from": [
+                {
+                  "name": "id",
+                  "type": "path"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "remappable": true
+    }
+  ],
+  "router": {
+    "basePath": "/",
+    "matcher": ".*",
+    "excluder": null
+  },
+  "requirements": {
+    "sdk": "^2.2.0",
+    "sdkVersion": "v2"
+  }
+}

@@ -1,0 +1,187 @@
+@import 'tw-animate-css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────
+   Typography — broken AI monoculture
+     • Bricolage Grotesque (variable, opsz): editorial display
+     • Manrope: humanist sans for body
+     • Geist Mono: tabular prices & invoice feel
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:    'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Back-compat with existing code — map var(--font-sans) → body */
+  --font-sans: var(--font-body);
+  --font-inter: var(--font-body);
+  --font-poppins: var(--font-body);
+  --font-roboto: var(--font-body);
+  --font-open-sans: var(--font-body);
+  --font-montserrat: var(--font-display);
+  --font-brand: var(--font-body);
+
+  /* ───────────  Palette (OKLCH)  ───────────
+     Brand hue: 85 (deep olive-bronze — uncommon in fintech,
+     deliberately breaks the blue/purple AI default).
+     Neutrals carry chroma 0.004–0.012 toward hue 85 for subconscious
+     cohesion (per Impeccable's tinted-neutrals rule). */
+
+  --brand-hue: 85;
+  --brand-chroma: 0.10;
+
+  --ink-900: oklch(18% 0.018 var(--brand-hue));  /* titles — tinted, not pure black */
+  --ink-700: oklch(30% 0.014 var(--brand-hue));  /* body */
+  --ink-500: oklch(45% 0.010 var(--brand-hue));  /* secondary */
+  --ink-400: oklch(58% 0.008 var(--brand-hue));  /* muted / placeholder */
+  --ink-300: oklch(72% 0.006 var(--brand-hue));  /* disabled */
+
+  --line-strong: oklch(86% 0.010 var(--brand-hue));
+  --line:        oklch(92% 0.008 var(--brand-hue));
+  --line-soft:   oklch(95.5% 0.006 var(--brand-hue));
+
+  --surface:     oklch(99.5% 0.002 var(--brand-hue));    /* nearly white, slight tint */
+  --surface-alt: oklch(97% 0.008 var(--brand-hue));       /* page bg, summary panel */
+  --surface-sunk: oklch(94% 0.010 var(--brand-hue));
+
+  --brand:       oklch(32% var(--brand-chroma) var(--brand-hue));
+  --brand-hover: oklch(27% 0.105 var(--brand-hue));
+  --brand-tint:  oklch(95% 0.020 var(--brand-hue));
+  --brand-ink:   oklch(96% 0.030 var(--brand-hue));   /* text-on-brand */
+
+  --success: oklch(52% 0.14 155);
+  --danger:  oklch(54% 0.17 25);
+
+  --radius: 4px;    /* Swiss-restrained, not pill-soft */
+
+  /* shadcn token back-compat (stays minimal — we use OKLCH above everywhere) */
+  --background: 0 0% 100%;
+  --foreground: 80 12% 15%;
+  --card: 0 0% 100%;
+  --card-foreground: 80 12% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 80 12% 15%;
+  --primary: 80 30% 25%;
+  --primary-foreground: 80 20% 96%;
+  --secondary: 80 10% 96%;
+  --secondary-foreground: 80 12% 15%;
+  --muted: 80 10% 96%;
+  --muted-foreground: 80 8% 45%;
+  --accent: 80 10% 96%;
+  --accent-foreground: 80 12% 15%;
+  --destructive: 25 80% 54%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 80 10% 90%;
+  --input: 80 10% 90%;
+  --ring: 80 30% 25%;
+}
+
+@layer base {
+  * { @apply border-border; }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink-700);
+    background-color: var(--surface-alt);
+    font-feature-settings: 'ss01', 'cv01', 'kern';
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  /* Display font for headings — variable opsz shines here */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--ink-900);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  /* Tabular numerics — invoices MUST align */
+  .tnum,
+  [data-tnum],
+  .money,
+  table {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /* Every number on this screen is currency-adjacent — default to tnum */
+  input[type="tel"],
+  input[inputmode="numeric"],
+  input[inputmode="decimal"] {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Editorial step monogram (no round dots — flat Swiss numerics)
+   Used by <SectionHeader step={n}>.
+   ───────────────────────────────────────────────────────────── */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  font-feature-settings: 'ss01';
+}
+.eyebrow-step {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--brand);
+  font-variant-numeric: tabular-nums;
+}
+.eyebrow-step::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: var(--brand);
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Price / money typography — architectural
+   ───────────────────────────────────────────────────────────── */
+
+.money {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: 'ss01', 'zero';
+  letter-spacing: -0.01em;
+}
+
+.money-hero {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Hairline divider — thinner than 1px at 2dpr via pseudo
+   ───────────────────────────────────────────────────────────── */
+
+.hairline { border-color: var(--line); }
+
+/* Page background subtle tint for the checkout column (left) */
+.checkout-container {
+  background: var(--surface);
+}
