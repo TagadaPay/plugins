@@ -1,0 +1,304 @@
+@import 'tw-animate-css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────
+   TEALER STYLE — streetwear / neobrutalist
+     • Archivo Black: chunky uppercase display
+     • Space Grotesk: crisp geometric body
+     • JetBrains Mono: bold tabular prices
+   Design intent: shout-loud, high-contrast, pure-black ink on
+   pure-white surface, with a single acid-lime neon as the scream.
+   Hard 3×3 drop shadows, 2px black borders, 12px cards,
+   fully-pilled buttons. Nothing is "refined" — everything is
+   affirmative. Opposite of the editorial sibling plugin.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --font-display: 'Archivo Black', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:    'Space Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Back-compat */
+  --font-sans: var(--font-body);
+  --font-inter: var(--font-body);
+  --font-poppins: var(--font-body);
+  --font-roboto: var(--font-body);
+  --font-open-sans: var(--font-body);
+  --font-montserrat: var(--font-display);
+  --font-brand: var(--font-body);
+
+  /* ─────────── Palette — streetwear acid ───────────
+     Pure black + pure white + ONE neon scream.
+     The neon is reserved for: primary CTA, selected states,
+     promo stickers. Everywhere else is monochrome.
+     Hot pink is reserved for strike-through / "save" / danger. */
+
+  --neon-lime:    #C8FF00;   /* primary scream */
+  --neon-lime-h:  #B5E800;   /* hover (slightly darker) */
+  --neon-lime-ink: #000000;  /* text-on-neon (always black) */
+
+  --hot-pink:     #FF2E88;   /* discount / strike-through / danger accent */
+  --hot-pink-h:   #E81A74;
+
+  --ink-900: #000000;                  /* titles — PURE black, no compromise */
+  --ink-700: #111111;                  /* body */
+  --ink-500: #595959;                  /* secondary */
+  --ink-400: #8A8A8A;                  /* muted / placeholder */
+  --ink-300: #B8B8B8;                  /* disabled */
+
+  --line-strong: #000000;              /* chunky 2px black everywhere */
+  --line:        #1A1A1A;
+  --line-soft:   #E5E5E5;              /* only soft dividers */
+
+  --surface:      #FFFFFF;             /* card / page */
+  --surface-alt:  #F4F4F2;             /* left column bg (off-white) */
+  --surface-sunk: #EAEAE6;
+
+  --brand:        var(--neon-lime);
+  --brand-hover:  var(--neon-lime-h);
+  --brand-tint:   #F5FFCC;             /* faint neon wash for selected rows */
+  --brand-ink:    #000000;             /* text on neon bg is always BLACK */
+
+  --success: #00C85C;
+  --danger:  var(--hot-pink);
+
+  --radius: 12px;     /* chunky cards */
+  --radius-pill: 999px; /* full-pill buttons */
+
+  /* Neobrutalist hard drop shadow — NEVER soft */
+  --shadow-hard: 3px 3px 0 0 #000000;
+  --shadow-hard-sm: 2px 2px 0 0 #000000;
+
+  /* shadcn back-compat — keep the system working */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 72 100% 50%;                /* neon lime */
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 35%;
+  --accent: 72 100% 50%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 335 100% 59%;           /* hot pink */
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 0%;
+  --input: 0 0% 0%;
+  --ring: 72 100% 50%;
+}
+
+@layer base {
+  * { @apply border-border; }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink-700);
+    background-color: var(--surface-alt);
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+  }
+
+  /* Display font is Archivo Black — already heavy, normalize to ONE weight. */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--ink-900);
+    font-weight: 400;                  /* Archivo Black has single weight */
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .tnum,
+  [data-tnum],
+  .money,
+  table {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  input[type="tel"],
+  input[inputmode="numeric"],
+  input[inputmode="decimal"] {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-mono);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Step marker — chunky filled black square with neon number.
+   The opposite of the editorial eyebrow dash.
+   ───────────────────────────────────────────────────────────── */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 400;                    /* Archivo Black */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-900);
+}
+.eyebrow-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  background: var(--ink-900);
+  color: var(--neon-lime);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Price typography — BOLD mono, confident.
+   ───────────────────────────────────────────────────────────── */
+
+.money {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: 'zero';
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.money-hero {
+  font-family: var(--font-display);      /* hero total gets the chunky display */
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.money-strike {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  text-decoration: line-through;
+  text-decoration-color: var(--hot-pink);
+  text-decoration-thickness: 2px;
+  color: var(--ink-400);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Neobrutalist utility: chunky card with hard shadow
+   ───────────────────────────────────────────────────────────── */
+
+.hairline { border-color: var(--line-soft); }
+
+.brutal {
+  background: var(--surface);
+  border: 2px solid var(--ink-900);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hard);
+}
+.brutal-sm {
+  background: var(--surface);
+  border: 2px solid var(--ink-900);
+  border-radius: 8px;
+  box-shadow: var(--shadow-hard-sm);
+}
+
+.checkout-container {
+  background: var(--surface);
+}
+
+/* Promo sticker — absolutely positioned, optional rotation */
+.promo-sticker {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: var(--neon-lime);
+  color: var(--ink-900);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 2px solid var(--ink-900);
+  border-radius: 999px;
+  box-shadow: var(--shadow-hard-sm);
+}
+.promo-sticker--pink { background: var(--hot-pink); color: #fff; }
+
+/* ─────────────────────────────────────────────────────────────
+   CHUNKY RETROFIT — retrofits all editorial 1-px-hairline cards
+   into 2px black-bordered, drop-shadowed neobrutalist cards
+   without editing every component file.
+   The editorial sibling used the pattern:
+     rounded-[4px] border border-[var(--line-strong)]
+   for ~30+ card-like containers. We catch that pattern here.
+   ───────────────────────────────────────────────────────────── */
+
+/* Cards with 4px editorial radius → 12px chunky */
+.rounded-\[4px\] {
+  border-radius: 12px !important;
+}
+
+/* 3px micro-chip (payment brand icons) → keep compact but round + black */
+.rounded-\[3px\] {
+  border-radius: 6px !important;
+}
+
+/* Anywhere the code does `border border-[var(--line-strong)]` for a card → 2px black */
+.border.border-\[var\(--line-strong\)\] {
+  border-width: 2px !important;
+  border-color: var(--ink-900) !important;
+}
+
+/* Card-shaped containers get a hard drop shadow.
+   Hit any element that combines the editorial card signature
+   (chunky radius + strong border) AND a surface background. */
+.rounded-\[4px\].border.border-\[var\(--line-strong\)\].bg-\[var\(--surface\)\],
+.rounded-\[4px\].border.border-\[var\(--line-strong\)\].bg-\[var\(--surface-alt\)\],
+.rounded-\[4px\].border.border-\[var\(--line-strong\)\].bg-\[var\(--background-color\)\] {
+  box-shadow: var(--shadow-hard-sm);
+  transition: transform 80ms linear, box-shadow 80ms linear;
+}
+
+/* Interactive card hover lift (selection rows) */
+.rounded-\[4px\].border.border-\[var\(--line-strong\)\].cursor-pointer:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 0 var(--ink-900) !important;
+}
+
+/* Divider-only usage of --line-strong (border-t / border-b) → 2px, no radius change */
+.border-t.border-\[var\(--line-strong\)\],
+.border-b.border-\[var\(--line-strong\)\] {
+  border-color: var(--ink-900) !important;
+  border-width: 0 !important;
+}
+.border-t.border-\[var\(--line-strong\)\] { border-top-width: 2px !important; }
+.border-b.border-\[var\(--line-strong\)\] { border-bottom-width: 2px !important; }
+
+/* Selected state signature: inset primary-color shadow → outer hard shadow */
+[style*='box-shadow: 0 0 0 1px var(--primary-color)'],
+[style*='box-shadow: inset 0 0 0 1px var(--primary-color)'] {
+  box-shadow: 3px 3px 0 0 var(--ink-900) !important;
+  transform: translate(-1px, -1px);
+}
+
+/* Strike-through for original price — pink bar, bold */
+.line-through {
+  text-decoration-color: var(--hot-pink) !important;
+  text-decoration-thickness: 2px !important;
+}

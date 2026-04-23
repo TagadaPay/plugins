@@ -1,11 +1,11 @@
 {
-  "name": "simple-checkout-style-editorial",
+  "name": "simple-checkout-style-tealer",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "A minimal single-page TagadaPay checkout plugin with an editorial / Swiss-modern aesthetic (olive-bronze palette, Bricolage Grotesque + Manrope + Geist Mono). Uses the exact hook-level behavior of the production native-checkout (useCheckout, usePayment, useShippingRates, useFunnel, useApplePayCheckout, useGooglePayCheckout). Ideal as a reference implementation of @tagadapay/plugin-sdk v2.",
+  "description": "A minimal single-page TagadaPay checkout plugin with a streetwear / neobrutalist aesthetic built for CBD, streetwear and urban commerce brands (acid-lime neon palette, Archivo Black + Space Grotesk + JetBrains Mono, 2px black borders, hard drop shadows, pilled CTAs). Uses the exact hook-level behavior of the production native-checkout — reference implementation of @tagadapay/plugin-sdk v2.",
   "scripts": {
-    "dev": "echo '🚀 Starting simple-checkout-style-editorial...' && echo '📱 Plugin will open at http://localhost:5173' && vite",
+    "dev": "echo '🔥 Starting simple-checkout-style-tealer...' && echo '📱 Plugin will open at http://localhost:5173' && vite",
     "dev:local-sdk": "echo '🔧 Using local SDK for development...' && VITE_SDK_MODE=local vite",
     "dev:fast": "vite --force",
     "build": "tsc && vite build",
