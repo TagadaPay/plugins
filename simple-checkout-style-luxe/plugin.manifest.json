@@ -1,0 +1,79 @@
+{
+  "name": "Simple Checkout — Luxe / Boutique",
+  "pluginId": "simple-checkout-style-luxe",
+  "description": "A minimal single-page TagadaPay checkout plugin with a luxury-boutique aesthetic (forest green + warm cream + aged gold, Fraunces display serif + Inter Tight + JetBrains Mono, 1px hairline borders, 2px radius, no drop shadows, quiet motion). Built for leather goods, fragrance, luxury skincare, atelier DTC. Uses the same @tagadapay/plugin-sdk v2 hooks as the production native-checkout.",
+  "version": "1.0.0",
+  "author": "TagadaPay Team",
+  "mode": "direct-mode",
+  "category": "checkout",
+  "tags": ["checkout", "example", "v2", "payment", "single-step", "luxury", "boutique", "serif", "editorial"],
+  "configuration": {
+    "schema": "./config/schema.json",
+    "uiSchema": "./config/ui-schema.json",
+    "presets": [
+      {
+        "id": "default",
+        "name": "Luxe Default",
+        "description": "Forest green on cream with aged-gold accent — boutique checkout.",
+        "config": "./config/default.config.json"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "path": "/checkout",
+      "features": [
+        {
+          "type": "checkout",
+          "requirements": [
+            {
+              "resource": "checkoutSession",
+              "from": [
+                {
+                  "name": "checkoutToken",
+                  "type": "query",
+                  "required": false
+                },
+                {
+                  "name": "checkoutToken",
+                  "type": "context",
+                  "required": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "remappable": true
+    },
+    {
+      "path": "/thankyou/:orderId",
+      "features": [
+        {
+          "type": "thankyou",
+          "requirements": [
+            {
+              "resource": "order",
+              "from": [
+                {
+                  "name": "id",
+                  "type": "path"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "remappable": true
+    }
+  ],
+  "router": {
+    "basePath": "/",
+    "matcher": ".*",
+    "excluder": null
+  },
+  "requirements": {
+    "sdk": "^2.2.0",
+    "sdkVersion": "v2"
+  }
+}

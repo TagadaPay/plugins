@@ -1,0 +1,79 @@
+{
+  "name": "Simple Checkout — Solar / Zine",
+  "pluginId": "simple-checkout-style-solar",
+  "description": "A minimal single-page TagadaPay checkout plugin with a risograph / zine aesthetic (sun-bleached cream + tomato-red stamp + cobalt secondary + charcoal type, Clash Display + Switzer + JetBrains Mono, 2px rules, offset stamp shadows, rotated accent tags). Built for indie food, beverage, candles, small-batch apparel. Uses the same @tagadapay/plugin-sdk v2 hooks as the production native-checkout.",
+  "version": "1.0.0",
+  "author": "TagadaPay Team",
+  "mode": "direct-mode",
+  "category": "checkout",
+  "tags": ["checkout", "example", "v2", "payment", "single-step", "zine", "risograph", "indie", "solar"],
+  "configuration": {
+    "schema": "./config/schema.json",
+    "uiSchema": "./config/ui-schema.json",
+    "presets": [
+      {
+        "id": "default",
+        "name": "Solar Default",
+        "description": "Sun-bleached cream + tomato stamp + cobalt ink — indie zine checkout.",
+        "config": "./config/default.config.json"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "path": "/checkout",
+      "features": [
+        {
+          "type": "checkout",
+          "requirements": [
+            {
+              "resource": "checkoutSession",
+              "from": [
+                {
+                  "name": "checkoutToken",
+                  "type": "query",
+                  "required": false
+                },
+                {
+                  "name": "checkoutToken",
+                  "type": "context",
+                  "required": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "remappable": true
+    },
+    {
+      "path": "/thankyou/:orderId",
+      "features": [
+        {
+          "type": "thankyou",
+          "requirements": [
+            {
+              "resource": "order",
+              "from": [
+                {
+                  "name": "id",
+                  "type": "path"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "remappable": true
+    }
+  ],
+  "router": {
+    "basePath": "/",
+    "matcher": ".*",
+    "excluder": null
+  },
+  "requirements": {
+    "sdk": "^2.2.0",
+    "sdkVersion": "v2"
+  }
+}

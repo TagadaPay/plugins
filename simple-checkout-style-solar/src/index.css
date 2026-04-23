@@ -1,0 +1,279 @@
+@import 'tw-animate-css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────
+   SOLAR STYLE — risograph / sun-bleached zine
+     • Clash Display: chunky geometric serif-sans for headlines
+     • Switzer: crisp warm body
+     • JetBrains Mono: typewriter tabular prices
+   Design intent: zine energy. Sun-bleached cream surface with
+   stamped tomato-red accents, cobalt secondary marks, charcoal
+   type. Thick rules carry the layout; cards are rare. This is
+   the opposite of the corporate gradient — it's the sign-painted
+   menu at a good coffee shop.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --font-display: 'Clash Display', 'Gambarino', 'Recoleta', Georgia, serif;
+  --font-body:    'Switzer', 'Geist', Manrope, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --font-sans: var(--font-body);
+  --font-inter: var(--font-body);
+  --font-poppins: var(--font-body);
+  --font-roboto: var(--font-body);
+  --font-open-sans: var(--font-body);
+  --font-montserrat: var(--font-display);
+  --font-brand: var(--font-body);
+
+  /* ─────────── Palette — zine risograph ───────────
+     Three named accents (tomato, cobalt, olive), charcoal type
+     on sun-bleached cream. Tomato carries the CTA, cobalt carries
+     secondary marks, olive is ornamental. */
+
+  --tomato-600: #BA3527;  /* CTA hover / active */
+  --tomato-500: #D64535;  /* primary accent */
+  --tomato-300: #F2B3A7;
+  --tomato-100: #FADDD6;
+
+  --cobalt-700: #1E3BB8;
+  --cobalt-500: #2E4BD2;  /* secondary accent — links, selected borders */
+  --cobalt-300: #AAB7F0;
+  --cobalt-100: #DDE3FA;
+
+  --olive-600:  #5B5B1E;
+  --olive-500:  #727339;  /* tertiary ornament */
+  --olive-200:  #D7D3AB;
+
+  --cream-900:  #F6EFD9;  /* page bg — sun-bleached */
+  --cream-800:  #FDF8E7;  /* card surface */
+  --cream-700:  #EFE5C7;
+  --cream-600:  #E4D8B5;
+
+  --char-900:   #1A1915;  /* charcoal type */
+  --char-700:   #2F2D24;
+  --char-500:   #5A5748;
+  --char-400:   #858068;
+  --char-300:   #B4AE93;
+
+  --ink-900: var(--char-900);
+  --ink-700: var(--char-700);
+  --ink-500: var(--char-500);
+  --ink-400: var(--char-400);
+  --ink-300: var(--char-300);
+
+  --line-strong: var(--char-900);   /* thick 2px charcoal rules */
+  --line:        #C9BE98;
+  --line-soft:   #DED0A5;
+
+  --surface:     var(--cream-800);
+  --surface-alt: var(--cream-900);
+  --surface-sunk: var(--cream-700);
+
+  --brand:       var(--tomato-500);
+  --brand-hover: var(--tomato-600);
+  --brand-tint:  var(--tomato-100);
+  --brand-ink:   var(--cream-800);   /* text-on-tomato is cream */
+
+  --success: #2E7A3B;
+  --danger:  var(--tomato-600);
+
+  --radius: 2px;
+  --stamp-shadow: 3px 3px 0 0 var(--char-900);
+
+  /* shadcn back-compat */
+  --background: 46 55% 91%;
+  --foreground: 48 12% 9%;
+  --card: 48 78% 95%;
+  --card-foreground: 48 12% 9%;
+  --popover: 48 78% 95%;
+  --popover-foreground: 48 12% 9%;
+  --primary: 6 64% 53%;
+  --primary-foreground: 48 78% 95%;
+  --secondary: 228 64% 50%;
+  --secondary-foreground: 48 78% 95%;
+  --muted: 48 40% 82%;
+  --muted-foreground: 48 12% 35%;
+  --accent: 6 64% 53%;
+  --accent-foreground: 48 78% 95%;
+  --destructive: 6 64% 45%;
+  --destructive-foreground: 48 78% 95%;
+  --border: 48 12% 9%;
+  --input: 48 20% 72%;
+  --ring: 6 64% 53%;
+}
+
+@layer base {
+  * { @apply border-border; }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink-700);
+    background-color: var(--surface-alt);
+    font-feature-settings: 'ss01', 'kern';
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--ink-900);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  .tnum, [data-tnum], .money, table {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  input[type="tel"], input[inputmode="numeric"], input[inputmode="decimal"] {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-mono);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Zine step stamp — small tomato-stamped square with mono number
+   Rotated -1° for the sign-painted feel.
+   ───────────────────────────────────────────────────────────── */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-900);
+}
+.eyebrow-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 22px;
+  padding: 0 7px;
+  background: var(--tomato-500);
+  color: var(--cream-800);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 2px;
+  font-variant-numeric: tabular-nums;
+  transform: rotate(-1deg);
+  box-shadow: 2px 2px 0 0 var(--char-900);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Price typography — chunky display for hero, mono for items
+   ───────────────────────────────────────────────────────────── */
+
+.money {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: 'ss01', 'zero';
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+}
+
+.money-hero {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  color: var(--ink-900);
+}
+
+.money-strike {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  text-decoration: line-through;
+  text-decoration-color: var(--tomato-500);
+  text-decoration-thickness: 2px;
+  color: var(--ink-400);
+}
+
+.hairline { border-color: var(--line-strong); }
+
+.checkout-container { background: var(--surface); }
+
+/* Risograph stamp utility — for promo/discount markers */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 9px;
+  background: var(--tomato-500);
+  color: var(--cream-800);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 2px;
+  transform: rotate(-1deg);
+  box-shadow: var(--stamp-shadow);
+}
+.stamp--cobalt { background: var(--cobalt-500); transform: rotate(1deg); }
+.stamp--olive  { background: var(--olive-500); transform: rotate(-0.5deg); }
+
+/* ─────────────────────────────────────────────────────────────
+   ZINE RETROFIT — upgrade editorial hairline cards to thick-rule
+   zine panels without editing component files.
+   The editorial sibling used the pattern:
+     rounded-[4px] border border-[var(--line-strong)]
+   Solar catches that pattern and re-skins it.
+   ───────────────────────────────────────────────────────────── */
+
+.rounded-\[4px\] { border-radius: 2px !important; }
+.rounded-\[3px\] { border-radius: 2px !important; }
+
+.border.border-\[var\(--line-strong\)\] {
+  border-width: 2px !important;
+  border-color: var(--char-900) !important;
+}
+
+/* Interactive card hover: slight translate, sharper border (no fake shadow) */
+.rounded-\[4px\].border.border-\[var\(--line-strong\)\].cursor-pointer {
+  transition: transform 100ms ease-out, background-color 100ms ease-out;
+}
+.rounded-\[4px\].border.border-\[var\(--line-strong\)\].cursor-pointer:hover {
+  background-color: var(--cream-700) !important;
+  transform: translate(-1px, -1px);
+}
+
+/* Selected state — replace inset primary 1px ring with an offset stamp shadow */
+[style*='box-shadow: 0 0 0 1px var(--primary-color)'],
+[style*='box-shadow: inset 0 0 0 1px var(--primary-color)'] {
+  box-shadow: 3px 3px 0 0 var(--char-900) !important;
+  transform: translate(-1px, -1px);
+  background-color: var(--tomato-100) !important;
+}
+
+/* Horizontal divider pattern → thick charcoal 2px */
+.border-t.border-\[var\(--line-strong\)\],
+.border-b.border-\[var\(--line-strong\)\] {
+  border-color: var(--char-900) !important;
+  border-width: 0 !important;
+}
+.border-t.border-\[var\(--line-strong\)\] { border-top-width: 2px !important; }
+.border-b.border-\[var\(--line-strong\)\] { border-bottom-width: 2px !important; }
+
+/* Strike-through → tomato 2px */
+.line-through {
+  text-decoration-color: var(--tomato-500) !important;
+  text-decoration-thickness: 2px !important;
+}

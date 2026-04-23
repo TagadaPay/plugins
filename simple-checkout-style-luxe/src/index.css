@@ -1,0 +1,225 @@
+@import 'tw-animate-css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────
+   LUXE STYLE — boutique / atelier
+     • Cormorant Garamond substitute: PP Editorial New via
+       system fallback (we load "Fraunces" + "Tiempos"-like
+       via Google Fonts Fraunces as the closest free equivalent)
+     • Body: Inter Tight — restrained, not character
+     • Mono: JetBrains Mono — slab-locked receipt numerics
+   Design intent: quiet confidence. Warm cream surface, deep
+   forest-green ink, a single aged-gold accent reserved for CTA
+   and selection. 1px hairlines, 2px radius, no bounce, no glow.
+   This is the opposite of streetwear and the opposite of AI-slop
+   pastel skincare — it's a Milanese tailor's handwritten bill.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --font-display: 'Fraunces', 'Tiempos Display', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:    'Inter Tight', 'Söhne', Manrope, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --font-sans: var(--font-body);
+  --font-inter: var(--font-body);
+  --font-poppins: var(--font-body);
+  --font-roboto: var(--font-body);
+  --font-open-sans: var(--font-body);
+  --font-montserrat: var(--font-display);
+  --font-brand: var(--font-body);
+
+  /* ─────────── Palette — boutique ───────────
+     Forest green on cream with aged-gold accent.
+     All neutrals carry a sliver of green chroma so they feel
+     warm-tinted rather than sterile. Gold appears only on
+     brand, CTA, selection, and step markers. */
+
+  --forest-900: #1F2A22;  /* titles, ink */
+  --forest-800: #2B3A2F;  /* primary surface for TopBar */
+  --forest-700: #3A4B3E;
+
+  --bronze-700: #5C5441;  /* secondary text */
+  --bronze-500: #857B63;  /* tertiary */
+  --bronze-400: #A89C80;  /* disabled / muted */
+  --bronze-300: #C9BFA4;
+
+  --gold-600:   #B38A44;  /* CTA hover */
+  --gold-500:   #C7A15C;  /* brand accent — the single scream */
+  --gold-300:   #E5D2A6;  /* selected bg */
+  --gold-100:   #F4EBD5;  /* brand-tint wash */
+
+  --cream:      #F5F1E8;  /* page */
+  --cream-alt:  #EDE7D7;  /* summary column / sunk */
+  --cream-sunk: #E4DDC9;
+  --paper:      #FBF8EF;  /* card surface (slightly warmer than cream) */
+
+  --ink-900: var(--forest-900);
+  --ink-700: #374239;
+  --ink-500: var(--bronze-700);
+  --ink-400: var(--bronze-500);
+  --ink-300: var(--bronze-400);
+
+  --line-strong: #C9BFA4;    /* 1px warm bronze hairline */
+  --line:        #D9D1B8;
+  --line-soft:   #E4DDC9;
+
+  --surface:     var(--paper);
+  --surface-alt: var(--cream);
+  --surface-sunk: var(--cream-sunk);
+
+  --brand:       var(--gold-500);
+  --brand-hover: var(--gold-600);
+  --brand-tint:  var(--gold-100);
+  --brand-ink:   var(--forest-900);   /* gold button text is forest-green, not white */
+
+  --success: #5A7A4A;
+  --danger:  #A64336;
+
+  --radius: 2px;       /* nearly-square */
+
+  /* shadcn back-compat */
+  --background: 48 45% 93%;
+  --foreground: 130 15% 14%;
+  --card: 44 45% 96%;
+  --card-foreground: 130 15% 14%;
+  --popover: 44 45% 96%;
+  --popover-foreground: 130 15% 14%;
+  --primary: 40 45% 57%;                 /* gold */
+  --primary-foreground: 130 15% 14%;
+  --secondary: 45 30% 89%;
+  --secondary-foreground: 130 15% 14%;
+  --muted: 45 30% 89%;
+  --muted-foreground: 45 14% 40%;
+  --accent: 40 45% 57%;
+  --accent-foreground: 130 15% 14%;
+  --destructive: 6 52% 43%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 45 30% 72%;
+  --input: 45 30% 72%;
+  --ring: 40 45% 57%;
+}
+
+@layer base {
+  * { @apply border-border; }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink-700);
+    background-color: var(--surface-alt);
+    font-feature-settings: 'ss01', 'cv11', 'kern';
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: -0.002em;
+  }
+
+  /* Display serif for all headings — high contrast, tight tracking */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--ink-900);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    font-feature-settings: 'ss01';
+  }
+
+  .tnum,
+  [data-tnum],
+  .money,
+  table {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  input[type="tel"],
+  input[inputmode="numeric"],
+  input[inputmode="decimal"] {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Boutique step marker — small-caps eyebrow + hairline rule
+   Gold mono number, bronze small-caps label.
+   ───────────────────────────────────────────────────────────── */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bronze-700);
+}
+.eyebrow-step {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--gold-600);
+  font-variant-numeric: tabular-nums;
+}
+.eyebrow-step::before {
+  content: "⸻";
+  display: inline-block;
+  color: var(--gold-500);
+  margin-right: 0.5rem;
+  letter-spacing: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Price typography — slab mono, receipt feel
+   ───────────────────────────────────────────────────────────── */
+
+.money {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: 'ss01', 'zero';
+  letter-spacing: -0.005em;
+  color: var(--ink-900);
+}
+
+.money-hero {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  color: var(--ink-900);
+}
+
+.hairline { border-color: var(--line-strong); }
+
+.checkout-container {
+  background: var(--surface);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BOUTIQUE RETROFIT — keep cards near-square with hairline rules.
+   Editorial sibling used: rounded-[4px] border border-[var(--line-strong)]
+   Luxe upgrades those to 2px radius and warmer hairline color.
+   ───────────────────────────────────────────────────────────── */
+
+.rounded-\[4px\] { border-radius: 2px !important; }
+.rounded-\[3px\] { border-radius: 2px !important; }
+
+/* Selected card: replace inset blue ring with a warm gold 1px + inner tint */
+[style*='box-shadow: 0 0 0 1px var(--primary-color)'],
+[style*='box-shadow: inset 0 0 0 1px var(--primary-color)'] {
+  box-shadow: 0 0 0 1px var(--gold-500), inset 0 0 0 1px var(--gold-500) !important;
+  background-color: var(--gold-100) !important;
+}
+
+/* Strike-through pricing — thin bronze bar, not a red slash */
+.line-through {
+  text-decoration-color: var(--bronze-500) !important;
+  text-decoration-thickness: 1px !important;
+}

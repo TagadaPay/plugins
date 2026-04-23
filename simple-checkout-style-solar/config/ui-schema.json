@@ -1,0 +1,2090 @@
+{
+  "ui:grouping": {
+    "tabs": [
+      {
+        "id": "settings",
+        "title": "⚙️ Settings",
+        "order": 1
+      },
+      {
+        "id": "content",
+        "title": "📝 Content",
+        "order": 2
+      }
+    ],
+    "sections": [
+      {
+        "id": "branding",
+        "title": "🎨 Branding & Design",
+        "tabId": "settings",
+        "order": 1,
+        "x-pages": [
+          "/checkout",
+          "/offer",
+          "/thankyou/:orderId"
+        ]
+      },
+      {
+        "id": "header",
+        "title": "🔝 Header",
+        "tabId": "settings",
+        "order": 2,
+        "x-pages": [
+          "/checkout",
+          "/offer",
+          "/thankyou/:orderId"
+        ]
+      },
+      {
+        "id": "layout",
+        "title": "📐 Layout Options",
+        "tabId": "settings",
+        "order": 3,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "checkoutSettings",
+        "title": "💳 Checkout Settings",
+        "tabId": "settings",
+        "order": 4,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "addressSettings",
+        "title": "📍 Address Settings",
+        "tabId": "settings",
+        "order": 5,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "orderSummarySettings",
+        "title": "📦 Order Summary Settings",
+        "tabId": "settings",
+        "order": 6,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "shippingRateSettings",
+        "title": "🚚 Shipping Rate Settings",
+        "tabId": "settings",
+        "order": 7,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "cardNetworks",
+        "title": "💳 Card Networks",
+        "tabId": "settings",
+        "order": 8,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "checkoutScarcity",
+        "title": "⏰ Checkout Scarcity Timer",
+        "tabId": "settings",
+        "order": 9,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "offerScarcity",
+        "title": "⏰ Offer Scarcity Timer",
+        "tabId": "settings",
+        "order": 10,
+        "x-pages": [
+          "/offer"
+        ]
+      },
+      {
+        "id": "offerSettings",
+        "title": "🎯 Offer Page Settings",
+        "tabId": "settings",
+        "order": 11,
+        "x-pages": [
+          "/offer"
+        ]
+      },
+      {
+        "id": "links",
+        "title": "🔗 Links & Navigation",
+        "tabId": "settings",
+        "order": 11
+      },
+      {
+        "id": "pageMetadata",
+        "title": "📄 Page Metadata",
+        "tabId": "settings",
+        "order": 12
+      },
+      {
+        "id": "pageMetadataUniversal",
+        "title": "🌐 Universal Favicon",
+        "tabId": "settings",
+        "order": 12
+      },
+      {
+        "id": "pageMetadataCheckout",
+        "title": "📄 Checkout Page Metadata",
+        "tabId": "settings",
+        "order": 13,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "pageMetadataOffer",
+        "title": "📄 Offer Page Metadata",
+        "tabId": "settings",
+        "order": 14,
+        "x-pages": [
+          "/offer"
+        ]
+      },
+      {
+        "id": "pageMetadataThankyou",
+        "title": "📄 Thank You Page Metadata",
+        "tabId": "settings",
+        "order": 15,
+        "x-pages": [
+          "/thankyou/:orderId"
+        ]
+      },
+      {
+        "id": "pageMetadataClub",
+        "title": "📄 Club Page Metadata",
+        "tabId": "settings",
+        "order": 16,
+        "x-pages": [
+          "/club"
+        ]
+      },
+      {
+        "id": "pageMetadataNotfound",
+        "title": "📄 Not Found Page Metadata",
+        "tabId": "settings",
+        "order": 17,
+        "x-pages": [
+          "*"
+        ]
+      },
+      {
+        "id": "sections",
+        "title": "📋 Page Sections",
+        "tabId": "content",
+        "order": 1
+      },
+      {
+        "id": "checkout",
+        "title": "🧾 Checkout Texts",
+        "tabId": "content",
+        "order": 2,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "checkoutFlowTexts",
+        "title": "🧾 Checkout Flow Texts",
+        "tabId": "content",
+        "order": 3,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "cryptoTexts",
+        "title": "🪙 Crypto Payment Texts",
+        "tabId": "content",
+        "order": 4,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "airwallexApmTexts",
+        "title": "💳 Airwallex APM Texts",
+        "tabId": "content",
+        "order": 5,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "stripeApmTexts",
+        "title": "💳 Stripe APM Texts",
+        "tabId": "content",
+        "order": 6,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "validationAndErrors",
+        "title": "⚠️ Validation & Error Messages",
+        "tabId": "content",
+        "order": 7,
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      {
+        "id": "offers",
+        "title": "🎯 Offers Page Texts",
+        "tabId": "content",
+        "order": 8,
+        "x-pages": [
+          "/offer"
+        ]
+      },
+      {
+        "id": "thankYouTexts",
+        "title": "🎉 Thank You Page Texts",
+        "tabId": "content",
+        "order": 9,
+        "x-pages": [
+          "/thankyou/:orderId"
+        ]
+      },
+      {
+        "id": "zelleThankYouTexts",
+        "title": "💸 Zelle Thank You Texts",
+        "tabId": "content",
+        "order": 10,
+        "x-pages": [
+          "/thankyou/:orderId"
+        ]
+      },
+      {
+        "id": "clubBranding",
+        "title": "🎨 Club Branding & Settings",
+        "tabId": "settings",
+        "x-pages": [
+          "/club"
+        ],
+        "order": 10
+      },
+      {
+        "id": "clubHeader",
+        "title": "🔝 Club Header & Navigation",
+        "tabId": "content",
+        "x-pages": [
+          "/club"
+        ],
+        "order": 9
+      },
+      {
+        "id": "clubMeta",
+        "title": "📄 Club Meta & SEO",
+        "tabId": "content",
+        "x-pages": [
+          "/club"
+        ],
+        "order": 10
+      },
+      {
+        "id": "clubEnter",
+        "title": "🚪 Enter Flow Texts",
+        "tabId": "content",
+        "x-pages": [
+          "/club"
+        ],
+        "order": 11
+      },
+      {
+        "id": "clubCredit",
+        "title": "💰 Credit Center & Status Texts",
+        "tabId": "content",
+        "x-pages": [
+          "/club"
+        ],
+        "order": 12
+      },
+      {
+        "id": "clubPortal",
+        "title": "👤 Portal & Account Texts",
+        "tabId": "content",
+        "x-pages": [
+          "/club"
+        ],
+        "order": 13
+      },
+      {
+        "id": "clubOrdersSubscriptions",
+        "title": "📦 Orders & Subscriptions Texts",
+        "tabId": "content",
+        "x-pages": [
+          "/club"
+        ],
+        "order": 14
+      },
+      {
+        "id": "clubOffersTexts",
+        "title": "🎯 Club Offers Texts",
+        "tabId": "content",
+        "x-pages": [
+          "/club"
+        ],
+        "order": 15
+      }
+    ]
+  },
+  "checkoutScarcity": {
+    "ui:tab": "settings",
+    "ui:section": "checkoutScarcity",
+    "ui:order": [
+      "enabled",
+      "messageTrans",
+      "color",
+      "seconds"
+    ],
+    "ui:options": {
+      "grid": 2
+    },
+    "x-pages": [
+      "/checkout"
+    ],
+    "messageTrans": {
+      "ui:field": "translation"
+    },
+    "enabled": {
+      "ui:field": "toggleSwitch"
+    },
+    "color": {
+      "ui:widget": "color"
+    }
+  },
+  "offerScarcity": {
+    "ui:tab": "settings",
+    "ui:section": "offerScarcity",
+    "ui:order": [
+      "enabled",
+      "messageTrans",
+      "color",
+      "seconds"
+    ],
+    "ui:options": {
+      "grid": 2
+    },
+    "x-pages": [
+      "/offer"
+    ],
+    "messageTrans": {
+      "ui:field": "translation"
+    },
+    "enabled": {
+      "ui:field": "toggleSwitch"
+    },
+    "color": {
+      "ui:widget": "color"
+    }
+  },
+  "offerSettings": {
+    "ui:tab": "settings",
+    "ui:section": "offerSettings",
+    "ui:order": [
+      "cardBackgroundColor",
+      "cardOpacity"
+    ],
+    "ui:options": {
+      "grid": 2
+    },
+    "x-pages": [
+      "/offer"
+    ],
+    "cardBackgroundColor": {
+      "ui:widget": "color"
+    },
+    "cardOpacity": {
+      "ui:widget": "range"
+    }
+  },
+  "branding": {
+    "ui:tab": "settings",
+    "ui:section": "branding",
+    "ui:options": {
+      "grid": 3
+    },
+    "ui:order": [
+      "fontFamily",
+      "primaryColor",
+      "textColorOnPrimary",
+      "textColor",
+      "textSecondaryColor",
+      "backgroundColor",
+      "borderColor"
+    ],
+    "primaryColor": {
+      "ui:widget": "color"
+    },
+    "textColorOnPrimary": {
+      "ui:widget": "color"
+    },
+    "textColor": {
+      "ui:widget": "color"
+    },
+    "textSecondaryColor": {
+      "ui:widget": "color"
+    },
+    "backgroundColor": {
+      "ui:widget": "color"
+    },
+    "borderColor": {
+      "ui:widget": "color"
+    }
+  },
+  "header": {
+    "ui:tab": "settings",
+    "ui:section": "header",
+    "ui:order": [
+      "showLogo",
+      "companyName",
+      "logoUrl",
+      "logoHeight",
+      "backgroundColor",
+      "backgroundImage",
+      "goToShopText",
+      "goToShopTextColor",
+      "borderColor"
+    ],
+    "showLogo": {
+      "ui:field": "toggleSwitch",
+      "ui:help": "When enabled, displays a logo image in the header. When disabled, displays the company name instead."
+    },
+    "logoUrl": {
+      "ui:widget": "image"
+    },
+    "backgroundImage": {
+      "ui:widget": "image"
+    },
+    "backgroundColor": {
+      "ui:widget": "color"
+    },
+    "goToShopText": {
+      "ui:field": "translation"
+    },
+    "goToShopTextColor": {
+      "ui:widget": "color"
+    },
+    "borderColor": {
+      "ui:widget": "color"
+    }
+  },
+  "layout": {
+    "ui:tab": "settings",
+    "ui:section": "layout",
+    "x-pages": [
+      "/checkout"
+    ],
+    "stickyOrderSummary": {
+      "ui:field": "toggleSwitch"
+    },
+    "stickyPaymentButtons": {
+      "ui:field": "toggleSwitch"
+    }
+  },
+  "cardNetworks": {
+    "ui:tab": "settings",
+    "ui:section": "cardNetworks",
+    "items": {
+      "ui:field": "cardNetworkSelector"
+    }
+  },
+  "checkoutSettings": {
+    "ui:tab": "settings",
+    "ui:section": "checkoutSettings",
+    "displaySecureCheckoutText": {
+      "ui:field": "toggleSwitch"
+    },
+    "showExpressCheckout": {
+      "ui:field": "toggleSwitch"
+    },
+    "hideRecurringPrices": {
+      "ui:field": "toggleSwitch"
+    },
+    "requireTerms": {
+      "ui:field": "toggleSwitch"
+    },
+    "requirePhone": {
+      "ui:field": "toggleSwitch"
+    },
+    "requireValidPhoneNumber": {
+      "ui:field": "toggleSwitch"
+    },
+    "requireAddressNumber": {
+      "ui:field": "toggleSwitch"
+    },
+    "precheckMarketing": {
+      "ui:field": "toggleSwitch"
+    },
+    "showMarketingCheckbox": {
+      "ui:field": "toggleSwitch"
+    },
+    "mergeContactAndDelivery": {
+      "ui:field": "toggleSwitch"
+    },
+    "orderSummaryOpenByDefault": {
+      "ui:field": "toggleSwitch"
+    },
+    "showCartCustomAttributes": {
+      "ui:field": "toggleSwitch",
+      "ui:help": "When enabled, custom attributes from the cart (like personalization fields) will be displayed in the order summary."
+    },
+    "showLineItemProperties": {
+      "ui:field": "toggleSwitch",
+      "ui:help": "When enabled, custom properties on line items (like personalization fields) will be displayed below each item in the order summary."
+    }
+  },
+  "addressSettings": {
+    "ui:tab": "settings",
+    "ui:section": "addressSettings",
+    "ui:order": [
+      "digitalProduct",
+      "forcedCountry",
+      "hideStateSelector"
+    ],
+    "digitalProduct": {
+      "ui:field": "toggleSwitch"
+    },
+    "forcedCountry": {
+      "ui:help": "ISO 3166-1 alpha-2 code (e.g. US, FR, GB). Overrides geolocation but not customer session."
+    },
+    "hideStateSelector": {
+      "ui:field": "toggleSwitch"
+    }
+  },
+  "orderSummarySettings": {
+    "ui:tab": "settings",
+    "ui:section": "orderSummarySettings",
+    "ui:order": [
+      "backgroundColor",
+      "opacity"
+    ],
+    "backgroundColor": {
+      "ui:widget": "color"
+    },
+    "opacity": {
+      "ui:widget": "range"
+    }
+  },
+  "shippingRateSettings": {
+    "ui:tab": "settings",
+    "ui:section": "shippingRateSettings",
+    "ui:order": [
+      "displayShippingRate",
+      "requireShippingRate",
+      "countryRestrictionsFromShippingRates",
+      "availableShippingCountries"
+    ],
+    "displayShippingRate": {
+      "ui:field": "toggleSwitch"
+    },
+    "requireShippingRate": {
+      "ui:field": "toggleSwitch",
+      "ui:help": "This field is only shown when 'Display Shipping Rate' is enabled"
+    },
+    "countryRestrictionsFromShippingRates": {
+      "ui:field": "toggleSwitch",
+      "ui:help": "Only show countries with available shipping rates (when < 5)"
+    },
+    "availableShippingCountries": {
+      "ui:help": "This field is only shown when 'Country Restrictions From Shipping Rates' is enabled"
+    }
+  },
+  "checkout": {
+    "ui:tab": "content",
+    "ui:section": "checkout",
+    "title": {
+      "ui:field": "translation"
+    },
+    "expressCheckout": {
+      "ui:section": "checkoutFlowTexts",
+      "title": {
+        "ui:field": "translation"
+      },
+      "description": {
+        "ui:field": "translation"
+      },
+      "dividerText": {
+        "ui:field": "translation"
+      }
+    },
+    "contact": {
+      "ui:section": "checkoutFlowTexts",
+      "title": {
+        "ui:field": "translation"
+      },
+      "description": {
+        "ui:field": "translation"
+      },
+      "emailPlaceholder": {
+        "ui:field": "translation"
+      },
+      "emailOffersLabel": {
+        "ui:field": "translation"
+      }
+    },
+    "delivery": {
+      "ui:section": "checkoutFlowTexts",
+      "title": {
+        "ui:field": "translation"
+      },
+      "description": {
+        "ui:field": "translation"
+      },
+      "countryPlaceholder": {
+        "ui:field": "translation"
+      },
+      "countrySearchPlaceholder": {
+        "ui:field": "translation"
+      },
+      "firstNamePlaceholder": {
+        "ui:field": "translation"
+      },
+      "lastNamePlaceholder": {
+        "ui:field": "translation"
+      },
+      "addressPlaceholder": {
+        "ui:field": "translation"
+      },
+      "addressPlaceholderNoCountry": {
+        "ui:field": "translation"
+      },
+      "apartmentPlaceholder": {
+        "ui:field": "translation"
+      },
+      "cityPlaceholder": {
+        "ui:field": "translation"
+      },
+      "statePlaceholder": {
+        "ui:field": "translation"
+      },
+      "zipPlaceholder": {
+        "ui:field": "translation"
+      },
+      "phonePlaceholder": {
+        "ui:field": "translation"
+      },
+      "billingTitle": {
+        "ui:field": "translation"
+      },
+      "billingDifferentLabel": {
+        "ui:field": "translation"
+      }
+    },
+    "shipping": {
+      "ui:section": "checkoutFlowTexts",
+      "title": {
+        "ui:field": "translation"
+      },
+      "description": {
+        "ui:field": "translation"
+      },
+      "freeText": {
+        "ui:field": "translation"
+      },
+      "noRatesText": {
+        "ui:field": "translation"
+      }
+    },
+    "payment": {
+      "ui:section": "checkoutFlowTexts",
+      "title": {
+        "ui:field": "translation"
+      },
+      "description": {
+        "ui:field": "translation"
+      },
+      "cardNumberPlaceholder": {
+        "ui:field": "translation"
+      },
+      "expiryPlaceholder": {
+        "ui:field": "translation"
+      },
+      "securityCodePlaceholder": {
+        "ui:field": "translation"
+      },
+      "creditCard": {
+        "ui:field": "translation"
+      },
+      "creditCardSecureText": {
+        "ui:field": "translation"
+      },
+      "completePaymentText": {
+        "ui:field": "translation"
+      },
+      "paypalRedirectText": {
+        "ui:field": "translation"
+      },
+      "applePayRedirectText": {
+        "ui:field": "translation"
+      },
+      "cryptoRedirectText": {
+        "ui:field": "translation",
+        "ui:section": "cryptoTexts"
+      },
+      "cryptoInfoTitle": {
+        "ui:field": "translation",
+        "ui:section": "cryptoTexts"
+      },
+      "cryptoSteps": {
+        "ui:section": "cryptoTexts",
+        "items": {
+          "text": {
+            "ui:field": "translation"
+          }
+        }
+      },
+      "cryptoBadges": {
+        "ui:section": "cryptoTexts",
+        "items": {
+          "text": {
+            "ui:field": "translation"
+          },
+          "icon": {
+            "ui:field": "icon"
+          }
+        }
+      },
+      "cryptoProviderLabel": {
+        "ui:field": "translation",
+        "ui:section": "cryptoTexts"
+      },
+      "cryptoSelectProvider": {
+        "ui:field": "translation",
+        "ui:section": "cryptoTexts"
+      },
+      "cryptoSearchProvider": {
+        "ui:field": "translation",
+        "ui:section": "cryptoTexts"
+      },
+      "cryptoNoProvider": {
+        "ui:field": "translation",
+        "ui:section": "cryptoTexts"
+      },
+      "cardNetworksTooltipText": {
+        "ui:field": "translation"
+      },
+      "airwallexApm": {
+        "ui:section": "airwallexApmTexts",
+        "klarna": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        },
+        "afterpay": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        },
+        "paypal": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        },
+        "skrill": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        },
+        "bancontact": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        },
+        "ideal": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        },
+        "twint": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        }
+      },
+      "stripeApm": {
+        "ui:section": "stripeApmTexts",
+        "klarna": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        },
+        "afterpay": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        },
+        "paypal": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        },
+        "ideal": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        },
+        "bancontact": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        },
+        "twint": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        },
+        "revolut_pay": {
+          "description": {
+            "ui:field": "translation"
+          },
+          "redirectLabel": {
+            "ui:field": "translation"
+          }
+        }
+      }
+    },
+    "orderCompletion": {
+      "ui:section": "checkoutFlowTexts",
+      "klarnaText": {
+        "ui:field": "translation"
+      },
+      "processingText": {
+        "ui:field": "translation"
+      },
+      "completeOrderText": {
+        "ui:field": "translation"
+      },
+      "secureCheckoutText": {
+        "ui:field": "translation"
+      },
+      "loadingText": {
+        "ui:field": "translation"
+      },
+      "payWithVipText": {
+        "ui:field": "translation"
+      },
+      "selectVipOffer": {
+        "ui:field": "translation"
+      },
+      "cancelVipOffer": {
+        "ui:field": "translation"
+      },
+      "payWithoutVipText": {
+        "ui:field": "translation"
+      },
+      "applePayText": {
+        "ui:field": "translation"
+      },
+      "termsLabel": {
+        "ui:field": "translation"
+      },
+      "navigatingText": {
+        "ui:field": "translation"
+      },
+      "verifyingIdentityText": {
+        "ui:field": "translation"
+      },
+      "securePaymentText": {
+        "ui:field": "translation"
+      }
+    },
+    "orderBumps": {
+      "ui:section": "checkoutFlowTexts",
+      "title": {
+        "ui:field": "translation"
+      },
+      "description": {
+        "ui:field": "translation"
+      },
+      "secondaryTitle": {
+        "ui:field": "translation"
+      },
+      "secondaryDescription": {
+        "ui:field": "translation"
+      },
+      "vipTitle": {
+        "ui:field": "translation"
+      },
+      "vipDescription": {
+        "ui:field": "translation"
+      },
+      "appliedText": {
+        "ui:field": "translation"
+      },
+      "congratulationsText": {
+        "ui:field": "translation"
+      },
+      "enjoyDiscountText": {
+        "ui:field": "translation"
+      },
+      "youSaveText": {
+        "ui:field": "translation"
+      },
+      "savedInstantlyText": {
+        "ui:field": "translation"
+      },
+      "cancelText": {
+        "ui:field": "translation"
+      }
+    },
+    "orderSummary": {
+      "ui:section": "checkoutFlowTexts",
+      "title": {
+        "ui:field": "translation"
+      },
+      "description": {
+        "ui:field": "translation"
+      },
+      "subtotalText": {
+        "ui:field": "translation"
+      },
+      "itemText": {
+        "ui:field": "translation"
+      },
+      "itemsText": {
+        "ui:field": "translation"
+      },
+      "totalSavingsText": {
+        "ui:field": "translation"
+      },
+      "shippingText": {
+        "ui:field": "translation"
+      },
+      "taxText": {
+        "ui:field": "translation"
+      },
+      "totalText": {
+        "ui:field": "translation"
+      },
+      "recurringTotalText": {
+        "ui:field": "translation"
+      },
+      "recurringEveryText": {
+        "ui:field": "translation"
+      },
+      "everyText": {
+        "ui:field": "translation"
+      },
+      "mobileToggleShowText": {
+        "ui:field": "translation"
+      },
+      "mobileToggleHideText": {
+        "ui:field": "translation"
+      },
+      "membershipText": {
+        "ui:field": "translation"
+      },
+      "trialThenEveryText": {
+        "ui:field": "translation"
+      },
+      "renewsEveryText": {
+        "ui:field": "translation"
+      }
+    },
+    "validation": {
+      "ui:section": "validationAndErrors",
+      "emailRequired": {
+        "ui:field": "translation"
+      },
+      "firstNameRequired": {
+        "ui:field": "translation"
+      },
+      "lastNameRequired": {
+        "ui:field": "translation"
+      },
+      "addressRequired": {
+        "ui:field": "translation"
+      },
+      "cityRequired": {
+        "ui:field": "translation"
+      },
+      "countryRequired": {
+        "ui:field": "translation"
+      },
+      "stateRequired": {
+        "ui:field": "translation"
+      },
+      "zipRequired": {
+        "ui:field": "translation"
+      },
+      "phoneRequired": {
+        "ui:field": "translation"
+      },
+      "validPhoneNumberRequired": {
+        "ui:field": "translation"
+      },
+      "cardNumberRequired": {
+        "ui:field": "translation"
+      },
+      "expiryRequired": {
+        "ui:field": "translation"
+      },
+      "securityCodeRequired": {
+        "ui:field": "translation"
+      },
+      "shippingMethodRequired": {
+        "ui:field": "translation"
+      },
+      "paymentMethodRequired": {
+        "ui:field": "translation"
+      },
+      "termsRequired": {
+        "ui:field": "translation"
+      }
+    },
+    "errors": {
+      "ui:section": "validationAndErrors",
+      "checkoutSessionNotInitialized": {
+        "ui:field": "translation"
+      },
+      "checkoutSessionNotReady": {
+        "ui:field": "translation"
+      },
+      "sessionTimeout": {
+        "ui:field": "translation"
+      },
+      "initFailed": {
+        "ui:field": "translation"
+      },
+      "noCheckoutSession": {
+        "ui:field": "translation"
+      },
+      "paymentFailed": {
+        "ui:field": "translation"
+      },
+      "paymentFailedSuggestion": {
+        "ui:field": "translation"
+      },
+      "checkoutError": {
+        "ui:field": "translation"
+      },
+      "failedToLoadAddressDetails": {
+        "ui:field": "translation"
+      },
+      "errorLoadingOrderSummary": {
+        "ui:field": "translation"
+      },
+      "unableToLoadOrderInfo": {
+        "ui:field": "translation"
+      },
+      "applePayNotImplemented": {
+        "ui:field": "translation"
+      },
+      "checkoutCompletedTitle": {
+        "ui:field": "translation"
+      },
+      "checkoutAlreadyCompleted": {
+        "ui:field": "translation"
+      }
+    },
+    "loading": {
+      "ui:section": "validationAndErrors",
+      "checkoutLoading": {
+        "ui:field": "translation",
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      "defaultText": {
+        "ui:field": "translation"
+      }
+    },
+    "discountCodes": {
+      "ui:section": "validationAndErrors",
+      "placeholder": {
+        "ui:field": "translation",
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      "applyingText": {
+        "ui:field": "translation",
+        "x-pages": [
+          "/checkout"
+        ]
+      },
+      "applyText": {
+        "ui:field": "translation",
+        "x-pages": [
+          "/checkout"
+        ]
+      }
+    }
+  },
+  "links": {
+    "x-pages": [
+      "/checkout",
+      "/thankyou/:orderId"
+    ],
+    "ui:tab": "settings",
+    "ui:section": "links",
+    "bottomLinks": {
+      "items": {
+        "label": {
+          "ui:field": "translation"
+        }
+      }
+    }
+  },
+  "pageMetadata": {
+    "ui:tab": "settings",
+    "ui:section": "pageMetadata",
+    "ui:order": [
+      "favicon",
+      "checkout",
+      "offer",
+      "thankyou",
+      "club",
+      "portal",
+      "notfound"
+    ],
+    "favicon": {
+      "ui:widget": "image",
+      "ui:section": "pageMetadataUniversal"
+    },
+    "checkout": {
+      "ui:section": "pageMetadataCheckout",
+      "title": {
+        "ui:field": "translation"
+      },
+      "favicon": {
+        "ui:widget": "image"
+      }
+    },
+    "offer": {
+      "ui:section": "pageMetadataOffer",
+      "title": {
+        "ui:field": "translation"
+      },
+      "favicon": {
+        "ui:widget": "image"
+      }
+    },
+    "thankyou": {
+      "ui:section": "pageMetadataThankyou",
+      "title": {
+        "ui:field": "translation"
+      },
+      "favicon": {
+        "ui:widget": "image"
+      }
+    },
+    "club": {
+      "ui:section": "pageMetadataClub",
+      "title": {
+        "ui:field": "translation"
+      },
+      "favicon": {
+        "ui:widget": "image"
+      }
+    },
+    "portal": {
+      "ui:section": "pageMetadataPortal",
+      "title": {
+        "ui:field": "translation"
+      },
+      "favicon": {
+        "ui:widget": "image"
+      }
+    },
+    "notfound": {
+      "ui:section": "pageMetadataNotfound",
+      "title": {
+        "ui:field": "translation"
+      },
+      "favicon": {
+        "ui:widget": "image"
+      }
+    }
+  },
+  "sections": {
+    "x-pages": [
+      "/checkout"
+    ],
+    "ui:tab": "content",
+    "ui:section": "sections",
+    "title": {
+      "ui:field": "translation"
+    },
+    "postText": {
+      "ui:field": "translation"
+    },
+    "items": {
+      "items": {
+        "useIconUrl": {
+          "ui:field": "toggleSwitch"
+        },
+        "titleTrans": {
+          "ui:field": "translation"
+        },
+        "descriptionTrans": {
+          "ui:field": "translation"
+        },
+        "ui:order": [
+          "useIconUrl",
+          "*",
+          "titleTrans",
+          "descriptionTrans"
+        ]
+      }
+    },
+    "noBorders": {
+      "ui:field": "toggleSwitch"
+    }
+  },
+  "club": {
+    "branding": {
+      "ui:tab": "settings",
+      "ui:section": "clubBranding",
+      "companyName": {
+        "ui:widget": "text"
+      },
+      "colors": {
+        "primary": {
+          "ui:widget": "color"
+        },
+        "secondary": {
+          "ui:widget": "color"
+        }
+      }
+    },
+    "header": {
+      "ui:tab": "content",
+      "ui:section": "clubHeader",
+      "navigation": {
+        "ui:section": "clubHeader",
+        "benefits": {
+          "ui:field": "translation"
+        },
+        "deals": {
+          "ui:field": "translation"
+        },
+        "faq": {
+          "ui:field": "translation"
+        },
+        "account": {
+          "ui:field": "translation"
+        }
+      },
+      "hero": {
+        "ui:section": "clubHeader",
+        "background": {
+          "ui:widget": "image"
+        },
+        "badge": {
+          "ui:field": "translation"
+        },
+        "title": {
+          "ui:field": "translation"
+        },
+        "logo": {
+          "ui:widget": "image"
+        },
+        "subtitle": {
+          "ui:field": "translation"
+        },
+        "image": {
+          "ui:widget": "image"
+        },
+        "cta": {
+          "primary": {
+            "ui:field": "translation"
+          },
+          "secondary": {
+            "ui:field": "translation"
+          }
+        }
+      },
+      "userStatus": {
+        "ui:section": "clubHeader",
+        "tier": {
+          "ui:widget": "text"
+        },
+        "points": {
+          "ui:widget": "updown"
+        },
+        "nextTier": {
+          "ui:widget": "text"
+        },
+        "pointsToNextTier": {
+          "ui:widget": "updown"
+        }
+      }
+    },
+    "isCreditEnabled": {
+      "ui:tab": "settings",
+      "ui:section": "clubBranding",
+      "ui:field": "toggleSwitch"
+    },
+    "texts": {
+      "ui:tab": "content",
+      "common": {
+        "ui:section": "clubEnter",
+        "loading": {
+          "ui:field": "translation"
+        }
+      },
+      "enter": {
+        "ui:section": "clubEnter",
+        "errors": {
+          "ui:section": "clubEnter",
+          "invalidCode": {
+            "ui:field": "translation"
+          },
+          "verifyFailed": {
+            "ui:field": "translation"
+          },
+          "sendFailed": {
+            "ui:field": "translation"
+          },
+          "unknown": {
+            "ui:field": "translation"
+          }
+        }
+      },
+      "credit": {
+        "ui:section": "clubCredit",
+        "navigation": {
+          "ui:section": "clubCredit",
+          "buttonLabel": {
+            "ui:field": "translation"
+          }
+        }
+      },
+      "status": {
+        "ui:section": "clubCredit",
+        "memberLabel": {
+          "ui:field": "translation"
+        },
+        "pointsLabel": {
+          "ui:field": "translation"
+        },
+        "progressLabel": {
+          "ui:field": "translation"
+        }
+      },
+      "subscriptions": {
+        "ui:section": "clubOrdersSubscriptions",
+        "customerId": {
+          "ui:field": "translation"
+        }
+      },
+      "orders": {
+        "ui:section": "clubOrdersSubscriptions",
+        "customerId": {
+          "ui:field": "translation"
+        },
+        "dateNotAvailable": {
+          "ui:field": "translation"
+        },
+        "moreItems": {
+          "ui:field": "translation"
+        },
+        "status": {
+          "ui:section": "clubOrdersSubscriptions",
+          "order": {
+            "unknown": {
+              "ui:field": "translation"
+            }
+          },
+          "payment": {
+            "unknown": {
+              "ui:field": "translation"
+            }
+          }
+        }
+      },
+      "account": {
+        "ui:section": "clubPortal",
+        "customerId": {
+          "ui:field": "translation"
+        }
+      },
+      "offers": {
+        "ui:section": "clubOffersTexts",
+        "labels": {
+          "productsCount": {
+            "ui:field": "translation"
+          },
+          "itemsCount": {
+            "ui:field": "translation"
+          },
+          "chooseVariant": {
+            "ui:field": "translation"
+          }
+        },
+        "toasts": {
+          "processing": {
+            "ui:field": "translation"
+          },
+          "success": {
+            "ui:field": "translation"
+          },
+          "failure": {
+            "ui:field": "translation"
+          }
+        }
+      }
+    },
+    "products": {
+      "ui:tab": "settings",
+      "ui:section": "clubBranding",
+      "variantId": {
+        "ui:widget": "variantSelector"
+      }
+    },
+    "meta": {
+      "ui:tab": "content",
+      "ui:section": "clubMeta",
+      "title": {
+        "ui:field": "translation"
+      },
+      "description": {
+        "ui:field": "translation"
+      },
+      "tagline": {
+        "ui:field": "translation"
+      }
+    }
+  },
+  "offers": {
+    "ui:tab": "content",
+    "ui:section": "offers",
+    "loadingText": {
+      "ui:field": "translation"
+    },
+    "errorTitle": {
+      "ui:field": "translation"
+    },
+    "errorMessage": {
+      "ui:field": "translation"
+    },
+    "redirectingText": {
+      "ui:field": "translation"
+    },
+    "preparingOfferText": {
+      "ui:field": "translation"
+    },
+    "specialOfferText": {
+      "ui:field": "translation"
+    },
+    "offerCountText": {
+      "ui:field": "translation"
+    },
+    "saveText": {
+      "ui:field": "translation"
+    },
+    "chooseVariantText": {
+      "ui:field": "translation"
+    },
+    "updatingText": {
+      "ui:field": "translation"
+    },
+    "processingText": {
+      "ui:field": "translation"
+    },
+    "updatingPricesText": {
+      "ui:field": "translation"
+    },
+    "addToCartText": {
+      "ui:field": "translation"
+    },
+    "previousText": {
+      "ui:field": "translation"
+    },
+    "skipOfferText": {
+      "ui:field": "translation"
+    },
+    "offerFailedText": {
+      "ui:field": "translation"
+    },
+    "offerFailedRedirectText": {
+      "ui:field": "translation"
+    },
+    "offerAcceptedText": {
+      "ui:field": "translation"
+    },
+    "variantUpdateErrorText": {
+      "ui:field": "translation"
+    },
+    "itemsInOfferText": {
+      "ui:field": "translation"
+    }
+  },
+  "thankYou": {
+    "ui:tab": "content",
+    "ui:section": "thankYouTexts",
+    "title": {
+      "ui:field": "translation"
+    },
+    "membership": {
+      "ui:field": "translation"
+    },
+    "renews": {
+      "ui:field": "translation"
+    },
+    "free": {
+      "ui:field": "translation"
+    },
+    "relatedOrders": {
+      "ui:field": "translation"
+    },
+    "continueShopping": {
+      "ui:field": "translation"
+    },
+    "orderNumber": {
+      "ui:field": "translation"
+    },
+    "orderSummary": {
+      "ui:field": "translation"
+    },
+    "loadingText": {
+      "ui:field": "translation"
+    },
+    "subtitle": {
+      "ui:field": "translation"
+    },
+    "address": {
+      "ui:field": "translation"
+    },
+    "confirmed": {
+      "ui:field": "translation"
+    },
+    "shippingAddress": {
+      "ui:field": "translation"
+    },
+    "billingAddress": {
+      "ui:field": "translation"
+    },
+    "customerDetails": {
+      "ui:field": "translation"
+    },
+    "email": {
+      "ui:field": "translation"
+    },
+    "firstName": {
+      "ui:field": "translation"
+    },
+    "lastName": {
+      "ui:field": "translation"
+    },
+    "orderDetails": {
+      "ui:field": "translation"
+    },
+    "subtotal": {
+      "ui:field": "translation"
+    },
+    "shipping": {
+      "ui:field": "translation"
+    },
+    "tax": {
+      "ui:field": "translation"
+    },
+    "total": {
+      "ui:field": "translation"
+    },
+    "trialThenText": {
+      "ui:field": "translation"
+    },
+    "everyText": {
+      "ui:field": "translation"
+    },
+    "itemText": {
+      "ui:field": "translation"
+    },
+    "itemsText": {
+      "ui:field": "translation"
+    },
+    "naText": {
+      "ui:field": "translation"
+    },
+    "productText": {
+      "ui:field": "translation"
+    }
+  },
+  "zelleThankYou": {
+    "ui:tab": "content",
+    "ui:section": "zelleThankYouTexts",
+    "title": {
+      "ui:field": "translation"
+    },
+    "subtitle": {
+      "ui:field": "translation"
+    },
+    "pendingPayment": {
+      "ui:field": "translation"
+    },
+    "importantTitle": {
+      "ui:field": "translation"
+    },
+    "importantMessage": {
+      "ui:field": "translation"
+    },
+    "howToPayTitle": {
+      "ui:field": "translation"
+    },
+    "steps": {
+      "items": {
+        "title": {
+          "ui:field": "translation"
+        },
+        "description": {
+          "ui:field": "translation"
+        }
+      }
+    },
+    "securityNoteTitle": {
+      "ui:field": "translation"
+    },
+    "securityNoteDescription": {
+      "ui:field": "translation"
+    },
+    "emailSentTitle": {
+      "ui:field": "translation"
+    },
+    "emailSentDescription": {
+      "ui:field": "translation"
+    },
+    "awaitingPayment": {
+      "ui:field": "translation"
+    }
+  },
+  "portal": {
+    "branding": {
+      "ui:tab": "settings",
+      "ui:section": "portalBranding",
+      "colors": {
+        "primary": {
+          "ui:widget": "color"
+        },
+        "secondary": {
+          "ui:widget": "color"
+        }
+      }
+    },
+    "texts": {
+      "ui:section": "portalTexts",
+      "common": {
+        "ui:section": "portalTexts",
+        "loading": {
+          "ui:field": "translation"
+        }
+      },
+      "login": {
+        "ui:section": "portalTexts",
+        "title": {
+          "ui:field": "translation"
+        },
+        "subtitle": {
+          "ui:field": "translation"
+        },
+        "emailPlaceholder": {
+          "ui:field": "translation"
+        },
+        "codePlaceholder": {
+          "ui:field": "translation"
+        },
+        "sendCode": {
+          "ui:field": "translation"
+        },
+        "sendingCode": {
+          "ui:field": "translation"
+        },
+        "verifyCode": {
+          "ui:field": "translation"
+        },
+        "verifyingCode": {
+          "ui:field": "translation"
+        },
+        "backButton": {
+          "ui:field": "translation"
+        },
+        "errors": {
+          "ui:section": "portalTexts",
+          "invalidCode": {
+            "ui:field": "translation"
+          },
+          "verifyFailed": {
+            "ui:field": "translation"
+          },
+          "sendFailed": {
+            "ui:field": "translation"
+          },
+          "unknown": {
+            "ui:field": "translation"
+          }
+        }
+      },
+      "portal": {
+        "ui:section": "portalTexts",
+        "title": {
+          "ui:field": "translation"
+        },
+        "menu": {
+          "ui:field": "translation"
+        },
+        "logout": {
+          "ui:field": "translation"
+        },
+        "externalBadge": {
+          "ui:field": "translation"
+        },
+        "tabs": {
+          "ui:section": "portalTexts",
+          "orders": {
+            "ui:section": "portalTexts",
+            "label": {
+              "ui:field": "translation"
+            },
+            "description": {
+              "ui:field": "translation"
+            }
+          },
+          "account": {
+            "ui:section": "portalTexts",
+            "label": {
+              "ui:field": "translation"
+            },
+            "description": {
+              "ui:field": "translation"
+            }
+          },
+          "subscriptions": {
+            "ui:section": "portalTexts",
+            "label": {
+              "ui:field": "translation"
+            },
+            "description": {
+              "ui:field": "translation"
+            }
+          }
+        }
+      },
+      "orders": {
+        "ui:section": "portalTexts",
+        "myOrders": {
+          "ui:field": "translation"
+        },
+        "ordersLabel": {
+          "ui:field": "translation"
+        },
+        "noOrders": {
+          "ui:field": "translation"
+        },
+        "item": {
+          "ui:field": "translation"
+        },
+        "items": {
+          "ui:field": "translation"
+        },
+        "customerId": {
+          "ui:field": "translation"
+        },
+        "dateNotAvailable": {
+          "ui:field": "translation"
+        },
+        "moreItems": {
+          "ui:field": "translation"
+        },
+        "ordered": {
+          "ui:field": "translation"
+        },
+        "loadingOrders": {
+          "ui:field": "translation"
+        },
+        "status": {
+          "ui:section": "portalTexts",
+          "order": {
+            "ui:section": "portalTexts",
+            "open": {
+              "ui:field": "translation"
+            },
+            "paid": {
+              "ui:field": "translation"
+            },
+            "abandoned": {
+              "ui:field": "translation"
+            },
+            "cancelled": {
+              "ui:field": "translation"
+            },
+            "unknown": {
+              "ui:field": "translation"
+            }
+          },
+          "payment": {
+            "ui:section": "portalTexts",
+            "succeeded": {
+              "ui:field": "translation"
+            },
+            "pending": {
+              "ui:field": "translation"
+            },
+            "failed": {
+              "ui:field": "translation"
+            },
+            "error": {
+              "ui:field": "translation"
+            },
+            "refunded": {
+              "ui:field": "translation"
+            },
+            "declined": {
+              "ui:field": "translation"
+            },
+            "expired": {
+              "ui:field": "translation"
+            },
+            "rejected": {
+              "ui:field": "translation"
+            },
+            "unknown": {
+              "ui:field": "translation"
+            }
+          }
+        }
+      },
+      "account": {
+        "ui:section": "portalTexts",
+        "myAccount": {
+          "ui:field": "translation"
+        },
+        "loadingAccount": {
+          "ui:field": "translation"
+        },
+        "editProfile": {
+          "ui:field": "translation"
+        },
+        "personalInformation": {
+          "ui:field": "translation"
+        },
+        "accountStatistics": {
+          "ui:field": "translation"
+        },
+        "addresses": {
+          "ui:field": "translation"
+        },
+        "systemInformation": {
+          "ui:field": "translation"
+        },
+        "email": {
+          "ui:field": "translation"
+        },
+        "name": {
+          "ui:field": "translation"
+        },
+        "customerId": {
+          "ui:field": "translation"
+        },
+        "totalOrders": {
+          "ui:field": "translation"
+        },
+        "ordersLabel": {
+          "ui:field": "translation"
+        },
+        "activeSubscriptions": {
+          "ui:field": "translation"
+        },
+        "activeLabel": {
+          "ui:field": "translation"
+        },
+        "marketingPreferences": {
+          "ui:field": "translation"
+        },
+        "subscribedToNewsletters": {
+          "ui:field": "translation"
+        },
+        "notSubscribedToNewsletters": {
+          "ui:field": "translation"
+        },
+        "billingAddress": {
+          "ui:field": "translation"
+        },
+        "shippingAddress": {
+          "ui:field": "translation"
+        },
+        "browser": {
+          "ui:field": "translation"
+        },
+        "operatingSystem": {
+          "ui:field": "translation"
+        },
+        "location": {
+          "ui:field": "translation"
+        },
+        "firstName": {
+          "ui:field": "translation"
+        },
+        "lastName": {
+          "ui:field": "translation"
+        },
+        "cancel": {
+          "ui:field": "translation"
+        },
+        "saveChanges": {
+          "ui:field": "translation"
+        },
+        "lastOrder": {
+          "ui:field": "translation"
+        }
+      },
+      "subscriptions": {
+        "ui:section": "portalTexts",
+        "mySubscriptions": {
+          "ui:field": "translation"
+        },
+        "subscriptionsLabel": {
+          "ui:field": "translation"
+        },
+        "noActiveSubscriptions": {
+          "ui:field": "translation"
+        },
+        "loadingSubscriptions": {
+          "ui:field": "translation"
+        },
+        "qty": {
+          "ui:field": "translation"
+        },
+        "id": {
+          "ui:field": "translation"
+        },
+        "customerId": {
+          "ui:field": "translation"
+        },
+        "billingPlan": {
+          "ui:field": "translation"
+        },
+        "customer": {
+          "ui:field": "translation"
+        },
+        "currentPeriod": {
+          "ui:field": "translation"
+        },
+        "trialPeriod": {
+          "ui:field": "translation"
+        },
+        "cancellationNotice": {
+          "ui:field": "translation"
+        },
+        "subscriptionCancellationEndPeriod": {
+          "ui:field": "translation"
+        },
+        "created": {
+          "ui:field": "translation"
+        },
+        "productId": {
+          "ui:field": "translation"
+        },
+        "resumeSubscription": {
+          "ui:field": "translation"
+        },
+        "resuming": {
+          "ui:field": "translation"
+        },
+        "cancelSubscription": {
+          "ui:field": "translation"
+        },
+        "canceling": {
+          "ui:field": "translation"
+        },
+        "cancelSubscriptionTitle": {
+          "ui:field": "translation"
+        },
+        "cancelSubscriptionNotice": {
+          "ui:field": "translation"
+        },
+        "confirmProceed": {
+          "ui:field": "translation"
+        },
+        "yesCancel": {
+          "ui:field": "translation"
+        },
+        "yesLoseBenefits": {
+          "ui:field": "translation"
+        },
+        "keepSubscription": {
+          "ui:field": "translation"
+        },
+        "cancelClubMembership": {
+          "ui:field": "translation"
+        },
+        "byCanceling": {
+          "ui:field": "translation"
+        },
+        "loseClubAdvantages": {
+          "ui:field": "translation"
+        },
+        "loseAccumulatedCredits": {
+          "ui:field": "translation"
+        },
+        "losePromotionCode": {
+          "ui:field": "translation"
+        },
+        "status": {
+          "ui:section": "portalTexts",
+          "active": {
+            "ui:field": "translation"
+          },
+          "trial": {
+            "ui:field": "translation"
+          },
+          "canceling": {
+            "ui:field": "translation"
+          }
+        }
+      }
+    }
+  }
+}
