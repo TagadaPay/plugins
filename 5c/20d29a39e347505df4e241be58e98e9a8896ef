@@ -1,0 +1,25 @@
+simple-checkout-style-tealer/package.json
+  c36c3d30b2fc3652 55
+simple-checkout-style-editorial/package.json
+  c36c3d30b2fc3652 55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "5c20d29a39e347505df4e241be58e98e9a8896ef",
+  "prompts": {
+    "c36c3d30b2fc3652": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "69821407-64c9-4b0a-8b44-4d8180ea6c38",
+        "model": "claude-opus-4-7-thinking-high"
+      },
+      "human_author": "Loïc DELOBEL",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 0,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}
